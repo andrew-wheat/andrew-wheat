@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Work | Andrew Wheat</title>
+    <meta
+      name="description"
+      content="Catalogue of Andrew Wheat's architecture projects, process, and research."
+    >
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body data-page="work">
+    <a class="skip-link" href="#work-catalogue">Skip to work catalogue</a>
+
+    <header class="site-header static-header" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="Andrew Wheat home">Andrew Wheat</a>
+      <nav class="site-nav">
+        <a aria-current="page" href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section class="section-grid page-intro reveal">
+        <h1>Work</h1>
+        <p class="page-copy">
+          Projects, studies, drawings, models, and research.
+        </p>
+      </section>
+
+      <section class="catalogue-controls reveal" aria-label="Catalogue controls">
+        <div class="view-toggle" aria-label="View mode">
+          <button type="button" class="icon-button active" data-view-mode="grid" aria-label="Grid view" title="Grid view">
+            <span aria-hidden="true">#</span>
+          </button>
+          <button type="button" class="icon-button" data-view-mode="list" aria-label="List view" title="List view">
+            <span aria-hidden="true">=</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="work-equation reveal" aria-label="Filter projects by theme">
+        <div class="architecture-marquee work-equation-marquee">
+          <button type="button" class="marquee-fixed marquee-filter active" data-theme-token="all">Architecture =</button>
+          <span class="marquee-window">
+            <span class="marquee-track" data-work-theme-track></span>
+          </span>
+        </div>
+      </section>
+
+      <section class="work-catalogue reveal" id="work-catalogue" data-work-catalogue data-view="grid"></section>
+    </main>
+
+    <script src="assets/js/projects.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
