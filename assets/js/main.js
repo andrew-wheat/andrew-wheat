@@ -2,6 +2,35 @@
   const projects = window.PORTFOLIO_PROJECTS || [];
   const words = window.ARCHITECTURE_WORDS || [];
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const workThemeMap = [
+    ["Assembly", ["wood-street-pool", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "woven-pavilion", "hunters-point"]],
+    ["Balance", ["a-chair-is-a-toy", "borinquen-healing-center"]],
+    ["Body", ["wood-street-pool", "borinquen-healing-center", "a-chair-is-a-toy", "woven-pavilion"]],
+    ["Care", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "borinquen-healing-center"]],
+    ["Circulation", ["hunters-point", "wood-street-pool", "borinquen-healing-center", "design-district-canteen", "curanto-cookhouse", "woven-pavilion"]],
+    ["Climate", ["wood-street-pool", "enfield-food-pantry", "curanto-cookhouse"]],
+    ["Commons", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "curanto-cookhouse", "design-district-canteen"]],
+    ["Community", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "curanto-cookhouse", "design-district-canteen", "deconstruct-reconfigure"]],
+    ["Competition", ["york-prize", "deconstruct-reconfigure", "a-chair-is-a-toy"]],
+    ["Configuration", ["hunters-point", "deconstruct-reconfigure", "a-chair-is-a-toy", "curanto-cookhouse"]],
+    ["Deconstruction", ["deconstruct-reconfigure", "curanto-cookhouse", "hunters-point"]],
+    ["Form", ["borinquen-healing-center", "woven-pavilion", "design-district-canteen", "a-chair-is-a-toy", "york-prize"]],
+    ["Frame", ["hunters-point", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "woven-pavilion"]],
+    ["Gathering", ["hunters-point", "enfield-food-pantry", "wood-street-pool", "design-district-canteen", "curanto-cookhouse", "woven-pavilion"]],
+    ["Ground", ["wood-street-pool", "enfield-food-pantry", "borinquen-healing-center", "curanto-cookhouse", "woven-pavilion"]],
+    ["Housing", ["hunters-point"]],
+    ["Infrastructure", ["wood-street-pool", "hunters-point", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "borinquen-healing-center"]],
+    ["Light", ["woven-pavilion", "curanto-cookhouse", "design-district-canteen", "wood-street-pool"]],
+    ["Movement", ["wood-street-pool", "hunters-point", "borinquen-healing-center", "woven-pavilion", "a-chair-is-a-toy"]],
+    ["Performance", ["a-chair-is-a-toy", "design-district-canteen", "woven-pavilion", "curanto-cookhouse", "hunters-point"]],
+    ["Play", ["a-chair-is-a-toy", "wood-street-pool", "design-district-canteen", "woven-pavilion"]],
+    ["Production", ["deconstruct-reconfigure", "hunters-point", "curanto-cookhouse"]],
+    ["Resilience", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "deconstruct-reconfigure", "curanto-cookhouse"]],
+    ["Ritual", ["curanto-cookhouse", "woven-pavilion", "wood-street-pool"]],
+    ["Texture", ["curanto-cookhouse", "woven-pavilion", "york-prize"]],
+    ["Threshold", ["curanto-cookhouse", "wood-street-pool", "hunters-point", "enfield-food-pantry", "woven-pavilion", "york-prize", "design-district-canteen"]],
+    ["Use", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "a-chair-is-a-toy", "deconstruct-reconfigure", "borinquen-healing-center"]]
+  ];
 
   function planSvg(project, variant, options = {}) {
     const title = escapeHtml(project.title);
@@ -38,8 +67,8 @@
     return svg;
   }
 
-  function heroSvg(project, index) {
-    const heroImage = project.heroImage || project.thumbnail;
+  function heroSvg(project, index, explicitImage = "") {
+    const heroImage = explicitImage || project.heroImage || project.thumbnail;
     if (heroImage && !/\.pdf$/i.test(heroImage)) {
       const imageSrc = heroImage.includes("/") ? heroImage : `${project.imageBase || ""}${heroImage}`;
       return [
@@ -111,18 +140,57 @@
     const carousel = document.querySelector("[data-hero-carousel]");
     if (!carousel) return;
 
-    const heroProjects = projects.filter((project) => project.heroImage || project.thumbnail);
-    const slidesToRender = heroProjects.length ? heroProjects : projects.slice(0, 5);
-    carousel.innerHTML = slidesToRender.map(heroSvg).join("");
+    const byId = new Map(projects.map((project) => [project.id, project]));
+    const orderedHeroEntries = [
+      ["borinquen-healing-center", "hero image.png"],
+      ["hunters-point", "hero.png"],
+      ["hunters-point", "Front Facade Render More Saturated.png"],
+      ["enfield-food-pantry", "Work Cover Photo.png"],
+      ["enfield-food-pantry", "ZOOMED OUT RENDER FINAL edited tall.png"],
+      ["deconstruct-reconfigure", "MODEL 01 cropped.png"],
+      ["curanto-cookhouse", "hero.jpg"],
+      ["curanto-cookhouse", "hero 2.jpg"],
+      ["wood-street-pool", "hero.png"],
+      ["wood-street-pool", "hero 2.png"],
+      ["a-chair-is-a-toy", "main hero shot.png"],
+      ["design-district-canteen", "Model Front View Shot 01.png"],
+      ["york-prize", "Andrew Wheat_ajw288_01C_York Model (1).jpg"],
+      ["woven-pavilion", "hero.jpg"]
+    ];
+    const slidesToRender = orderedHeroEntries
+      .map(([id, image], index) => {
+        const project = byId.get(id);
+        return project ? heroSvg(project, index, image) : "";
+      })
+      .filter(Boolean);
+
+    carousel.innerHTML = slidesToRender.join("");
     const slides = Array.from(carousel.querySelectorAll(".hero-slide"));
+    const images = Array.from(carousel.querySelectorAll(".hero-image"));
     let active = 0;
+
+    function updateHeight() {
+      const image = images[active];
+      if (!image) return;
+      const height = image.complete && image.naturalWidth
+        ? (carousel.clientWidth / image.naturalWidth) * image.naturalHeight
+        : image.getBoundingClientRect().height;
+      if (height > 0) carousel.style.height = `${Math.ceil(height)}px`;
+    }
 
     function setActive(next) {
       slides.forEach((slide, index) => slide.classList.toggle("active", index === next));
       active = next;
+      updateHeight();
     }
 
+    images.forEach((image) => {
+      if (image.complete) return;
+      image.addEventListener("load", updateHeight, { once: true });
+    });
+
     setActive(0);
+    window.addEventListener("resize", updateHeight, { passive: true });
     if (!reduceMotion && slides.length > 1) {
       window.setInterval(() => setActive((active + 1) % slides.length), 4600);
     }
@@ -1096,7 +1164,12 @@
     const catalogue = document.querySelector("[data-work-catalogue]");
     if (!catalogue) return;
     const filter = document.querySelector("[data-theme-filter]");
-    const allThemes = Array.from(new Set(projects.flatMap((project) => project.themes))).sort();
+    const availableProjectIds = new Set(projects.map((project) => project.id));
+    const themeEntries = workThemeMap
+      .map(([label, ids]) => [label, ids.filter((id) => availableProjectIds.has(id))])
+      .filter(([, ids]) => ids.length);
+    const themeLookup = new Map(themeEntries);
+    const allThemes = themeEntries.map(([label]) => label);
     let activeTheme = "all";
     if (filter) {
       filter.innerHTML =
@@ -1109,7 +1182,7 @@
       const visible =
         activeTheme === "all"
           ? projects
-          : projects.filter((project) => project.themes.includes(activeTheme));
+          : projects.filter((project) => (themeLookup.get(activeTheme) || []).includes(project.id));
 
       catalogue.innerHTML = visible.map(projectCard).join("");
       updateThemeButtons();
@@ -1217,7 +1290,7 @@
           <span class="project-number">${String(projectNumber).padStart(2, "0")}</span>
           <h2>${escapeHtml(project.title)}</h2>
           <p class="project-card-meta">${escapeHtml(project.year)} / ${escapeHtml(project.type)}</p>
-          <p class="project-card-summary">${escapeHtml(project.summary)}</p>
+          ${project.summary ? `<p class="project-card-summary">${escapeHtml(project.summary)}</p>` : ""}
         </div>
       </a>
     `;
@@ -1254,14 +1327,15 @@
         <div class="project-hero-text">
           <p class="section-kicker">${escapeHtml(project.type)}</p>
           <h1>${escapeHtml(project.title)}</h1>
-          <p class="project-summary">${escapeHtml(project.summary)}</p>
+          ${project.summary ? `<p class="project-summary">${escapeHtml(project.summary)}</p>` : ""}
           ${project.description ? `<p class="project-description">${escapeHtml(project.description)}</p>` : ""}
         </div>
       </section>
       <section class="project-meta reveal" aria-label="Project metadata">
         <div><span>Year</span>${escapeHtml(project.year)}</div>
-        <div><span>Studio</span>${escapeHtml(project.studio)}</div>
-        <div><span>Professors</span>${escapeHtml(project.professors || project.themes.join(", "))}</div>
+        ${project.course ? `<div><span>Course</span>${escapeHtml(project.course)}</div>` : ""}
+        ${project.studio ? `<div><span>Studio</span>${escapeHtml(project.studio)}</div>` : ""}
+        <div><span>${escapeHtml(professorLabel(project))}</span>${escapeHtml(professorDisplay(project) || project.themes.join(", "))}</div>
         ${project.partners ? `<div><span>Partners</span>${escapeHtml(project.partners)}</div>` : ""}
         <div><span>Themes</span>${project.themes.map(escapeHtml).join(", ")}</div>
       </section>
@@ -1309,9 +1383,13 @@
             </section>`
           : ""
       }
-      <section class="project-annotations" aria-label="Project framework">
-        ${project.question ? `<p class="project-question-subtitle reveal">${escapeHtml(project.question)}</p>` : ""}
-      </section>
+      ${
+        project.question
+          ? `<section class="project-annotations" aria-label="Project framework">
+              <p class="project-question-subtitle reveal">${escapeHtml(project.question)}</p>
+            </section>`
+          : ""
+      }
       <section class="project-story" aria-label="${escapeHtml(project.title)} documentation">
         ${storyImages.map((image, index) => projectStoryFrame(project, image, index)).join("")}
       </section>
@@ -1359,8 +1437,10 @@
 
   function projectMetadataLines(project) {
     const lines = [
+      project.course,
+      ...(Array.isArray(project.additionalMetadata) ? project.additionalMetadata : []),
       project.studio,
-      project.professors ? `Professors: ${project.professors}` : "",
+      project.professors ? `${professorLabel(project)}: ${professorDisplay(project)}` : "",
       project.partners ? `${project.partners.includes("+") ? "Partners" : "Partner"}: ${project.partners}` : ""
     ].filter(Boolean);
 
@@ -1372,9 +1452,23 @@
       : "";
   }
 
+  function professorLabel(project) {
+    return project.id === "hunters-point" ? "Professors" : "Professor";
+  }
+
+  function professorDisplay(project) {
+    if (!project.professors) return "";
+    if (project.id === "hunters-point") return project.professors;
+    return project.professors.split(/\s*(?:,|\+|&| and )\s*/i)[0].trim();
+  }
+
   function projectStoryFrame(project, image, index) {
     const layout = image.layout || "image";
-    const media = layout === "wood-pool-mech-system"
+    const media = layout === "hunters-context-animation"
+      ? huntersPointAnimation(project)
+      : layout === "wood-pool-iso-large"
+      ? woodPoolSiteIso(project, image)
+      : layout === "wood-pool-mech-system"
       ? woodPoolMechSystem(project, image)
       : image.text
       ? projectStoryText(image)
@@ -1394,11 +1488,445 @@
             .join("")}</div>`
         : projectMedia(project, image.src, image.caption || project.title);
 
+    const revealClass = layout === "hunters-context-animation" ? "" : " reveal";
+
     return `
-      <figure class="project-story-frame project-story-frame--${escapeHtml(layout)} reveal" style="--story-index: ${index}">
+      <figure class="project-story-frame project-story-frame--${escapeHtml(layout)}${revealClass}" style="--story-index: ${index}">
         ${media}
       </figure>
     `;
+  }
+
+  function huntersPointAnimation(project) {
+    const layerBase = `${project.imageBase || ""}animation-layers/`;
+    const image = (className, src, alt, attrs = "") => `
+      <img class="${className}" src="${escapeHtml(layerBase + src)}" alt="${escapeHtml(alt)}" loading="lazy" ${attrs}>
+    `;
+
+    return `
+      <div class="hunters-diagram-scroll" data-hunters-diagram-scroll data-layer-base="${escapeHtml(layerBase)}">
+        <div class="hunters-diagram-sticky">
+          <div class="hunters-diagram-stage" data-hunters-diagram-stage>
+            ${image("hunters-diagram-reference", "full-diagram-reference.png", "Full Hunter's Point reference diagram", "data-final-reference")}
+
+            <div class="hunters-diagram-layer hunters-diagram-layer--vector" data-svg-layer="industrial"></div>
+            ${image("hunters-diagram-layer hunters-diagram-layer--raster", "industrial-production-step-1.png", "", "data-raster-layer=\"industrial\"")}
+            ${image("hunters-diagram-layer hunters-diagram-layer--text hunters-diagram-layer--text-industrial", "industrial-production-step-1.png", "", "data-text-layer=\"industrial\"")}
+
+            <div class="hunters-diagram-layer hunters-diagram-layer--vector" data-svg-layer="scattered"></div>
+            ${image("hunters-diagram-layer hunters-diagram-layer--raster", "scattered-consumption-step-2.png", "", "data-raster-layer=\"scattered\"")}
+            ${image("hunters-diagram-layer hunters-diagram-layer--text hunters-diagram-layer--text-scattered", "scattered-consumption-step-2.png", "", "data-text-layer=\"scattered\"")}
+
+            ${image("hunters-diagram-layer hunters-diagram-layer--raster hunters-diagram-layer--base", "site-base.png", "", "data-raster-layer=\"base\"")}
+
+            <div class="hunters-diagram-layer hunters-diagram-layer--vector" data-svg-layer="info"></div>
+            ${image("hunters-diagram-layer hunters-diagram-layer--raster", "site-information-step-3.png", "", "data-raster-layer=\"info\"")}
+            ${image("hunters-diagram-layer hunters-diagram-layer--text hunters-diagram-layer--text-info", "site-information-step-3.png", "", "data-text-layer=\"info\"")}
+
+            <div class="hunters-diagram-layer hunters-diagram-layer--vector" data-svg-layer="interwoven"></div>
+            ${image("hunters-diagram-layer hunters-diagram-layer--raster", "interwoven-production-step-4.png", "", "data-raster-layer=\"interwoven\"")}
+            ${image("hunters-diagram-layer hunters-diagram-layer--text hunters-diagram-layer--text-interwoven", "interwoven-production-step-4.png", "", "data-text-layer=\"interwoven\"")}
+
+            ${image("hunters-diagram-final", "full-diagram-reference.png", "", "data-final-layer")}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function initHuntersPointAnimation() {
+    const scrollArea = document.querySelector("[data-hunters-diagram-scroll]");
+    if (!scrollArea) return;
+
+    const finalLayer = scrollArea.querySelector("[data-final-layer]");
+    const layerBase = scrollArea.dataset.layerBase || "";
+    const layerConfigs = [
+      {
+        id: "industrial",
+        start: 0.025,
+        end: 0.225,
+        svg: `${layerBase}Industrial Production step 1.svg`,
+        lineColors: ["#bf3f3f"]
+      },
+      {
+        id: "scattered",
+        start: 0.19,
+        end: 0.405,
+        svg: `${layerBase}Scattered Consumption step 2.svg`,
+        lineColors: ["#f49f4a"]
+      },
+      {
+        id: "base",
+        start: 0.37,
+        end: 0.565
+      },
+      {
+        id: "info",
+        start: 0.535,
+        end: 0.745,
+        svg: `${layerBase}Site Information step 3.svg`,
+        lineColors: []
+      },
+      {
+        id: "interwoven",
+        start: 0.715,
+        end: 0.925,
+        svg: `${layerBase}Interwoven Production step 4.svg`,
+        lineColors: ["#8f64a5", "#c187df"]
+      }
+    ];
+
+    const layers = new Map();
+    let ticking = false;
+    let ready = false;
+
+    layerConfigs.forEach((config) => {
+      layers.set(config.id, {
+        config,
+        vector: scrollArea.querySelector(`[data-svg-layer="${config.id}"]`),
+        raster: scrollArea.querySelector(`[data-raster-layer="${config.id}"]`),
+        textRaster: scrollArea.querySelector(`[data-text-layer="${config.id}"]`),
+        lines: [],
+        reveals: [],
+        arrowheads: new Set()
+      });
+    });
+
+    Promise.all(layerConfigs.filter((config) => config.svg).map(loadSvgLayer))
+      .then(() => {
+        ready = true;
+        update();
+        window.addEventListener("scroll", scheduleUpdate, { passive: true });
+        window.addEventListener("resize", scheduleUpdate, { passive: true });
+      })
+      .catch(() => {
+        if (finalLayer) finalLayer.style.opacity = "1";
+      });
+
+    async function loadSvgLayer(config) {
+      const layer = layers.get(config.id);
+      if (!layer?.vector) return;
+
+      const source = window.HP_ANIMATION_SVGS?.[config.id] || await fetchSvg(config.svg);
+      const parsed = new DOMParser().parseFromString(source, "image/svg+xml");
+      const svg = document.importNode(parsed.documentElement, true);
+      svg.removeAttribute("width");
+      svg.removeAttribute("height");
+      svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+      svg.setAttribute("aria-hidden", "true");
+      layer.vector.appendChild(svg);
+
+      const defs = ensureDefs(svg);
+      const dynamicGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      dynamicGroup.classList.add("hp-vector-dynamic");
+      svg.appendChild(dynamicGroup);
+
+      const candidates = Array.from(svg.querySelectorAll("path, line, polyline")).flatMap((element) => {
+        if (!isAnimatedLine(element, config)) return [];
+        const length = getElementLength(element);
+        if (!length) return [];
+        return [{
+          element,
+          length,
+          start: getPointAt(element, 0),
+          end: getPointAt(element, length),
+          center: getElementCenter(element)
+        }];
+      });
+
+      const arrowsByElement = new Map();
+      candidates.forEach((candidate) => {
+        const arrows = findEndpointArrowheads(candidate, candidates);
+        arrowsByElement.set(candidate.element, arrows);
+        if (arrows.start) layer.arrowheads.add(arrows.start.element);
+        if (arrows.end) layer.arrowheads.add(arrows.end.element);
+      });
+
+      candidates.forEach((candidate, index) => {
+        if (layer.arrowheads.has(candidate.element)) {
+          candidate.element.style.opacity = "0";
+          return;
+        }
+
+        candidate.element.style.opacity = "0";
+        layer.lines.push(createDynamicLine(candidate, arrowsByElement.get(candidate.element), dynamicGroup, defs, index));
+      });
+
+      Array.from(svg.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse, text")).forEach((element) => {
+        if (element.tagName.toLowerCase() === "text") {
+          element.style.opacity = "0";
+          return;
+        }
+        if (layer.arrowheads.has(element)) return;
+        if (isAnimatedLine(element, config)) return;
+
+        if (isVisibleElement(element)) {
+          element.classList.add("hp-vector-reveal");
+          layer.reveals.push(element);
+        }
+      });
+    }
+
+    async function fetchSvg(url) {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Could not load ${url}`);
+      return response.text();
+    }
+
+    function isAnimatedLine(element, config) {
+      const tag = element.tagName.toLowerCase();
+      if (!["path", "line", "polyline"].includes(tag)) return false;
+      const stroke = normalizeSvgColor(element.getAttribute("stroke"));
+      const strokeWidth = Number.parseFloat(element.getAttribute("stroke-width") || "0");
+      if (!stroke || stroke === "none" || strokeWidth <= 0) return false;
+      return config.lineColors.includes(stroke);
+    }
+
+    function isVisibleElement(element) {
+      const fill = normalizeSvgColor(element.getAttribute("fill"));
+      const stroke = normalizeSvgColor(element.getAttribute("stroke"));
+      const hasVisibleFill = fill && fill !== "none" && fill !== "#ffffff";
+      const hasVisibleStroke = stroke && stroke !== "none" && stroke !== "#ffffff";
+      return hasVisibleFill || hasVisibleStroke;
+    }
+
+    function ensureDefs(svg) {
+      let defs = svg.querySelector("defs");
+      if (!defs) {
+        defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+        svg.insertBefore(defs, svg.firstChild);
+      }
+      return defs;
+    }
+
+    function createDynamicLine(candidate, arrows, group, defs, index) {
+      const stroke = candidate.element.getAttribute("stroke") || "currentColor";
+      const strokeWidth = Number.parseFloat(candidate.element.getAttribute("stroke-width") || "1") || 1;
+      const markerId = ensureArrowMarker(defs, stroke, strokeWidth, index);
+      const left = createSegmentPath(candidate.element);
+      const right = createSegmentPath(candidate.element);
+
+      if (arrows?.start) left.setAttribute("marker-end", `url(#${markerId})`);
+      if (arrows?.end) right.setAttribute("marker-end", `url(#${markerId})`);
+
+      group.appendChild(left);
+      group.appendChild(right);
+
+      return {
+        source: candidate.element,
+        length: candidate.length,
+        left,
+        right
+      };
+    }
+
+    function createSegmentPath(source) {
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      [
+        "stroke",
+        "stroke-width",
+        "stroke-opacity",
+        "stroke-linecap",
+        "stroke-linejoin",
+        "stroke-dasharray",
+        "stroke-dashoffset",
+        "vector-effect"
+      ].forEach((name) => {
+        const value = source.getAttribute(name);
+        if (value !== null) path.setAttribute(name, value);
+      });
+      path.classList.add("hp-vector-segment");
+      path.setAttribute("fill", "none");
+      return path;
+    }
+
+    function ensureArrowMarker(defs, stroke, strokeWidth, index) {
+      const normalizedStroke = normalizeSvgColor(stroke).replace(/[^a-z0-9]/gi, "");
+      const markerId = `hp-arrow-${normalizedStroke || "line"}-${String(strokeWidth).replace(".", "-")}-${index}`;
+      if (defs.querySelector(`#${window.CSS?.escape ? CSS.escape(markerId) : markerId}`)) return markerId;
+
+      const size = Math.max(6, strokeWidth * 7.5);
+      const marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
+      marker.setAttribute("id", markerId);
+      marker.setAttribute("viewBox", `${-size} ${-size} ${size * 1.25} ${size * 2}`);
+      marker.setAttribute("markerWidth", String(size * 1.25));
+      marker.setAttribute("markerHeight", String(size * 2));
+      marker.setAttribute("refX", "0");
+      marker.setAttribute("refY", "0");
+      marker.setAttribute("orient", "auto");
+      marker.setAttribute("markerUnits", "userSpaceOnUse");
+
+      const arrow = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      arrow.setAttribute("d", `M ${-size} ${-size * 0.42} L 0 0 L ${-size} ${size * 0.42}`);
+      arrow.setAttribute("fill", "none");
+      arrow.setAttribute("stroke", stroke);
+      arrow.setAttribute("stroke-width", String(strokeWidth));
+      arrow.setAttribute("stroke-linecap", "round");
+      arrow.setAttribute("stroke-linejoin", "round");
+      marker.appendChild(arrow);
+      defs.appendChild(marker);
+
+      return markerId;
+    }
+
+    function findEndpointArrowheads(candidate, candidates) {
+      if (candidate.length < 34) return { start: null, end: null };
+
+      const arrowCandidates = candidates.filter((item) =>
+        item.element !== candidate.element &&
+        item.length <= 62 &&
+        item.length >= 4
+      );
+
+      return {
+        start: nearestArrow(candidate.start, arrowCandidates),
+        end: nearestArrow(candidate.end, arrowCandidates)
+      };
+    }
+
+    function nearestArrow(point, arrowCandidates) {
+      let nearest = null;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+      arrowCandidates.forEach((candidate) => {
+        const distance = pointDistance(point, candidate.center);
+        if (distance < nearestDistance) {
+          nearest = candidate;
+          nearestDistance = distance;
+        }
+      });
+      return nearestDistance <= 36 ? nearest : null;
+    }
+
+    function update() {
+      ticking = false;
+      if (!ready) return;
+
+      const progress = reduceMotion ? 1 : getScrollProgress();
+
+      layerConfigs.forEach((config) => {
+        const layer = layers.get(config.id);
+        if (!layer) return;
+        updateLayer(layer, stageProgress(progress, config.start, config.end));
+      });
+
+      if (finalLayer) finalLayer.style.opacity = String(easeInOutCubic(stageProgress(progress, 0.93, 1)));
+    }
+
+    function updateLayer(layer, local) {
+      const { config, vector, raster, textRaster, lines, reveals } = layer;
+
+      if (config.id === "base") {
+        if (raster) raster.style.opacity = String(easeOutCubic(local));
+        return;
+      }
+
+      if (textRaster) textRaster.style.opacity = String(easeOutCubic(stageProgress(local, 0.02, 0.2)));
+
+      const exactOpacity = easeInOutCubic(stageProgress(local, 0.84, 1));
+      if (vector) vector.style.opacity = String(clamp(1 - exactOpacity, 0, 1));
+      if (raster) raster.style.opacity = String(exactOpacity);
+
+      const lineProgress = easeInOutCubic(stageProgress(local, 0.2, 0.78));
+      lines.forEach((line) => setCenterDraw(line, lineProgress));
+
+      const revealBase = stageProgress(local, lines.length ? 0.3 : 0.22, 0.96);
+      const revealCount = Math.max(1, reveals.length);
+      reveals.forEach((element, index) => {
+        const ordered = orderedProgress(revealBase, index, revealCount);
+        const opacity = easeOutCubic(ordered);
+        element.style.opacity = String(opacity);
+        element.style.transform = `scale(${0.975 + opacity * 0.025})`;
+      });
+    }
+
+    function setCenterDraw(line, progress) {
+      const length = line.length;
+      if (!length) return;
+
+      if (progress <= 0.001) {
+        line.left.setAttribute("d", "");
+        line.right.setAttribute("d", "");
+        return;
+      }
+
+      const center = length / 2;
+      const half = center * clamp(progress, 0, 1);
+      line.left.setAttribute("d", segmentPath(line.source, center, center - half));
+      line.right.setAttribute("d", segmentPath(line.source, center, center + half));
+    }
+
+    function segmentPath(source, from, to) {
+      const distance = Math.abs(to - from);
+      const steps = clamp(Math.ceil(distance / 16), 2, 72);
+      const points = [];
+      for (let index = 0; index <= steps; index += 1) {
+        const amount = index / steps;
+        points.push(getPointAt(source, from + (to - from) * amount));
+      }
+      return points
+        .map((point, index) => `${index === 0 ? "M" : "L"} ${point.x.toFixed(3)} ${point.y.toFixed(3)}`)
+        .join(" ");
+    }
+
+    function orderedProgress(progress, index, count) {
+      if (count <= 1) return clamp(progress, 0, 1);
+      const staggerSpace = 0.56;
+      const step = staggerSpace / Math.max(1, count - 1);
+      const span = 1 - staggerSpace;
+      return clamp((progress - index * step) / span, 0, 1);
+    }
+
+    function getScrollProgress() {
+      const rect = scrollArea.getBoundingClientRect();
+      const scrollable = Math.max(1, scrollArea.offsetHeight - window.innerHeight);
+      return clamp(-rect.top / scrollable, 0, 1);
+    }
+
+    function stageProgress(progress, start, end) {
+      return clamp((progress - start) / (end - start), 0, 1);
+    }
+
+    function getElementLength(element) {
+      if (typeof element.getTotalLength !== "function") return 0;
+      try {
+        return Math.max(0, element.getTotalLength());
+      } catch {
+        return 0;
+      }
+    }
+
+    function getPointAt(element, length) {
+      const point = element.getPointAtLength(clamp(length, 0, getElementLength(element)));
+      return { x: point.x, y: point.y };
+    }
+
+    function getElementCenter(element) {
+      const box = element.getBBox();
+      return {
+        x: box.x + box.width / 2,
+        y: box.y + box.height / 2
+      };
+    }
+
+    function pointDistance(a, b) {
+      return Math.hypot(a.x - b.x, a.y - b.y);
+    }
+
+    function normalizeSvgColor(value) {
+      if (!value) return "";
+      const lower = value.trim().toLowerCase();
+      if (lower === "black") return "#000000";
+      if (lower.length === 4 && lower.startsWith("#")) {
+        return `#${lower[1]}${lower[1]}${lower[2]}${lower[2]}${lower[3]}${lower[3]}`;
+      }
+      return lower;
+    }
+
+    function scheduleUpdate() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
   }
 
   function woodPoolMechSystem(project, image) {
@@ -1442,10 +1970,60 @@
       .join("");
 
     return `
-      <article class="project-story-text">
-        ${image.heading ? `<p class="project-story-text-label">${escapeHtml(image.heading)}</p>` : ""}
+      <article class="project-story-text project-question-subtitle">
         ${paragraphs}
       </article>
+    `;
+  }
+
+  function woodPoolSiteIso(project, image) {
+    const markers = [
+      { number: "1", x: 70.5, y: 55.5 },
+      { number: "2", x: 57.3, y: 52.9 },
+      { number: "3", x: 49.7, y: 53.4 },
+      { number: "4", x: 49.1, y: 37.5 },
+      { number: "5", x: 37.2, y: 55.3 },
+      { number: "6", x: 38.3, y: 34.6 },
+      { number: "7", x: 30.2, y: 8.6 },
+      { number: "8", x: 12.7, y: 73.2 },
+      { number: "9", x: 79.8, y: 21.2 }
+    ];
+    const key = [
+      "Ithaca Skate Park",
+      "Wood Street Cafe",
+      "Rooftop Exercise Lawn",
+      "Community Garden",
+      "Native Pollinator Garden",
+      "Existing Oak Grove",
+      "Subsidized Apartments",
+      "Senior Care Homes",
+      "Goodwill"
+    ];
+
+    return `
+      <div class="wood-site-iso">
+        <div class="wood-site-iso-drawing">
+          ${projectImage(project, image.src, image.caption || "Wood Street Pool site iso")}
+          ${markers.map((marker) => `
+            <span class="wood-site-marker" style="--x:${marker.x}%;--y:${marker.y}%;">${marker.number}</span>
+          `).join("")}
+          <span class="wood-site-route-label wood-site-route-label--pedestrian">Pedestrian Path</span>
+          <span class="wood-site-route-label wood-site-route-label--bus">Bus Line</span>
+        </div>
+        <aside class="wood-site-key" aria-label="Wood Street Pool site key">
+          <h2>Site Key</h2>
+          <ol>
+            ${key.map((item, index) => `
+              <li><span>${index + 1}</span>${escapeHtml(item)}</li>
+            `).join("")}
+          </ol>
+          <div class="wood-site-scores" aria-label="Site mobility scores">
+            <div><strong>91</strong><span>walk<br>score</span></div>
+            <div><strong>89</strong><span>bike<br>score</span></div>
+            <div><strong>55</strong><span>transit<br>score</span></div>
+          </div>
+        </aside>
+      </div>
     `;
   }
 
@@ -1612,6 +2190,7 @@
   renderCompactIndex();
   renderCatalogue();
   renderProjectDetail();
+  initHuntersPointAnimation();
   ensureProjectNavigation();
   revealOnScroll();
 })();

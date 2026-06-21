@@ -7,6 +7,7 @@
   --panel: #ffffff;
   --max: 1180px;
   --gutter: clamp(22px, 3vw, 40px);
+  --project-gutter: clamp(46px, calc(3vw + 24px), 64px);
   --header-height: 72px;
   --font-main: Arial, "Helvetica Neue", Helvetica, sans-serif;
   --font-display: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -18,7 +19,7 @@
   --type-annotation: clamp(13px, 0.88vw, 16px);
   --weight-title: 900;
   --weight-header: 700;
-  --weight-copy: 500;
+  --weight-copy: 575;
   --weight-annotation: 700;
   font-family:
     Arial,
@@ -214,8 +215,7 @@ select {
   font-size: var(--type-header);
   font-weight: var(--weight-header);
   letter-spacing: 0;
-  color: #ffffff;
-  mix-blend-mode: difference;
+  color: inherit;
 }
 
 .static-header {
@@ -268,30 +268,32 @@ select {
 
 .hero {
   position: relative;
-  min-height: 100vh;
-  overflow: hidden;
+  min-height: 0;
+  overflow: visible;
   background: #ffffff;
 }
 
-.hero-carousel,
-.hero-slide {
-  position: absolute;
-  inset: 0;
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  overflow: hidden;
+  transition: height 900ms ease;
 }
 
 .hero-slide {
-  display: grid;
-  place-items: center;
+  position: absolute;
+  inset: 0 auto auto 0;
+  display: block;
+  width: 100%;
+  margin: 0;
   opacity: 0;
-  transform: scale(1.012);
-  transition:
-    opacity 1200ms ease,
-    transform 1800ms ease;
+  transition: opacity 1200ms ease;
 }
 
 .hero-slide.active {
   opacity: 1;
-  transform: scale(1);
+  z-index: 1;
 }
 
 .hero-slide--image {
@@ -301,8 +303,8 @@ select {
 .hero-image {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 .hero-slide-grid {
@@ -976,6 +978,11 @@ body[data-page="work"] .site-header {
   mix-blend-mode: difference;
 }
 
+body[data-page="project"] .site-header {
+  color: #ffffff;
+  mix-blend-mode: difference;
+}
+
 body[data-page="work"] .page-shell {
   min-height: 100vh;
   background: var(--off-black);
@@ -1341,7 +1348,11 @@ body[data-page="work"] .filter-label select {
 }
 
 .cv-heading {
-  padding: clamp(24px, 3.2vw, 42px) 0 clamp(8px, 1.5vw, 18px);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding: clamp(12px, 1.4vw, 20px) 0 clamp(2px, 0.6vw, 8px);
 }
 
 .cv-heading h2 {
@@ -1350,17 +1361,17 @@ body[data-page="work"] .filter-label select {
 
 .cv-section {
   display: grid;
-  grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr);
-  column-gap: clamp(24px, 5vw, 80px);
-  row-gap: clamp(16px, 2.2vw, 28px);
-  padding: clamp(16px, 2.4vw, 32px) 0;
+  grid-template-columns: minmax(150px, 0.24fr) minmax(0, 1fr);
+  column-gap: clamp(16px, 2.2vw, 34px);
+  row-gap: clamp(4px, 0.6vw, 9px);
+  padding: clamp(4px, 0.65vw, 9px) 0;
 }
 
 .cv-section h3 {
   grid-column: 1;
   grid-row: 1 / span 20;
   margin: 0;
-  font-size: var(--type-header);
+  font-size: clamp(18px, 1.55vw, 25px);
   font-weight: var(--weight-header);
 }
 
@@ -1376,9 +1387,9 @@ body[data-page="work"] .filter-label select {
 
 .cv-item {
   display: grid;
-  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
-  gap: clamp(18px, 3vw, 44px);
-  padding-bottom: 20px;
+  grid-template-columns: minmax(210px, 0.34fr) minmax(0, 1fr);
+  gap: clamp(10px, 1.5vw, 22px);
+  padding-bottom: 5px;
 }
 
 .cv-item:last-child {
@@ -1392,22 +1403,24 @@ body[data-page="work"] .filter-label select {
 }
 
 .cv-item h4 {
-  font-size: var(--type-copy);
+  font-size: clamp(13px, 0.95vw, 16px);
   font-weight: var(--weight-header);
-  line-height: 1.1;
+  line-height: 1.06;
 }
 
 .cv-item div p {
-  margin-top: 8px;
+  margin-top: 3px;
   color: var(--muted);
-  font-size: var(--type-copy);
+  font-size: clamp(12px, 0.84vw, 14px);
   font-weight: var(--weight-copy);
+  line-height: 1.18;
 }
 
 .cv-item > p,
 .cv-section > p {
   color: var(--muted);
-  font-size: var(--type-copy);
+  font-size: clamp(12px, 0.84vw, 14px);
+  line-height: 1.22;
 }
 
 .contact-list {
@@ -1435,6 +1448,7 @@ body[data-page="work"] .filter-label select {
 
 .project-shell {
   padding-top: var(--header-height);
+  --gutter: var(--project-gutter);
 }
 
 .project-editorial-hero {
@@ -1465,6 +1479,12 @@ body[data-page="work"] .filter-label select {
 .project-shell[data-project-id="a-chair-is-a-toy"] .project-editorial-hero {
   grid-template-columns: minmax(360px, 1fr) minmax(360px, 0.84fr);
   gap: clamp(56px, 9vw, 150px);
+}
+
+.project-shell[data-project-id="design-district-canteen"] .project-editorial-cover img {
+  width: min(100%, 820px);
+  height: min(62vh, 600px);
+  object-fit: contain;
 }
 
 .project-shell[data-project-id="curanto-cookhouse"] .project-editorial-hero {
@@ -1522,7 +1542,7 @@ body[data-page="work"] .filter-label select {
 
 .project-page-nav {
   position: fixed;
-  inset: auto clamp(18px, 2.2vw, 34px) clamp(18px, 2.2vw, 34px) clamp(18px, 2.2vw, 34px);
+  inset: auto clamp(42px, calc(2.2vw + 24px), 58px) clamp(18px, 2.2vw, 34px) clamp(42px, calc(2.2vw + 24px), 58px);
   z-index: 1500;
   display: flex;
   justify-content: space-between;
@@ -1532,15 +1552,19 @@ body[data-page="work"] .filter-label select {
 .project-page-nav-link {
   display: grid;
   place-items: center;
-  width: clamp(26px, 2.1vw, 34px);
-  height: clamp(26px, 2.1vw, 34px);
+  width: clamp(23px, 1.95vw, 33px);
+  height: clamp(35px, 3vw, 48px);
+  border: 0;
+  background: transparent;
   color: #ffffff;
   text-decoration: none;
   font-size: clamp(20px, 1.8vw, 28px);
   font-weight: var(--weight-header);
   line-height: 1;
+  mix-blend-mode: difference;
   pointer-events: auto;
   opacity: 1;
+  box-shadow: none;
   transition:
     transform 160ms ease,
     opacity 160ms ease;
@@ -1548,8 +1572,21 @@ body[data-page="work"] .filter-label select {
 
 .project-page-nav-link span {
   display: block;
-  color: #ffffff;
-  mix-blend-mode: difference;
+  width: clamp(15px, 1.5vw, 25px);
+  height: clamp(15px, 1.5vw, 25px);
+  border-top: clamp(3px, 0.25vw, 4.5px) solid currentColor;
+  border-right: clamp(3px, 0.25vw, 4.5px) solid currentColor;
+  color: currentColor;
+  font-size: 0;
+  line-height: 0;
+}
+
+.project-page-nav-link--previous span {
+  transform: rotate(-135deg);
+}
+
+.project-page-nav-link--next span {
+  transform: rotate(45deg);
 }
 
 .project-page-nav-link:hover,
@@ -1646,16 +1683,6 @@ body[data-page="work"] .filter-label select {
   padding: clamp(84px, 11vw, 170px) var(--gutter);
 }
 
-.project-story-text {
-  width: min(920px, 86vw);
-  margin: 0 auto;
-  font-family: var(--font-annotation);
-  font-size: var(--type-copy);
-  font-weight: var(--weight-copy);
-  line-height: 1.35;
-  text-align: left;
-}
-
 .project-story-text-label {
   margin: 0 0 clamp(14px, 1.6vw, 24px);
   padding-bottom: 9px;
@@ -1670,7 +1697,7 @@ body[data-page="work"] .filter-label select {
 }
 
 .project-story-text p + p {
-  margin-top: 1em;
+  margin-top: 0.75em;
 }
 
 .project-story-board {
@@ -1691,28 +1718,53 @@ body[data-page="work"] .filter-label select {
 
 .project-story-frame--chair-precedent .project-story-board {
   display: grid;
-  grid-template-columns: minmax(180px, 1fr);
-  gap: clamp(42px, 6vw, 78px);
+  grid-template-columns: minmax(320px, 600px) minmax(320px, 600px);
+  gap: clamp(64px, 8vw, 130px) clamp(44px, 6vw, 96px);
   align-items: center;
   justify-content: center;
   justify-items: center;
-  min-height: 68vh;
+  width: min(94vw, 1320px);
+  min-height: 0;
 }
 
 .project-story-frame--chair-precedent .project-story-item--precedent {
-  width: min(15vw, 170px);
+  position: static;
+  grid-column: 1 / -1;
+  width: min(450px, 88vw);
+  aspect-ratio: 1;
   justify-self: center;
 }
 
+.project-story-frame--chair-precedent .project-story-item--precedent img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .project-story-frame--chair-precedent .project-story-item--diagram {
-  width: min(10vw, 120px);
+  position: static;
+  grid-column: 1;
+  grid-row: 2;
+  width: min(300px, 42vw);
+  aspect-ratio: 1;
   align-self: center;
+  justify-self: end;
+}
+
+.project-story-frame--chair-precedent .project-story-item--diagram img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .project-story-frame--chair-precedent .project-story-item--poem {
+  position: static;
+  grid-column: 2;
+  grid-row: 2;
   align-self: center;
+  justify-self: start;
   font-family: var(--font-annotation);
-  font-size: clamp(17px, 1.35vw, 24px);
+  font-size: clamp(21px, 1.7vw, 34px);
   font-weight: var(--weight-annotation);
   font-style: italic;
   line-height: 1.55;
@@ -1732,13 +1784,23 @@ body[data-page="work"] .filter-label select {
   color: #ffffff;
 }
 
-.project-story-frame--chair-motion-grid .project-story-board,
-.project-story-frame--chair-white-grid .project-story-board {
+.project-story-frame--chair-motion-grid .project-story-board {
   display: grid;
-  grid-template-columns: repeat(3, minmax(150px, 260px));
+  grid-template-columns: repeat(3, minmax(240px, 440px));
   gap: clamp(20px, 3vw, 48px);
   align-items: center;
   justify-content: center;
+  width: min(94vw, 1480px);
+  min-height: 0;
+}
+
+.project-story-frame--chair-white-grid .project-story-board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 520px));
+  gap: clamp(20px, 3vw, 48px);
+  align-items: center;
+  justify-content: center;
+  width: min(90vw, 1120px);
   min-height: 0;
 }
 
@@ -1752,6 +1814,25 @@ body[data-page="work"] .filter-label select {
 .project-story-frame--chair-motion-grid .project-story-item img,
 .project-story-frame--chair-white-grid .project-story-item img {
   height: auto;
+  object-fit: contain;
+}
+
+.project-shell[data-project-id="woven-pavilion"] .project-story-frame--woven-iso-large img {
+  width: min(92vw, 1284px);
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+}
+
+.project-shell[data-project-id="a-chair-is-a-toy"] .project-story-frame--drawing {
+  min-height: auto;
+  padding: clamp(48px, 6vw, 92px) var(--gutter);
+}
+
+.project-shell[data-project-id="a-chair-is-a-toy"] .project-story-frame--drawing img {
+  width: auto;
+  max-width: min(78vw, 1896px);
+  max-height: calc(100vh - var(--header-height) - 120px);
   object-fit: contain;
 }
 
@@ -1980,6 +2061,114 @@ body[data-page="work"] .filter-label select {
   object-fit: contain;
 }
 
+.project-story-frame--hunters-context-animation {
+  display: block;
+  min-height: auto;
+  padding: 0;
+}
+
+.hunters-diagram-scroll {
+  position: relative;
+  min-height: 720vh;
+  background: #ffffff;
+}
+
+.hunters-diagram-sticky {
+  position: sticky;
+  top: 0;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: clamp(12px, 2.5vw, 28px);
+  background: #ffffff;
+}
+
+.hunters-diagram-stage {
+  position: relative;
+  width: min(94vw, 1480px);
+  aspect-ratio: 12 / 7;
+  background: #ffffff;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hunters-diagram-stage img,
+.hunters-diagram-stage svg,
+.hunters-diagram-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+}
+
+.hunters-diagram-stage img,
+.hunters-diagram-stage svg {
+  display: block;
+}
+
+.hunters-diagram-reference {
+  opacity: 0;
+}
+
+.hunters-diagram-layer {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.hunters-diagram-layer--raster {
+  object-fit: contain;
+  object-position: center;
+}
+
+.hunters-diagram-layer--text {
+  z-index: 12;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+}
+
+.hunters-diagram-layer--text-industrial {
+  clip-path: inset(4% 78% 72% 4%);
+}
+
+.hunters-diagram-layer--text-scattered {
+  clip-path: inset(34% 76% 41% 4%);
+}
+
+.hunters-diagram-layer--text-info {
+  clip-path: inset(22% 3% 29% 76%);
+}
+
+.hunters-diagram-layer--text-interwoven {
+  clip-path: inset(63% 72% 10% 4%);
+}
+
+.hunters-diagram-layer--vector svg {
+  overflow: visible;
+}
+
+.hunters-diagram-final {
+  z-index: 20;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hp-vector-segment {
+  opacity: 1;
+  fill: none;
+}
+
+.hp-vector-reveal {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+
 @keyframes huntersWorkshopCycle {
   0%,
   7% {
@@ -2098,7 +2287,8 @@ body[data-page="work"] .filter-label select {
 
 .project-story-frame--enfield-current-photo img {
   width: min(82vw, 1180px);
-  max-height: 82vh;
+  height: auto;
+  max-height: none;
   object-fit: contain;
 }
 
@@ -2172,8 +2362,11 @@ body[data-page="work"] .filter-label select {
 }
 
 .project-story-frame--wood-pool-iso-large,
+.project-story-frame--wood-pool-site-plan,
 .project-story-frame--wood-pool-drawing-large,
 .project-story-frame--wood-pool-section,
+.project-story-frame--wood-pool-section-large,
+.project-story-frame--wood-pool-section-wide,
 .project-story-frame--wood-pool-drawing-medium,
 .project-story-frame--wood-pool-lighting-metrics,
 .project-story-frame--wood-pool-elevation-large,
@@ -2182,9 +2375,15 @@ body[data-page="work"] .filter-label select {
   padding: clamp(48px, 6vw, 96px) var(--gutter);
 }
 
+.project-story-frame--wood-pool-site-plan img {
+  width: min(94vw, 1420px);
+  max-height: none;
+  object-fit: contain;
+}
+
 .project-story-frame--wood-pool-iso-large img {
-  width: min(96vw, 1600px);
-  max-height: 92vh;
+  width: min(92vw, 1480px);
+  max-height: none;
   object-fit: contain;
 }
 
@@ -2198,6 +2397,18 @@ body[data-page="work"] .filter-label select {
   width: auto;
   height: min(82vh, 760px);
   max-width: min(98vw, 1760px);
+  object-fit: contain;
+}
+
+.project-story-frame--wood-pool-section-large img {
+  width: min(92vw, 1320px);
+  max-height: none;
+  object-fit: contain;
+}
+
+.project-story-frame--wood-pool-section-wide img {
+  width: min(96vw, 1600px);
+  max-height: none;
   object-fit: contain;
 }
 
@@ -2356,16 +2567,16 @@ body[data-page="work"] .filter-label select {
 
 .project-story-frame--wood-pool-detail-pair .project-story-board {
   display: grid;
-  grid-template-columns: minmax(260px, 0.42fr) minmax(520px, 1fr);
+  grid-template-columns: minmax(320px, 0.72fr) minmax(560px, 1fr);
   align-items: center;
-  gap: clamp(28px, 5vw, 88px);
-  width: min(94vw, 1500px);
+  gap: clamp(28px, 4vw, 72px);
+  width: min(96vw, 1700px);
   min-height: 0;
 }
 
 .project-story-frame--wood-pool-detail-pair .project-story-item img {
   width: 100%;
-  max-height: 88vh;
+  max-height: none;
   object-fit: contain;
 }
 
@@ -2397,9 +2608,9 @@ body[data-page="work"] .filter-label select {
 .project-story-frame--wood-pool-elevation-pair .project-story-item img,
 .project-story-frame--wood-pool-long-drawing img,
 .project-story-frame--wood-pool-elevation-large img {
-  width: auto;
-  height: min(82vh, 760px);
-  max-width: min(98vw, 1760px);
+  width: min(96vw, 1680px);
+  height: auto;
+  max-height: none;
   object-fit: contain;
 }
 
@@ -2424,6 +2635,159 @@ body[data-page="work"] .filter-label select {
   object-fit: contain;
 }
 
+.project-story-frame--wood-pool-iso-large {
+  min-height: auto;
+  padding: clamp(36px, 5vw, 82px) var(--gutter);
+}
+
+.wood-site-iso {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(230px, 300px);
+  align-items: stretch;
+  gap: clamp(18px, 2vw, 28px);
+  width: min(96vw, 1680px);
+}
+
+.wood-site-iso-drawing {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.wood-site-iso-drawing img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 86vh;
+  object-fit: contain;
+}
+
+.wood-site-marker {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  display: grid;
+  place-items: center;
+  width: clamp(18px, 1.55vw, 28px);
+  height: clamp(18px, 1.55vw, 28px);
+  border-radius: 999px;
+  background: #243f91;
+  color: #ffffff;
+  font-family: var(--font-annotation);
+  font-size: clamp(10px, 0.82vw, 15px);
+  font-weight: 700;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+}
+
+.wood-site-route-label {
+  position: absolute;
+  color: #243f91;
+  font-family: var(--font-annotation);
+  font-size: clamp(10px, 0.82vw, 15px);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform-origin: center;
+}
+
+.wood-site-route-label--pedestrian {
+  left: 39.5%;
+  top: 74.8%;
+  transform: rotate(24deg);
+}
+
+.wood-site-route-label--bus {
+  left: 79.5%;
+  top: 80.5%;
+  transform: rotate(-30deg);
+}
+
+.wood-site-key {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: clamp(16px, 1.6vw, 24px);
+  align-self: stretch;
+  padding: clamp(22px, 2.05vw, 34px) clamp(22px, 2.1vw, 32px) clamp(24px, 2.4vw, 38px);
+  border-radius: 14px;
+  background: #f8f8f8;
+  color: var(--ink);
+}
+
+.wood-site-key h2 {
+  margin: 0;
+  color: #243f91;
+  font-family: var(--font-annotation);
+  font-size: clamp(18px, 1.22vw, 24px);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.wood-site-key ol {
+  display: grid;
+  align-content: start;
+  gap: clamp(11px, 1.05vw, 17px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wood-site-key li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: clamp(12px, 1vw, 17px);
+  font-family: var(--font-main);
+  font-size: clamp(13px, 0.86vw, 16px);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.wood-site-key li span {
+  display: grid;
+  place-items: center;
+  width: clamp(24px, 1.6vw, 31px);
+  height: clamp(24px, 1.6vw, 31px);
+  border: 1.5px solid #243f91;
+  border-radius: 999px;
+  color: #243f91;
+  font-family: var(--font-annotation);
+  font-size: clamp(13px, 0.86vw, 16px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.wood-site-scores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(8px, 1.05vw, 16px);
+  align-self: end;
+  margin-top: clamp(14px, 2.2vw, 36px);
+}
+
+.wood-site-scores div {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  text-align: center;
+}
+
+.wood-site-scores strong {
+  color: #243f91;
+  font-family: var(--font-annotation);
+  font-size: clamp(28px, 1.9vw, 38px);
+  font-weight: 800;
+  line-height: 0.95;
+}
+
+.wood-site-scores span {
+  font-size: clamp(15px, 1.02vw, 20px);
+  font-weight: 400;
+  line-height: 1;
+}
+
 @media (max-width: 900px) {
   .project-story-frame--wood-pool-plan-iso .project-story-board,
   .project-story-frame--wood-pool-lighting-metrics .project-story-board,
@@ -2439,6 +2803,19 @@ body[data-page="work"] .filter-label select {
   .wood-mech-key div {
     grid-template-columns: 1fr;
     gap: 0.25rem;
+  }
+
+  .wood-site-iso {
+    grid-template-columns: 1fr;
+    width: min(92vw, 760px);
+  }
+
+  .wood-site-iso-drawing img {
+    max-height: none;
+  }
+
+  .wood-site-key {
+    border-radius: 12px;
   }
 }
 
@@ -2563,8 +2940,8 @@ body[data-page="work"] .filter-label select {
 }
 
 .project-story-frame--cookhouse-axon-large img {
-  width: min(94vw, 1800px);
-  max-width: 94vw;
+  width: min(80vw, 1530px);
+  max-width: 80vw;
   max-height: none;
   object-fit: contain;
 }
@@ -2838,14 +3215,19 @@ body[data-page="work"] .filter-label select {
   }
 
   .project-page-nav {
-    inset-inline: 14px;
+    inset-inline: 38px;
     bottom: 14px;
   }
 
   .project-page-nav-link {
-    width: 28px;
-    height: 28px;
-    font-size: 22px;
+    width: 23px;
+    height: 35px;
+  }
+
+  .project-page-nav-link span {
+    width: 16px;
+    height: 16px;
+    border-width: 3px;
   }
 
   .project-story-frame {
@@ -2883,6 +3265,10 @@ body[data-page="work"] .filter-label select {
     grid-row: auto;
     justify-self: center;
     margin: 0;
+  }
+
+  .project-story-frame--chair-precedent .project-story-item--diagram {
+    width: min(300px, 100%);
   }
 
   .project-story-frame--deconstruct-crossfade .project-story-board {
@@ -2951,6 +3337,27 @@ body[data-page="work"] .filter-label select {
   .project-story-frame--hunters-drawing-oversize img {
     width: 100%;
     max-width: 100%;
+  }
+
+  .project-story-frame--hunters-context-animation {
+    min-height: auto;
+    padding: 0;
+  }
+
+  .hunters-diagram-scroll {
+    min-height: 620vh;
+  }
+
+  .hunters-diagram-sticky {
+    align-content: start;
+    min-height: 100svh;
+    padding-top: 18vh;
+  }
+
+  .hunters-diagram-stage {
+    width: 94vw;
+    max-width: none;
+    transform: none;
   }
 
   .project-story-frame--cookhouse-map .project-story-board {

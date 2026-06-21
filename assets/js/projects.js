@@ -3,6 +3,7 @@ window.PORTFOLIO_PROJECTS = [
     "id": "hunters-point",
     "title": "Hunter's Point Cooperative Housing",
     "year": "2026",
+    "course": "Core IV Housing Studio",
     "studio": "Spring 2026 Cornell University",
     "type": "Landscape / ground",
     "professors": "Marta H. Wisniewska + Tom Carruthers",
@@ -26,8 +27,7 @@ window.PORTFOLIO_PROJECTS = [
     "overviewImage": "hero.png",
     "story": [
       {
-        "src": "Composite Site Context Diagram.svg",
-        "layout": "hunters-drawing-oversize"
+        "layout": "hunters-context-animation"
       },
       {
         "layout": "story-text",
@@ -191,6 +191,7 @@ window.PORTFOLIO_PROJECTS = [
     "id": "wood-street-pool",
     "title": "Wood Street Pool",
     "year": "2025",
+    "course": "Core V Integrative Studio",
     "studio": "Fall 2025 Cornell University",
     "type": "Environmental / civic",
     "professors": "Hanna Tulis + Caroline O'Donnell",
@@ -213,18 +214,19 @@ window.PORTFOLIO_PROJECTS = [
         "text": "Located between Ithaca Skate Park, nearby senior housing, and surrounding residential neighborhoods, the pool is positioned as a shared civic threshold. Circulation, planted terraces, spectator space, and public amenities bring swimmers, skaters, and residents into one sequence rather than isolating recreation by age or program."
       },
       {
+        "src": "Site Plan.svg",
+        "layout": "wood-pool-site-plan"
+      },
+      {
         "src": "iso-drawing.svg",
-        "caption": "Building mass and roofscape.",
         "layout": "wood-pool-iso-large"
       },
       {
         "src": "hero.png",
-        "caption": "Exterior threshold between planted roofscape and pool volume.",
         "layout": "wood-pool-hero-wide"
       },
       {
         "src": "hero 2.png",
-        "caption": "Natatorium interior.",
         "layout": "wood-pool-interior"
       },
       {
@@ -234,35 +236,20 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "Ground Floor Plan.jpg",
-        "caption": "Ground floor plan.",
         "layout": "wood-pool-drawing-large"
       },
       {
-        "src": "ENVIRONMENTAL SECTION.png",
-        "caption": "Environmental section.",
-        "layout": "wood-pool-section"
-      },
-      {
         "src": "short-section-cropped.svg",
-        "caption": "Short section.",
-        "layout": "wood-pool-section"
+        "layout": "wood-pool-section-large"
       },
       {
-        "layout": "wood-pool-lighting-metrics",
-        "items": [
-          {
-            "src": "Lighting Metrics Blue.png"
-          },
-          {
-            "text": "Daylight Availability\n88.4% Autonomous\n75% LEED Target\n\nDisturbing Glare\n3.7% of Surface Area\n10% LEED Maximum\n\nAvg. Illuminance\n1105 lux\n500-1200 lux LEED Target for Indoor Pools"
-          }
-        ]
+        "src": "ENVIRONMENTAL SECTION.png",
+        "layout": "wood-pool-section-wide"
       },
       {
         "layout": "wood-pool-mech-system",
         "heading": "Mechanical System",
         "src": "mech axon.png",
-        "caption": "Mechanical axonometric.",
         "text": "The building separates wet and dry zones to maintain moisture control and reduce duct runs. The pool hall uses a CAV system concealed in soffit recesses created by the skylight and pool depths, pushing fresh air up the glazing and returning it at the ceiling to limit condensation.\n\nDry program and locker areas use separate ERV and DOAS systems with ground-source heat exchange. Fresh air is drawn through earth ducts before reaching the mechanical units, reducing operational load by preconditioning intake air through the ground.",
         "systems": [
           {
@@ -295,7 +282,7 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "wood-pool-detail-pair",
         "items": [
           {
-            "src": "POOL PARAPET-temperature.png"
+            "src": "4.png"
           },
           {
             "src": "detail-sheet.svg"
@@ -304,12 +291,10 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "short-elevation-cropped.svg",
-        "caption": "Short elevation.",
         "layout": "wood-pool-elevation-large"
       },
       {
         "src": "long-elevation-cropped.svg",
-        "caption": "Long elevation.",
         "layout": "wood-pool-elevation-large"
       },
       {
@@ -322,11 +307,6 @@ window.PORTFOLIO_PROJECTS = [
             "src": "3.png"
           }
         ]
-      },
-      {
-        "src": "4.png",
-        "caption": "Pool model study.",
-        "layout": "wood-pool-model-feature"
       }
     ],
     "images": [
@@ -336,19 +316,19 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "hero 2.png",
-        "caption": "Exterior atmosphere"
+        "caption": "Interior atmosphere"
+      },
+      {
+        "src": "Site Plan.svg",
+        "caption": "Site plan"
       },
       {
         "src": "Ground Floor Plan.jpg",
         "caption": "Ground floor plan"
       },
       {
-        "src": "Lighting Metrics Blue.png",
-        "caption": "Lighting metrics"
-      },
-      {
-        "src": "ENVIRONMENTAL SECTION.png",
-        "caption": "Environmental section"
+        "src": "detail-sheet.svg",
+        "caption": "Detail section"
       }
     ],
     "position": {
@@ -363,6 +343,7 @@ window.PORTFOLIO_PROJECTS = [
     "id": "enfield-food-pantry",
     "title": "Enfield Food Pantry",
     "year": "2025",
+    "course": "Core IV Engaged Studio",
     "studio": "Spring 2025 Cornell University",
     "type": "Civic / food infrastructure",
     "professors": "Ethan Chan, Hanna Tulis",
@@ -394,6 +375,11 @@ window.PORTFOLIO_PROJECTS = [
         "src": "04-23_Site Plan_Final.png",
         "caption": "Site plan.",
         "layout": "enfield-site-drawing"
+      },
+      {
+        "src": "site photo.jpg",
+        "caption": "Site photo.",
+        "layout": "enfield-current-photo"
       },
       {
         "src": "Enfield-ONLINE-scaled.jpg",
@@ -538,6 +524,7 @@ window.PORTFOLIO_PROJECTS = [
     "id": "deconstruct-reconfigure",
     "title": "[de]construct + [re]configure",
     "year": "2025",
+    "course": "Core IV Engaged Studio",
     "studio": "Fall 2025 Cornell University",
     "type": "Material / model study",
     "professors": "Ethan Chan + Hanna Tulis",
@@ -554,8 +541,6 @@ window.PORTFOLIO_PROJECTS = [
     "thumbnail": "MODEL 01 cropped.png",
     "heroImage": "MODEL 01 cropped.png",
     "overviewImage": "MODEL 01 cropped.png",
-    "preQuestionImage": "engaged_research_grant_img_6089-a_0.jpg",
-    "preQuestionImageAlt": "Engaged research context",
     "story": [
       {
         "src": "ANDREW WHEAT BOARD 03.jpg",
@@ -637,7 +622,8 @@ window.PORTFOLIO_PROJECTS = [
     "id": "borinquen-healing-center",
     "title": "Borinquen Healing Center",
     "year": "2024",
-    "studio": "Cornell Architecture",
+    "course": "Core III Studio",
+    "studio": "",
     "type": "Health / civic",
     "themes": [
       "care",
@@ -707,6 +693,7 @@ window.PORTFOLIO_PROJECTS = [
     "id": "a-chair-is-a-toy",
     "title": "A Chair is a Toy!",
     "year": "2025",
+    "course": "Core III Studio",
     "studio": "Fall 2025 Cornell University",
     "type": "Furniture / kinetic object",
     "professors": "Andrew Lucia, Andrea Simitch",
@@ -716,7 +703,7 @@ window.PORTFOLIO_PROJECTS = [
       "balance",
       "body"
     ],
-    "summary": "A kinetic chair study that treats sitting as a condition of motion, balance, and play.",
+    "summary": "",
     "description": "The Spring Chair for Minerva, designed by Setsuo Kitaoka in 1986, embodies playfulness and the celebration of movement through its bold materiality and inherent sense of dynamism. Limited documentation on the chair invites an intuitive, speculative approach to understanding its design.",
     "tectonics": "This exploration embraces the chair's absurdity, investigating irrational yet instinctive ways it might be occupied. Through this interaction, new forms emerge from the symbiotic relationship between chair and occupant: as one shifts, the other responds, creating a dynamic interplay that continuously adjusts to restore balance.",
     "parti": "A seat becomes a spring-loaded instrument: object, toy, and bodily register at once.",
@@ -743,6 +730,11 @@ window.PORTFOLIO_PROJECTS = [
             "className": "diagram"
           }
         ]
+      },
+      {
+        "src": "Analytic Collage.png",
+        "caption": "Analytic collage of force, balance, and motion.",
+        "layout": "drawing"
       },
       {
         "layout": "chair-motion-grid",
@@ -785,11 +777,6 @@ window.PORTFOLIO_PROJECTS = [
         ]
       },
       {
-        "src": "Analytic Collage.png",
-        "caption": "Analytic collage of force, balance, and motion.",
-        "layout": "drawing"
-      },
-      {
         "src": "study 5.png",
         "caption": "Final object study.",
         "layout": "image"
@@ -815,23 +802,31 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": 3
     },
     "shape": "courtyard",
-    "workThumbnail": "assets/images/work-covers/a-chair-is-a-toy.webp"
+    "workThumbnail": "assets/images/work-covers/chair is a toy.jpg"
   },
   {
     "id": "design-district-canteen",
     "title": "Design District Canteen",
     "year": "2024",
-    "studio": "Cornell Architecture",
+    "course": "Structural Systems II",
+    "studio": "",
     "type": "Object / model study",
+    "additionalMetadata": [
+      "Fall 2024 Cornell University",
+      "Professor: Mark Cruvellier",
+      "Partners: Hanae Matsumoto + Roy Park"
+    ],
     "themes": [
       "assembly",
       "measure",
       "use"
     ],
-    "summary": "A compact study of object, scale, and use through physical model documentation.",
-    "description": "The project is organized through close views, frontal readings, and top views that treat the model as both an object and a small spatial system.",
+    "summary": "Through model-making and analysis, this study explores how structural logic can shape cultural space. The canteen shows that structure can do more than span and brace; it can organize movement, produce atmosphere, and support the social life of the city.",
+    "description": "Design District Canteen by SelgasCano is a structural study of a 660-square-meter food hall on London's Greenwich Peninsula. The project examines how a lightweight system of steel, tension, and transparent membrane can become more than support, using structure to create a place of gathering, exchange, and public life.",
+    "tectonics": "The canteen is organized around a central spine, with food stalls at ground level and seating above. A light metal structure and stressed ETFE membrane wrap this spine, allowing the building to act as both frame and atmosphere. Its transparency creates a continuous relationship between interior and exterior, while operable panels allow air, light, and movement to pass through the market.",
+    "contribution": "Rather than hiding its construction, the building makes its assembly visible. Trusses, cables, braced frames, and pivoting panels define the character of the space, giving the food hall the looseness and energy of a street market. At night, the translucent envelope turns the canteen into a glowing object within the Design District, transforming structure into both performance and invitation.",
     "parti": "A small object is read through repeated view, scale shift, and assembly logic.",
-    "question": "How can a compact object carry spatial and behavioral information?",
+    "question": "",
     "operation": "Document the model through front, top, and close-up views so construction and use remain legible.",
     "imageBase": "assets/images/Projects/Design District Canteen/",
     "thumbnail": "Model Front View Shot 01.png",
@@ -850,11 +845,6 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "model Top View Shot 04.png",
-        "caption": "Top view study.",
-        "layout": "drawing"
-      },
-      {
-        "src": "Top View Shot 02.png",
         "caption": "Top view study.",
         "layout": "drawing"
       },
@@ -880,10 +870,6 @@ window.PORTFOLIO_PROJECTS = [
       {
         "src": "model Top View Shot 04.png",
         "caption": "Top view"
-      },
-      {
-        "src": "Top View Shot 02.png",
-        "caption": "Top view study"
       }
     ],
     "position": {
@@ -898,6 +884,7 @@ window.PORTFOLIO_PROJECTS = [
     "id": "curanto-cookhouse",
     "title": "Curanto Cookhouse",
     "year": "2024",
+    "course": "Core II Studio",
     "studio": "Spring 2024 Cornell University",
     "type": "Cultural / food infrastructure",
     "professors": "Eduardo Terán, Suzanne Lettieri",
@@ -907,10 +894,10 @@ window.PORTFOLIO_PROJECTS = [
       "ground",
       "gathering"
     ],
-    "summary": "A cookhouse project organized around food, gathering, ground, and ritual.",
-    "description": "The cookhouse is a celebration of tradition, framing the curanto cooking process in conversation with the site. The feast draws its essence from the earth, using an excavated pit, intricately layered to pressure cook meats, seafoods, and vegetables.",
-    "tectonics": "Gabion walls embody the materiality of both curanto and the site, allowing nature to permeate and reclaim the cookhouse. Wooden roof panels articulate varying levels of sunlight and prevent rain, fostering a community-driven space that frames the process of curanto rather than simply enclosing it.",
-    "contribution": "The cookhouse emerges as a bridge between past and present, reviving tradition while making room for contemporary gathering.",
+    "summary": "",
+    "description": "The cookhouse is a celebration of tradition, embodying curanto's cooking process, which innately acts in conversation with the site. The feast draws its essence from the earth, using an excavated pit, intricately layered to pressure cook meats, seafoods, and vegetables. Though the ceremony traditionally requires no structural intervention, urbanization has distanced communities from the land, allowing the practice to fade from daily life.",
+    "tectonics": "Gabion walls embody the materiality of both curanto and the site, allowing nature to permeate and reclaim the cookhouse over time. Wooden roof panels articulate to bring in sunlight or protect from rain, depending on the needs of each space. Together, these elements create a community-driven structure that supports a disappearing tradition while preserving its conversation with earth, weather, and collective labor.",
+    "contribution": "The cookhouse emerges as a bridge between past and present, giving place to the ritual without replacing the ground that defines it. Rather than simply enclosing the process, the architecture frames preparation, gathering, cooking, and eating as a shared civic ceremony.",
     "parti": "Cooking becomes a spatial and social anchor: the building frames the ritual without over-determining it.",
     "question": "How can architecture support a ceremony that traditionally requires no building?",
     "operation": "Map ingredients, movement, earth, smoke, and shelter into a loose field of walls, panels, and shared thresholds.",
@@ -1048,6 +1035,7 @@ window.PORTFOLIO_PROJECTS = [
     "id": "york-prize",
     "title": "York Prize",
     "year": "2023",
+    "course": "Core I Studio",
     "studio": "Cornell Architecture",
     "type": "Competition / model study",
     "themes": [
@@ -1098,16 +1086,20 @@ window.PORTFOLIO_PROJECTS = [
     "id": "woven-pavilion",
     "title": "Woven Pavilion",
     "year": "2023",
-    "studio": "Cornell Architecture",
+    "course": "Core I Studio",
+    "studio": "Fall 2023 Cornell University",
     "type": "Pavilion / folly",
+    "professors": "Michael Jefferson",
     "themes": [
       "weaving",
       "frame",
       "texture",
       "light"
     ],
-    "summary": "A pavilion study developed through cube studies, model photographs, and sectional drawings.",
-    "description": "A developing project page. The current sequence uses all supplied model, cube, board, and section images as a visual archive.",
+    "summary": "Woven Pavilion studies weaving as a spatial and structural system.",
+    "description": "Repeated members are layered, bent, and tensioned to form a small inhabitable room where pattern becomes enclosure, light becomes material, and movement is guided through shifting apertures.",
+    "tectonics": "The pavilion operates between surface and structure. Its woven elements thicken into walls, open into thresholds, and lift into canopy, producing a sequence of compression, release, shadow, and exposure. The project treats construction as an act of accumulation: line by line, strip by strip, a field becomes an interior.",
+    "contribution": "Embedded into the ground, the pavilion also records the force of its own making. Cuts, terraces, and traces of extraction turn the site into part of the architectural system, extending the weave beyond the object and into the landscape around it.",
     "parti": "A woven frame becomes a small spatial instrument for light, texture, and enclosure.",
     "question": "How can a simple frame become spatial through weaving and repetition?",
     "operation": "Test cube studies, model photographs, and isometric sections as linked construction studies.",
@@ -1137,9 +1129,9 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "drawing"
       },
       {
-        "src": "20231129_Andrew Wheat_A04_IsoSection.jpg",
-        "caption": "Iso section.",
-        "layout": "drawing"
+        "src": "iso_section_clean_scan.jpg",
+        "caption": "Iso drawing.",
+        "layout": "woven-iso-large"
       },
       {
         "src": "20231127_Andrew Wheat_A04_StudyModel_01.jpg",
@@ -1187,8 +1179,8 @@ window.PORTFOLIO_PROJECTS = [
         "caption": "Project atmosphere"
       },
       {
-        "src": "20231129_Andrew Wheat_A04_IsoSection.jpg",
-        "caption": "Iso section"
+        "src": "iso_section_clean_scan.jpg",
+        "caption": "Iso drawing"
       },
       {
         "src": "cube 1.JPG",
