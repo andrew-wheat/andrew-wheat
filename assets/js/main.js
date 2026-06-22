@@ -1,6 +1,7 @@
 (function () {
   const projects = window.PORTFOLIO_PROJECTS || [];
   const words = window.ARCHITECTURE_WORDS || [];
+  const optimizedImages = window.PORTFOLIO_OPTIMIZED_IMAGES || {};
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const workThemeMap = [
     ["Assembly", ["wood-street-pool", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "woven-pavilion", "hunters-point"]],
@@ -70,7 +71,7 @@
   function heroSvg(project, index, explicitImage = "") {
     const heroImage = explicitImage || project.heroImage || project.thumbnail;
     if (heroImage && !/\.pdf$/i.test(heroImage)) {
-      const imageSrc = heroImage.includes("/") ? heroImage : `${project.imageBase || ""}${heroImage}`;
+      const imageSrc = optimizedSrc(heroImage.includes("/") ? heroImage : `${project.imageBase || ""}${heroImage}`);
       return [
         '<article class="hero-slide hero-slide--image" aria-label="',
         escapeHtml(project.title),
@@ -2028,12 +2029,12 @@
   }
 
   function projectImage(project, src, alt = "") {
-    const imageSrc = src.includes("/") ? src : `${project.imageBase || ""}${src}`;
+    const imageSrc = optimizedSrc(src.includes("/") ? src : `${project.imageBase || ""}${src}`);
     return `<img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(alt)}" loading="lazy">`;
   }
 
   function projectMedia(project, src, alt = "") {
-    const mediaSrc = src.includes("/") ? src : `${project.imageBase || ""}${src}`;
+    const mediaSrc = optimizedSrc(src.includes("/") ? src : `${project.imageBase || ""}${src}`);
     if (/\.pdf$/i.test(src)) {
       return `
         <a class="project-file-link" href="${escapeHtml(mediaSrc)}" target="_blank" rel="noreferrer">
@@ -2044,6 +2045,10 @@
     }
 
     return projectImage(project, src, alt);
+  }
+
+  function optimizedSrc(src) {
+    return optimizedImages[src] || src;
   }
 
   function projectGallery(project) {
