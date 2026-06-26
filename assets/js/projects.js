@@ -1054,9 +1054,9 @@ window.PORTFOLIO_PROJECTS = [
       "form"
     ],
     "summary": "A competition project currently documented through final and study model images.",
-    "description": "A developing project page. The current sequence uses all supplied York Prize model photographs as a visual archive.",
+    "description": "The model explores the tectonics of aggregation and extraction, how space, and the choreography of movement can be produced simply between the interplay of solid and void. The model is a diptyque - both an impression and relief of the mold.",
     "parti": "A model study frames form as a compact architectural argument.",
-    "question": "How can a small model carry the ambition of a larger proposal?",
+    "question": "",
     "operation": "Use final and study model images to document the project's formal development.",
     "imageBase": "assets/images/Projects/York Prize/",
     "thumbnail": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
