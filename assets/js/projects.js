@@ -35,7 +35,7 @@ window.PORTFOLIO_PROJECTS = [
         "text": "Hunters Point is not lacking activity. It is lacking sustained overlap. Industrial rail corridors, commuter routines, commercial amenities, and waterfront access are reorganized into a shared framework where production, consumption, living, and working meet."
       },
       {
-        "src": "Housing Parti.svg",
+        "src": "housing parti.jpg",
         "layout": "hunters-drawing-oversize"
       },
       {
