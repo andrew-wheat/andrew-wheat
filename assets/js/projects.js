@@ -223,7 +223,7 @@ window.PORTFOLIO_PROJECTS = [
             "src": "Ground Floor Plan.jpg"
           },
           {
-            "src": "FP3.svg"
+            "src": "FP3.png"
           }
         ]
       },
