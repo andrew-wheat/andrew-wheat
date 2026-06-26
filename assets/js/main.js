@@ -1328,7 +1328,6 @@
         <div class="project-hero-text">
           <p class="section-kicker">${escapeHtml(project.type)}</p>
           <h1>${escapeHtml(project.title)}</h1>
-          ${project.summary ? `<p class="project-summary">${escapeHtml(project.summary)}</p>` : ""}
           ${project.description ? `<p class="project-description">${escapeHtml(project.description)}</p>` : ""}
         </div>
       </section>
@@ -1371,7 +1370,7 @@
         <div class="project-editorial-text">
           <h1>${escapeHtml(project.title)}</h1>
           ${projectMetadataLines(project)}
-          <p>${escapeHtml([project.summary, project.description].filter(Boolean).join(" "))}</p>
+          <p>${escapeHtml(project.description || "")}</p>
           <p>${escapeHtml([project.tectonics, project.contribution].filter(Boolean).join(" "))}</p>
         </div>
       </section>
