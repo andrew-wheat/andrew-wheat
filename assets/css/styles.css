@@ -2528,9 +2528,9 @@ body[data-page="work"] .filter-label select {
 
 .wood-mech-system {
   display: grid;
-  grid-template-columns: minmax(360px, 0.44fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(500px, 0.56fr) minmax(0, 1.04fr);
   align-items: center;
-  gap: clamp(28px, 4vw, 72px);
+  gap: clamp(22px, 3vw, 54px);
   width: min(100%, 1840px);
   padding: 0;
   overflow: visible;
@@ -2555,20 +2555,25 @@ body[data-page="work"] .filter-label select {
 
 .wood-mech-notes {
   display: grid;
-  gap: 0.95rem;
+  gap: 0.76rem;
   align-content: center;
   color: var(--ink);
   font-family: var(--font-copy);
   font-size: var(--type-copy);
   font-weight: var(--weight-copy);
   line-height: 1.34;
-  max-width: 560px;
+  max-width: 760px;
   justify-self: start;
   padding: 0;
 }
 
 .wood-mech-notes p {
   margin: 0;
+}
+
+.wood-mech-notes .project-story-text-label {
+  margin: 0 0 0.36rem;
+  padding-bottom: 7px;
 }
 
 .wood-mech-key {
@@ -2617,10 +2622,10 @@ body[data-page="work"] .filter-label select {
 
 .project-story-frame--wood-pool-detail-pair .project-story-board {
   display: grid;
-  grid-template-columns: minmax(320px, 0.68fr) minmax(820px, 1.5fr);
+  grid-template-columns: minmax(380px, 0.72fr) minmax(940px, 1.65fr);
   align-items: center;
   gap: clamp(54px, 6.5vw, 118px);
-  width: min(100%, 1900px);
+  width: min(100%, 2200px);
   min-height: 0;
   padding-right: clamp(16px, 3vw, 56px);
   padding-left: clamp(44px, 5vw, 96px);
@@ -2633,19 +2638,19 @@ body[data-page="work"] .filter-label select {
 }
 
 .project-story-frame--wood-pool-detail-pair .project-story-item:first-child img {
-  width: min(100%, 640px);
+  width: min(100%, 800px);
   transform: none;
 }
 
 .project-story-frame--wood-pool-detail-pair .project-story-item:last-child img {
-  width: min(100%, 1700px);
+  width: min(100%, 2125px);
   height: auto;
   max-width: 100%;
   max-height: none;
 }
 
 .project-story-frame--wood-pool-detail-pair {
-  overflow: hidden;
+  overflow: visible;
   padding-top: clamp(80px, 10vw, 160px);
   padding-bottom: clamp(96px, 12vw, 190px);
 }
