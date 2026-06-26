@@ -2643,11 +2643,16 @@ body[data-page="work"] .filter-label select {
 }
 
 .project-story-frame--wood-pool-detail-pair .project-story-item:last-child img {
-  width: min(100%, 1960px);
+  width: 100%;
   height: auto;
   max-width: 100%;
   max-height: none;
-  margin-right: clamp(34px, 4vw, 86px);
+}
+
+.project-story-frame--wood-pool-detail-pair .project-story-item:last-child {
+  box-sizing: border-box;
+  padding-right: clamp(140px, 10vw, 240px);
+  overflow: hidden;
 }
 
 .project-story-frame--wood-pool-detail-pair {
