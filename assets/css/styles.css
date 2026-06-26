@@ -1556,12 +1556,12 @@ body[data-page="work"] .filter-label select {
   height: clamp(35px, 3vw, 48px);
   border: 0;
   background: transparent;
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
   font-size: clamp(20px, 1.8vw, 28px);
   font-weight: var(--weight-header);
   line-height: 1;
-  mix-blend-mode: difference;
+  mix-blend-mode: normal;
   pointer-events: auto;
   opacity: 1;
   box-shadow: none;
@@ -2363,6 +2363,8 @@ body[data-page="work"] .filter-label select {
 
 .project-story-frame--wood-pool-iso-large,
 .project-story-frame--wood-pool-site-plan,
+.project-story-frame--wood-pool-board,
+.project-story-frame--wood-pool-floor-plans,
 .project-story-frame--wood-pool-drawing-large,
 .project-story-frame--wood-pool-section,
 .project-story-frame--wood-pool-section-large,
@@ -2375,8 +2377,50 @@ body[data-page="work"] .filter-label select {
   padding: clamp(48px, 6vw, 96px) var(--gutter);
 }
 
+.project-story-frame--wood-pool-floor-plans {
+  padding-top: clamp(64px, 8vw, 126px);
+  padding-bottom: clamp(78px, 10vw, 150px);
+}
+
+.project-story-frame--wood-pool-board img {
+  width: min(100%, 1065px);
+  max-height: none;
+  object-fit: contain;
+}
+
 .project-story-frame--wood-pool-site-plan img {
-  width: min(94vw, 1420px);
+  width: min(100%, 1420px);
+  max-height: none;
+  object-fit: contain;
+}
+
+.project-story-frame--wood-pool-floor-plans .project-story-board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(24px, 3vw, 56px);
+  justify-content: center;
+  width: min(100%, 1840px);
+  min-height: 0;
+  margin-bottom: clamp(20px, 4vw, 64px);
+}
+
+.project-story-frame--wood-pool-floor-plans .project-story-item {
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-story-frame--wood-pool-floor-plans .project-story-item img {
+  width: auto;
+  max-width: 100%;
+  height: min(92vh, 1230px);
+  object-fit: contain;
+}
+
+.project-story-frame--borinquen-floor-plan img {
+  width: min(96vw, 1520px);
   max-height: none;
   object-fit: contain;
 }
@@ -2484,12 +2528,12 @@ body[data-page="work"] .filter-label select {
 
 .wood-mech-system {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(600px, 0.92fr);
+  grid-template-columns: minmax(360px, 0.44fr) minmax(0, 1.1fr);
   align-items: center;
-  gap: clamp(8px, 1.2vw, 22px);
-  width: min(100vw, 1900px);
-  padding: 0 clamp(18px, 2.2vw, 38px);
-  overflow: hidden;
+  gap: clamp(28px, 4vw, 72px);
+  width: min(100%, 1840px);
+  padding: 0;
+  overflow: visible;
 }
 
 .wood-mech-axon {
@@ -2497,14 +2541,16 @@ body[data-page="work"] .filter-label select {
   justify-content: center;
   margin: 0;
   overflow: visible;
+  grid-column: 2;
+  grid-row: 1 / span 2;
 }
 
 .wood-mech-axon img {
-  width: 150%;
+  width: 112%;
   max-width: none;
-  max-height: 96vh;
+  max-height: 94vh;
   object-fit: contain;
-  transform: translateX(-9%);
+  transform: translateX(2%);
 }
 
 .wood-mech-notes {
@@ -2516,9 +2562,9 @@ body[data-page="work"] .filter-label select {
   font-size: var(--type-copy);
   font-weight: var(--weight-copy);
   line-height: 1.34;
-  max-width: 720px;
+  max-width: 560px;
   justify-self: start;
-  padding: 0 clamp(14px, 1.8vw, 32px) 0 0;
+  padding: 0;
 }
 
 .wood-mech-notes p {
@@ -2527,8 +2573,11 @@ body[data-page="work"] .filter-label select {
 
 .wood-mech-key {
   display: grid;
-  gap: 0.38rem;
-  margin: 0.45rem 0 0;
+  gap: 0.48rem;
+  align-self: start;
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0.2rem 0 0;
 }
 
 .wood-mech-key div {
@@ -2537,22 +2586,23 @@ body[data-page="work"] .filter-label select {
 
 .wood-mech-key dt {
   display: flex;
-  align-items: center;
-  gap: 0.48rem;
+  align-items: flex-start;
+  gap: 0.64rem;
   color: var(--ink);
   font-family: var(--font-annotation);
-  font-size: var(--type-annotation);
+  font-size: clamp(13px, 1vw, 17px);
   font-weight: 400;
-  line-height: 1.16;
+  line-height: 1.18;
   text-transform: none;
 }
 
 .wood-mech-key dt span {
-  width: 0.86em;
-  height: 0.86em;
-  flex: 0 0 0.86em;
+  width: 1.08em;
+  height: 1.08em;
+  flex: 0 0 1.08em;
   border-radius: 50%;
   background: var(--system-color);
+  margin-top: 0.06em;
 }
 
 .wood-mech-key dd {
@@ -2567,17 +2617,37 @@ body[data-page="work"] .filter-label select {
 
 .project-story-frame--wood-pool-detail-pair .project-story-board {
   display: grid;
-  grid-template-columns: minmax(320px, 0.72fr) minmax(560px, 1fr);
+  grid-template-columns: minmax(320px, 0.68fr) minmax(820px, 1.5fr);
   align-items: center;
-  gap: clamp(28px, 4vw, 72px);
-  width: min(96vw, 1700px);
+  gap: clamp(54px, 6.5vw, 118px);
+  width: min(100%, 1900px);
   min-height: 0;
+  padding-right: clamp(16px, 3vw, 56px);
+  padding-left: clamp(44px, 5vw, 96px);
 }
 
 .project-story-frame--wood-pool-detail-pair .project-story-item img {
   width: 100%;
   max-height: none;
   object-fit: contain;
+}
+
+.project-story-frame--wood-pool-detail-pair .project-story-item:first-child img {
+  width: min(100%, 640px);
+  transform: none;
+}
+
+.project-story-frame--wood-pool-detail-pair .project-story-item:last-child img {
+  width: min(100%, 1700px);
+  height: auto;
+  max-width: 100%;
+  max-height: none;
+}
+
+.project-story-frame--wood-pool-detail-pair {
+  overflow: hidden;
+  padding-top: clamp(80px, 10vw, 160px);
+  padding-bottom: clamp(96px, 12vw, 190px);
 }
 
 .project-story-frame--wood-pool-parapet-pair .project-story-board {
@@ -2616,10 +2686,11 @@ body[data-page="work"] .filter-label select {
 
 .project-story-frame--wood-pool-model-row .project-story-board {
   display: grid;
-  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  grid-template-columns: repeat(2, minmax(260px, 620px));
+  justify-content: center;
   align-items: center;
   gap: clamp(20px, 3vw, 52px);
-  width: min(94vw, 1500px);
+  width: min(100%, 1320px);
   min-height: 0;
 }
 
@@ -2790,6 +2861,7 @@ body[data-page="work"] .filter-label select {
 
 @media (max-width: 900px) {
   .project-story-frame--wood-pool-plan-iso .project-story-board,
+  .project-story-frame--wood-pool-floor-plans .project-story-board,
   .project-story-frame--wood-pool-lighting-metrics .project-story-board,
   .wood-mech-system,
   .project-story-frame--wood-pool-parapet-pair .project-story-board,
@@ -2803,6 +2875,31 @@ body[data-page="work"] .filter-label select {
   .wood-mech-key div {
     grid-template-columns: 1fr;
     gap: 0.25rem;
+  }
+
+  .wood-mech-axon,
+  .wood-mech-key {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .project-story-frame--wood-pool-floor-plans .project-story-item img {
+    height: auto;
+    max-height: none;
+  }
+
+  .project-story-frame--wood-pool-detail-pair .project-story-board {
+    padding-right: 0;
+  }
+
+  .project-story-frame--wood-pool-detail-pair .project-story-item:first-child img {
+    width: min(100%, 760px);
+    transform: none;
+  }
+
+  .project-story-frame--wood-pool-detail-pair .project-story-item:last-child img {
+    width: 100%;
+    height: auto;
   }
 
   .wood-site-iso {

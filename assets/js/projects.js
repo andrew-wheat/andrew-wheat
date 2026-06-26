@@ -209,38 +209,36 @@ window.PORTFOLIO_PROJECTS = [
     "overviewImage": "hero.png",
     "story": [
       {
-        "layout": "story-text",
-        "heading": "Shared Recreational Network",
-        "text": "Located between Ithaca Skate Park, nearby senior housing, and surrounding residential neighborhoods, the pool is positioned as a shared civic threshold. Circulation, planted terraces, spectator space, and public amenities bring swimmers, skaters, and residents into one sequence rather than isolating recreation by age or program."
+        "src": "Board 1.png",
+        "layout": "wood-pool-board"
       },
       {
-        "src": "Site Plan.svg",
+        "src": "site plan.jpg",
         "layout": "wood-pool-site-plan"
       },
       {
-        "src": "iso-drawing.svg",
-        "layout": "wood-pool-iso-large"
-      },
-      {
-        "src": "hero.png",
-        "layout": "wood-pool-hero-wide"
+        "layout": "wood-pool-floor-plans",
+        "items": [
+          {
+            "src": "Ground Floor Plan.jpg"
+          },
+          {
+            "src": "FP3.svg"
+          }
+        ]
       },
       {
         "src": "hero 2.png",
         "layout": "wood-pool-interior"
       },
       {
-        "layout": "story-text",
-        "heading": "Challenge / Response",
-        "text": "Pools require heavy ventilation, water heating, humidity control, and consistent comfort. The proposal reduces demand before adding systems: a compact mass timber envelope, shaded public roofscape, daylighting, ground-source exchange, heat recovery, planted stormwater landscapes, and on-site energy work together so the building can remain civic, open, and efficient."
-      },
-      {
-        "src": "Ground Floor Plan.jpg",
-        "layout": "wood-pool-drawing-large"
-      },
-      {
-        "src": "short-section-cropped.svg",
+        "src": "short-section.svg",
         "layout": "wood-pool-section-large"
+      },
+      {
+        "layout": "story-text",
+        "heading": "Ventilation",
+        "text": "Pools require heavy ventilation, water heating, humidity control, and consistent comfort. The proposal reduces demand before adding systems: a compact mass timber envelope, shaded public roofscape, daylighting, ground-source exchange, heat recovery, planted stormwater landscapes, and on-site energy work together so the building can remain civic, open, and efficient."
       },
       {
         "src": "ENVIRONMENTAL SECTION.png",
@@ -319,7 +317,7 @@ window.PORTFOLIO_PROJECTS = [
         "caption": "Interior atmosphere"
       },
       {
-        "src": "Site Plan.svg",
+        "src": "site plan.jpg",
         "caption": "Site plan"
       },
       {
@@ -623,24 +621,40 @@ window.PORTFOLIO_PROJECTS = [
     "title": "Borinquen Healing Center",
     "year": "2024",
     "course": "Core III Studio",
-    "studio": "",
+    "studio": "Fall 2024 Cornell University",
     "type": "Health / civic",
+    "professors": "Andrew Lucia",
     "themes": [
       "care",
       "resilience",
       "threshold",
       "climate"
     ],
-    "summary": "A healing center project developed through render, model, and envelope studies.",
-    "description": "A developing project page. The current sequence uses all supplied render, model, and curtain-system images as a visual archive.",
-    "parti": "Care is organized through climate, threshold, and protected public interior.",
-    "question": "How can a health building become a civic refuge?",
-    "operation": "Use model, render, and curtain-system studies to test atmosphere and enclosure.",
+    "summary": "",
+    "description": "Set within the coastal landscape of Aguadilla, Puerto Rico, the project positions architecture as a framework for healing shaped through movement, access, and proximity to land and sea. Rather than concentrating program into a singular object, the design extends horizontally across the site, allowing form to follow topography and reducing physical and perceptual barriers. Movement is continuous and legible, emphasizing procession over arrival and enabling users to engage the landscape at varying speeds and capacities.",
+    "tectonics": "Architecture and landscape operate as a single system. Elevated walkways, gentle slopes, and porous edges ensure universal accessibility while maintaining constant visual and sensory connection to wind, vegetation, and horizon. Shaded exterior rooms and open circulation zones support rehabilitation, rest, and communal activity, allowing the environment itself to become an active participant in healing. The project defines a center that privileges dignity, mobility, and collective presence, embedding care within the rhythms of the site rather than isolating it within enclosure.",
+    "parti": "",
+    "question": "",
+    "operation": "",
     "imageBase": "assets/images/Projects/Borinquen Healing Center/",
-    "thumbnail": "hero image.png",
-    "heroImage": "hero image.png",
-    "overviewImage": "hero image.png",
+    "thumbnail": "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png",
+    "heroImage": "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png",
+    "overviewImage": "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png",
     "story": [
+      {
+        "layout": "story-text",
+        "heading": "Processional landscape",
+        "text": "The healing center is conceived as a processional landscape, where rehabilitation unfolds through movement along a continuous path linking outdoor spaces and sheltered interiors. Spatial transitions, light, and material rhythm support recovery by encouraging both activity and pause."
+      },
+      {
+        "src": "Floor Plan.png",
+        "layout": "borinquen-floor-plan"
+      },
+      {
+        "layout": "story-text",
+        "heading": "Pavilions",
+        "text": "Programmatic elements are organized as discrete pavilions along a continuous circulation path, allowing therapy, rest, and social spaces to remain connected while retaining autonomy. Architecture operates through sequence and orientation rather than enclosure alone."
+      },
       {
         "src": "Andrew Wheat_ajw288_03C_Exterior Render 02 smaLLEST.jpg",
         "caption": "Exterior render.",
@@ -649,11 +663,6 @@ window.PORTFOLIO_PROJECTS = [
       {
         "src": "Andrew Wheat_ajw288_03C_Interior Render.jpg",
         "caption": "Interior render.",
-        "layout": "image"
-      },
-      {
-        "src": "Andrew Wheat_ajw288_Problem 03C_Final Model (2).png",
-        "caption": "Final model.",
         "layout": "image"
       },
       {
@@ -669,7 +678,7 @@ window.PORTFOLIO_PROJECTS = [
     ],
     "images": [
       {
-        "src": "hero image.png",
+        "src": "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png",
         "caption": "Project hero"
       },
       {
@@ -1036,8 +1045,9 @@ window.PORTFOLIO_PROJECTS = [
     "title": "York Prize",
     "year": "2023",
     "course": "Core I Studio",
-    "studio": "Cornell Architecture",
+    "studio": "Fall 2023 Cornell University",
     "type": "Competition / model study",
+    "professors": "Michael Jefferson",
     "themes": [
       "model",
       "competition",
@@ -1101,7 +1111,7 @@ window.PORTFOLIO_PROJECTS = [
     "tectonics": "The pavilion operates between surface and structure. Its woven elements thicken into walls, open into thresholds, and lift into canopy, producing a sequence of compression, release, shadow, and exposure. The project treats construction as an act of accumulation: line by line, strip by strip, a field becomes an interior.",
     "contribution": "Embedded into the ground, the pavilion also records the force of its own making. Cuts, terraces, and traces of extraction turn the site into part of the architectural system, extending the weave beyond the object and into the landscape around it.",
     "parti": "A woven frame becomes a small spatial instrument for light, texture, and enclosure.",
-    "question": "How can a simple frame become spatial through weaving and repetition?",
+    "question": "",
     "operation": "Test cube studies, model photographs, and isometric sections as linked construction studies.",
     "imageBase": "assets/images/Projects/Woven Pavilion/",
     "thumbnail": "hero.jpg",

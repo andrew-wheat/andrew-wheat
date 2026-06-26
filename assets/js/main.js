@@ -143,7 +143,7 @@
 
     const byId = new Map(projects.map((project) => [project.id, project]));
     const orderedHeroEntries = [
-      ["borinquen-healing-center", "hero image.png"],
+      ["borinquen-healing-center", "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png"],
       ["hunters-point", "hero.png"],
       ["hunters-point", "Front Facade Render More Saturated.png"],
       ["enfield-food-pantry", "Work Cover Photo.png"],
@@ -1940,25 +1940,25 @@
 
     return `
       <div class="wood-mech-system">
-        <figure class="wood-mech-axon">
-          ${projectImage(project, image.src, image.caption || "Mechanical axonometric")}
-        </figure>
         <article class="wood-mech-notes">
           ${image.heading ? `<p class="project-story-text-label">${escapeHtml(image.heading)}</p>` : ""}
           ${paragraphs}
-          <dl class="wood-mech-key">
-            ${systems
-              .map(
-                (system) => `
-                  <div>
-                    <dt><span style="--system-color: ${escapeHtml(system.color)}"></span>${escapeHtml(system.name)}</dt>
-                    ${system.description ? `<dd>${escapeHtml(system.description)}</dd>` : ""}
-                  </div>
-                `
-              )
-              .join("")}
-          </dl>
         </article>
+        <figure class="wood-mech-axon">
+          ${projectImage(project, image.src, image.caption || "Mechanical axonometric")}
+        </figure>
+        <dl class="wood-mech-key">
+          ${systems
+            .map(
+              (system) => `
+                <div>
+                  <dt><span style="--system-color: ${escapeHtml(system.color)}"></span>${escapeHtml(system.name)}</dt>
+                  ${system.description ? `<dd>${escapeHtml(system.description)}</dd>` : ""}
+                </div>
+              `
+            )
+            .join("")}
+        </dl>
       </div>
     `;
   }
