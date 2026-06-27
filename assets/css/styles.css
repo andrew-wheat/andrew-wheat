@@ -2632,13 +2632,13 @@ body[data-page="work"] .filter-label select {
 .project-story-frame--wood-pool-detail-pair .project-story-board {
   display: grid;
   box-sizing: border-box;
-  grid-template-columns: minmax(360px, 0.58fr) minmax(980px, 1.82fr);
+  grid-template-columns: minmax(520px, 0.86fr) minmax(0, 1.46fr);
   align-items: center;
-  gap: clamp(28px, 3.5vw, 72px);
-  width: min(100%, 2200px);
+  gap: clamp(32px, 3.2vw, 68px);
+  width: min(96vw, 2040px);
   min-height: 0;
-  padding-right: clamp(120px, 9vw, 220px);
-  padding-left: clamp(44px, 5vw, 96px);
+  padding-right: clamp(88px, 7vw, 160px);
+  padding-left: clamp(56px, 5vw, 108px);
 }
 
 .project-story-frame--wood-pool-detail-pair .project-story-item img {
@@ -2648,7 +2648,7 @@ body[data-page="work"] .filter-label select {
 }
 
 .project-story-frame--wood-pool-detail-pair .project-story-item:first-child img {
-  width: min(100%, 1250px);
+  width: min(112%, 1440px);
   transform: none;
 }
 
@@ -2661,7 +2661,7 @@ body[data-page="work"] .filter-label select {
 
 .project-story-frame--wood-pool-detail-pair .project-story-item:last-child {
   box-sizing: border-box;
-  padding-right: 0;
+  padding-right: clamp(42px, 4.5vw, 108px);
   overflow: hidden;
 }
 
