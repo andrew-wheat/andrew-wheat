@@ -1234,6 +1234,10 @@
 
       function setEdgeVelocity(event) {
         if (!viewport) return;
+        if (event.pointerType && event.pointerType !== "mouse" && event.pointerType !== "pen") {
+          edgeVelocity = 0;
+          return;
+        }
         const rect = viewport.getBoundingClientRect();
         const x = event.clientX - rect.left;
         const edge = Math.min(170, rect.width * 0.26);

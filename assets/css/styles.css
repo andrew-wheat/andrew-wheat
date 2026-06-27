@@ -366,6 +366,8 @@ select {
   flex: 1 1 auto;
   min-width: 0;
   overflow: visible;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .marquee-track {
@@ -1037,7 +1039,14 @@ body[data-page="work"] .catalogue-controls {
 
 .work-equation-marquee .marquee-window {
   max-width: none;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  touch-action: pan-x;
+  scrollbar-width: none;
+}
+
+.work-equation-marquee .marquee-window::-webkit-scrollbar {
+  display: none;
 }
 
 .work-equation-marquee .marquee-track {
