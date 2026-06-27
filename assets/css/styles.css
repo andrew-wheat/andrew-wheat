@@ -2634,7 +2634,7 @@ body[data-page="work"] .filter-label select {
   box-sizing: border-box;
   grid-template-columns: minmax(520px, 0.86fr) minmax(0, 1.46fr);
   align-items: center;
-  gap: clamp(32px, 3.2vw, 68px);
+  gap: clamp(16px, 2vw, 42px);
   width: min(96vw, 2040px);
   min-height: 0;
   padding-right: clamp(88px, 7vw, 160px);
@@ -2661,7 +2661,7 @@ body[data-page="work"] .filter-label select {
 
 .project-story-frame--wood-pool-detail-pair .project-story-item:last-child {
   box-sizing: border-box;
-  padding-right: clamp(42px, 4.5vw, 108px);
+  padding-right: clamp(24px, 3vw, 72px);
   overflow: hidden;
 }
 
