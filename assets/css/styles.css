@@ -3220,6 +3220,27 @@ body[data-page="work"] .filter-label select {
     padding-inline: 14px;
   }
 
+  body[data-page="home"] .hero {
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  body[data-page="home"] .hero-carousel {
+    height: 100svh !important;
+    min-height: 100svh;
+  }
+
+  body[data-page="home"] .hero-slide--image {
+    padding-inline: 0;
+    height: 100%;
+  }
+
+  body[data-page="home"] .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .hero-trace-stack {
     width: min(106vw, 680px);
     aspect-ratio: 0.88;
