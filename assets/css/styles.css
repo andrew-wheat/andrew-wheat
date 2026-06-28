@@ -224,18 +224,23 @@ select {
 }
 
 .skip-link {
-  position: fixed;
+  position: absolute;
   left: 12px;
   top: 12px;
   z-index: 100;
   transform: translateY(-140%);
+  opacity: 0;
+  pointer-events: none;
   background: var(--panel);
   border: 0;
   padding: 10px 12px;
 }
 
 .skip-link:focus {
+  position: fixed;
   transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .site-header {
@@ -279,6 +284,7 @@ select {
 
 .menu-toggle {
   display: none;
+  position: relative;
   width: 42px;
   height: 34px;
   padding: 5px 0;
@@ -289,11 +295,33 @@ select {
 }
 
 .menu-toggle span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
   display: block;
-  width: 100%;
+  width: 24px;
   height: 3px;
-  margin: 6px 0;
   background: currentColor;
+  transform-origin: center;
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    width 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.menu-toggle span:first-child {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.menu-toggle span:last-child {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.site-header.is-menu-open .menu-toggle span:first-child {
+  transform: translate(-50%, calc(-50% - 4px)) rotate(0deg);
+}
+
+.site-header.is-menu-open .menu-toggle span:last-child {
+  transform: translate(-50%, calc(-50% + 4px)) rotate(0deg);
 }
 
 .site-nav a[aria-current="page"] {
@@ -3951,6 +3979,22 @@ body[data-page="work"] .site-copyright {
     grid-column: 1;
   }
 
+  .cv-skills,
+  .cv-skills p {
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  .cv-skills p {
+    color: var(--muted);
+    font-family: var(--font-copy);
+    font-size: var(--type-cv-copy);
+    font-weight: var(--weight-copy);
+    line-height: 1.52;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
   .project-hero {
     min-height: 0;
   }
@@ -4612,6 +4656,14 @@ body[data-page="work"] .site-copyright {
 }
 
 @media (max-width: 768px) {
+  .project-shell[data-project-id="a-chair-is-a-toy"] .project-story-frame--chair-precedent .project-story-item--precedent {
+    width: min(76vw, 320px);
+  }
+
+  .project-shell[data-project-id="a-chair-is-a-toy"] .project-story-frame--chair-precedent .project-story-item--poem {
+    padding-bottom: clamp(24px, 9vw, 48px);
+  }
+
   .project-story-frame--wood-pool-floor-plans .project-story-board,
   .project-story-frame--wood-pool-detail-pair .project-story-board,
   .project-story-frame--wood-pool-parapet-pair .project-story-board,
