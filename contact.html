@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -6,7 +6,7 @@
     <title>Contact | Andrew Wheat</title>
     <meta name="description" content="Contact Andrew Wheat.">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260627-diatype-mono">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260628-pool-detail-resize">
   </head>
   <body data-page="contact">
     <a class="skip-link" href="#contact-content">Skip to contact</a>
@@ -27,12 +27,37 @@
 
       <section class="contact-list reveal" aria-label="Contact links">
         <a href="https://www.linkedin.com/in/andrewwheat" target="_blank" rel="noreferrer"><span aria-hidden="true">&#8599;</span> LinkedIn</a>
-        <a href="mailto:ajw288@cornell.edu"><span aria-hidden="true">&#8599;</span> ajw288@cornell.edu</a>
+        <button type="button" data-email-compose-open><span aria-hidden="true">&#8599;</span> Email me</button>
       </section>
     </main>
+    <div class="email-compose" data-email-compose aria-hidden="true">
+      <div class="email-compose-panel" role="dialog" aria-modal="true" aria-labelledby="email-compose-title">
+        <button class="email-compose-close" type="button" data-email-compose-close aria-label="Close email form"></button>
+        <h2 id="email-compose-title">Email me</h2>
+        <form data-email-compose-form>
+          <label>
+            <span>Your email</span>
+            <input name="from" type="email" autocomplete="email" placeholder="you@example.com">
+          </label>
+          <label>
+            <span>Subject</span>
+            <input name="subject" type="text" autocomplete="off">
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="8"></textarea>
+          </label>
+          <button type="submit">Send</button>
+          <p class="email-compose-status" data-email-compose-status aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+    <footer class="site-copyright" aria-label="Copyright">
+      &copy; 2026 Andrew Wheat. All Rights Reserved
+    </footer>
 
     <script src="assets/js/projects.js"></script>
-    <script src="assets/js/main.js?v=20260627-work-alt-fade"></script>
+    <script src="assets/js/main.js?v=20260628-pool-plan-labels"></script>
   </body>
 </html>
 

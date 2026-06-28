@@ -339,6 +339,92 @@
     });
   }
 
+  function initEmailCompose() {
+    const compose = document.querySelector("[data-email-compose]");
+    const openButton = document.querySelector("[data-email-compose-open]");
+    const closeButton = document.querySelector("[data-email-compose-close]");
+    const form = document.querySelector("[data-email-compose-form]");
+    const status = document.querySelector("[data-email-compose-status]");
+    if (!compose || !openButton || !form) return;
+
+    const openCompose = () => {
+      compose.classList.add("is-open");
+      compose.setAttribute("aria-hidden", "false");
+      window.setTimeout(() => {
+        compose.querySelector("input, textarea, button")?.focus();
+      }, 0);
+    };
+
+    const closeCompose = () => {
+      compose.classList.remove("is-open");
+      compose.setAttribute("aria-hidden", "true");
+      openButton.focus();
+    };
+
+    const setStatus = (message) => {
+      if (status) status.textContent = message;
+    };
+
+    openButton.addEventListener("click", openCompose);
+    closeButton?.addEventListener("click", closeCompose);
+
+    compose.addEventListener("click", (event) => {
+      if (event.target === compose) closeCompose();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && compose.classList.contains("is-open")) {
+        closeCompose();
+      }
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const from = String(data.get("from") || "").trim();
+      const subject = String(data.get("subject") || "").trim();
+      const message = String(data.get("message") || "").trim();
+      const recipient = ["ajw288", "cornell.edu"].join("@");
+      const submitButton = form.querySelector('button[type="submit"]');
+
+      if (!from || !subject || !message) {
+        setStatus("Please fill out each field.");
+        return;
+      }
+
+      setStatus("Sending...");
+      if (submitButton) submitButton.disabled = true;
+
+      try {
+        const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: from,
+            email: from,
+            subject,
+            message,
+            _subject: subject,
+            _template: "box",
+            _captcha: "false"
+          })
+        });
+
+        if (!response.ok) throw new Error("Email request failed.");
+        setStatus("Sent.");
+        form.reset();
+        window.setTimeout(closeCompose, 900);
+      } catch (error) {
+        setStatus("Could not send. Please try again.");
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
+    });
+  }
+
   function renderHalftoneTitle() {
     const titles = Array.from(document.querySelectorAll("[data-halftone-title]"));
     titles.forEach((title) => {
@@ -1189,7 +1275,8 @@
           ? projects
           : projects.filter((project) => (themeLookup.get(activeTheme) || []).includes(project.id));
 
-      catalogue.innerHTML = visible.map(projectCard).join("");
+      const fadeOrder = workFadeOrder(visible);
+      catalogue.innerHTML = visible.map((project, index) => projectCard(project, index, fadeOrder)).join("");
       updateThemeButtons();
     }
 
@@ -1287,13 +1374,15 @@
     draw();
   }
 
-  function projectCard(project, index) {
+  function projectCard(project, index, fadeOrder = workFadeOrder(projects)) {
     const projectNumber = projects.indexOf(project) + 1;
     const thumbnail = project.workThumbnail || project.thumbnail;
     const thumbnailAlt = project.workThumbnailAlt || "";
     const listThumbnail = project.workListThumbnail || project.workThumbnail || project.thumbnail;
-    const fadeDuration = 45;
-    const fadeDelay = index * 4.5;
+    const fadeInterval = 5;
+    const fadeSlot = fadeOrder.indexOf(project.id);
+    const fadeDuration = Math.max(fadeInterval * fadeOrder.length, fadeInterval);
+    const fadeDelay = Math.max(fadeSlot, 0) * fadeInterval;
     return `
       <a class="project-card" data-project-id="${escapeHtml(project.id)}" href="project.html?id=${project.id}" style="--work-fade-duration: ${fadeDuration.toFixed(1)}s; --work-fade-delay: ${fadeDelay.toFixed(1)}s;">
         <figure class="project-thumb">
@@ -1648,6 +1737,7 @@
                       ? `<p>${escapeHtml(item.text).replace(/\n/g, "<br>")}</p>`
                       : projectMedia(project, item.src, item.caption || image.caption || project.title)
                   }
+                  ${item.label ? `<p class="project-story-item-label">${escapeHtml(item.label)}</p>` : ""}
                   ${item.text ? "" : projectStoryItemCaption(inferredStoryCaption(item, layout))}
                 </div>
               `
@@ -1664,6 +1754,23 @@
         ${caption}
       </figure>
     `;
+  }
+
+  function workFadeOrder(items) {
+    const ids = items.map((project) => project.id);
+    return ids
+      .map((id) => ({ id, sort: seededHash(id) }))
+      .sort((a, b) => a.sort - b.sort)
+      .map((item) => item.id);
+  }
+
+  function seededHash(value) {
+    let hash = 2166136261;
+    for (let index = 0; index < value.length; index += 1) {
+      hash ^= value.charCodeAt(index);
+      hash = Math.imul(hash, 16777619);
+    }
+    return hash >>> 0;
   }
 
   function huntersPointAnimation(project) {
@@ -2356,6 +2463,7 @@
 
   initCustomCursor();
   initMobileMenu();
+  initEmailCompose();
   renderHero();
   renderWordMarquee();
   renderHalftoneTitle();

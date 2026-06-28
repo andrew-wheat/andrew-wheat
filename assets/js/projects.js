@@ -203,7 +203,7 @@ window.PORTFOLIO_PROJECTS = [
       "performance"
     ],
     "summary": "A public pool proposal that bridges Ithaca's active and quiet recreational landscapes while testing whether a natatorium can operate as civic infrastructure and environmental instrument.",
-    "description": "Wood Street State Park sits at the heart of central Ithaca, serving as a recreational hub for local youth and senior citizens alike. The site is surrounded by commercial zones to the west and single-family residential neighborhoods to the east, with direct adjacency to the Titus Towers senior facility. Currently, the park is bifurcated: youth congregate for skating and basketball on the western side, while seniors remain in the shaded, quieter areas to the east. Wood Street Pool proposes a place of gathering for all user groups, set between active recreation and shaded park space so swimmers, skaters, and residents can meet across levels.",
+    "description": "Wood Street Skate Park sits at the heart of central Ithaca, serving as a recreational hub for local youth and senior citizens alike. The site is surrounded by commercial zones to the west and single-family residential neighborhoods to the east, with direct adjacency to the Titus Towers senior facility. Currently, the park is bifurcated: youth congregate for skating and basketball on the western side, while seniors remain in the shaded, quieter areas to the east. Wood Street Pool proposes a place of gathering for all user groups, set between active recreation and shaded park space so swimmers, skaters, and residents can meet across levels.",
     "question": "How can the site act as a point of gathering for swimmers, skaters, and residents by bridging natural spaces across levels?",
     "imageBase": "assets/images/Projects/Wood Street Pool/",
     "thumbnail": "hero.png",
@@ -222,10 +222,12 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "wood-pool-floor-plans",
         "items": [
           {
-            "src": "Ground Floor Plan.jpg"
+            "src": "Ground Floor Plan.jpg",
+            "label": "Ground Floor"
           },
           {
-            "src": "FP3.png"
+            "src": "FP3.png",
+            "label": "Upper Floor"
           }
         ]
       },
@@ -443,6 +445,11 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "enfield-section-wide"
       },
       {
+        "src": "pavilion section.png",
+        "caption": "Pavilion section",
+        "layout": "enfield-section-wide"
+      },
+      {
         "src": "CHAPEL SECTION PDF smaller.jpg",
         "caption": "Community section study.",
         "layout": "enfield-section-large"
@@ -473,7 +480,7 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "image"
       },
       {
-        "src": "new light Firefly Upscaler 2x scale.jpg",
+        "src": "updated pantry interior.webp",
         "caption": "Interior atmosphere.",
         "layout": "enfield-render-large"
       },
@@ -498,7 +505,7 @@ window.PORTFOLIO_PROJECTS = [
         "caption": "Long view and landscape alignment"
       },
       {
-        "src": "new light Firefly Upscaler 2x scale.jpg",
+        "src": "updated pantry interior.webp",
         "caption": "Exterior atmosphere"
       },
       {
@@ -638,16 +645,16 @@ window.PORTFOLIO_PROJECTS = [
       "threshold",
       "climate"
     ],
-    "summary": "",
+    "summary": "A healing center in Aguadilla organized as a processional landscape where movement, therapy, rest, and coastal exposure become part of care.",
     "description": "Set within the coastal landscape of Aguadilla, Puerto Rico, the project positions architecture as a framework for healing shaped through movement, access, and proximity to land and sea. Rather than concentrating program into a singular object, the design extends horizontally across the site, allowing form to follow topography and reducing physical and perceptual barriers. Movement is continuous and legible, emphasizing procession over arrival and enabling users to engage the landscape at varying speeds and capacities.",
     "tectonics": "Architecture and landscape operate as a single system. Elevated walkways, gentle slopes, and porous edges ensure universal accessibility while maintaining constant visual and sensory connection to wind, vegetation, and horizon. Shaded exterior rooms and open circulation zones support rehabilitation, rest, and communal activity, allowing the environment itself to become an active participant in healing. The project defines a center that privileges dignity, mobility, and collective presence, embedding care within the rhythms of the site rather than isolating it within enclosure.",
     "parti": "",
     "question": "",
     "operation": "",
     "imageBase": "assets/images/Projects/Borinquen Healing Center/",
-    "thumbnail": "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png",
-    "heroImage": "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png",
-    "overviewImage": "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png",
+    "thumbnail": "hero image.png",
+    "heroImage": "hero image.png",
+    "overviewImage": "hero image.png",
     "story": [
       {
         "layout": "story-text",
@@ -679,14 +686,14 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "drawing"
       },
       {
-        "src": "hero image.png",
+        "src": "Andrew Wheat_ajw288_Problem 03C_Study Model Photo 01.png",
         "caption": "Project hero.",
         "layout": "image"
       }
     ],
     "images": [
       {
-        "src": "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png",
+        "src": "Andrew Wheat_ajw288_Problem 03C_Study Model Photo 01.png",
         "caption": "Project hero"
       },
       {
@@ -722,7 +729,7 @@ window.PORTFOLIO_PROJECTS = [
       "balance",
       "body"
     ],
-    "summary": "",
+    "summary": "A kinetic chair study that treats imbalance, rebound, and play as tools for understanding how an object and body negotiate form.",
     "description": "The Spring Chair for Minerva, designed by Setsuo Kitaoka in 1986, embodies playfulness and the celebration of movement through its bold materiality and inherent sense of dynamism. Limited documentation on the chair invites an intuitive, speculative approach to understanding its design.",
     "tectonics": "This exploration embraces the chair's absurdity, investigating irrational yet instinctive ways it might be occupied. Through this interaction, new forms emerge from the symbiotic relationship between chair and occupant: as one shifts, the other responds, creating a dynamic interplay that continuously adjusts to restore balance.",
     "parti": "A seat becomes a spring-loaded instrument: object, toy, and bodily register at once.",
@@ -917,7 +924,7 @@ window.PORTFOLIO_PROJECTS = [
       "ground",
       "gathering"
     ],
-    "summary": "",
+    "summary": "A cookhouse that frames the curanto ritual through ground, fire, gabion walls, and adjustable shelter without replacing the ceremony's earthbound logic.",
     "description": "The cookhouse is a celebration of tradition, embodying curanto's cooking process, which innately acts in conversation with the site. The feast draws its essence from the earth, using an excavated pit, intricately layered to pressure cook meats, seafoods, and vegetables. Though the ceremony traditionally requires no structural intervention, urbanization has distanced communities from the land, allowing the practice to fade from daily life.",
     "tectonics": "Gabion walls embody the materiality of both curanto and the site, allowing nature to permeate and reclaim the cookhouse over time. Wooden roof panels articulate to bring in sunlight or protect from rain, depending on the needs of each space. Together, these elements create a community-driven structure that supports a disappearing tradition while preserving its conversation with earth, weather, and collective labor.",
     "contribution": "The cookhouse emerges as a bridge between past and present, giving place to the ritual without replacing the ground that defines it. Rather than simply enclosing the process, the architecture frames preparation, gathering, cooking, and eating as a shared civic ceremony.",
@@ -1069,7 +1076,7 @@ window.PORTFOLIO_PROJECTS = [
       "competition",
       "form"
     ],
-    "summary": "A competition project currently documented through final and study model images.",
+    "summary": "Exploring the tectonics of aggregation and extraction, how space, and the choreography of movement can be produced simply between the interplay of solid and void. The model is a diptyque - both an impression and relief of the mold.",
     "description": "The model explores the tectonics of aggregation and extraction, how space, and the choreography of movement can be produced simply between the interplay of solid and void. The model is a diptyque - both an impression and relief of the mold.",
     "parti": "A model study frames form as a compact architectural argument.",
     "question": "",
