@@ -267,7 +267,11 @@
       const element = target instanceof Element ? target : null;
       const isRotate = Boolean(element?.closest(".rotate-handle"));
       const isResize = Boolean(element?.closest(".resize-handle"));
-      const isInteractive = Boolean(element?.closest("a, button, select, input, textarea"));
+      const interactiveElement = element?.closest(
+        'a, button, [role="button"], select, input, textarea, .project-card, .project-thumb, .project-file-link'
+      );
+      const hasPointerCursor = element ? window.getComputedStyle(element).cursor === "pointer" : false;
+      const isInteractive = Boolean(interactiveElement || hasPointerCursor);
 
       cursor.classList.toggle("is-rotate", isRotate);
       cursor.classList.toggle("is-resize", isResize && !isRotate);
@@ -1286,10 +1290,22 @@
   function projectCard(project, index) {
     const projectNumber = projects.indexOf(project) + 1;
     const thumbnail = project.workThumbnail || project.thumbnail;
+    const thumbnailAlt = project.workThumbnailAlt || "";
+    const listThumbnail = project.workListThumbnail || project.workThumbnail || project.thumbnail;
+    const fadeDuration = 45;
+    const fadeDelay = index * 4.5;
     return `
-      <a class="project-card" data-project-id="${escapeHtml(project.id)}" href="project.html?id=${project.id}">
+      <a class="project-card" data-project-id="${escapeHtml(project.id)}" href="project.html?id=${project.id}" style="--work-fade-duration: ${fadeDuration.toFixed(1)}s; --work-fade-delay: ${fadeDelay.toFixed(1)}s;">
         <figure class="project-thumb">
-          ${thumbnail ? projectImage(project, thumbnail, project.title) : planSvg(project, project.shape)}
+          ${
+            thumbnail
+              ? `${projectImage(project, thumbnail, project.title, "project-thumb-image project-thumb-image--base")}
+                ${thumbnailAlt ? projectImage(project, thumbnailAlt, `${project.title} alternate`, "project-thumb-image project-thumb-image--alt") : ""}`
+              : planSvg(project, project.shape)
+          }
+        </figure>
+        <figure class="project-thumb-list">
+          ${listThumbnail ? projectImage(project, listThumbnail, project.title) : planSvg(project, project.shape)}
         </figure>
         <div class="project-card-text">
           <span class="project-number">${String(projectNumber).padStart(2, "0")}</span>
@@ -1466,6 +1482,152 @@
     return project.professors.split(/\s*(?:,|\+|&| and )\s*/i)[0].trim();
   }
 
+  const mobileFullBleedLayouts = new Set([
+    "drawing",
+    "woven-iso-large",
+    "hunters-drawing-large",
+    "hunters-drawing-oversize",
+    "wood-pool-site-plan",
+    "wood-pool-section-large",
+    "wood-pool-section-wide",
+    "wood-pool-elevation-large",
+    "enfield-site-drawing",
+    "enfield-plan-wide",
+    "enfield-section-wide",
+    "enfield-detail-large",
+    "cookhouse-axon-large",
+    "deconstruct-board-large",
+    "deconstruct-plan-elevation-pair"
+  ]);
+
+  const mobileScrollLayouts = new Set([
+    "hunters-drawing-large",
+    "hunters-drawing-oversize",
+    "wood-pool-board",
+    "wood-pool-site-plan",
+    "wood-pool-floor-plans",
+    "wood-pool-section-wide",
+    "wood-pool-detail-pair",
+    "wood-pool-elevation-large",
+    "wood-pool-mech-system",
+    "enfield-site-drawing",
+    "enfield-site-plan-sequence",
+    "enfield-plan-wide",
+    "enfield-section-wide",
+    "enfield-detail-large",
+    "cookhouse-plans",
+    "cookhouse-axon-large",
+    "deconstruct-board-large",
+    "deconstruct-plan-elevation-pair",
+    "sustainable-plate"
+  ]);
+
+  const mobileObjectLayouts = new Set([
+    "image",
+    "split",
+    "hunters-model-row",
+    "hunters-model-feature",
+    "hunters-circulation-model",
+    "hunters-workshop-sequence",
+    "wood-pool-interior",
+    "wood-pool-model-row",
+    "wood-pool-model-feature",
+    "enfield-current-photo",
+    "enfield-render-large",
+    "enfield-model-row",
+    "cookhouse-map",
+    "cookhouse-study-pair",
+    "cookhouse-model-pair",
+    "cookhouse-dark-grid",
+    "deconstruct-crossfade",
+    "deconstruct-mural",
+    "chair-precedent",
+    "chair-motion-grid",
+    "chair-white-grid"
+  ]);
+
+  function projectStoryFrameClasses(layout) {
+    const classes = [`project-story-frame--${layout}`];
+    if (mobileFullBleedLayouts.has(layout)) classes.push("mobile-full-bleed");
+    if (mobileScrollLayouts.has(layout)) classes.push("mobile-scroll-x");
+    if (mobileObjectLayouts.has(layout)) classes.push("mobile-object");
+    if (!mobileFullBleedLayouts.has(layout) && !mobileScrollLayouts.has(layout)) classes.push("mobile-contained");
+    return classes.join(" ");
+  }
+
+  function projectStoryItemCaption(caption) {
+    return "";
+  }
+
+  function inferredStoryCaption(image, layout) {
+    if (image.caption) return isPlaceholderCaption(image.caption) ? "" : image.caption;
+
+    const sourceLabel = image.src ? humanizeMediaName(image.src) : "";
+    const layoutLabels = {
+      "hunters-context-animation": "Composite site systems.",
+      "hunters-model-row": "Model study sequence.",
+      "hunters-model-feature": "Physical model study.",
+      "hunters-circulation-model": "Circulation model.",
+      "hunters-workshop-sequence": "Workshop massing sequence.",
+      "wood-pool-board": "Presentation board.",
+      "wood-pool-floor-plans": "Floor plan plate.",
+      "wood-pool-mech-system": "Mechanical system plate.",
+      "wood-pool-detail-pair": "Envelope detail plate.",
+      "wood-pool-model-row": "Model study pair.",
+      "enfield-site-plan-sequence": "Phasing plan sequence.",
+      "cookhouse-map": "Reference and program map.",
+      "cookhouse-plans": "Plan drawing plate.",
+      "cookhouse-study-pair": "Study model pair.",
+      "cookhouse-model-pair": "Model sequence.",
+      "cookhouse-dark-grid": "Material and atmosphere studies.",
+      "deconstruct-plan-elevation-pair": "Plan and elevation plate.",
+      "deconstruct-front-back-pair": "Elevation pair.",
+      "deconstruct-crossfade": "Assembly overlay study."
+    };
+
+    if (layout === "cookhouse-map" && image.className === "reference") return "Curanto preparation reference.";
+    if (layout === "cookhouse-map" && image.className === "diagram") return "Program movement diagram.";
+    if (layoutLabels[layout] && /^(board\s*\d+|hero\s*\d*|curanto\s+\d+\s+reg)$/i.test(sourceLabel)) {
+      return layoutLabels[layout];
+    }
+
+    if (sourceLabel && !isPlaceholderCaption(sourceLabel)) return `${sourceLabel}.`;
+
+    return layoutLabels[layout] || "";
+  }
+
+  function isPlaceholderCaption(caption) {
+    const normalized = String(caption || "")
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/[._-]+$/g, "")
+      .toLowerCase();
+
+    return /^(hero|hero \d+|image|image \d+|project hero|project atmosphere|interior atmosphere|exterior atmosphere|presentation image)$/.test(normalized);
+  }
+
+  function humanizeMediaName(src) {
+    const filename = String(src)
+      .split(/[\\/]/)
+      .pop()
+      .replace(/\.[^.]+$/, "")
+      .replace(/\s*\([^)]*\)\s*/g, " ")
+      .replace(/[_-]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    if (!filename || /^[\d\s]+$/.test(filename) || /^fp\d+$/i.test(filename)) return "";
+
+    return filename
+      .split(" ")
+      .map((word) => {
+        if (/^(doas|erv|cav|gshp|pdf|svg|png|jpg|iso|axon)$/i.test(word)) return word.toUpperCase();
+        if (/^[A-Z0-9]+$/.test(word)) return word;
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .join(" ");
+  }
+
   function projectStoryFrame(project, image, index) {
     const layout = image.layout || "image";
     const media = layout === "hunters-context-animation"
@@ -1486,6 +1648,7 @@
                       ? `<p>${escapeHtml(item.text).replace(/\n/g, "<br>")}</p>`
                       : projectMedia(project, item.src, item.caption || image.caption || project.title)
                   }
+                  ${item.text ? "" : projectStoryItemCaption(inferredStoryCaption(item, layout))}
                 </div>
               `
             )
@@ -1493,10 +1656,12 @@
         : projectMedia(project, image.src, image.caption || project.title);
 
     const revealClass = layout === "hunters-context-animation" ? "" : " reveal";
+    const caption = "";
 
     return `
-      <figure class="project-story-frame project-story-frame--${escapeHtml(layout)}${revealClass}" style="--story-index: ${index}">
+      <figure class="project-story-frame ${escapeHtml(projectStoryFrameClasses(layout))}${revealClass}" style="--story-index: ${index}">
         ${media}
+        ${caption}
       </figure>
     `;
   }
@@ -2031,9 +2196,9 @@
     `;
   }
 
-  function projectImage(project, src, alt = "") {
+  function projectImage(project, src, alt = "", className = "") {
     const imageSrc = optimizedSrc(src.includes("/") ? src : `${project.imageBase || ""}${src}`);
-    return `<img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(alt)}" loading="lazy">`;
+    return `<img${className ? ` class="${escapeHtml(className)}"` : ""} src="${escapeHtml(imageSrc)}" alt="${escapeHtml(alt)}" loading="lazy">`;
   }
 
   function projectMedia(project, src, alt = "") {
@@ -2091,7 +2256,7 @@
           }
         });
       },
-      { threshold: 0.16 }
+      { threshold: 0.06 }
     );
     reveals.forEach((node) => observer.observe(node));
   }

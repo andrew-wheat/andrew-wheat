@@ -7,24 +7,42 @@
   --panel: #ffffff;
   --max: 1180px;
   --gutter: clamp(22px, 3vw, 40px);
-  --project-gutter: clamp(46px, calc(3vw + 24px), 64px);
+  --project-gutter: clamp(44px, 3.6vw, 56px);
   --header-height: 72px;
-  --font-main: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  --font-display: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  --font-compact: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  --font-annotation: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  --type-title: clamp(48px, 7.2vw, 118px);
-  --type-header: clamp(22px, 2.15vw, 34px);
-  --type-copy: clamp(15px, 1.05vw, 18px);
-  --type-annotation: clamp(13px, 0.88vw, 16px);
-  --weight-title: 900;
+  --font-main: "ABC Diatype", "Diatype", "Diatype Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "ABC Diatype", "Diatype", "Diatype Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-compact: "ABC Diatype", "Diatype", "Diatype Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-annotation: "ABC Diatype", "Diatype", "Diatype Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-copy: "Roboto Mono", "SFMono-Regular", "Cascadia Mono", "Liberation Mono", Consolas, monospace;
+  --type-title: clamp(56px, 5.4vw, 86px);
+  --type-page-title: clamp(52px, 4.9vw, 78px);
+  --type-project-title: clamp(54px, 4.8vw, 82px);
+  --type-header: clamp(24px, 2.2vw, 32px);
+  --type-nav: clamp(24px, 2.15vw, 32px);
+  --type-interface: var(--type-nav);
+  --type-work-card-title: clamp(24px, 2.1vw, 32px);
+  --type-work-card-copy: 14px;
+  --type-project-copy: 14px;
+  --type-cv-title: clamp(28px, 2.75vw, 44px);
+  --type-cv-section: clamp(16px, 1.18vw, 18px);
+  --type-cv-subheader: 14px;
+  --type-cv-copy: 14px;
+  --type-copy: 14px;
+  --type-lead: clamp(20px, 1.7vw, 28px);
+  --type-annotation: clamp(13px, 0.95vw, 15px);
+  --type-caption: clamp(10.5px, 0.74vw, 12px);
+  --weight-title: 700;
   --weight-header: 700;
-  --weight-copy: 575;
+  --weight-copy: 350;
   --weight-annotation: 700;
+  --weight-interface: 700;
   font-family:
-    Arial,
+    "ABC Diatype",
+    "Diatype",
+    "Diatype Variable",
     "Helvetica Neue",
     Helvetica,
+    Arial,
     sans-serif;
 }
 
@@ -43,7 +61,7 @@ body {
   font-family: var(--font-main);
   font-size: var(--type-copy);
   font-weight: var(--weight-copy);
-  line-height: 1.35;
+  line-height: 1.45;
   overflow-x: hidden;
   overflow-x: clip;
   text-rendering: geometricPrecision;
@@ -61,23 +79,27 @@ body.has-custom-cursor *::after {
 }
 
 .site-cursor {
-  --cursor-size: 20px;
+  --cursor-size: 14px;
+  --cursor-ease: cubic-bezier(0.22, 1, 0.36, 1);
   position: fixed;
   left: 0;
   top: 0;
   z-index: 2000;
   width: var(--cursor-size);
   height: var(--cursor-size);
-  border-radius: 50%;
+  border-radius: 999px;
   background: #ffffff;
+  clip-path: circle(50%);
   mix-blend-mode: difference;
   pointer-events: none;
   transform: translate(-50%, -50%);
   opacity: 0;
   transition:
     opacity 120ms ease,
-    width 160ms ease,
-    height 160ms ease;
+    width 200ms var(--cursor-ease),
+    height 200ms var(--cursor-ease),
+    border-radius 200ms var(--cursor-ease),
+    clip-path 200ms var(--cursor-ease);
 }
 
 .site-cursor::before,
@@ -94,7 +116,9 @@ body.has-custom-cursor *::after {
 }
 
 .site-cursor.is-active {
-  --cursor-size: 34px;
+  --cursor-size: 22px;
+  border-radius: 0;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
 }
 
 .site-cursor.is-rotate,
@@ -102,6 +126,7 @@ body.has-custom-cursor *::after {
   --cursor-size: 30px;
   background: transparent;
   border-radius: 0;
+  clip-path: none;
 }
 
 .site-cursor.is-rotate::before {
@@ -209,12 +234,13 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: var(--header-height);
-  padding: 18px var(--gutter);
+  min-height: calc(var(--type-nav) * 1.35 + 28px);
+  padding: 14px var(--project-gutter);
   font-family: var(--font-compact);
-  font-size: var(--type-header);
-  font-weight: var(--weight-header);
-  letter-spacing: 0;
+  font-size: var(--type-nav);
+  font-weight: var(--weight-interface);
+  line-height: 1;
+  letter-spacing: 0.01em;
   color: inherit;
 }
 
@@ -227,7 +253,7 @@ select {
   position: relative;
   display: inline-flex;
   align-items: center;
-  min-height: 1.65em;
+  min-height: 1.05em;
   padding: 0;
   color: inherit;
   text-decoration: none;
@@ -235,7 +261,7 @@ select {
 
 .site-nav {
   display: flex;
-  gap: clamp(10px, 1.5vw, 22px);
+  gap: clamp(20px, 2.2vw, 32px);
 }
 
 .menu-toggle {
@@ -619,9 +645,8 @@ h4 {
 p,
 dd,
 dt,
-figcaption,
-select,
-button {
+figcaption {
+  font-family: var(--font-copy);
   font-size: var(--type-copy);
   font-weight: var(--weight-copy);
 }
@@ -629,6 +654,7 @@ button {
 .large-copy {
   max-width: 1120px;
   margin: 0;
+  font-family: var(--font-copy);
   font-size: var(--type-copy);
   font-weight: var(--weight-copy);
   line-height: 1.24;
@@ -640,6 +666,7 @@ button {
 .project-summary {
   max-width: 760px;
   margin: 0 auto;
+  font-family: var(--font-copy);
   font-size: var(--type-copy);
   font-weight: var(--weight-copy);
   line-height: 1.42;
@@ -963,11 +990,23 @@ button {
 
 .text-link {
   font-size: var(--type-copy);
-  font-weight: var(--weight-header);
+  font-weight: var(--weight-interface);
 }
 
 .page-shell {
   padding: calc(var(--header-height) + clamp(34px, 5vw, 68px)) 0 clamp(82px, 10vw, 130px);
+}
+
+.section-grid,
+.about-grid,
+.about-statement,
+.cv,
+.contact-list,
+.project-meta,
+.project-process,
+.project-gallery,
+.catalogue-controls {
+  width: min(1760px, calc(100% - (var(--project-gutter) * 2)));
 }
 
 body[data-page="work"] {
@@ -994,20 +1033,30 @@ body[data-page="work"] .page-shell {
   margin-bottom: clamp(42px, 6vw, 76px);
 }
 
+.page-intro h1 {
+  margin-bottom: 0.32em;
+  font-size: var(--type-page-title);
+  font-weight: var(--weight-title);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
 body[data-page="work"] .page-intro {
-  margin-bottom: clamp(50px, 7vw, 96px);
+  margin-bottom: clamp(34px, 4.2vw, 58px);
 }
 
 body[data-page="work"] .page-intro h1 {
+  margin-bottom: 0.18em;
   color: #ffffff;
 }
 
 body[data-page="work"] .page-copy {
+  max-width: 34em;
+  margin: 0;
   color: rgba(255, 255, 255, 0.62);
 }
 
 .catalogue-controls {
-  width: min(var(--max), calc(100% - (var(--gutter) * 2)));
   margin: 0 auto 28px;
   display: flex;
   align-items: center;
@@ -1022,7 +1071,7 @@ body[data-page="work"] .catalogue-controls {
 }
 
 .work-equation {
-  width: min(1760px, calc(100% - (var(--gutter) * 2)));
+  width: min(1760px, calc(100% - (var(--project-gutter) * 2)));
   margin: 0 auto clamp(42px, 5vw, 84px);
   color: #ffffff;
 }
@@ -1032,9 +1081,9 @@ body[data-page="work"] .catalogue-controls {
   justify-content: flex-start;
   max-width: none;
   font-family: var(--font-annotation);
-  font-size: clamp(17px, 1.65vw, 30px);
-  font-weight: var(--weight-annotation);
-  line-height: 1.2;
+  font-size: var(--type-interface);
+  font-weight: var(--weight-interface);
+  line-height: 1.05;
 }
 
 .work-equation-marquee .marquee-window {
@@ -1070,6 +1119,7 @@ body[data-page="work"] .catalogue-controls {
   border: 0;
   background: transparent;
   color: var(--ink);
+  font-weight: var(--weight-interface);
   cursor: pointer;
 }
 
@@ -1089,8 +1139,9 @@ body[data-page="work"] .icon-button {
   align-items: center;
   gap: 12px;
   color: var(--muted);
-  font-size: var(--type-copy);
-  font-weight: var(--weight-copy);
+  font-size: var(--type-interface);
+  font-weight: var(--weight-interface);
+  line-height: 1.05;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -1112,7 +1163,7 @@ body[data-page="work"] .icon-button {
 .filter-label span {
   font-family: var(--font-annotation);
   font-size: var(--type-annotation);
-  font-weight: var(--weight-annotation);
+  font-weight: var(--weight-interface);
 }
 
 body[data-page="work"] .filter-label {
@@ -1126,8 +1177,9 @@ body[data-page="work"] .filter-label {
   color: var(--ink);
   padding: 8px 26px 8px 2px;
   font-family: var(--font-main);
-  font-size: var(--type-copy);
-  font-weight: var(--weight-copy);
+  font-size: var(--type-interface);
+  font-weight: var(--weight-interface);
+  line-height: 1.05;
   appearance: none;
   -webkit-appearance: none;
 }
@@ -1157,22 +1209,35 @@ body[data-page="work"] .filter-label select {
 }
 
 .work-catalogue {
-  width: min(1760px, calc(100% - (var(--gutter) * 2)));
+  width: min(1760px, calc(100% - (var(--project-gutter) * 2)));
   margin: 0 auto;
 }
 
 .work-catalogue[data-view="grid"] {
   display: grid;
-  grid-template-columns: repeat(4, minmax(150px, 1fr));
-  gap: clamp(22px, 3.7vw, 72px);
-  align-items: start;
+  grid-template-columns: repeat(4, minmax(180px, 400px));
+  gap: clamp(56px, 5.2vw, 96px) clamp(44px, 4.4vw, 80px);
+  align-items: center;
+  justify-content: center;
   background: transparent;
 }
 
 .work-catalogue[data-view="list"] {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(24px, 3.8vw, 60px);
+  gap: clamp(28px, 4vw, 72px);
+}
+
+.work-catalogue[data-view="grid"] .project-card {
+  grid-column: auto;
+}
+
+.work-catalogue[data-view="grid"] .project-card:nth-last-child(2):nth-child(4n + 1) {
+  grid-column: 2;
+}
+
+.work-catalogue[data-view="grid"] .project-card:nth-last-child(1):nth-child(4n + 2) {
+  grid-column: 3;
 }
 
 .project-card {
@@ -1182,21 +1247,50 @@ body[data-page="work"] .filter-label select {
   background: transparent;
   padding: 0;
   color: inherit;
+  overflow: visible;
   text-decoration: none;
 }
 
 .work-catalogue[data-view="list"] .project-card {
   display: grid;
-  grid-template-columns: minmax(180px, 320px) minmax(260px, 1fr);
-  gap: clamp(22px, 4vw, 70px);
+  grid-template-columns: minmax(280px, 400px) minmax(0, 720px);
+  gap: clamp(56px, 6vw, 92px);
   align-items: center;
   padding-bottom: 0;
+}
+
+.work-catalogue[data-view="list"] .project-thumb {
+  display: none;
+}
+
+.work-catalogue[data-view="list"] .project-card-text {
+  grid-column: 2;
+}
+
+.project-thumb-list {
+  display: none;
+  margin: 0;
+}
+
+.work-catalogue[data-view="list"] .project-thumb-list {
+  display: block;
+  grid-column: 1;
+}
+
+.project-thumb-list img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .project-thumb {
   position: relative;
   margin: 0;
-  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  background: transparent;
   overflow: hidden;
 }
 
@@ -1207,14 +1301,29 @@ body[data-page="work"] .filter-label select {
 }
 
 .project-thumb img {
-  aspect-ratio: 16 / 11;
-  height: 100%;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
   filter: saturate(0.9) contrast(1.02);
   transition:
     opacity 220ms ease,
     filter 220ms ease,
     transform 320ms ease;
+}
+
+.project-thumb-image--base {
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+  animation: workThumbBaseCrossfade var(--work-fade-duration, 11s) ease-in-out var(--work-fade-delay, 0s) infinite;
+}
+
+.project-thumb-image--alt {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  animation: workThumbCrossfade var(--work-fade-duration, 11s) ease-in-out var(--work-fade-delay, 0s) infinite;
 }
 
 .project-card:hover .project-thumb img,
@@ -1223,27 +1332,53 @@ body[data-page="work"] .filter-label select {
   transform: scale(1.015);
 }
 
+@keyframes workThumbCrossfade {
+  0%,
+  30%,
+  100% {
+    opacity: 0;
+  }
+
+  42%,
+  68% {
+    opacity: 1;
+  }
+}
+
+@keyframes workThumbBaseCrossfade {
+  0%,
+  30%,
+  100% {
+    opacity: 1;
+  }
+
+  42%,
+  68% {
+    opacity: 0;
+  }
+}
+
 .project-number {
   display: block;
-  margin-bottom: 7px;
+  margin-bottom: 8px;
   color: rgba(255, 255, 255, 0.68);
   font-family: var(--font-annotation);
-  font-size: var(--type-annotation);
+  font-size: var(--type-caption);
   font-weight: var(--weight-annotation);
+  letter-spacing: 0.04em;
 }
 
 .project-card-text {
   position: absolute;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
+  left: clamp(14px, 1.5vw, 24px);
+  bottom: clamp(14px, 1.5vw, 24px);
   z-index: 2;
-  max-width: 24ch;
-  padding: 9px 10px;
+  max-width: min(28ch, calc(100% - 28px));
+  padding: clamp(10px, 1vw, 14px) clamp(12px, 1.2vw, 18px);
   color: #ffffff;
-  background: rgba(0, 0, 0, 0.58);
+  background: rgba(0, 0, 0, 0.62);
   opacity: 0;
-  transform: translateY(5px);
+  transform: translateY(6px);
   transition:
     opacity 160ms ease,
     transform 160ms ease;
@@ -1257,37 +1392,45 @@ body[data-page="work"] .filter-label select {
 
 .work-catalogue[data-view="list"] .project-card-text {
   position: static;
-  max-width: 760px;
+  max-width: 720px;
   padding: 0;
   color: #ffffff;
   background: transparent;
-  opacity: 1;
-  transform: none;
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 .work-catalogue[data-view="list"] .project-card p {
-  display: block;
-  max-width: 68ch;
-  margin: 10px 0 0;
-  color: rgba(255, 255, 255, 0.68);
-  font-family: var(--font-main);
-  font-size: var(--type-copy);
+  display: none;
+  max-width: 62ch;
+  margin: 14px 0 0;
+  color: #ffffff;
+  font-family: var(--font-copy);
+  font-size: var(--type-work-card-copy);
   font-weight: var(--weight-copy);
-  line-height: 1.34;
+  line-height: 1.42;
 }
 
 .work-catalogue[data-view="grid"] .project-card-summary {
   display: none;
+  max-width: 32ch;
+  margin: 12px 0 0;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: var(--type-work-card-copy);
+  font-weight: 500;
+  line-height: 1.35;
 }
 
 .work-catalogue[data-view="grid"] .project-card-meta {
   display: block;
   margin: 7px 0 0;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.82);
   font-family: var(--font-annotation);
-  font-size: var(--type-annotation);
+  font-size: var(--type-caption);
   font-weight: var(--weight-annotation);
-  line-height: 1.25;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
 }
 
 .project-card h2 {
@@ -1295,9 +1438,9 @@ body[data-page="work"] .filter-label select {
   margin-bottom: 0;
   color: #ffffff;
   font-family: var(--font-annotation);
-  font-size: var(--type-annotation);
-  font-weight: var(--weight-annotation);
-  line-height: 1.2;
+  font-size: clamp(16px, 1.05vw, 19px);
+  font-weight: var(--weight-interface);
+  line-height: 1.15;
   text-shadow: none;
 }
 
@@ -1323,6 +1466,24 @@ body[data-page="work"] .filter-label select {
   margin-left: 66px;
 }
 
+.work-catalogue[data-view="list"] .project-card p {
+  display: block;
+}
+
+.work-catalogue[data-view="list"] .project-card-summary {
+  display: block;
+}
+
+.work-catalogue[data-view="list"] .project-card-text {
+  position: static;
+  max-width: 720px;
+  padding: 0;
+  color: #ffffff;
+  background: transparent;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 .about-grid,
 .about-statement,
 .cv,
@@ -1330,7 +1491,6 @@ body[data-page="work"] .filter-label select {
 .project-meta,
 .project-process,
 .project-gallery {
-  width: min(var(--max), calc(100% - (var(--gutter) * 2)));
   margin: 0 auto;
 }
 
@@ -1344,12 +1504,12 @@ body[data-page="work"] .filter-label select {
 
 .about-statement {
   display: grid;
-  gap: 1.25em;
+  gap: 1.45em;
   max-width: min(760px, calc(100% - (var(--gutter) * 2)));
   margin-bottom: clamp(70px, 9vw, 118px);
   font-size: var(--type-copy);
   font-weight: var(--weight-copy);
-  line-height: 1.42;
+  line-height: 1.56;
 }
 
 .about-statement p {
@@ -1361,7 +1521,7 @@ body[data-page="work"] .filter-label select {
   align-items: baseline;
   justify-content: space-between;
   gap: 24px;
-  padding: clamp(12px, 1.4vw, 20px) 0 clamp(2px, 0.6vw, 8px);
+  padding: clamp(36px, 5vw, 74px) 0 clamp(18px, 2vw, 28px);
 }
 
 .cv-heading h2 {
@@ -1370,39 +1530,55 @@ body[data-page="work"] .filter-label select {
 
 .cv-section {
   display: grid;
-  grid-template-columns: minmax(150px, 0.24fr) minmax(0, 1fr);
-  column-gap: clamp(16px, 2.2vw, 34px);
-  row-gap: clamp(4px, 0.6vw, 9px);
-  padding: clamp(4px, 0.65vw, 9px) 0;
+  grid-template-columns: minmax(150px, 1.75fr) minmax(300px, 3.25fr) minmax(380px, 5.5fr);
+  column-gap: clamp(16px, 1.5vw, 24px);
+  row-gap: clamp(14px, 1.8vw, 26px);
+  padding: clamp(24px, 3vw, 48px) 0;
 }
 
 .cv-section h3 {
   grid-column: 1;
-  grid-row: 1 / span 20;
+  grid-row: 1;
   margin: 0;
-  font-size: clamp(18px, 1.55vw, 25px);
-  font-weight: var(--weight-header);
-}
-
-.cv-section > article,
-.cv-section > p {
-  grid-column: 2;
+  font-size: var(--type-cv-section);
+  font-weight: var(--weight-annotation);
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .cv-section > p,
-.cv-item {
+.cv-section > .cv-skills {
+  grid-column: 2 / span 2;
+}
+
+.cv-section > p,
+.cv-item,
+.cv-skills {
   max-width: 900px;
 }
 
 .cv-item {
   display: grid;
-  grid-template-columns: minmax(210px, 0.34fr) minmax(0, 1fr);
-  gap: clamp(10px, 1.5vw, 22px);
-  padding-bottom: 5px;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  gap: inherit;
+  align-items: start;
+  padding-bottom: 0;
 }
 
-.cv-item:last-child {
-  padding-bottom: 0;
+.cv-section > .cv-item:first-of-type,
+.cv-section > p:first-of-type,
+.cv-section > .cv-skills:first-of-type {
+  grid-row: 1;
+}
+
+.cv-item > div {
+  grid-column: 2;
+}
+
+.cv-item > p {
+  grid-column: 3;
 }
 
 .cv-item h4,
@@ -1412,24 +1588,40 @@ body[data-page="work"] .filter-label select {
 }
 
 .cv-item h4 {
-  font-size: clamp(13px, 0.95vw, 16px);
-  font-weight: var(--weight-header);
-  line-height: 1.06;
-}
-
-.cv-item div p {
-  margin-top: 3px;
-  color: var(--muted);
-  font-size: clamp(12px, 0.84vw, 14px);
+  font-family: var(--font-copy);
+  font-size: var(--type-cv-subheader);
   font-weight: var(--weight-copy);
   line-height: 1.18;
 }
 
-.cv-item > p,
-.cv-section > p {
+.cv-item div p {
+  margin-top: 0.42em;
   color: var(--muted);
-  font-size: clamp(12px, 0.84vw, 14px);
-  line-height: 1.22;
+  font-size: var(--type-cv-copy);
+  font-weight: var(--weight-copy);
+  font-style: italic;
+  line-height: 1.52;
+  letter-spacing: 0;
+}
+
+.cv-item > p,
+.cv-section > p,
+.cv-skills p {
+  color: var(--muted);
+  font-size: var(--type-cv-copy);
+  font-weight: var(--weight-copy);
+  line-height: 1.52;
+}
+
+.cv-skills {
+  display: grid;
+  gap: 0.42em;
+  max-width: none;
+}
+
+.cv-skills p {
+  margin: 0;
+  white-space: nowrap;
 }
 
 .contact-list {
@@ -1437,11 +1629,11 @@ body[data-page="work"] .filter-label select {
 }
 
 .contact-list a {
-  padding: clamp(12px, 1.8vw, 22px) 0;
+  padding: clamp(10px, 1.2vw, 16px) 0;
   font-family: var(--font-compact);
-  font-size: var(--type-header);
-  font-weight: var(--weight-copy);
-  line-height: 1.15;
+  font-size: clamp(16px, 1.35vw, 22px);
+  font-weight: var(--weight-interface);
+  line-height: 1.25;
   text-decoration: none;
 }
 
@@ -1511,24 +1703,29 @@ body[data-page="work"] .filter-label select {
 }
 
 .project-editorial-text h1 {
-  margin: 0 0 clamp(48px, 6vw, 82px);
-  font-size: clamp(36px, 4.1vw, 62px);
-  line-height: 0.95;
+  margin: 0 0 clamp(36px, 5vw, 66px);
+  font-size: var(--type-project-title);
+  font-weight: var(--weight-title);
+  line-height: 1;
+  letter-spacing: -0.01em;
 }
 
 .project-editorial-meta {
-  margin: 0 0 clamp(28px, 3.5vw, 48px);
+  margin: 0 0 clamp(24px, 3vw, 40px);
   font-family: var(--font-annotation);
   font-size: var(--type-annotation);
   font-weight: var(--weight-annotation);
-  line-height: 1.28;
+  line-height: 1.42;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
 }
 
 .project-editorial-text p:not(.project-editorial-meta) {
   max-width: 700px;
-  margin: 0 0 clamp(24px, 3vw, 42px);
-  font-size: var(--type-copy);
-  line-height: 1.3;
+  margin: 0 0 clamp(22px, 2.6vw, 36px);
+  font-size: var(--type-project-copy);
+  font-weight: var(--weight-copy);
+  line-height: 1.56;
 }
 
 .project-pre-question {
@@ -1627,7 +1824,7 @@ body[data-page="work"] .filter-label select {
   font-family: var(--font-annotation);
   font-size: var(--type-annotation);
   font-weight: var(--weight-annotation);
-  line-height: 1.42;
+  line-height: 1.48;
   transition-delay: calc(var(--annotation-index, 0) * 220ms);
 }
 
@@ -1644,9 +1841,9 @@ body[data-page="work"] .filter-label select {
   width: min(980px, 88vw);
   margin: 0 auto;
   font-family: var(--font-compact);
-  font-size: var(--type-header);
+  font-size: var(--type-lead);
   font-weight: var(--weight-header);
-  line-height: 1.12;
+  line-height: 1.28;
   text-align: center;
 }
 
@@ -1677,14 +1874,7 @@ body[data-page="work"] .filter-label select {
 }
 
 .project-story-frame figcaption {
-  width: min(620px, 82vw);
-  margin-top: clamp(18px, 2vw, 30px);
-  color: var(--muted);
-  font-family: var(--font-annotation);
-  font-size: var(--type-annotation);
-  font-weight: var(--weight-annotation);
-  line-height: 1.35;
-  text-align: center;
+  display: none;
 }
 
 .project-story-frame--story-text {
@@ -1696,13 +1886,18 @@ body[data-page="work"] .filter-label select {
   margin: 0 0 clamp(14px, 1.6vw, 24px);
   padding-bottom: 9px;
   border-bottom: 1px solid currentColor;
-  font-size: var(--type-copy);
+  font-size: var(--type-annotation);
   font-weight: var(--weight-header);
-  text-transform: none;
+  line-height: 1.32;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
 }
 
 .project-story-text p {
   margin: 0;
+  font-size: var(--type-project-copy);
+  font-weight: var(--weight-copy);
+  line-height: 1.56;
 }
 
 .project-story-text p + p {
@@ -2493,7 +2688,7 @@ body[data-page="work"] .filter-label select {
 .project-story-frame--wood-pool-lighting-metrics .project-story-item p {
   margin: 0;
   color: var(--ink);
-  font-family: var(--font-annotation);
+  font-family: var(--font-copy);
   font-size: clamp(16px, 1.35vw, 24px);
   font-weight: var(--weight-copy);
   line-height: 1.1;
@@ -2603,9 +2798,9 @@ body[data-page="work"] .filter-label select {
   align-items: flex-start;
   gap: 0.64rem;
   color: var(--ink);
-  font-family: var(--font-annotation);
-  font-size: clamp(13px, 1vw, 17px);
-  font-weight: 400;
+  font-family: var(--font-copy);
+  font-size: var(--type-copy);
+  font-weight: var(--weight-copy);
   line-height: 1.18;
   text-transform: none;
 }
@@ -2995,13 +3190,7 @@ body[data-page="work"] .filter-label select {
 }
 
 .project-story-item-caption {
-  color: var(--ink);
-  font-family: var(--font-annotation);
-  font-size: var(--type-annotation);
-  font-weight: var(--weight-annotation);
-  font-style: italic;
-  line-height: 1.25;
-  text-align: center;
+  display: none;
 }
 
 .project-story-frame--cookhouse-study-pair .project-story-board,
@@ -3102,7 +3291,9 @@ body[data-page="work"] .filter-label select {
 .project-description {
   max-width: 760px;
   margin-top: clamp(24px, 3vw, 42px);
-  line-height: 1.38;
+  font-size: var(--type-lead);
+  font-weight: var(--weight-copy);
+  line-height: 1.5;
 }
 
 .project-meta {
@@ -3115,17 +3306,20 @@ body[data-page="work"] .filter-label select {
 
 .project-meta div {
   background: var(--bg);
-  padding: 20px;
-  font-size: var(--type-copy);
+  padding: 16px 0;
+  font-size: var(--type-annotation);
+  font-weight: var(--weight-copy);
+  line-height: 1.42;
 }
 
 .project-meta span {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: var(--muted);
-  font-size: var(--type-copy);
+  font-size: var(--type-caption);
   font-weight: var(--weight-copy);
-  letter-spacing: 0.08em;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
@@ -3139,6 +3333,8 @@ body[data-page="work"] .filter-label select {
 .project-process article {
   padding-top: 18px;
   font-size: var(--type-copy);
+  font-weight: var(--weight-copy);
+  line-height: 1.52;
 }
 
 .project-gallery {
@@ -3171,10 +3367,12 @@ body[data-page="work"] .filter-label select {
 }
 
 .project-gallery figcaption {
-  margin-top: 16px;
+  margin-top: 8px;
   color: var(--muted);
-  font-size: var(--type-copy);
-  font-weight: var(--weight-copy);
+  font-size: var(--type-caption);
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: 0.02em;
 }
 
 .reveal {
@@ -3191,6 +3389,10 @@ body[data-page="work"] .filter-label select {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .site-cursor {
+    transition: opacity 120ms ease;
+  }
+
   *,
   *::before,
   *::after {
@@ -3199,13 +3401,40 @@ body[data-page="work"] .filter-label select {
     animation-iteration-count: 1 !important;
     transition-duration: 1ms !important;
   }
+
+  .project-thumb-image--base,
+  .project-thumb-image--alt {
+    animation: none !important;
+  }
+
+  .project-thumb-image--base {
+    opacity: 1 !important;
+  }
+
+  .project-thumb-image--alt {
+    opacity: 0 !important;
+  }
 }
 
 @media (max-width: 900px) {
   :root {
-    --type-title: clamp(44px, 12vw, 74px);
-    --type-header: clamp(20px, 5.4vw, 28px);
-    --type-copy: clamp(15px, 4vw, 16px);
+    --type-title: clamp(44px, 7.2vw, 64px);
+    --type-page-title: clamp(42px, 6.8vw, 58px);
+    --type-project-title: clamp(42px, 6.6vw, 60px);
+    --type-header: clamp(18px, 3.4vw, 24px);
+    --type-nav: clamp(18px, 2.8vw, 22px);
+    --type-interface: var(--type-nav);
+    --type-work-card-title: clamp(22px, 3.4vw, 30px);
+    --type-work-card-copy: 14px;
+    --type-project-copy: 14px;
+    --type-cv-title: clamp(24px, 4.6vw, 36px);
+    --type-cv-section: clamp(16px, 2.35vw, 18px);
+    --type-cv-subheader: 14px;
+    --type-cv-copy: 14px;
+    --type-copy: 14px;
+    --type-lead: clamp(18px, 3vw, 24px);
+    --type-annotation: clamp(12px, 1.55vw, 13px);
+    --type-caption: clamp(11px, 1.45vw, 12px);
   }
 
   .site-header {
@@ -3289,6 +3518,24 @@ body[data-page="work"] .filter-label select {
     grid-template-columns: 1fr;
   }
 
+  .work-catalogue[data-view="grid"] .project-card {
+    grid-column: auto;
+  }
+
+  .work-catalogue[data-view="grid"] .project-card:nth-last-child(2):nth-child(4n + 1),
+  .work-catalogue[data-view="grid"] .project-card:nth-last-child(1):nth-child(4n + 2) {
+    grid-column: auto;
+  }
+
+  .project-card-text,
+  .work-catalogue[data-view="list"] .project-card-text {
+    max-width: none;
+  }
+
+  .work-catalogue[data-view="list"] .project-thumb-list {
+    width: min(100%, 400px);
+  }
+
   .work-catalogue[data-view="list"] .project-card,
   .home-about,
   .about-grid,
@@ -3334,9 +3581,58 @@ body[data-page="work"] .filter-label select {
 
   .cv-section h3,
   .cv-section > article,
-  .cv-section > p {
+  .cv-section > p,
+  .cv-section > .cv-skills,
+  .cv-item > div,
+  .cv-item > p {
     grid-column: auto;
     grid-row: auto;
+  }
+
+  .cv-section {
+    gap: clamp(16px, 4vw, 28px);
+    padding: clamp(36px, 8vw, 56px) 0;
+  }
+
+  .cv-section + .cv-section {
+    padding-top: clamp(44px, 9vw, 70px);
+  }
+
+  .cv-item {
+    gap: clamp(8px, 2.8vw, 14px);
+  }
+
+  .cv-section {
+    grid-template-columns: minmax(96px, 0.44fr) minmax(0, 1fr);
+    column-gap: 16px;
+    row-gap: clamp(14px, 4vw, 22px);
+  }
+
+  .cv-section h3 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .cv-section > article,
+  .cv-section > p,
+  .cv-section > .cv-skills {
+    grid-column: 2;
+  }
+
+  .cv-section > .cv-item:first-of-type,
+  .cv-section > p:first-of-type,
+  .cv-section > .cv-skills:first-of-type {
+    grid-row: 1;
+  }
+
+  .cv-item {
+    grid-template-columns: 1fr;
+    grid-column: 2;
+  }
+
+  .cv-item > div,
+  .cv-item > p {
+    grid-column: 1;
   }
 
   .project-hero {
@@ -3548,12 +3844,384 @@ body[data-page="work"] .filter-label select {
 
 }
 
+@media (max-width: 768px) {
+  :root {
+    --gutter: 16px;
+    --project-gutter: 16px;
+    --type-title: clamp(38px, 10vw, 54px);
+    --type-page-title: clamp(36px, 9.5vw, 50px);
+    --type-project-title: clamp(38px, 9.8vw, 54px);
+    --type-header: clamp(18px, 5vw, 22px);
+    --type-nav: clamp(16px, 4.6vw, 20px);
+    --type-interface: var(--type-nav);
+    --type-work-card-title: clamp(20px, 5.8vw, 24px);
+    --type-work-card-copy: 14px;
+    --type-project-copy: 14px;
+    --type-cv-title: clamp(22px, 6vw, 30px);
+    --type-cv-section: clamp(16px, 4.2vw, 17px);
+    --type-cv-subheader: 14px;
+    --type-cv-copy: 14px;
+    --type-copy: 14px;
+    --type-lead: clamp(17px, 4.8vw, 21px);
+    --type-annotation: clamp(11.5px, 3.2vw, 13px);
+    --type-caption: clamp(11px, 3vw, 12px);
+  }
+
+  body {
+    font-size: var(--type-copy);
+    line-height: 1.5;
+  }
+
+  body::before {
+    opacity: 0.026;
+  }
+
+  body::after {
+    opacity: 0.014;
+  }
+
+  .site-header {
+    padding: 14px 16px;
+  }
+
+  .project-shell {
+    --gutter: 16px;
+    padding-top: 0;
+  }
+
+  .project-editorial-hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    min-height: 0;
+    padding: 18px 16px 56px;
+  }
+
+  .project-shell[data-project-id="a-chair-is-a-toy"] .project-editorial-hero,
+  .project-shell[data-project-id="curanto-cookhouse"] .project-editorial-hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .project-editorial-cover {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  .project-editorial-cover img,
+  .project-shell[data-project-id="a-chair-is-a-toy"] .project-editorial-cover img,
+  .project-shell[data-project-id="design-district-canteen"] .project-editorial-cover img,
+  .project-shell[data-project-id="curanto-cookhouse"] .project-editorial-cover img,
+  .project-shell[data-project-id="enfield-food-pantry"] .project-editorial-cover img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    background: #ffffff;
+  }
+
+  .project-editorial-text {
+    max-width: none;
+  }
+
+  .project-editorial-text h1 {
+    margin: 0 0 28px;
+    font-size: var(--type-project-title);
+    font-weight: var(--weight-title);
+    line-height: 1;
+    letter-spacing: -0.015em;
+  }
+
+  .project-editorial-meta {
+    margin: 0 0 22px;
+    font-size: var(--type-annotation);
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .project-editorial-text p:not(.project-editorial-meta),
+  .project-story-text p,
+  .project-body p {
+    max-width: 36em;
+    font-size: var(--type-project-copy);
+    font-weight: 400;
+    line-height: 1.56;
+  }
+
+  .project-editorial-text p:not(.project-editorial-meta) {
+    margin-bottom: 18px;
+  }
+
+  .project-annotations {
+    min-height: 0;
+    padding: 52px 16px;
+    text-align: left;
+  }
+
+  .project-question-subtitle {
+    width: auto;
+    max-width: 36em;
+    font-size: var(--type-lead);
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .project-story {
+    display: block;
+  }
+
+  .project-story-frame {
+    min-height: 0;
+    margin: 0;
+    padding: 28px 16px;
+  }
+
+  .project-story-frame--story-text {
+    min-height: 0;
+    padding: 64px 16px;
+  }
+
+  .project-story-frame img,
+  .project-story-frame--image img,
+  .project-story-frame--split img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .project-story-frame > figcaption,
+  .project-story-item-caption,
+  .caption {
+    width: auto;
+    margin: 0;
+    padding: 6px 16px 0;
+    color: #555555;
+    font-family: var(--font-annotation);
+    font-size: var(--type-caption);
+    font-weight: 600;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: 0.02em;
+    text-align: left;
+  }
+
+  .project-story-item-caption {
+    justify-self: stretch;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .mobile-full-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .mobile-contained {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .mobile-object {
+    padding: 28px 24px;
+    background: #ffffff;
+  }
+
+  .mobile-object img {
+    width: auto;
+    max-width: min(100%, 640px);
+    margin-right: auto;
+    margin-left: auto;
+    object-fit: contain;
+  }
+
+  .mobile-object .project-story-board {
+    width: 100%;
+    justify-items: center;
+  }
+
+  .mobile-object .project-story-item {
+    width: min(100%, 560px);
+  }
+
+  .mobile-scroll-x {
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    padding: 0 16px 8px;
+  }
+
+  .mobile-scroll-x > img {
+    width: auto;
+    max-width: none;
+    min-width: var(--mobile-image-min, 850px);
+  }
+
+  .mobile-scroll-x > figcaption {
+    position: sticky;
+    left: 0;
+    width: min(100%, calc(100vw - 32px));
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .mobile-scroll-x .project-story-board {
+    display: grid;
+    width: var(--mobile-plate-width, 900px);
+    min-width: var(--mobile-plate-width, 900px);
+    min-height: 0;
+    gap: 24px;
+  }
+
+  .mobile-scroll-x .project-story-item {
+    position: static;
+    width: auto;
+    justify-self: stretch;
+  }
+
+  .mobile-scroll-x .project-story-item img {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    height: auto;
+    max-height: none;
+  }
+
+  .project-story-frame--drawing,
+  .project-story-frame--woven-iso-large,
+  .project-story-frame--wood-pool-section-large {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+
+  .project-story-frame--drawing img,
+  .project-story-frame--woven-iso-large img,
+  .project-story-frame--wood-pool-section-large img {
+    width: 100%;
+    max-width: none;
+  }
+
+  .project-story-frame--hunters-drawing-large,
+  .project-story-frame--hunters-drawing-oversize,
+  .project-story-frame--wood-pool-site-plan,
+  .project-story-frame--wood-pool-elevation-large,
+  .project-story-frame--enfield-site-drawing,
+  .project-story-frame--enfield-plan-wide,
+  .project-story-frame--enfield-section-wide,
+  .project-story-frame--enfield-detail-large,
+  .project-story-frame--cookhouse-axon-large {
+    --mobile-image-min: 920px;
+  }
+
+  .project-story-frame--wood-pool-board,
+  .project-story-frame--deconstruct-board-large {
+    --mobile-image-min: 1040px;
+  }
+
+  .project-story-frame--wood-pool-section-wide {
+    --mobile-image-min: 980px;
+  }
+
+  .project-story-frame--cookhouse-plans {
+    --mobile-plate-width: 920px;
+  }
+
+  .project-story-frame--wood-pool-floor-plans {
+    --mobile-plate-width: 1000px;
+  }
+
+  .project-story-frame--wood-pool-floor-plans .project-story-board,
+  .project-story-frame--cookhouse-plans .project-story-board,
+  .project-story-frame--deconstruct-plan-elevation-pair .project-story-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .project-story-frame--wood-pool-detail-pair {
+    --mobile-plate-width: 1100px;
+  }
+
+  .project-story-frame--wood-pool-detail-pair .project-story-board {
+    grid-template-columns: minmax(430px, 0.9fr) minmax(560px, 1.2fr);
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .project-story-frame--wood-pool-detail-pair .project-story-item:last-child {
+    padding-right: 0;
+    overflow: visible;
+  }
+
+  .project-story-frame--enfield-site-plan-sequence {
+    --mobile-plate-width: 880px;
+  }
+
+  .project-story-frame--enfield-site-plan-sequence .project-story-board {
+    display: block;
+    position: relative;
+    width: var(--mobile-plate-width);
+    min-width: var(--mobile-plate-width);
+    aspect-ratio: 788 / 176;
+  }
+
+  .project-story-frame--enfield-site-plan-sequence .project-story-item {
+    position: absolute;
+    inset: 0;
+  }
+
+  .project-story-frame--wood-pool-mech-system {
+    --mobile-plate-width: 1100px;
+  }
+
+  .project-story-frame--wood-pool-mech-system .wood-mech-system {
+    grid-template-columns: minmax(360px, 0.54fr) minmax(620px, 1fr);
+    width: var(--mobile-plate-width);
+    min-width: var(--mobile-plate-width);
+  }
+
+  .project-story-frame--wood-pool-mech-system .wood-mech-axon img {
+    width: 100%;
+    transform: none;
+  }
+
+  .project-story-frame--cookhouse-map .project-story-board,
+  .project-story-frame--cookhouse-study-pair .project-story-board,
+  .project-story-frame--cookhouse-model-pair .project-story-board,
+  .project-story-frame--cookhouse-dark-grid .project-story-board,
+  .project-story-frame--hunters-model-row .project-story-board,
+  .project-story-frame--wood-pool-model-row .project-story-board {
+    gap: 28px;
+  }
+}
+
 @media (max-width: 560px) {
   :root {
     --header-height: 88px;
-    --type-title: clamp(40px, 13vw, 58px);
-    --type-header: clamp(19px, 5.8vw, 25px);
-    --type-copy: 15px;
+    --type-title: clamp(36px, 10.5vw, 50px);
+    --type-page-title: clamp(34px, 10vw, 48px);
+    --type-project-title: clamp(36px, 10.2vw, 50px);
+    --type-header: clamp(18px, 5.2vw, 22px);
+    --type-nav: clamp(16px, 4.8vw, 20px);
+    --type-interface: var(--type-nav);
+    --type-work-card-title: clamp(20px, 6vw, 23px);
+    --type-work-card-copy: 14px;
+    --type-project-copy: 14px;
+    --type-cv-title: clamp(22px, 6.2vw, 28px);
+    --type-cv-section: clamp(16px, 4.2vw, 17px);
+    --type-cv-subheader: 14px;
+    --type-cv-copy: 14px;
+    --type-copy: 14px;
+    --type-lead: clamp(17px, 4.8vw, 20px);
+    --type-annotation: clamp(11.5px, 3.4vw, 12.5px);
+    --type-caption: clamp(11px, 3.2vw, 12px);
   }
 
   .site-header {
@@ -3617,4 +4285,10 @@ body[data-page="work"] .filter-label select {
   .intro .cadavre-statement {
     font-size: clamp(25px, 7.2vw, 34px);
   }
+}
+
+.project-story-frame > figcaption,
+.project-story-item-caption,
+.caption {
+  display: none !important;
 }

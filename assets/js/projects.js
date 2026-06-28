@@ -185,7 +185,9 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": 4
     },
     "shape": "strata",
-    "workThumbnail": "assets/images/work-covers/hunters-point.webp"
+    "workThumbnail": "assets/images/work-heroes/hunters-point.webp",
+    "workThumbnailAlt": "assets/images/work-heroes-alt/hunters-point.webp",
+    "workListThumbnail": "assets/images/work-covers/hunters-point.webp"
   },
   {
     "id": "wood-street-pool",
@@ -335,7 +337,9 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": 5
     },
     "shape": "cells",
-    "workThumbnail": "assets/images/work-covers/wood-street-pool.webp"
+    "workThumbnail": "assets/images/work-heroes/wood-street-pool.webp",
+    "workThumbnailAlt": "assets/images/work-heroes-alt/wood-street-pool.webp",
+    "workListThumbnail": "assets/images/work-covers/wood-street-pool.webp"
   },
   {
     "id": "enfield-food-pantry",
@@ -516,7 +520,9 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": -4
     },
     "shape": "bar",
-    "workThumbnail": "assets/images/work-covers/enfield-food-pantry.webp"
+    "workThumbnail": "assets/images/work-heroes/enfield-food-pantry.webp",
+    "workThumbnailAlt": "assets/images/work-heroes-alt/enfield-food-pantry.webp",
+    "workListThumbnail": "assets/images/work-covers/enfield-food-pantry.webp"
   },
   {
     "id": "deconstruct-reconfigure",
@@ -614,7 +620,9 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": 2
     },
     "shape": "archive",
-    "workThumbnail": "assets/images/work-covers/deconstruct-reconfigure.webp"
+    "workThumbnail": "assets/images/work-heroes/deconstruct-reconfigure.webp",
+    "workThumbnailAlt": "assets/images/work-heroes-alt/deconstruct-reconfigure.webp",
+    "workListThumbnail": "assets/images/work-covers/deconstruct-reconfigure.webp"
   },
   {
     "id": "borinquen-healing-center",
@@ -656,7 +664,7 @@ window.PORTFOLIO_PROJECTS = [
         "text": "Programmatic elements are organized as discrete pavilions along a continuous circulation path, allowing therapy, rest, and social spaces to remain connected while retaining autonomy. Architecture operates through sequence and orientation rather than enclosure alone."
       },
       {
-        "src": "Andrew Wheat_ajw288_03C_Exterior Render 02 smaLLEST.jpg",
+        "src": "Andrew Wheat_ajw288_03C_Exterior Render 02.jpg",
         "caption": "Exterior render.",
         "layout": "image"
       },
@@ -682,7 +690,7 @@ window.PORTFOLIO_PROJECTS = [
         "caption": "Project hero"
       },
       {
-        "src": "Andrew Wheat_ajw288_03C_Exterior Render 02 smaLLEST.jpg",
+        "src": "Andrew Wheat_ajw288_03C_Exterior Render 02.jpg",
         "caption": "Exterior render"
       },
       {
@@ -696,7 +704,9 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": -3
     },
     "shape": "theater",
-    "workThumbnail": "assets/images/work-covers/borinquen-healing-center.webp"
+    "workThumbnail": "assets/images/work-heroes/borinquen-healing-center.webp",
+    "workThumbnailAlt": "assets/images/work-heroes-alt/borinquen-healing-center.webp",
+    "workListThumbnail": "assets/images/work-covers/borinquen-healing-center.webp"
   },
   {
     "id": "a-chair-is-a-toy",
@@ -811,7 +821,9 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": 3
     },
     "shape": "courtyard",
-    "workThumbnail": "assets/images/work-covers/chair is a toy.jpg"
+    "workThumbnail": "assets/images/work-heroes/a-chair-is-a-toy.webp",
+    "workThumbnailAlt": "assets/images/work-heroes-alt/a-chair-is-a-toy.webp",
+    "workListThumbnail": "assets/images/work-covers/chair is a toy.jpg"
   },
   {
     "id": "design-district-canteen",
@@ -887,7 +899,9 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": -2
     },
     "shape": "grid",
-    "workThumbnail": "assets/images/work-covers/design-district-canteen.webp"
+    "workThumbnail": "assets/images/work-heroes/design-district-canteen.webp",
+    "workThumbnailAlt": "assets/images/work-heroes-alt/design-district-canteen.webp",
+    "workListThumbnail": "assets/images/work-covers/design-district-canteen.webp"
   },
   {
     "id": "curanto-cookhouse",
@@ -1038,7 +1052,9 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": -6
     },
     "shape": "frame",
-    "workThumbnail": "assets/images/work-covers/curanto-cookhouse.webp"
+    "workThumbnail": "assets/images/work-heroes/curanto-cookhouse.webp",
+    "workThumbnailAlt": "assets/images/work-heroes-alt/curanto-cookhouse.webp",
+    "workListThumbnail": "assets/images/work-covers/curanto-cookhouse.webp"
   },
   {
     "id": "york-prize",
@@ -1090,7 +1106,9 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": -5
     },
     "shape": "porous",
-    "workThumbnail": "assets/images/work-covers/york-prize.webp"
+    "workThumbnail": "assets/images/work-heroes/york-prize.webp",
+    "workThumbnailAlt": "assets/images/work-heroes-alt/york-prize.webp",
+    "workListThumbnail": "assets/images/work-covers/york-prize.webp"
   },
   {
     "id": "woven-pavilion",
@@ -1203,7 +1221,9 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": 6
     },
     "shape": "assembly",
-    "workThumbnail": "assets/images/work-covers/woven-pavilion.webp"
+    "workThumbnail": "assets/images/work-heroes/woven-pavilion.webp",
+    "workThumbnailAlt": "assets/images/work-heroes-alt/woven-pavilion.webp",
+    "workListThumbnail": "assets/images/work-covers/woven-pavilion.webp"
   }
 ];
 
