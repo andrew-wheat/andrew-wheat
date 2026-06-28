@@ -2268,13 +2268,17 @@ body[data-page="work"] .filter-label select {
   display: grid;
   grid-template-columns: repeat(2, minmax(260px, 1fr));
   align-items: center;
+  justify-items: center;
   gap: clamp(28px, 5vw, 86px);
-  width: min(98vw, 1925px);
+  width: min(100%, 1925px);
   min-height: 0;
 }
 
 .project-story-frame--deconstruct-plan-elevation-pair .project-story-item {
   position: static;
+  display: grid;
+  place-items: center;
+  width: 100%;
 }
 
 .project-story-frame--deconstruct-plan-elevation-pair .project-story-item img {
@@ -2612,9 +2616,9 @@ body[data-page="work"] .filter-label select {
 
 .project-story-frame--enfield-site-plan-sequence .project-story-board {
   position: relative;
-  width: min(68vw, 980px);
+  width: min(76vw, 1120px);
   min-height: 0;
-  aspect-ratio: 788 / 176;
+  aspect-ratio: 1837 / 425;
   background: #ffffff;
 }
 
@@ -2631,28 +2635,42 @@ body[data-page="work"] .filter-label select {
 }
 
 .project-story-frame--enfield-site-plan-sequence .project-story-item:nth-child(1) {
-  opacity: 0.88;
+  opacity: 1;
 }
 
 .project-story-frame--enfield-site-plan-sequence .project-story-item:nth-child(2) {
   opacity: 0;
-  animation: enfieldSitePlanLayerTwo 9s infinite;
 }
 
 .project-story-frame--enfield-site-plan-sequence .project-story-item:nth-child(3) {
   opacity: 0;
-  animation: enfieldSitePlanLayerThree 9s infinite;
+}
+
+.project-story-frame--enfield-site-plan-sequence .project-story-item:nth-child(4) {
+  opacity: 0;
+}
+
+.project-story-frame--enfield-site-plan-sequence.visible .project-story-item:nth-child(2) {
+  animation: enfieldSitePlanLayerTwo 11s ease-in-out infinite;
+}
+
+.project-story-frame--enfield-site-plan-sequence.visible .project-story-item:nth-child(3) {
+  animation: enfieldSitePlanLayerThree 11s ease-in-out infinite;
+}
+
+.project-story-frame--enfield-site-plan-sequence.visible .project-story-item:nth-child(4) {
+  animation: enfieldSitePlanLayerFour 11s ease-in-out infinite;
 }
 
 @keyframes enfieldSitePlanLayerTwo {
   0%,
-  28% {
+  15% {
     opacity: 0;
   }
 
-  35%,
-  96% {
-    opacity: 0.62;
+  25%,
+  86% {
+    opacity: 1;
   }
 
   100% {
@@ -2662,13 +2680,29 @@ body[data-page="work"] .filter-label select {
 
 @keyframes enfieldSitePlanLayerThree {
   0%,
-  61% {
+  38% {
     opacity: 0;
   }
 
-  68%,
-  96% {
-    opacity: 0.68;
+  48%,
+  86% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes enfieldSitePlanLayerFour {
+  0%,
+  62% {
+    opacity: 0;
+  }
+
+  72%,
+  86% {
+    opacity: 1;
   }
 
   100% {
@@ -2719,6 +2753,31 @@ body[data-page="work"] .filter-label select {
 .project-story-frame--enfield-detail-large img {
   width: min(96vw, 1680px);
   max-height: none;
+}
+
+.project-story-frame--enfield-detail-pair {
+  min-height: auto;
+  padding: clamp(48px, 6vw, 96px) var(--gutter);
+}
+
+.project-story-frame--enfield-detail-pair .project-story-board {
+  display: grid;
+  grid-template-columns: minmax(0, 3846fr) minmax(0, 2246fr);
+  align-items: start;
+  gap: 0;
+  width: min(100%, 1680px);
+  min-height: 0;
+}
+
+.project-story-frame--enfield-detail-pair .project-story-item {
+  position: static;
+}
+
+.project-story-frame--enfield-detail-pair .project-story-item img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
 }
 
 .project-story-frame--enfield-landscape-pair .project-story-board,
@@ -3061,9 +3120,9 @@ body[data-page="work"] .filter-label select {
   grid-template-columns: minmax(520px, 0.86fr) minmax(0, 1.46fr);
   align-items: center;
   gap: clamp(16px, 2vw, 42px);
-  width: min(96vw, 2040px);
+  width: min(100%, 2040px);
   min-height: 0;
-  padding-right: clamp(88px, 7vw, 160px);
+  padding-right: clamp(120px, 8vw, 190px);
   padding-left: clamp(56px, 5vw, 108px);
 }
 
@@ -3080,7 +3139,7 @@ body[data-page="work"] .filter-label select {
 
 .project-story-frame--wood-pool-detail-pair .project-story-item:last-child img {
   display: block;
-  width: 142%;
+  width: min(132%, 1420px);
   height: auto;
   max-width: none;
   max-height: none;
@@ -3089,7 +3148,7 @@ body[data-page="work"] .filter-label select {
 
 .project-story-frame--wood-pool-detail-pair .project-story-item:last-child {
   box-sizing: border-box;
-  padding-right: clamp(24px, 3vw, 72px);
+  padding-right: clamp(56px, 4vw, 96px);
   overflow: visible;
 }
 
@@ -4406,10 +4465,16 @@ body[data-page="work"] .site-copyright {
 
   .project-story-frame--wood-pool-detail-pair {
     --mobile-plate-width: 1100px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .project-story-frame--wood-pool-detail-pair .project-story-board {
     grid-template-columns: minmax(430px, 0.9fr) minmax(560px, 1.2fr);
+    width: 100vw !important;
     padding-right: 0;
     padding-left: 0;
   }
@@ -4562,6 +4627,7 @@ body[data-page="work"] .site-copyright {
   .project-story-frame--enfield-landscape-pair .project-story-board,
   .project-story-frame--enfield-section-pair .project-story-board,
   .project-story-frame--enfield-threshold-pair .project-story-board,
+  .project-story-frame--enfield-detail-pair .project-story-board,
   .project-story-frame--enfield-model-row .project-story-board,
   .project-story-frame--hunters-model-row .project-story-board,
   .project-story-frame--hunters-workshop-sequence .project-story-board,
@@ -4575,14 +4641,30 @@ body[data-page="work"] .site-copyright {
   }
 
   .project-story-frame--enfield-site-plan-sequence .project-story-board {
-    display: grid;
-    grid-template-columns: 1fr !important;
+    display: block;
+    position: relative;
+    grid-template-columns: none !important;
     width: 100% !important;
     min-width: 0 !important;
-    aspect-ratio: auto;
+    aspect-ratio: 1837 / 425;
   }
 
-  .project-story-frame--enfield-site-plan-sequence .project-story-item,
+  .project-story-frame--enfield-site-plan-sequence .project-story-item {
+    position: absolute !important;
+    inset: 0 !important;
+  }
+
+  .project-story-frame--enfield-detail-pair .project-story-item {
+    display: grid;
+    justify-items: center;
+  }
+
+  .project-story-frame--enfield-detail-pair .project-story-item img {
+    width: auto !important;
+    height: min(58.2vw, 1010px) !important;
+    max-width: 100% !important;
+  }
+
   .project-story-frame--hunters-workshop-sequence .project-story-item {
     position: static !important;
     inset: auto !important;

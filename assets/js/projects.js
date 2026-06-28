@@ -32,7 +32,7 @@ window.PORTFOLIO_PROJECTS = [
       {
         "layout": "story-text",
         "heading": "Convergence",
-        "text": "Hunters Point is not lacking activity. It is lacking sustained overlap. Industrial rail corridors, commuter routines, commercial amenities, and waterfront access are reorganized into a shared framework where production, consumption, living, and working meet."
+        "text": "Census data shows Hunter's Point is a transitory environment. It is largely high-income and young, but more importantly, living and working are spatially separated. Most people that live there commute to work in Manhattan, while many of the people working in Hunters Point live in Astoria. Because of this, the area remains active throughout the day, but there is little sustained overlap between these groups. This promts the need for design that allows living, working, production, and play to share space."
       },
       {
         "src": "housing parti.jpg",
@@ -60,18 +60,8 @@ window.PORTFOLIO_PROJECTS = [
         "text": "The ground level acts as a mediator rather than a boundary. Movement slows into an eddy around the plaza, distributing workshops, vendor stalls, community services, kitchens, laundries, and gardens as rooms along a public edge."
       },
       {
-        "layout": "hunters-model-row",
-        "items": [
-          {
-            "src": "1.png"
-          },
-          {
-            "src": "2.png"
-          },
-          {
-            "src": "3.png"
-          }
-        ]
+        "src": "Speculative Circulation model.png",
+        "layout": "hunters-circulation-model"
       },
       {
         "layout": "hunters-model-row",
@@ -85,10 +75,6 @@ window.PORTFOLIO_PROJECTS = [
         ]
       },
       {
-        "src": "Speculative Circulation model.png",
-        "layout": "hunters-circulation-model"
-      },
-      {
         "layout": "hunters-workshop-sequence",
         "items": [
           {
@@ -99,6 +85,20 @@ window.PORTFOLIO_PROJECTS = [
           },
           {
             "src": "Workshop Stack 3.png"
+          }
+        ]
+      },
+      {
+        "layout": "hunters-model-row",
+        "items": [
+          {
+            "src": "1.png"
+          },
+          {
+            "src": "2.png"
+          },
+          {
+            "src": "3.png"
           }
         ]
       },
@@ -399,13 +399,16 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "enfield-site-plan-sequence",
         "items": [
           {
-            "src": "site plan overlay 1.png"
+            "src": "site plan 1.png"
           },
           {
-            "src": "site plan overlay 2.png"
+            "src": "site plan 2.png"
           },
           {
-            "src": "site plan overlay 3.png"
+            "src": "site plan 3.png"
+          },
+          {
+            "src": "site plan 4.png"
           }
         ]
       },
@@ -460,9 +463,15 @@ window.PORTFOLIO_PROJECTS = [
         "text": "The roof shields without turning the pantry inward. Light timber framing, translucent corrugate, and exposed structural rhythm create a familiar agrarian language that remains open, legible, and adaptable."
       },
       {
-        "src": "DETAIL SECTION png.png",
-        "caption": "Roof, wall, and threshold detail",
-        "layout": "enfield-detail-large"
+        "layout": "enfield-detail-pair",
+        "items": [
+          {
+            "src": "DETAIL SECTION png - Copy.png"
+          },
+          {
+            "src": "DETAIL SECTION png - Copy (2).png"
+          }
+        ]
       },
       {
         "src": "3X6A0133 smaller.png",

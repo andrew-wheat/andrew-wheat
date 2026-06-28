@@ -1624,6 +1624,7 @@
     "enfield-current-photo",
     "enfield-render-large",
     "enfield-model-row",
+    "enfield-detail-pair",
     "cookhouse-map",
     "cookhouse-study-pair",
     "cookhouse-model-pair",
