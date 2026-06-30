@@ -9,24 +9,25 @@
     ["Body", ["wood-street-pool", "borinquen-healing-center", "a-chair-is-a-toy", "woven-pavilion"]],
     ["Care", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "borinquen-healing-center"]],
     ["Circulation", ["hunters-point", "wood-street-pool", "borinquen-healing-center", "design-district-canteen", "curanto-cookhouse", "woven-pavilion"]],
-    ["Climate", ["wood-street-pool", "enfield-food-pantry", "curanto-cookhouse"]],
+    ["Climate", ["wood-street-pool", "enfield-food-pantry", "curanto-cookhouse", "sustainable-education"]],
     ["Commons", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "curanto-cookhouse", "design-district-canteen"]],
-    ["Community", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "curanto-cookhouse", "design-district-canteen", "deconstruct-reconfigure"]],
+    ["Community", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "curanto-cookhouse", "design-district-canteen", "deconstruct-reconfigure", "sustainable-education"]],
     ["Competition", ["york-prize", "deconstruct-reconfigure", "a-chair-is-a-toy"]],
     ["Configuration", ["hunters-point", "deconstruct-reconfigure", "a-chair-is-a-toy", "curanto-cookhouse"]],
     ["Deconstruction", ["deconstruct-reconfigure", "curanto-cookhouse", "hunters-point"]],
+    ["Education", ["sustainable-education"]],
     ["Form", ["borinquen-healing-center", "woven-pavilion", "design-district-canteen", "a-chair-is-a-toy", "york-prize"]],
     ["Frame", ["hunters-point", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "woven-pavilion"]],
     ["Gathering", ["hunters-point", "enfield-food-pantry", "wood-street-pool", "design-district-canteen", "curanto-cookhouse", "woven-pavilion"]],
     ["Ground", ["wood-street-pool", "enfield-food-pantry", "borinquen-healing-center", "curanto-cookhouse", "woven-pavilion"]],
     ["Housing", ["hunters-point"]],
-    ["Infrastructure", ["wood-street-pool", "hunters-point", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "borinquen-healing-center"]],
+    ["Infrastructure", ["wood-street-pool", "hunters-point", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "borinquen-healing-center", "sustainable-education"]],
     ["Light", ["woven-pavilion", "curanto-cookhouse", "design-district-canteen", "wood-street-pool"]],
     ["Movement", ["wood-street-pool", "hunters-point", "borinquen-healing-center", "woven-pavilion", "a-chair-is-a-toy"]],
     ["Performance", ["a-chair-is-a-toy", "design-district-canteen", "woven-pavilion", "curanto-cookhouse", "hunters-point"]],
     ["Play", ["a-chair-is-a-toy", "wood-street-pool", "design-district-canteen", "woven-pavilion"]],
     ["Production", ["deconstruct-reconfigure", "hunters-point", "curanto-cookhouse"]],
-    ["Resilience", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "deconstruct-reconfigure", "curanto-cookhouse"]],
+    ["Resilience", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "deconstruct-reconfigure", "curanto-cookhouse", "sustainable-education"]],
     ["Ritual", ["curanto-cookhouse", "woven-pavilion", "wood-street-pool"]],
     ["Texture", ["curanto-cookhouse", "woven-pavilion", "york-prize"]],
     ["Threshold", ["curanto-cookhouse", "wood-street-pool", "hunters-point", "enfield-food-pantry", "woven-pavilion", "york-prize", "design-district-canteen"]],
@@ -138,14 +139,12 @@
   }
 
   function renderHero() {
-    const carousel = document.querySelector("[data-hero-carousel]");
-    if (!carousel) return;
+    const carousels = Array.from(document.querySelectorAll("[data-hero-carousel]"));
+    if (!carousels.length) return;
 
     const byId = new Map(projects.map((project) => [project.id, project]));
     const orderedHeroEntries = [
       ["borinquen-healing-center", "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png"],
-      ["hunters-point", "hero.png"],
-      ["hunters-point", "Front Facade Render More Saturated.png"],
       ["enfield-food-pantry", "Work Cover Photo.png"],
       ["enfield-food-pantry", "ZOOMED OUT RENDER FINAL edited tall.png"],
       ["deconstruct-reconfigure", "MODEL 01 cropped.png"],
@@ -153,7 +152,6 @@
       ["curanto-cookhouse", "hero 2.jpg"],
       ["wood-street-pool", "hero.png"],
       ["wood-street-pool", "hero 2.png"],
-      ["a-chair-is-a-toy", "main hero shot.png"],
       ["design-district-canteen", "Model Front View Shot 01.png"],
       ["york-prize", "Andrew Wheat_ajw288_01C_York Model (1).jpg"],
       ["woven-pavilion", "hero.jpg"]
@@ -165,36 +163,38 @@
       })
       .filter(Boolean);
 
-    carousel.innerHTML = slidesToRender.join("");
-    const slides = Array.from(carousel.querySelectorAll(".hero-slide"));
-    const images = Array.from(carousel.querySelectorAll(".hero-image"));
-    let active = 0;
+    carousels.forEach((carousel) => {
+      carousel.innerHTML = slidesToRender.join("");
+      const slides = Array.from(carousel.querySelectorAll(".hero-slide"));
+      const images = Array.from(carousel.querySelectorAll(".hero-image"));
+      let active = 0;
 
-    function updateHeight() {
-      const image = images[active];
-      if (!image) return;
-      const height = image.complete && image.naturalWidth
-        ? (carousel.clientWidth / image.naturalWidth) * image.naturalHeight
-        : image.getBoundingClientRect().height;
-      if (height > 0) carousel.style.height = `${Math.ceil(height)}px`;
-    }
+      function updateHeight() {
+        const image = images[active];
+        if (!image) return;
+        const height = image.complete && image.naturalWidth
+          ? (carousel.clientWidth / image.naturalWidth) * image.naturalHeight
+          : image.getBoundingClientRect().height;
+        if (height > 0) carousel.style.height = `${Math.ceil(height)}px`;
+      }
 
-    function setActive(next) {
-      slides.forEach((slide, index) => slide.classList.toggle("active", index === next));
-      active = next;
-      updateHeight();
-    }
+      function setActive(next) {
+        slides.forEach((slide, index) => slide.classList.toggle("active", index === next));
+        active = next;
+        updateHeight();
+      }
 
-    images.forEach((image) => {
-      if (image.complete) return;
-      image.addEventListener("load", updateHeight, { once: true });
+      images.forEach((image) => {
+        if (image.complete) return;
+        image.addEventListener("load", updateHeight, { once: true });
+      });
+
+      setActive(0);
+      window.addEventListener("resize", updateHeight, { passive: true });
+      if (!reduceMotion && slides.length > 1) {
+        window.setInterval(() => setActive((active + 1) % slides.length), 4600);
+      }
     });
-
-    setActive(0);
-    window.addEventListener("resize", updateHeight, { passive: true });
-    if (!reduceMotion && slides.length > 1) {
-      window.setInterval(() => setActive((active + 1) % slides.length), 4600);
-    }
   }
 
   function renderWordMarquee() {
@@ -337,6 +337,20 @@
         button.setAttribute("aria-label", "Open menu");
       });
     });
+  }
+
+  function initHomeLandingHeader() {
+    const landing = document.querySelector(".home-landing");
+    if (!landing || document.body.dataset.page !== "home") return;
+
+    function updateHeader() {
+      const threshold = Math.max(80, landing.offsetHeight * 0.72);
+      document.body.classList.toggle("home-landing-open", window.scrollY > threshold);
+    }
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    window.addEventListener("resize", updateHeader, { passive: true });
   }
 
   function initEmailCompose() {
@@ -1262,6 +1276,7 @@
     const themeLookup = new Map(themeEntries);
     const allThemes = themeEntries.map(([label]) => label);
     let activeTheme = "all";
+    let activeView = "grid";
     if (filter) {
       filter.innerHTML =
         '<option value="all">All themes</option>' +
@@ -1290,6 +1305,28 @@
       document.querySelectorAll("[data-theme-token]").forEach((button) => {
         button.classList.toggle("active", button.dataset.themeToken === activeTheme);
       });
+    }
+
+    function setView(view, options = {}) {
+      activeView = ["grid", "list"].includes(view) ? view : "grid";
+      document.querySelectorAll("[data-view-mode]").forEach((item) => {
+        item.classList.toggle("active", item.dataset.viewMode === activeView);
+      });
+
+      catalogue.hidden = false;
+      catalogue.dataset.view = activeView;
+
+      if (!options.skipUrl) updateWorkViewUrl(activeView);
+    }
+
+    function updateWorkViewUrl(view) {
+      const url = new URL(window.location.href);
+      if (view === "grid") {
+        url.searchParams.delete("view");
+      } else {
+        url.searchParams.set("view", view);
+      }
+      window.history.replaceState({}, "", url);
     }
 
     function renderThemeMarquee() {
@@ -1364,14 +1401,15 @@
     filter?.addEventListener("change", () => setTheme(filter.value || "all"));
     document.querySelectorAll("[data-view-mode]").forEach((button) => {
       button.addEventListener("click", () => {
-        document.querySelectorAll("[data-view-mode]").forEach((item) => item.classList.remove("active"));
-        button.classList.add("active");
-        catalogue.dataset.view = button.dataset.viewMode;
+        setView(button.dataset.viewMode || "grid");
       });
     });
 
     renderThemeMarquee();
     draw();
+    const params = new URLSearchParams(window.location.search);
+    const initialView = params.get("view") || "grid";
+    setView(initialView, { skipUrl: true });
   }
 
   function projectCard(project, index, fadeOrder = workFadeOrder(projects)) {
@@ -1406,11 +1444,49 @@
     `;
   }
 
+  function canonicalProjectId(id) {
+    const aliases = {
+      "hunters-point-housing": "hunters-point"
+    };
+    return aliases[id] || id;
+  }
+
+  function setProjectMeta(project) {
+    const pageUrl = `https://andrew-wheat.com/project.html?id=${encodeURIComponent(project.id)}`;
+    const description = project.summary || project.description || "Architecture project by Andrew Wheat.";
+    const image = project.workListThumbnail || project.workThumbnail || project.heroImage || project.thumbnail || "assets/images/work-covers/wood-street-pool.webp";
+    const imageUrl = image.startsWith("http")
+      ? image
+      : `https://andrew-wheat.com/${image.includes("/") ? image : `${project.imageBase || ""}${image}`}`;
+
+    setHeadAttribute('link[rel="canonical"]', "href", pageUrl);
+    setHeadContent('meta[name="description"]', description);
+    setHeadContent('meta[property="og:title"]', `${project.title} | Andrew Wheat`);
+    setHeadContent('meta[property="og:description"]', description);
+    setHeadContent('meta[property="og:url"]', pageUrl);
+    setHeadContent('meta[property="og:image"]', imageUrl);
+  }
+
+  function setHeadContent(selector, content) {
+    const node = document.head.querySelector(selector);
+    if (node) node.setAttribute("content", content);
+  }
+
+  function setHeadAttribute(selector, attribute, value) {
+    let node = document.head.querySelector(selector);
+    if (!node && selector === 'link[rel="canonical"]') {
+      node = document.createElement("link");
+      node.setAttribute("rel", "canonical");
+      document.head.appendChild(node);
+    }
+    if (node) node.setAttribute(attribute, value);
+  }
+
   function renderProjectDetail() {
     const root = document.querySelector("[data-project-detail]");
     if (!root) return;
     const params = new URLSearchParams(window.location.search);
-    const id = params.get("id") || projects[0]?.id;
+    const id = canonicalProjectId(params.get("id") || projects[0]?.id);
     const project = projects.find((item) => item.id === id) || projects[0];
 
     if (!project) {
@@ -1419,6 +1495,7 @@
     }
 
     document.title = `${project.title} | Andrew Wheat`;
+    setProjectMeta(project);
     root.dataset.projectId = project.id;
     if (Array.isArray(project.story) && project.story.length) {
       root.innerHTML = projectEditorialDetail(project);
@@ -1529,7 +1606,7 @@
     if (document.body.dataset.page !== "project") return;
     if (document.querySelector(".project-page-nav")) return;
     const root = document.querySelector("[data-project-detail]");
-    const id = new URLSearchParams(window.location.search).get("id");
+    const id = canonicalProjectId(new URLSearchParams(window.location.search).get("id"));
     const project = projects.find((item) => item.id === id) || projects[0];
     if (!root || !project) return;
     root.insertAdjacentHTML("beforeend", projectNavigation(project));
@@ -2464,6 +2541,7 @@
 
   initCustomCursor();
   initMobileMenu();
+  initHomeLandingHeader();
   initEmailCompose();
   renderHero();
   renderWordMarquee();

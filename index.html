@@ -3,13 +3,63 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Andrew Wheat | Home</title>
+    <title>Andrew Wheat | Architecture Portfolio | Cornell AAP</title>
     <meta
       name="description"
-      content="Andrew Wheat architecture portfolio, Cornell Architecture work, process, and project archive."
+      content="Andrew Wheat is a Bachelor of Architecture candidate at Cornell AAP. View selected architecture projects, studies, drawings, models, and research."
     >
-    <link rel="icon" href="assets/favicon.png?v=20260628-cascadia-mono-copy" type="image/png">
+    <link rel="canonical" href="https://andrew-wheat.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Andrew Wheat | Architecture Portfolio">
+    <meta property="og:description" content="Selected architecture projects, studies, drawings, models, and research by Andrew Wheat at Cornell AAP.">
+    <meta property="og:url" content="https://andrew-wheat.com/">
+    <meta property="og:image" content="https://andrew-wheat.com/assets/images/work-covers/wood-street-pool.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Andrew Wheat | Architecture Portfolio">
+    <meta name="twitter:description" content="Selected architecture projects, studies, drawings, models, and research by Andrew Wheat at Cornell AAP.">
+    <meta name="twitter:image" content="https://andrew-wheat.com/assets/images/work-covers/wood-street-pool.webp">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/css/styles.css?v=20260628-cascadia-mono-copy">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://andrew-wheat.com/#andrew-wheat",
+            "name": "Andrew Wheat",
+            "url": "https://andrew-wheat.com/",
+            "jobTitle": "Bachelor of Architecture candidate",
+            "affiliation": {
+              "@type": "CollegeOrUniversity",
+              "name": "Cornell University College of Architecture, Art, and Planning"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/in/andrewwheat"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://andrew-wheat.com/#website",
+            "name": "Andrew Wheat Architecture Portfolio",
+            "url": "https://andrew-wheat.com/",
+            "creator": {
+              "@id": "https://andrew-wheat.com/#andrew-wheat"
+            }
+          },
+          {
+            "@type": "CreativeWork",
+            "@id": "https://andrew-wheat.com/#portfolio",
+            "name": "Architecture Portfolio",
+            "url": "https://andrew-wheat.com/",
+            "creator": {
+              "@id": "https://andrew-wheat.com/#andrew-wheat"
+            },
+            "about": "Architecture portfolio"
+          }
+        ]
+      }
+    </script>
   </head>
   <body data-page="home">
     <a class="skip-link" href="#main">Skip to main</a>
@@ -24,8 +74,24 @@
     </header>
 
     <main id="main">
-      <section class="hero" aria-label="Selected project images">
-        <div class="hero-carousel" data-hero-carousel></div>
+      <section class="home-stage" aria-label="Portfolio introduction">
+        <section class="hero" id="home-carousel" aria-label="Selected project images">
+          <div class="hero-carousel" data-hero-carousel></div>
+        </section>
+        <section class="home-landing" aria-labelledby="landing-title">
+          <div class="home-landing-frost" aria-hidden="true"></div>
+          <div class="home-landing-inner">
+            <h1 id="landing-title" class="home-landing-word home-landing-word--name">Andrew Wheat</h1>
+            <p class="home-landing-word home-landing-word--school">Cornell Architecture</p>
+            <div class="home-landing-row" aria-label="Portfolio categories">
+              <span class="home-landing-word">Selected</span>
+              <span class="home-landing-word">Studies</span>
+              <span class="home-landing-word">Drawings</span>
+              <span class="home-landing-word">Models</span>
+              <span class="home-landing-word">Research</span>
+            </div>
+          </div>
+        </section>
       </section>
     </main>
 

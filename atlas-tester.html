@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project Atlas Tester</title>
+    <meta
+      name="description"
+      content="Isolated tester for a future Google Earth-style Project Atlas view of Andrew Wheat's Work page."
+    >
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260628-cascadia-mono-copy">
+    <link rel="stylesheet" href="assets/css/project-atlas.css">
+  </head>
+  <body class="atlas-tester-page">
+    <!--
+      Project Atlas tester page.
+      This is an isolated prototype, not live navigation.
+      Final target is work.html as an alternate Work view alongside Grid / List / Atlas (@).
+      Homepage behavior is out of scope.
+      Local detail and building/site-scale LOD require real GeoJSON/site data in assets/data/site-geojson/.
+      Provisional 3D context is generated from coordinate-centered public map data, not exact lots, surveys, LiDAR, or project footprints.
+      This prototype uses a local canvas halftone globe because CesiumJS is not vendored here; production Google Earth-like LOD should use a stronger geospatial engine.
+    -->
+    <a class="skip-link" href="#project-atlas">Skip to project atlas</a>
+
+    <header class="atlas-header" aria-label="Tester navigation">
+      <a class="brand" href="index.html" aria-label="Andrew Wheat home">Andrew Wheat</a>
+      <nav class="atlas-nav">
+        <a aria-current="page" href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main class="atlas-shell">
+      <section class="atlas-intro" aria-labelledby="atlas-title">
+        <div>
+          <p class="atlas-kicker">Prototype interface. Not yet part of live navigation.</p>
+          <h1 id="atlas-title">Project Atlas Tester</h1>
+          <p class="atlas-note">
+            An isolated Google Earth-style Work-page prototype rendered as a white/off-white halftone globe on black. The dots are the map language itself: sited projects lock to real coordinates, projected studies inherit parent sites as architectural callouts, and unsited work stays on a material axis.
+          </p>
+        </div>
+        <div class="atlas-view-toggle" aria-label="Simulated Work view mode">
+          <a href="work.html" aria-label="Grid view" title="Grid view">#</a>
+          <a href="work.html" aria-label="List view" title="List view">=</a>
+          <button type="button" class="active" aria-label="Atlas view" title="Atlas view">@</button>
+        </div>
+      </section>
+
+      <noscript>
+        <p class="atlas-fallback">
+          JavaScript is required for the interactive halftone globe. The project links below remain available as a static fallback.
+        </p>
+      </noscript>
+
+      <section class="atlas-layout" id="project-atlas">
+        <div class="atlas-stage" data-project-atlas-stage data-project-atlas-pointcloud>
+          <canvas
+            class="atlas-canvas"
+            data-project-atlas-canvas
+            aria-label="Interactive project atlas showing architecture projects by location."
+            role="img"
+          ></canvas>
+          <div class="atlas-overlay" data-project-atlas-overlay aria-hidden="false"></div>
+          <article class="atlas-preview-card atlas-vellum-card" data-project-atlas-preview hidden></article>
+          <p class="atlas-status">
+            Drag to orbit. Wheel or pinch to zoom. Local 3D context, where available, is provisional OSM-derived point data centered on project coordinates, not exact site boundaries.
+            <span class="atlas-attribution">Map data &copy; OpenStreetMap contributors.</span>
+          </p>
+        </div>
+
+        <aside class="atlas-panel" data-project-atlas-panel aria-live="polite">
+          <p>Loading Project Atlas data...</p>
+        </aside>
+      </section>
+
+      <section class="atlas-list" aria-labelledby="atlas-list-title">
+        <h2 id="atlas-list-title">Atlas Projects</h2>
+        <ul class="atlas-list-grid" data-project-atlas-list>
+          <li><a href="project.html?id=enfield-food-pantry">Enfield Food Pantry</a></li>
+          <li><a href="project.html?id=deconstruct-reconfigure">Deconstruct Reconfigure</a></li>
+          <li><a href="project.html?id=borinquen-healing-center">Borinquen Healing Center</a></li>
+          <li><a href="project.html?id=a-chair-is-a-toy">A Chair is a Toy!</a></li>
+          <li><a href="project.html?id=design-district-canteen">Design District Canteen</a></li>
+          <li><a href="project.html?id=hunters-point-housing">Hunters Point Housing</a></li>
+          <li><a href="project.html?id=curanto-cookhouse">Curanto Cookhouse</a></li>
+          <li><a href="project.html?id=york-prize">York Prize</a></li>
+          <li><a href="project.html?id=wood-street-pool">Wood Street Pool</a></li>
+          <li><a href="project.html?id=woven-pavilion">Woven Pavilion</a></li>
+          <li><a href="project.html?id=sustainable-education">Sustainable Education</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="assets/js/project-atlas.js"></script>
+  </body>
+</html>

@@ -8,7 +8,14 @@
       name="description"
       content="Catalogue of Andrew Wheat's architecture projects, process, and research."
     >
-    <link rel="icon" href="assets/favicon.png?v=20260628-cascadia-mono-copy" type="image/png">
+    <link rel="canonical" href="https://andrew-wheat.com/work.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Work | Andrew Wheat">
+    <meta property="og:description" content="Catalogue of Andrew Wheat's architecture projects, studies, drawings, models, and research.">
+    <meta property="og:url" content="https://andrew-wheat.com/work.html">
+    <meta property="og:image" content="https://andrew-wheat.com/assets/images/work-covers/wood-street-pool.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/css/styles.css?v=20260628-cascadia-mono-copy">
   </head>
   <body data-page="work">
@@ -31,6 +38,15 @@
         </p>
       </section>
 
+      <section class="work-equation reveal" aria-label="Filter projects by theme">
+        <div class="architecture-marquee work-equation-marquee">
+          <button type="button" class="marquee-fixed marquee-filter active" data-theme-token="all">Architecture =</button>
+          <span class="marquee-window">
+            <span class="marquee-track" data-work-theme-track></span>
+          </span>
+        </div>
+      </section>
+
       <section class="catalogue-controls reveal" aria-label="Catalogue controls">
         <div class="view-toggle" aria-label="View mode">
           <button type="button" class="icon-button active" data-view-mode="grid" aria-label="Grid view" title="Grid view">
@@ -39,15 +55,6 @@
           <button type="button" class="icon-button" data-view-mode="list" aria-label="List view" title="List view">
             <span aria-hidden="true">=</span>
           </button>
-        </div>
-      </section>
-
-      <section class="work-equation reveal" aria-label="Filter projects by theme">
-        <div class="architecture-marquee work-equation-marquee">
-          <button type="button" class="marquee-fixed marquee-filter active" data-theme-token="all">Architecture =</button>
-          <span class="marquee-window">
-            <span class="marquee-track" data-work-theme-track></span>
-          </span>
         </div>
       </section>
 

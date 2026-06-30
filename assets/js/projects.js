@@ -1240,31 +1240,43 @@ window.PORTFOLIO_PROJECTS = [
     "workThumbnail": "assets/images/work-heroes/woven-pavilion.webp",
     "workThumbnailAlt": "assets/images/work-heroes-alt/woven-pavilion.webp",
     "workListThumbnail": "assets/images/work-covers/woven-pavilion.webp"
-  }
-];
-
-window.ARCHIVED_PORTFOLIO_PROJECTS = [
+  },
   {
-    "id": "sustainable-education-nepal",
-    "title": "Sustainable Education Nepal",
+    "id": "sustainable-education",
+    "slug": "sustainable-education",
+    "title": "Sustainable Education",
     "year": "2024",
+    "location": "Nepal",
+    "lat": 27.934722,
+    "lng": 84.405278,
+    "atlasType": "sited",
     "studio": "Cornell University Sustainable Design",
-    "type": "Educational / public interest",
+    "affiliation": "Cornell University Sustainable Design",
+    "type": "Educational infrastructure / school / teacher institute",
+    "program": "school / teacher institute",
+    "url": "project.html?id=sustainable-education",
     "themes": [
       "education",
       "material",
-      "community"
+      "community",
+      "climate",
+      "infrastructure"
     ],
-    "summary": "A public-interest education project developed through community partnership, material research, and environmental analysis.",
-    "description": "A developing project page. The current sequence uses all supplied renders, plans, sections, elevations, site imagery, and environmental diagrams as a visual archive.",
+    "summary": "A school and teacher institute project in Nepal developed through Cornell University Sustainable Design, integrating cultural continuity, drainage, climate resilience, and educational infrastructure.",
+    "description": "A school and teacher institute project in Nepal developed through Cornell University Sustainable Design, integrating cultural continuity, drainage, climate resilience, and educational infrastructure.",
     "parti": "Educational infrastructure is treated as a community-built material and climatic system.",
-    "question": "How can educational infrastructure support community-driven construction?",
-    "operation": "Use material research, site work, and partnership as design tools.",
+    "question": "How can educational infrastructure support community-driven construction while responding to culture, drainage, and climate resilience?",
+    "operation": "Use material research, site work, cultural continuity, drainage, and partnership as design tools.",
     "imageBase": "assets/images/Projects/Sustainable Education Nepal/",
     "thumbnail": "EXTERIOR 2 EDITED noisy COPY.jpg",
     "heroImage": "EXTERIOR 2 EDITED noisy COPY.jpg",
     "overviewImage": "EXTERIOR 2 EDITED noisy COPY.jpg",
     "story": [
+      {
+        "layout": "story-text",
+        "heading": "School / Institute",
+        "text": "This live project entry uses the existing Sustainable Education image archive. TODO: replace abstract atlas placement with verified GeoJSON/site data and add any missing final project text when the full project package is available."
+      },
       {
         "src": "buildings.jpg",
         "caption": "Campus buildings.",
@@ -1335,31 +1347,12 @@ window.ARCHIVED_PORTFOLIO_PROJECTS = [
       "rotation": 4
     },
     "shape": "cells",
-    "workThumbnail": "assets/images/work-covers/sustainable-education-nepal.webp"
-  },
-  {
-    "id": "ephemeral-diptypque",
-    "title": "Ephemeral Diptyque",
-    "year": "2024",
-    "studio": "Cornell Architecture",
-    "type": "Study / installation",
-    "themes": [
-      "sequence",
-      "atmosphere",
-      "image"
-    ],
-    "summary": "A placeholder for the Ephemeral Diptypque project.",
-    "question": "How can a temporary image sequence shape architectural reading?",
-    "operation": "Use atmosphere, sequence, and image pairing as a spatial study.",
-    "position": {
-      "x": 67,
-      "y": 88,
-      "rotation": -4
-    },
-    "shape": "porous",
-    "imageBase": "assets/images/Projects/Ephemeral Diptypque/"
+    "workThumbnail": "assets/images/work-covers/sustainable-education-nepal.webp",
+    "workListThumbnail": "assets/images/work-covers/sustainable-education-nepal.webp"
   }
 ];
+
+window.ARCHIVED_PORTFOLIO_PROJECTS = [];
 
 window.ARCHITECTURE_WORDS = [
   "collaboration",
