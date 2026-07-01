@@ -1,7 +1,0 @@
-{
-  "scripts": {
-    "atlas:fetch": "node scripts/fetch-atlas-map-data.mjs",
-    "atlas:build-global": "node scripts/build-atlas-global-land-dots.mjs",
-    "atlas:data": "npm run atlas:build-global && npm run atlas:fetch"
-  }
-}

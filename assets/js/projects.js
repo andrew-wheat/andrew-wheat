@@ -1247,9 +1247,6 @@ window.PORTFOLIO_PROJECTS = [
     "title": "Sustainable Education",
     "year": "2024",
     "location": "Nepal",
-    "lat": 27.934722,
-    "lng": 84.405278,
-    "atlasType": "sited",
     "studio": "Cornell University Sustainable Design",
     "affiliation": "Cornell University Sustainable Design",
     "type": "Educational infrastructure / school / teacher institute",
@@ -1275,7 +1272,7 @@ window.PORTFOLIO_PROJECTS = [
       {
         "layout": "story-text",
         "heading": "School / Institute",
-        "text": "This live project entry uses the existing Sustainable Education image archive. TODO: replace abstract atlas placement with verified GeoJSON/site data and add any missing final project text when the full project package is available."
+        "text": "This live project entry uses the existing Sustainable Education image archive. TODO: add any missing final project text when the full project package is available."
       },
       {
         "src": "buildings.jpg",
