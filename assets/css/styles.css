@@ -4498,15 +4498,15 @@ body[data-page="work"] .site-copyright {
 
   .project-editorial-hero {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 26px;
     min-height: 0;
-    padding: 18px 16px 56px;
+    padding: 18px 16px 44px;
   }
 
   .project-shell[data-project-id="a-chair-is-a-toy"] .project-editorial-hero,
   .project-shell[data-project-id="curanto-cookhouse"] .project-editorial-hero {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 26px;
   }
 
   .project-editorial-cover {
@@ -4532,7 +4532,7 @@ body[data-page="work"] .site-copyright {
   }
 
   .project-editorial-text h1 {
-    margin: 0 0 28px;
+    margin: 0 0 24px;
     font-size: var(--type-project-title);
     font-weight: var(--weight-title);
     line-height: 1;
@@ -4540,7 +4540,7 @@ body[data-page="work"] .site-copyright {
   }
 
   .project-editorial-meta {
-    margin: 0 0 22px;
+    margin: 0 0 18px;
     font-family: var(--font-copy);
     font-size: var(--type-copy);
     font-weight: var(--weight-copy);
@@ -4559,12 +4559,12 @@ body[data-page="work"] .site-copyright {
   }
 
   .project-editorial-text p:not(.project-editorial-meta) {
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
 
   .project-annotations {
     min-height: 0;
-    padding: 52px 16px;
+    padding: 42px 16px;
     text-align: left;
   }
 
@@ -4583,12 +4583,12 @@ body[data-page="work"] .site-copyright {
   .project-story-frame {
     min-height: 0;
     margin: 0;
-    padding: 28px 16px;
+    padding: 24px 16px;
   }
 
   .project-story-frame--story-text {
     min-height: 0;
-    padding: 64px 16px;
+    padding: 52px 16px;
   }
 
   .project-story-frame img,
@@ -4638,7 +4638,7 @@ body[data-page="work"] .site-copyright {
   }
 
   .mobile-object {
-    padding: 28px 24px;
+    padding: 24px 20px;
     background: #ffffff;
   }
 
@@ -4665,7 +4665,7 @@ body[data-page="work"] .site-copyright {
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
-    padding: 0 16px 8px;
+    padding: 0 16px 6px;
   }
 
   .mobile-scroll-x > img {
@@ -4687,7 +4687,7 @@ body[data-page="work"] .site-copyright {
     width: var(--mobile-plate-width, 900px);
     min-width: var(--mobile-plate-width, 900px);
     min-height: 0;
-    gap: 24px;
+    gap: 22px;
   }
 
   .mobile-scroll-x .project-story-item {
@@ -4707,8 +4707,8 @@ body[data-page="work"] .site-copyright {
   .project-story-frame--drawing,
   .project-story-frame--woven-iso-large,
   .project-story-frame--wood-pool-section-large {
-    padding-top: 36px;
-    padding-bottom: 36px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 
   .project-story-frame--drawing img,
@@ -4813,7 +4813,7 @@ body[data-page="work"] .site-copyright {
   .project-story-frame--cookhouse-dark-grid .project-story-board,
   .project-story-frame--hunters-model-row .project-story-board,
   .project-story-frame--wood-pool-model-row .project-story-board {
-    gap: 28px;
+    gap: 24px;
   }
 }
 
@@ -4908,7 +4908,7 @@ body[data-page="work"] .site-copyright {
   }
 
   .project-shell[data-project-id="a-chair-is-a-toy"] .project-story-frame--chair-precedent .project-story-item--poem {
-    padding-bottom: clamp(24px, 9vw, 48px);
+    padding-bottom: clamp(18px, 7vw, 36px);
   }
 
   .project-story-frame--wood-pool-floor-plans .project-story-board,
@@ -4936,7 +4936,7 @@ body[data-page="work"] .site-copyright {
     grid-template-columns: 1fr !important;
     width: 100% !important;
     min-width: 0 !important;
-    gap: 28px;
+    gap: 24px;
   }
 
   .project-story-frame--enfield-site-plan-sequence .project-story-board {
