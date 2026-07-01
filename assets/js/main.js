@@ -339,20 +339,6 @@
     });
   }
 
-  function initHomeLandingHeader() {
-    const landing = document.querySelector(".home-landing");
-    if (!landing || document.body.dataset.page !== "home") return;
-
-    function updateHeader() {
-      const threshold = Math.max(80, landing.offsetHeight * 0.72);
-      document.body.classList.toggle("home-landing-open", window.scrollY > threshold);
-    }
-
-    updateHeader();
-    window.addEventListener("scroll", updateHeader, { passive: true });
-    window.addEventListener("resize", updateHeader, { passive: true });
-  }
-
   function initEmailCompose() {
     const compose = document.querySelector("[data-email-compose]");
     const openButton = document.querySelector("[data-email-compose-open]");
@@ -1814,7 +1800,7 @@
                   ${
                     item.text
                       ? `<p>${escapeHtml(item.text).replace(/\n/g, "<br>")}</p>`
-                      : projectMedia(project, item.src, item.caption || image.caption || project.title)
+                      : projectMedia(project, item.src, item.caption || image.caption || project.title, item.mobileSrc)
                   }
                   ${item.label ? `<p class="project-story-item-label">${escapeHtml(item.label)}</p>` : ""}
                   ${item.text ? "" : projectStoryItemCaption(inferredStoryCaption(item, layout))}
@@ -1822,7 +1808,7 @@
               `
             )
             .join("")}</div>`
-        : projectMedia(project, image.src, image.caption || project.title);
+        : projectMedia(project, image.src, image.caption || project.title, image.mobileSrc);
 
     const revealClass = layout === "hunters-context-animation" ? "" : " reveal";
     const caption = "";
@@ -2382,12 +2368,16 @@
     `;
   }
 
-  function projectImage(project, src, alt = "", className = "") {
+  function projectImage(project, src, alt = "", className = "", mobileSrc = "") {
     const imageSrc = optimizedSrc(src.includes("/") ? src : `${project.imageBase || ""}${src}`);
-    return `<img${className ? ` class="${escapeHtml(className)}"` : ""} src="${escapeHtml(imageSrc)}" alt="${escapeHtml(alt)}" loading="lazy">`;
+    const img = `<img${className ? ` class="${escapeHtml(className)}"` : ""} src="${escapeHtml(encodeURI(imageSrc))}" alt="${escapeHtml(alt)}" loading="lazy">`;
+    if (!mobileSrc) return img;
+
+    const mobileImageSrc = optimizedSrc(mobileSrc.includes("/") ? mobileSrc : `${project.imageBase || ""}${mobileSrc}`);
+    return `<picture><source media="(max-width: 768px)" srcset="${escapeHtml(encodeURI(mobileImageSrc))}">${img}</picture>`;
   }
 
-  function projectMedia(project, src, alt = "") {
+  function projectMedia(project, src, alt = "", mobileSrc = "") {
     const mediaSrc = optimizedSrc(src.includes("/") ? src : `${project.imageBase || ""}${src}`);
     if (/\.pdf$/i.test(src)) {
       return `
@@ -2398,7 +2388,7 @@
       `;
     }
 
-    return projectImage(project, src, alt);
+    return projectImage(project, src, alt, "", mobileSrc);
   }
 
   function optimizedSrc(src) {
@@ -2542,7 +2532,6 @@
 
   initCustomCursor();
   initMobileMenu();
-  initHomeLandingHeader();
   initEmailCompose();
   renderHero();
   renderWordMarquee();

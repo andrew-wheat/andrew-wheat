@@ -27,7 +27,8 @@ window.PORTFOLIO_PROJECTS = [
     "overviewImage": "hero.png",
     "story": [
       {
-        "layout": "hunters-context-animation"
+        "src": "housing parti.jpg",
+        "layout": "hunters-drawing-oversize"
       },
       {
         "layout": "story-text",
@@ -35,7 +36,7 @@ window.PORTFOLIO_PROJECTS = [
         "text": "Census data shows Hunter's Point is a transitory environment. It is largely high-income and young, but more importantly, living and working are spatially separated. Most people that live there commute to work in Manhattan, while many of the people working in Hunters Point live in Astoria. Because of this, the area remains active throughout the day, but there is little sustained overlap between these groups. This promts the need for design that allows living, working, production, and play to share space."
       },
       {
-        "src": "housing parti.jpg",
+        "src": "Full Diagram Reference High Res.png",
         "layout": "hunters-drawing-oversize"
       },
       {
@@ -43,8 +44,8 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "hunters-drawing-large"
       },
       {
-        "src": "Site Plan.svg",
-        "layout": "hunters-drawing-large"
+        "src": "Front Facade Render More Saturated.png",
+        "layout": "image"
       },
       {
         "src": "Ground Floor Plan.svg",
@@ -126,10 +127,6 @@ window.PORTFOLIO_PROJECTS = [
       {
         "src": "Long Elevation.svg",
         "layout": "hunters-drawing-large"
-      },
-      {
-        "src": "Front Facade Render More Saturated.png",
-        "layout": "image"
       },
       {
         "src": "Market Render.png",
@@ -1030,6 +1027,7 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "Revised Cookhouse Axon.png",
+        "mobileSrc": "Revised Cookhouse Axon mobile only.png",
         "caption": "Axonometric drawing.",
         "layout": "cookhouse-axon-large"
       },

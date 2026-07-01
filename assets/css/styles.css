@@ -390,24 +390,13 @@ select {
   object-fit: contain;
 }
 
-body[data-page="home"] .site-header {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 180ms ease;
-}
-
-body[data-page="home"].home-landing-open .site-header {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 .home-stage {
   position: relative;
-  min-height: 200svh;
+  min-height: 100svh;
 }
 
 body[data-page="home"] .home-stage > .hero {
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 0;
   height: 100svh;
@@ -432,88 +421,6 @@ body[data-page="home"] .home-stage .hero-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.home-landing {
-  position: relative;
-  z-index: 2;
-  min-height: 100svh;
-  margin-top: -100svh;
-  overflow: hidden;
-  display: grid;
-  align-items: center;
-  padding: calc(var(--header-height) + 42px) var(--project-gutter) clamp(32px, 5vw, 68px);
-  color: #ffffff;
-  isolation: isolate;
-}
-
-.home-landing-frost {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(245, 245, 240, 0.2), rgba(245, 245, 240, 0.08)),
-    radial-gradient(ellipse at 18% 18%, rgba(255, 255, 255, 0.18), transparent 42%),
-    radial-gradient(ellipse at 82% 78%, rgba(255, 255, 255, 0.1), transparent 46%),
-    rgba(18, 18, 16, 0.36);
-  backdrop-filter: blur(20px) saturate(0.74) contrast(0.9);
-  -webkit-backdrop-filter: blur(20px) saturate(0.74) contrast(0.9);
-}
-
-.home-landing-frost::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.34;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0.28'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E"),
-    repeating-linear-gradient(96deg, rgba(255, 255, 255, 0.055) 0 1px, transparent 1px 7px);
-  background-size: 180px 180px, 100% 100%;
-  mix-blend-mode: overlay;
-}
-
-.home-landing-inner {
-  width: 100%;
-  min-height: calc(100svh - var(--header-height) - 110px);
-  position: relative;
-  mix-blend-mode: normal;
-}
-
-.home-landing-word {
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  color: #ffffff;
-  font-size: clamp(18px, 2.05vw, 30px);
-  line-height: 1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  text-shadow: none;
-}
-
-.home-landing-word--name {
-  position: absolute;
-  left: 0;
-  top: 26%;
-}
-
-.home-landing-word--school {
-  position: absolute;
-  right: 0;
-  top: 26%;
-}
-
-.home-landing-row {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 55%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: clamp(18px, 3vw, 48px);
-  min-width: 0;
 }
 
 .hero-slide-grid {
@@ -2380,7 +2287,7 @@ body[data-page="work"] .work-catalogue[data-view="list"] .project-number {
 .project-story-frame--chair-precedent .project-story-board {
   display: grid;
   grid-template-columns: minmax(320px, 600px) minmax(320px, 600px);
-  gap: clamp(64px, 8vw, 130px) clamp(44px, 6vw, 96px);
+  gap: clamp(96px, 11vw, 180px) clamp(44px, 6vw, 96px);
   align-items: center;
   justify-content: center;
   justify-items: center;
@@ -4032,39 +3939,6 @@ body[data-page="work"] .site-copyright {
     object-fit: cover;
   }
 
-  .home-landing {
-    padding: calc(var(--header-height) + 28px) var(--gutter) 28px;
-  }
-
-  .home-landing-inner {
-    min-height: calc(100svh - var(--header-height) - 72px);
-  }
-
-  .home-landing-word {
-    font-size: clamp(16px, 5vw, 22px);
-  }
-
-  .home-landing-word--name {
-    left: 0;
-    top: 24%;
-  }
-
-  .home-landing-word--school {
-    right: 0;
-    top: 34%;
-  }
-
-  .home-landing-row {
-    top: 54%;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    row-gap: 18px;
-  }
-
-  .home-landing-row .home-landing-word {
-    flex: 0 1 auto;
-  }
-
   .hero-trace-stack {
     width: min(106vw, 680px);
     aspect-ratio: 0.88;
@@ -4687,6 +4561,12 @@ body[data-page="work"] .site-copyright {
     min-width: var(--mobile-image-min, 850px);
   }
 
+  .mobile-scroll-x > picture > img {
+    width: auto;
+    max-width: none;
+    min-width: var(--mobile-image-min, 850px);
+  }
+
   .mobile-scroll-x > figcaption {
     position: sticky;
     left: 0;
@@ -4920,8 +4800,16 @@ body[data-page="work"] .site-copyright {
     width: min(76vw, 320px);
   }
 
+  .project-shell[data-project-id="a-chair-is-a-toy"] .project-story-frame--chair-precedent .project-story-board {
+    gap: clamp(44px, 13vw, 76px);
+  }
+
   .project-shell[data-project-id="a-chair-is-a-toy"] .project-story-frame--chair-precedent .project-story-item--poem {
-    padding-bottom: clamp(18px, 7vw, 36px);
+    padding-bottom: clamp(28px, 9vw, 52px);
+  }
+
+  .project-shell[data-project-id="enfield-food-pantry"] .project-story-frame--enfield-site-plan-sequence {
+    padding-bottom: clamp(64px, 18vw, 112px);
   }
 
   .project-story-frame--wood-pool-floor-plans .project-story-board,
@@ -5024,6 +4912,44 @@ body[data-page="work"] .site-copyright {
     position: absolute !important;
     inset: 0 !important;
     width: 100% !important;
+  }
+
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-board {
+    padding-top: clamp(58px, 16vw, 96px);
+    padding-bottom: clamp(58px, 16vw, 96px);
+  }
+
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-site-plan {
+    padding-top: clamp(54px, 15vw, 92px);
+    padding-bottom: clamp(54px, 15vw, 92px);
+  }
+
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-interior {
+    padding-top: clamp(56px, 15vw, 96px);
+    padding-bottom: clamp(56px, 15vw, 96px);
+  }
+
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-floor-plans .project-story-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: var(--mobile-plate-width, 1000px) !important;
+    min-width: var(--mobile-plate-width, 1000px) !important;
+  }
+
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-mech-system {
+    padding-top: clamp(74px, 19vw, 124px);
+  }
+
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-section-wide {
+    padding-bottom: clamp(48px, 13vw, 82px);
+  }
+
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-detail-pair {
+    padding-bottom: clamp(72px, 18vw, 124px);
+  }
+
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-elevation-large {
+    padding-top: clamp(62px, 16vw, 106px);
+    padding-bottom: clamp(62px, 16vw, 106px);
   }
 }
 
