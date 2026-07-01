@@ -1257,6 +1257,9 @@ body[data-page="work"] .catalogue-controls {
   margin: clamp(28px, 4vw, 56px) auto clamp(34px, 4.8vw, 72px);
   color: var(--ink);
   mix-blend-mode: normal;
+  visibility: visible;
+  opacity: 1;
+  transform: none;
 }
 
 .work-equation {
@@ -1264,6 +1267,12 @@ body[data-page="work"] .catalogue-controls {
   margin: 0 auto;
   color: var(--ink);
   mix-blend-mode: normal;
+}
+
+body[data-page="work"] .work-equation {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
 }
 
 .work-equation-marquee {
@@ -1320,6 +1329,10 @@ body[data-page="work"] .work-equation-marquee .marquee-plus {
 .view-toggle {
   display: flex;
   gap: 6px;
+}
+
+body[data-page="work"] .view-toggle {
+  display: flex;
 }
 
 .icon-button {
