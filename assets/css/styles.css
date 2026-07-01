@@ -1297,11 +1297,19 @@ body[data-page="work"] .catalogue-controls {
 .work-equation-marquee .marquee-fixed,
 .work-equation-marquee .marquee-token {
   font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
   letter-spacing: inherit;
   line-height: inherit;
   text-transform: inherit;
+}
+
+.work-equation-marquee .marquee-fixed {
+  font-size: var(--type-copy);
+  font-weight: var(--weight-copy);
+}
+
+.work-equation-marquee .marquee-token {
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 .work-equation-marquee .marquee-plus {
