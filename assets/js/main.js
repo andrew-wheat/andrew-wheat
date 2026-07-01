@@ -1277,6 +1277,7 @@
     const allThemes = themeEntries.map(([label]) => label);
     let activeTheme = "all";
     let activeView = "grid";
+    const mobileDefaultView = window.matchMedia("(max-width: 720px)").matches ? "list" : "grid";
     if (filter) {
       filter.innerHTML =
         '<option value="all">All themes</option>' +
@@ -1408,7 +1409,7 @@
     renderThemeMarquee();
     draw();
     const params = new URLSearchParams(window.location.search);
-    const initialView = params.get("view") || "grid";
+    const initialView = params.get("view") || mobileDefaultView;
     setView(initialView, { skipUrl: true });
   }
 
