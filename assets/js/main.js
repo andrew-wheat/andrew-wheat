@@ -1452,6 +1452,37 @@
     setHeadContent('meta[property="og:description"]', description);
     setHeadContent('meta[property="og:url"]', pageUrl);
     setHeadContent('meta[property="og:image"]', imageUrl);
+    setHeadContent('meta[name="twitter:title"]', `${project.title} | Andrew Wheat`);
+    setHeadContent('meta[name="twitter:description"]', description);
+    setHeadContent('meta[name="twitter:image"]', imageUrl);
+    setProjectSchema(project, pageUrl, description, imageUrl);
+  }
+
+  function setProjectSchema(project, pageUrl, description, imageUrl) {
+    const schema = document.getElementById("project-schema");
+    if (!schema) return;
+    schema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "@id": `${pageUrl}#project`,
+      "name": project.title,
+      "url": pageUrl,
+      "description": description,
+      "image": imageUrl,
+      "dateCreated": project.year || undefined,
+      "creator": {
+        "@type": "Person",
+        "@id": "https://andrew-wheat.com/#andrew-wheat",
+        "name": "Andrew Wheat",
+        "url": "https://andrew-wheat.com/"
+      },
+      "isPartOf": {
+        "@type": "CreativeWork",
+        "@id": "https://andrew-wheat.com/#portfolio",
+        "name": "Andrew Wheat Architecture Portfolio"
+      },
+      "about": [project.type, ...(project.themes || [])].filter(Boolean)
+    });
   }
 
   function setHeadContent(selector, content) {
@@ -2371,7 +2402,8 @@
   function projectImage(project, src, alt = "", className = "", mobileSrc = "") {
     const imageSrc = optimizedSrc(src.includes("/") ? src : `${project.imageBase || ""}${src}`);
     const imageClass = `project-lightbox-trigger${className ? ` ${className}` : ""}`;
-    const img = `<img class="${escapeHtml(imageClass)}" src="${escapeHtml(encodeURI(imageSrc))}" alt="${escapeHtml(alt)}" loading="lazy" tabindex="0" role="button" aria-label="Open larger image">`;
+    const label = alt ? `Open larger image: ${alt}` : "Open larger image";
+    const img = `<img class="${escapeHtml(imageClass)}" src="${escapeHtml(encodeURI(imageSrc))}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="${escapeHtml(label)}">`;
     if (!mobileSrc) return img;
 
     const mobileImageSrc = optimizedSrc(mobileSrc.includes("/") ? mobileSrc : `${project.imageBase || ""}${mobileSrc}`);
@@ -2427,6 +2459,7 @@
       <div class="project-lightbox-stage" role="dialog" aria-modal="true" aria-label="Image preview">
         <figure class="project-lightbox-figure">
           <img class="project-lightbox-image" alt="">
+          <figcaption class="project-lightbox-caption"></figcaption>
           <button class="project-lightbox-close" type="button" aria-label="Close image preview"></button>
         </figure>
       </div>
@@ -2435,6 +2468,7 @@
 
     const figure = lightbox.querySelector(".project-lightbox-figure");
     const image = lightbox.querySelector(".project-lightbox-image");
+    const caption = lightbox.querySelector(".project-lightbox-caption");
     const closeButton = lightbox.querySelector(".project-lightbox-close");
     const animatedLayouts = [
       "project-story-frame--enfield-site-plan-sequence",
@@ -2447,6 +2481,8 @@
       image.removeAttribute("src");
       image.removeAttribute("alt");
       image.hidden = false;
+      caption.textContent = "";
+      caption.hidden = true;
       figure.querySelector(".project-lightbox-board")?.remove();
       animatedLayouts.forEach((layout) => figure.classList.remove(layout));
       figure.classList.remove("is-animated", "visible");
@@ -2466,6 +2502,11 @@
       const frame = sourceImage.closest(".project-story-frame");
       const animatedLayout = animatedLayouts.find((layout) => frame?.classList.contains(layout));
       const board = frame?.querySelector(".project-story-board");
+      const captionText =
+        sourceImage.closest("figure")?.querySelector("figcaption")?.textContent?.trim() ||
+        sourceImage.closest(".project-story-item")?.querySelector(".project-story-item-caption")?.textContent?.trim() ||
+        sourceImage.alt ||
+        "";
 
       if (animatedLayout && board) {
         const clone = board.cloneNode(true);
@@ -2482,6 +2523,11 @@
       } else {
         image.src = sourceImage.currentSrc || sourceImage.src;
         image.alt = sourceImage.alt || "";
+      }
+
+      if (captionText) {
+        caption.textContent = captionText;
+        caption.hidden = false;
       }
 
       lightbox.classList.add("is-open");

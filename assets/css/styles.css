@@ -234,6 +234,16 @@ a {
   text-underline-offset: 0.18em;
 }
 
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 1.5px solid currentColor;
+  outline-offset: 4px;
+}
+
 button,
 select {
   font: inherit;
@@ -1699,6 +1709,7 @@ body[data-page="work"] .work-catalogue[data-view="list"] .project-number {
 
 .about-statement p {
   margin: 0;
+  text-indent: 2em;
 }
 
 .cv-heading {
@@ -2339,8 +2350,21 @@ body.project-lightbox-open .site-cursor {
   width: auto;
   height: auto;
   max-width: min(96vw, 1800px);
-  max-height: 94vh;
+  max-height: 88vh;
   object-fit: contain;
+}
+
+.project-lightbox-caption {
+  max-width: min(92vw, 920px);
+  margin: 10px auto 0;
+  color: #111111;
+  font-family: var(--font-annotation);
+  font-size: var(--type-caption);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  text-align: center;
+  mix-blend-mode: normal;
 }
 
 .project-lightbox-close {
@@ -4203,16 +4227,17 @@ body[data-page="work"] .site-copyright {
   }
 
   .cv-section {
-    gap: clamp(16px, 4vw, 28px);
-    padding: clamp(36px, 8vw, 56px) 0;
+    gap: clamp(18px, 5vw, 32px);
+    padding: clamp(42px, 10vw, 66px) 0;
   }
 
   .cv-section + .cv-section {
-    padding-top: clamp(44px, 9vw, 70px);
+    padding-top: clamp(52px, 12vw, 82px);
   }
 
   .cv-item {
-    gap: clamp(8px, 2.8vw, 14px);
+    gap: clamp(10px, 3vw, 16px);
+    padding-bottom: clamp(10px, 3vw, 18px);
   }
 
   .cv-section {
@@ -4605,12 +4630,12 @@ body[data-page="work"] .site-copyright {
   .project-story-frame {
     min-height: 0;
     margin: 0;
-    padding: 24px 16px;
+    padding: clamp(30px, 9vw, 52px) 16px;
   }
 
   .project-story-frame--story-text {
     min-height: 0;
-    padding: 52px 16px;
+    padding: clamp(56px, 14vw, 84px) 16px;
   }
 
   .project-story-frame img,
@@ -4660,7 +4685,7 @@ body[data-page="work"] .site-copyright {
   }
 
   .mobile-object {
-    padding: 24px 20px;
+    padding: clamp(28px, 8vw, 46px) 20px;
     background: #ffffff;
   }
 
