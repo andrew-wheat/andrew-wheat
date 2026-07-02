@@ -2284,6 +2284,136 @@ body[data-page="work"] .work-catalogue[data-view="list"] .project-number {
   max-height: none;
 }
 
+.project-shell .project-lightbox-trigger {
+  cursor: zoom-in;
+}
+
+body.project-lightbox-open {
+  overflow: hidden;
+}
+
+body.has-custom-cursor.project-lightbox-open,
+body.has-custom-cursor.project-lightbox-open * {
+  cursor: auto !important;
+}
+
+body.project-lightbox-open .site-cursor {
+  opacity: 0 !important;
+}
+
+.project-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: clamp(18px, 3vw, 42px);
+  background: rgba(255, 255, 255, 0.82);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.project-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.project-lightbox-stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.project-lightbox-figure {
+  position: relative;
+  display: block;
+  max-width: min(96vw, 1800px);
+  max-height: 94vh;
+  margin: 0;
+}
+
+.project-lightbox-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(96vw, 1800px);
+  max-height: 94vh;
+  object-fit: contain;
+}
+
+.project-lightbox-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: clamp(30px, 4vw, 42px);
+  height: clamp(30px, 4vw, 42px);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: #ffffff;
+  background: transparent;
+  mix-blend-mode: difference;
+  cursor: pointer !important;
+  transform: rotate(45deg);
+}
+
+.project-lightbox-close::before,
+.project-lightbox-close::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  width: clamp(16px, 2.2vw, 24px);
+  height: 1.5px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+}
+
+.project-lightbox-close::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.project-lightbox-figure.is-animated {
+  display: grid;
+  place-items: center;
+  width: min(96vw, 1800px);
+}
+
+.project-lightbox-figure.is-animated .project-lightbox-board {
+  position: relative;
+  min-height: 0;
+  background: #ffffff;
+}
+
+.project-lightbox-figure.is-animated .project-story-item {
+  position: absolute;
+  inset: 0;
+}
+
+.project-lightbox-figure.is-animated .project-story-item img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+}
+
+.project-lightbox-figure.project-story-frame--enfield-site-plan-sequence .project-lightbox-board {
+  width: min(96vw, 1800px);
+  aspect-ratio: 1837 / 425;
+}
+
+.project-lightbox-figure.project-story-frame--hunters-workshop-sequence .project-lightbox-board,
+.project-lightbox-figure.project-story-frame--deconstruct-crossfade .project-lightbox-board {
+  width: min(92vw, 1380px);
+  aspect-ratio: 16 / 10;
+}
+
 .project-story-frame--chair-precedent .project-story-board {
   display: grid;
   grid-template-columns: minmax(320px, 600px) minmax(320px, 600px);
@@ -3984,7 +4114,8 @@ body[data-page="work"] .site-copyright {
   }
 
   .work-catalogue[data-view="grid"] {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(26px, 7vw, 48px) clamp(16px, 4vw, 28px);
   }
 
   .work-catalogue[data-view="grid"] .project-card {
@@ -3999,6 +4130,10 @@ body[data-page="work"] .site-copyright {
   .project-card-text,
   .work-catalogue[data-view="list"] .project-card-text {
     max-width: none;
+  }
+
+  .work-catalogue[data-view="grid"] .project-card-text {
+    max-width: min(28ch, calc(100% - 28px));
   }
 
   .work-catalogue[data-view="list"] .project-thumb-list {
@@ -4812,6 +4947,14 @@ body[data-page="work"] .site-copyright {
     padding-bottom: clamp(64px, 18vw, 112px);
   }
 
+  .project-shell[data-project-id="curanto-cookhouse"] .project-story-frame--cookhouse-plans .project-story-item--upper {
+    order: 1;
+  }
+
+  .project-shell[data-project-id="curanto-cookhouse"] .project-story-frame--cookhouse-plans .project-story-item--lower {
+    order: 2;
+  }
+
   .project-story-frame--wood-pool-floor-plans .project-story-board,
   .project-story-frame--wood-pool-detail-pair .project-story-board,
   .project-story-frame--wood-pool-parapet-pair .project-story-board,
@@ -4927,12 +5070,6 @@ body[data-page="work"] .site-copyright {
   .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-interior {
     padding-top: clamp(56px, 15vw, 96px);
     padding-bottom: clamp(56px, 15vw, 96px);
-  }
-
-  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-floor-plans .project-story-board {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    width: var(--mobile-plate-width, 1000px) !important;
-    min-width: var(--mobile-plate-width, 1000px) !important;
   }
 
   .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-mech-system {

@@ -268,7 +268,7 @@
       const isRotate = Boolean(element?.closest(".rotate-handle"));
       const isResize = Boolean(element?.closest(".resize-handle"));
       const interactiveElement = element?.closest(
-        'a, button, [role="button"], select, input, textarea, .project-card, .project-thumb, .project-file-link'
+        'a, button, [role="button"], select, input, textarea, .project-card, .project-thumb, .project-file-link, .project-lightbox-trigger'
       );
       const hasPointerCursor = element ? window.getComputedStyle(element).cursor === "pointer" : false;
       const isInteractive = Boolean(interactiveElement || hasPointerCursor);
@@ -2370,7 +2370,8 @@
 
   function projectImage(project, src, alt = "", className = "", mobileSrc = "") {
     const imageSrc = optimizedSrc(src.includes("/") ? src : `${project.imageBase || ""}${src}`);
-    const img = `<img${className ? ` class="${escapeHtml(className)}"` : ""} src="${escapeHtml(encodeURI(imageSrc))}" alt="${escapeHtml(alt)}" loading="lazy">`;
+    const imageClass = `project-lightbox-trigger${className ? ` ${className}` : ""}`;
+    const img = `<img class="${escapeHtml(imageClass)}" src="${escapeHtml(encodeURI(imageSrc))}" alt="${escapeHtml(alt)}" loading="lazy" tabindex="0" role="button" aria-label="Open larger image">`;
     if (!mobileSrc) return img;
 
     const mobileImageSrc = optimizedSrc(mobileSrc.includes("/") ? mobileSrc : `${project.imageBase || ""}${mobileSrc}`);
@@ -2413,6 +2414,113 @@
       <figure>${planSvg(project, "grid")}</figure>
       <figure>${planSvg(project, "strata")}</figure>
     `;
+  }
+
+  function initProjectLightbox() {
+    const root = document.querySelector(".project-shell");
+    if (!root) return;
+
+    const lightbox = document.createElement("div");
+    lightbox.className = "project-lightbox";
+    lightbox.setAttribute("aria-hidden", "true");
+    lightbox.innerHTML = `
+      <div class="project-lightbox-stage" role="dialog" aria-modal="true" aria-label="Image preview">
+        <figure class="project-lightbox-figure">
+          <img class="project-lightbox-image" alt="">
+          <button class="project-lightbox-close" type="button" aria-label="Close image preview"></button>
+        </figure>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+
+    const figure = lightbox.querySelector(".project-lightbox-figure");
+    const image = lightbox.querySelector(".project-lightbox-image");
+    const closeButton = lightbox.querySelector(".project-lightbox-close");
+    const animatedLayouts = [
+      "project-story-frame--enfield-site-plan-sequence",
+      "project-story-frame--hunters-workshop-sequence",
+      "project-story-frame--deconstruct-crossfade"
+    ];
+    let previousFocus = null;
+
+    function clearLightboxMedia() {
+      image.removeAttribute("src");
+      image.removeAttribute("alt");
+      image.hidden = false;
+      figure.querySelector(".project-lightbox-board")?.remove();
+      animatedLayouts.forEach((layout) => figure.classList.remove(layout));
+      figure.classList.remove("is-animated", "visible");
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("project-lightbox-open");
+      clearLightboxMedia();
+      if (previousFocus && document.contains(previousFocus)) previousFocus.focus();
+    }
+
+    function openLightbox(sourceImage) {
+      previousFocus = document.activeElement;
+      clearLightboxMedia();
+      const frame = sourceImage.closest(".project-story-frame");
+      const animatedLayout = animatedLayouts.find((layout) => frame?.classList.contains(layout));
+      const board = frame?.querySelector(".project-story-board");
+
+      if (animatedLayout && board) {
+        const clone = board.cloneNode(true);
+        clone.classList.add("project-lightbox-board");
+        clone.querySelectorAll(".project-lightbox-trigger").forEach((node) => {
+          node.classList.remove("project-lightbox-trigger");
+          node.removeAttribute("tabindex");
+          node.removeAttribute("role");
+          node.removeAttribute("aria-label");
+        });
+        image.hidden = true;
+        figure.insertBefore(clone, closeButton);
+        figure.classList.add(animatedLayout, "is-animated", "visible");
+      } else {
+        image.src = sourceImage.currentSrc || sourceImage.src;
+        image.alt = sourceImage.alt || "";
+      }
+
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("project-lightbox-open");
+      closeButton.focus();
+    }
+
+    function lightboxImageFromTarget(target) {
+      const element = target instanceof Element ? target : null;
+      const imageTarget = element?.closest(".project-lightbox-trigger");
+      if (imageTarget instanceof HTMLImageElement) return imageTarget;
+
+      const animatedFrame = element?.closest(animatedLayouts.map((layout) => `.${layout}`).join(", "));
+      const frameImage = animatedFrame?.querySelector(".project-lightbox-trigger");
+      return frameImage instanceof HTMLImageElement ? frameImage : null;
+    }
+
+    root.addEventListener("click", (event) => {
+      const target = lightboxImageFromTarget(event.target);
+      if (!target) return;
+      openLightbox(target);
+    });
+
+    root.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      const target = lightboxImageFromTarget(event.target);
+      if (!target) return;
+      event.preventDefault();
+      openLightbox(target);
+    });
+
+    closeButton.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox || event.target === lightbox.querySelector(".project-lightbox-stage")) closeLightbox();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
+    });
   }
 
   function revealOnScroll() {
@@ -2540,6 +2648,7 @@
   renderCompactIndex();
   renderCatalogue();
   renderProjectDetail();
+  initProjectLightbox();
   initHuntersPointAnimation();
   ensureProjectNavigation();
   revealOnScroll();
