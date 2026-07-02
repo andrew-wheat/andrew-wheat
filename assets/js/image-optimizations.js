@@ -35,7 +35,7 @@ window.PORTFOLIO_OPTIMIZED_IMAGES = {
   "assets/images/Projects/Curanto Cookhouse/IMG_1651 noisy.png": "assets/images/optimized/img-1651-noisy-ca909368e8.webp",
   "assets/images/Projects/Curanto Cookhouse/Revised Cookhouse Axon.png": "assets/images/optimized/revised-cookhouse-axon-21e66b2d55.webp",
   "assets/images/Projects/Design District Canteen/Close Up Shot 02.png": "assets/images/optimized/close-up-shot-02-52bd4e5cfd.webp",
-  "assets/images/Projects/Design District Canteen/Model Front View Shot 01.png": "assets/images/optimized/model-front-view-shot-01-10942c2225.webp",
+  "assets/images/Projects/Design District Canteen/Model Front View Shot 01.png": "assets/images/optimized/model-front-view-shot-01-ed3983f488.webp",
   "assets/images/Projects/Design District Canteen/Model Front View Shot 03 reduced.png": "assets/images/optimized/model-front-view-shot-03-reduced-582690c6a3.webp",
   "assets/images/Projects/Design District Canteen/model Top View Shot 04.png": "assets/images/optimized/model-top-view-shot-04-d01be79b8d.webp",
   "assets/images/Projects/Enfield Food Pantry/03-25_Long View_Comprehensive tall.png": "assets/images/optimized/03-25-long-view-comprehensive-tall-1fac4fa6b1.webp",
