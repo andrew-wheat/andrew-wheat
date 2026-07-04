@@ -1757,7 +1757,7 @@ body[data-page="project"] img[data-image-skeleton].is-loaded {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .about-statement {
