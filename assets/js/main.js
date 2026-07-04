@@ -2859,6 +2859,30 @@
     });
   }
 
+  function syncAboutPortraitHeight() {
+    if (!document.body.matches('[data-page="about"]')) return;
+    const portrait = document.querySelector(".about-portrait");
+    const statement = document.querySelector(".about-statement");
+    if (!portrait || !statement) return;
+
+    const sync = () => {
+      if (!window.matchMedia("(min-width: 901px)").matches) {
+        portrait.style.height = "";
+        return;
+      }
+
+      portrait.style.height = `${Math.round(statement.getBoundingClientRect().height)}px`;
+    };
+
+    sync();
+    window.addEventListener("resize", sync, { passive: true });
+    if (document.fonts?.ready) document.fonts.ready.then(sync).catch(() => {});
+    if ("ResizeObserver" in window) {
+      const observer = new ResizeObserver(sync);
+      observer.observe(statement);
+    }
+  }
+
   initCustomCursor();
   initMobileMenu();
   initEmailCompose();
@@ -2870,6 +2894,7 @@
   renderCatalogue();
   renderProjectDetail();
   initImageSkeletons();
+  syncAboutPortraitHeight();
   initProjectLightbox();
   initHuntersPointAnimation();
   ensureProjectNavigation();
