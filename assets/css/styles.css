@@ -5153,7 +5153,40 @@ body[data-page="work"] .site-copyright {
   }
 
   .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-detail-pair {
-    padding-bottom: clamp(72px, 18vw, 124px);
+    overflow-x: hidden;
+    padding: clamp(56px, 14vw, 92px) 12px clamp(72px, 18vw, 124px);
+  }
+
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-detail-pair .project-story-board {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+    gap: clamp(34px, 9vw, 58px);
+    width: 100% !important;
+    min-width: 0 !important;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-detail-pair .project-story-item,
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-detail-pair .project-story-item:last-child {
+    width: 100% !important;
+    max-width: calc(100vw - 24px) !important;
+    padding-right: 0;
+    overflow: visible;
+  }
+
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-detail-pair .project-story-item img,
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-detail-pair .project-story-item:first-child img,
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-detail-pair .project-story-item:last-child img {
+    display: block;
+    width: 100% !important;
+    max-width: calc(100vw - 24px) !important;
+    height: auto !important;
+    max-height: none;
+    margin-right: auto;
+    margin-left: auto;
+    object-fit: contain;
   }
 
   .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-elevation-large {
