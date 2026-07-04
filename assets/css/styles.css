@@ -1714,7 +1714,7 @@ body[data-page="work"] .work-catalogue[data-view="list"] .project-number {
   gap: clamp(42px, 7vw, 104px);
   align-items: start;
   max-width: min(1120px, calc(100% - (var(--gutter) * 2)));
-  margin-bottom: clamp(70px, 9vw, 118px);
+  margin: 0 auto clamp(70px, 9vw, 118px);
   padding: clamp(24px, 4vw, 58px) 0;
 }
 
@@ -4250,7 +4250,11 @@ body[data-page="work"] .site-copyright {
   }
 
   .about-portrait {
-    max-width: min(100%, 520px);
+    order: -1;
+    max-width: none;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .project-gallery figure:nth-child(3n + 1) {
