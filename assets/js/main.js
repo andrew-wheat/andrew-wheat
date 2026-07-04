@@ -2001,7 +2001,7 @@
   function huntersPointAnimation(project) {
     const layerBase = `${project.imageBase || ""}animation-layers/`;
     const image = (className, src, alt, attrs = "") => `
-      <img class="${className}" src="${escapeHtml(layerBase + src)}" alt="${escapeHtml(alt)}" loading="lazy" ${attrs}>
+      <img class="${className}" src="${escapeHtml(layerBase + src)}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async" data-image-skeleton ${attrs}>
     `;
 
     return `
@@ -2565,7 +2565,7 @@
     const imageAlt = projectImageAlt(project, src, alt);
     const label = `Open larger image: ${imageAlt}`;
     const dimensionAttrs = imageDimensionAttrs(imageSrc) || imageDimensionAttrs(originalSrc);
-    const img = `<img class="${escapeHtml(imageClass)}" src="${escapeHtml(encodeURI(imageSrc))}" alt="${escapeHtml(imageAlt)}" loading="lazy" decoding="async"${dimensionAttrs} tabindex="0" role="button" aria-label="${escapeHtml(label)}">`;
+    const img = `<img class="${escapeHtml(imageClass)}" src="${escapeHtml(encodeURI(imageSrc))}" alt="${escapeHtml(imageAlt)}" loading="lazy" decoding="async" data-image-skeleton${dimensionAttrs} tabindex="0" role="button" aria-label="${escapeHtml(label)}">`;
     if (!mobileSrc) return img;
 
     const mobileImageSrc = optimizedSrc(mobileSrc.includes("/") ? mobileSrc : `${project.imageBase || ""}${mobileSrc}`);
@@ -2846,6 +2846,19 @@
     return Math.max(min, Math.min(max, value));
   }
 
+  function initImageSkeletons() {
+    if (!document.body.matches('[data-page="work"], [data-page="project"]')) return;
+    document.querySelectorAll("img[data-image-skeleton]").forEach((image) => {
+      const markLoaded = () => image.classList.add("is-loaded");
+      if (image.complete && image.naturalWidth > 0) {
+        markLoaded();
+        return;
+      }
+      image.addEventListener("load", markLoaded, { once: true });
+      image.addEventListener("error", markLoaded, { once: true });
+    });
+  }
+
   initCustomCursor();
   initMobileMenu();
   initEmailCompose();
@@ -2856,6 +2869,7 @@
   renderCompactIndex();
   renderCatalogue();
   renderProjectDetail();
+  initImageSkeletons();
   initProjectLightbox();
   initHuntersPointAnimation();
   ensureProjectNavigation();
