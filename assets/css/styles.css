@@ -303,6 +303,16 @@ select {
   text-decoration: none;
 }
 
+.brand {
+  margin: 0;
+  font: inherit;
+}
+
+.brand a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .site-nav {
   display: flex;
   gap: clamp(20px, 2.2vw, 32px);
@@ -1099,6 +1109,7 @@ figcaption {
 
 .section-grid,
 .about-grid,
+.about-profile,
 .about-statement,
 .cv,
 .contact-list,
@@ -1697,11 +1708,33 @@ body[data-page="work"] .work-catalogue[data-view="list"] .project-number {
   font-size: var(--type-copy);
 }
 
+.about-profile {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.5fr) minmax(0, 1.25fr);
+  gap: clamp(38px, 5vw, 82px);
+  align-items: start;
+  max-width: min(1280px, calc(100% - (var(--gutter) * 2)));
+  margin-bottom: clamp(70px, 9vw, 118px);
+  padding: clamp(24px, 4vw, 58px) clamp(24px, 4vw, 64px);
+}
+
+.about-portrait {
+  justify-self: start;
+  margin: 0;
+  width: 121%;
+}
+
+.about-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 .about-statement {
   display: grid;
   gap: 1.45em;
-  max-width: min(760px, calc(100% - (var(--gutter) * 2)));
-  margin-bottom: clamp(70px, 9vw, 118px);
+  max-width: 960px;
   font-size: var(--type-copy);
   font-weight: var(--weight-copy);
   line-height: 1.56;
@@ -4176,6 +4209,7 @@ body[data-page="work"] .site-copyright {
   .work-catalogue[data-view="list"] .project-card,
   .home-about,
   .about-grid,
+  .about-profile,
   .cv-section,
   .cv-item,
   .project-editorial-hero,
@@ -4210,6 +4244,18 @@ body[data-page="work"] .site-copyright {
 
   .home-about-text p:not(.ethos-line) {
     margin-left: 0;
+  }
+
+  .about-profile {
+    gap: clamp(34px, 8vw, 64px);
+    grid-template-columns: 1fr;
+    padding: clamp(20px, 6vw, 42px) 0 0;
+  }
+
+  .about-portrait {
+    order: -1;
+    max-width: none;
+    width: 100%;
   }
 
   .project-gallery figure:nth-child(3n + 1) {
@@ -5102,7 +5148,9 @@ body[data-page="work"] .site-copyright {
   }
 
   .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-section-wide {
+    padding-right: 0;
     padding-bottom: clamp(48px, 13vw, 82px);
+    padding-left: 0;
   }
 
   .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-detail-pair {
