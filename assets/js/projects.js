@@ -28,6 +28,7 @@ window.PORTFOLIO_PROJECTS = [
     "story": [
       {
         "src": "housing parti.jpg",
+        "caption": "Hunters Point cooperative housing parti diagram.",
         "layout": "hunters-drawing-oversize"
       },
       {
@@ -37,22 +38,27 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "Full Diagram Reference High Res.png",
+        "caption": "Hunters Point demographic and site systems diagram.",
         "layout": "hunters-drawing-oversize"
       },
       {
         "src": "Figure Ground Plan.svg",
+        "caption": "Hunters Point figure ground plan.",
         "layout": "hunters-drawing-large"
       },
       {
         "src": "Front Facade Render More Saturated.png",
+        "caption": "Hunters Point cooperative housing front facade render.",
         "layout": "image"
       },
       {
         "src": "Ground Floor Plan.svg",
+        "caption": "Hunters Point cooperative housing ground floor plan.",
         "layout": "hunters-drawing-large"
       },
       {
         "src": "Upper Floor Plan.svg",
+        "caption": "Hunters Point cooperative housing upper floor plan.",
         "layout": "hunters-drawing-large"
       },
       {
@@ -62,16 +68,19 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "Speculative Circulation model.png",
+        "caption": "Hunters Point circulation and workshop massing model.",
         "layout": "hunters-circulation-model"
       },
       {
         "layout": "hunters-model-row",
         "items": [
           {
-            "src": "1_1.png"
+            "src": "1_1.png",
+            "caption": "Hunters Point cooperative housing model study."
           },
           {
-            "src": "2_1.png"
+            "src": "2_1.png",
+            "caption": "Hunters Point shared courtyard model study."
           }
         ]
       },
@@ -79,13 +88,16 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "hunters-workshop-sequence",
         "items": [
           {
-            "src": "Workshop Stack 1.png"
+            "src": "Workshop Stack 1.png",
+            "caption": "Hunters Point workshop stack massing sequence."
           },
           {
-            "src": "Workshop Stack 2.png"
+            "src": "Workshop Stack 2.png",
+            "caption": "Hunters Point workshop and housing stack study."
           },
           {
-            "src": "Workshop Stack 3.png"
+            "src": "Workshop Stack 3.png",
+            "caption": "Hunters Point workshop stack final massing."
           }
         ]
       },
@@ -93,18 +105,22 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "hunters-model-row",
         "items": [
           {
-            "src": "1.png"
+            "src": "1.png",
+            "caption": "Hunters Point cooperative housing physical model."
           },
           {
-            "src": "2.png"
+            "src": "2.png",
+            "caption": "Hunters Point shared circulation model view."
           },
           {
-            "src": "3.png"
+            "src": "3.png",
+            "caption": "Hunters Point housing and public edge model."
           }
         ]
       },
       {
         "src": "Model full shot.png",
+        "caption": "Hunters Point cooperative housing full model view.",
         "layout": "hunters-model-feature"
       },
       {
@@ -114,38 +130,47 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "Section Perspective.svg",
+        "caption": "Hunters Point section perspective through shared circulation.",
         "layout": "hunters-drawing-large"
       },
       {
         "src": "Long Site Section.svg",
+        "caption": "Hunters Point long site section.",
         "layout": "hunters-drawing-large"
       },
       {
         "src": "Long Section.svg",
+        "caption": "Hunters Point cooperative housing long section.",
         "layout": "hunters-drawing-large"
       },
       {
         "src": "Long Elevation.svg",
+        "caption": "Hunters Point cooperative housing long elevation.",
         "layout": "hunters-drawing-large"
       },
       {
         "src": "Market Render.png",
+        "caption": "Hunters Point public market render.",
         "layout": "image"
       },
       {
         "src": "hero.png",
+        "caption": "Hunters Point cooperative housing exterior render.",
         "layout": "image"
       },
       {
         "src": "Corridor Render.png",
+        "caption": "Hunters Point shared corridor render.",
         "layout": "image"
       },
       {
         "src": "Unit Render.png",
+        "caption": "Hunters Point adaptable housing unit render.",
         "layout": "image"
       },
       {
         "src": "Laundry.png",
+        "caption": "Hunters Point shared laundry room render.",
         "layout": "image"
       },
       {
@@ -155,25 +180,27 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "Assembly.png",
+        "caption": "Hunters Point adaptable unit assembly diagram.",
         "layout": "drawing"
       },
       {
         "src": "Corridor.png",
+        "caption": "Hunters Point social corridor interior view.",
         "layout": "image"
       }
     ],
     "images": [
       {
         "src": "Front Facade Render More Saturated.png",
-        "caption": "Front facade render"
+        "caption": "Hunters Point cooperative housing front facade render"
       },
       {
         "src": "Market Render.png",
-        "caption": "Market render"
+        "caption": "Hunters Point public market render"
       },
       {
         "src": "Unit Render.png",
-        "caption": "Unit render"
+        "caption": "Hunters Point adaptable housing unit render"
       }
     ],
     "position": {
@@ -209,10 +236,12 @@ window.PORTFOLIO_PROJECTS = [
     "story": [
       {
         "src": "Board 1.png",
+        "caption": "Wood Street Pool presentation board.",
         "layout": "wood-pool-board"
       },
       {
         "src": "site plan.jpg",
+        "caption": "Wood Street Pool site plan in Ithaca.",
         "layout": "wood-pool-site-plan"
       },
       {
@@ -220,20 +249,24 @@ window.PORTFOLIO_PROJECTS = [
         "items": [
           {
             "src": "Ground Floor Plan.jpg",
+            "caption": "Wood Street Pool ground floor plan.",
             "label": "Ground Floor"
           },
           {
             "src": "FP3.png",
+            "caption": "Wood Street Pool upper floor plan.",
             "label": "Upper Floor"
           }
         ]
       },
       {
         "src": "hero 2.png",
+        "caption": "Wood Street Pool natatorium interior render.",
         "layout": "wood-pool-interior"
       },
       {
         "src": "short-section.svg",
+        "caption": "Wood Street Pool building section through natatorium.",
         "layout": "wood-pool-section-large"
       },
       {
@@ -243,12 +276,14 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "ENVIRONMENTAL SECTION.png",
+        "caption": "Wood Street Pool environmental systems section.",
         "layout": "wood-pool-section-wide"
       },
       {
         "layout": "wood-pool-mech-system",
         "heading": "Mechanical System",
         "src": "mech axon.png",
+        "caption": "Wood Street Pool mechanical systems axonometric.",
         "text": "The building separates wet and dry zones to maintain moisture control and reduce duct runs. The pool hall uses a CAV system concealed in soffit recesses created by the skylight and pool depths, pushing fresh air up the glazing and returning it at the ceiling to limit condensation.\n\nDry program and locker areas use separate ERV and DOAS systems with ground-source heat exchange. Fresh air is drawn through earth ducts before reaching the mechanical units, reducing operational load by preconditioning intake air through the ground.",
         "systems": [
           {
@@ -281,29 +316,35 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "wood-pool-detail-pair",
         "items": [
           {
-            "src": "4.png"
+            "src": "4.png",
+            "caption": "Wood Street Pool envelope detail model view."
           },
           {
-            "src": "detail-sheet.svg"
+            "src": "detail-sheet.svg",
+            "caption": "Wood Street Pool envelope detail section."
           }
         ]
       },
       {
         "src": "short-elevation-cropped.svg",
+        "caption": "Wood Street Pool short elevation drawing.",
         "layout": "wood-pool-elevation-large"
       },
       {
         "src": "long-elevation-cropped.svg",
+        "caption": "Wood Street Pool long elevation drawing.",
         "layout": "wood-pool-elevation-large"
       },
       {
         "layout": "wood-pool-model-row",
         "items": [
           {
-            "src": "2.png"
+            "src": "2.png",
+            "caption": "Wood Street Pool physical model exterior view."
           },
           {
-            "src": "3.png"
+            "src": "3.png",
+            "caption": "Wood Street Pool physical model roof view."
           }
         ]
       }
@@ -311,23 +352,23 @@ window.PORTFOLIO_PROJECTS = [
     "images": [
       {
         "src": "hero.png",
-        "caption": "Project hero"
+        "caption": "Wood Street Pool exterior project render"
       },
       {
         "src": "hero 2.png",
-        "caption": "Interior atmosphere"
+        "caption": "Wood Street Pool natatorium interior render"
       },
       {
         "src": "site plan.jpg",
-        "caption": "Site plan"
+        "caption": "Wood Street Pool site plan in Ithaca"
       },
       {
         "src": "Ground Floor Plan.jpg",
-        "caption": "Ground floor plan"
+        "caption": "Wood Street Pool ground floor plan"
       },
       {
         "src": "detail-sheet.svg",
-        "caption": "Detail section"
+        "caption": "Wood Street Pool envelope detail section"
       }
     ],
     "position": {
@@ -374,17 +415,17 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "04-23_Site Plan_Final.png",
-        "caption": "Site plan.",
+        "caption": "Enfield Food Pantry landscape site plan.",
         "layout": "enfield-site-drawing"
       },
       {
         "src": "site photo.jpg",
-        "caption": "Site photo.",
+        "caption": "Enfield Food Pantry rural site context.",
         "layout": "enfield-current-photo"
       },
       {
-        "src": "Enfield-ONLINE-scaled.jpg",
-        "caption": "Existing pantry context.",
+        "src": "pantry-interior-banana-boxes.jpg",
+        "caption": "Existing Enfield Food Pantry storage interior.",
         "layout": "enfield-current-photo"
       },
       {
@@ -396,32 +437,36 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "enfield-site-plan-sequence",
         "items": [
           {
-            "src": "site plan 1.png"
+            "src": "site plan 1.png",
+            "caption": "Enfield Food Pantry initial planting and site repair phase."
           },
           {
-            "src": "site plan 2.png"
+            "src": "site plan 2.png",
+            "caption": "Enfield Food Pantry pantry and garden expansion phase."
           },
           {
-            "src": "site plan 3.png"
+            "src": "site plan 3.png",
+            "caption": "Enfield Food Pantry community building phase plan."
           },
           {
-            "src": "site plan 4.png"
+            "src": "site plan 4.png",
+            "caption": "Enfield Food Pantry complete landscape phasing plan."
           }
         ]
       },
       {
         "src": "03-25_Long View_Comprehensive tall.png",
-        "caption": "Landscape alignment study.",
+        "caption": "Enfield Food Pantry field-edge landscape alignment study.",
         "layout": "enfield-landscape-single"
       },
       {
         "src": "ZOOMED OUT RENDER FINAL edited tall.png",
-        "caption": "Long view through the field edge.",
+        "caption": "Enfield Food Pantry long view through the field edge.",
         "layout": "enfield-landscape-single"
       },
       {
         "src": "05-01_Plan.png",
-        "caption": "Plan.",
+        "caption": "Enfield Food Pantry building and landscape plan.",
         "layout": "enfield-plan-wide"
       },
       {
@@ -431,27 +476,27 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "Main Building Longitudinal Section.png",
-        "caption": "Long section through distribution hall and service spine",
+        "caption": "Enfield Food Pantry distribution hall longitudinal section.",
         "layout": "enfield-section-wide"
       },
       {
         "src": "Transverse Section.png",
-        "caption": "Transverse section.",
+        "caption": "Enfield Food Pantry transverse section through pantry hall.",
         "layout": "enfield-section-large"
       },
       {
         "src": "Chapel Longitudinal Section.jpg",
-        "caption": "Community section",
+        "caption": "Enfield Food Pantry community building longitudinal section.",
         "layout": "enfield-section-wide"
       },
       {
         "src": "pavilion section.png",
-        "caption": "Pavilion section",
+        "caption": "Enfield Food Pantry landscape pavilion section.",
         "layout": "enfield-section-wide"
       },
       {
         "src": "CHAPEL SECTION PDF smaller.jpg",
-        "caption": "Community section study.",
+        "caption": "Enfield Food Pantry community room section study.",
         "layout": "enfield-section-large"
       },
       {
@@ -461,63 +506,64 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "DETAIL SECTION png.png",
+        "caption": "Enfield Food Pantry roof and wall detail section.",
         "layout": "enfield-detail-large"
       },
       {
         "src": "3X6A0133 smaller.png",
-        "caption": "Model view of the public hall and service edge",
+        "caption": "Enfield Food Pantry public hall and service edge model.",
         "layout": "image"
       },
       {
         "src": "3X6A0190 SMALLER.jpg",
-        "caption": "Timber hall model view",
+        "caption": "Enfield Food Pantry timber hall model view.",
         "layout": "image"
       },
       {
         "src": "3X6A0205.png",
-        "caption": "Model detail of framing and roof rhythm",
+        "caption": "Enfield Food Pantry roof framing model detail.",
         "layout": "image"
       },
       {
         "src": "updated pantry interior.webp",
-        "caption": "Interior atmosphere.",
+        "caption": "Enfield Food Pantry warm interior gathering render.",
         "layout": "enfield-render-large"
       },
       {
         "src": "3X6A0280 cropped SMALLER.png",
-        "caption": "Exterior threshold model view",
+        "caption": "Enfield Food Pantry exterior threshold model view.",
         "layout": "image"
       },
       {
         "src": "Work Cover Photo.png",
-        "caption": "Exterior threshold study",
+        "caption": "Enfield Food Pantry exterior threshold rendering.",
         "layout": "image"
       }
     ],
     "images": [
       {
         "src": "3X6A0133 smaller.png",
-        "caption": "Physical model within field context"
+        "caption": "Enfield Food Pantry physical model in field context"
       },
       {
         "src": "03-25_Long View_Comprehensive tall.png",
-        "caption": "Long view and landscape alignment"
+        "caption": "Enfield Food Pantry long view and landscape alignment"
       },
       {
         "src": "updated pantry interior.webp",
-        "caption": "Exterior atmosphere"
+        "caption": "Enfield Food Pantry warm interior gathering render"
       },
       {
         "src": "Main Building Longitudinal Section.png",
-        "caption": "Long section"
+        "caption": "Enfield Food Pantry distribution hall long section"
       },
       {
         "src": "Chapel Longitudinal Section.jpg",
-        "caption": "Community section"
+        "caption": "Enfield Food Pantry community building section"
       },
       {
         "src": "Transverse Section.png",
-        "caption": "Transverse section"
+        "caption": "Enfield Food Pantry transverse pantry section"
       }
     ],
     "position": {
@@ -554,22 +600,24 @@ window.PORTFOLIO_PROJECTS = [
     "story": [
       {
         "src": "ANDREW WHEAT BOARD 03.jpg",
-        "caption": "Presentation board 03.",
+        "caption": "Deconstruct Reconfigure produce stand presentation board.",
         "layout": "deconstruct-board-large"
       },
       {
         "src": "ANDREW WHEAT BOARD 01.jpg",
-        "caption": "Presentation board 01.",
+        "caption": "Deconstruct Reconfigure assembly and use presentation board.",
         "layout": "deconstruct-board-large"
       },
       {
         "layout": "deconstruct-plan-elevation-pair",
         "items": [
           {
-            "src": "plan.svg"
+            "src": "plan.svg",
+            "caption": "Deconstruct Reconfigure produce stand plan drawing."
           },
           {
-            "src": "side-elevation.svg"
+            "src": "side-elevation.svg",
+            "caption": "Deconstruct Reconfigure side elevation drawing."
           }
         ]
       },
@@ -577,47 +625,51 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "deconstruct-front-back-pair",
         "items": [
           {
-            "src": "front-elevation.svg"
+            "src": "front-elevation.svg",
+            "caption": "Deconstruct Reconfigure front elevation drawing."
           },
           {
-            "src": "back-elevation.svg"
+            "src": "back-elevation.svg",
+            "caption": "Deconstruct Reconfigure back elevation drawing."
           }
         ]
       },
       {
         "src": "enfield food pantry mural.jpg",
-        "caption": "Mural study.",
+        "caption": "Deconstruct Reconfigure food pantry mural study.",
         "layout": "deconstruct-mural"
       },
       {
         "layout": "deconstruct-crossfade",
         "items": [
           {
-            "src": "DO4A0313.png"
+            "src": "DO4A0313.png",
+            "caption": "Deconstruct Reconfigure produce stand closed model view."
           },
           {
-            "src": "DO4A0315.png"
+            "src": "DO4A0315.png",
+            "caption": "Deconstruct Reconfigure produce stand open model view."
           }
         ]
       },
       {
         "src": "MODEL 01 cropped.png",
-        "caption": "Model detail.",
+        "caption": "Deconstruct Reconfigure produce stand model detail.",
         "layout": "image"
       }
     ],
     "images": [
       {
         "src": "MODEL 01 cropped.png",
-        "caption": "Model detail"
+        "caption": "Deconstruct Reconfigure produce stand model detail"
       },
       {
         "src": "ANDREW WHEAT BOARD 01.jpg",
-        "caption": "Presentation board"
+        "caption": "Deconstruct Reconfigure assembly presentation board"
       },
       {
         "src": "DO4A0313.png",
-        "caption": "Model view"
+        "caption": "Deconstruct Reconfigure produce stand model view"
       }
     ],
     "position": {
@@ -662,6 +714,7 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "Floor Plan.png",
+        "caption": "Borinquen Healing Center floor plan.",
         "layout": "borinquen-floor-plan"
       },
       {
@@ -671,37 +724,37 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "Andrew Wheat_ajw288_03C_Exterior Render 02.jpg",
-        "caption": "Exterior render.",
+        "caption": "Borinquen Healing Center coastal exterior render.",
         "layout": "image"
       },
       {
         "src": "Andrew Wheat_ajw288_03C_Interior Render.jpg",
-        "caption": "Interior render.",
+        "caption": "Borinquen Healing Center therapy interior render.",
         "layout": "image"
       },
       {
         "src": "Andrew Wheat_ajw288_Problem 03C_Residential Curtain System Axon Drawing.png",
-        "caption": "Curtain system axon.",
+        "caption": "Borinquen Healing Center curtain system axonometric drawing.",
         "layout": "drawing"
       },
       {
         "src": "Andrew Wheat_ajw288_Problem 03C_Study Model Photo 01.png",
-        "caption": "Project hero.",
+        "caption": "Borinquen Healing Center study model photograph.",
         "layout": "image"
       }
     ],
     "images": [
       {
         "src": "Andrew Wheat_ajw288_Problem 03C_Study Model Photo 01.png",
-        "caption": "Project hero"
+        "caption": "Borinquen Healing Center study model photograph"
       },
       {
         "src": "Andrew Wheat_ajw288_03C_Exterior Render 02.jpg",
-        "caption": "Exterior render"
+        "caption": "Borinquen Healing Center coastal exterior render"
       },
       {
         "src": "Andrew Wheat_ajw288_03C_Interior Render.jpg",
-        "caption": "Interior render"
+        "caption": "Borinquen Healing Center therapy interior render"
       }
     ],
     "position": {
@@ -744,6 +797,7 @@ window.PORTFOLIO_PROJECTS = [
         "items": [
           {
             "src": "Spring Chair for Minerva by Setsuo Kitaoka 1986.jpg",
+            "caption": "Spring Chair for Minerva precedent by Setsuo Kitaoka.",
             "className": "precedent"
           },
           {
@@ -752,13 +806,14 @@ window.PORTFOLIO_PROJECTS = [
           },
           {
             "src": "Mini icon collage for poem.png",
+            "caption": "A Chair is a Toy movement icon collage.",
             "className": "diagram"
           }
         ]
       },
       {
         "src": "Analytic Collage.png",
-        "caption": "Analytic collage of force, balance, and motion.",
+        "caption": "A Chair is a Toy analytic collage of force and balance.",
         "layout": "drawing"
       },
       {
@@ -767,14 +822,17 @@ window.PORTFOLIO_PROJECTS = [
         "items": [
           {
             "src": "movement iteration 1.png",
+            "caption": "A Chair is a Toy first movement iteration.",
             "className": "motion-one"
           },
           {
             "src": "movement iteration 2.png",
+            "caption": "A Chair is a Toy second movement iteration.",
             "className": "motion-two"
           },
           {
             "src": "movement iteration 3.png",
+            "caption": "A Chair is a Toy third movement iteration.",
             "className": "motion-three"
           }
         ]
@@ -785,40 +843,44 @@ window.PORTFOLIO_PROJECTS = [
         "items": [
           {
             "src": "study 1.png",
+            "caption": "A Chair is a Toy white model balance study.",
             "className": "study-one"
           },
           {
             "src": "study 2.png",
+            "caption": "A Chair is a Toy white model spring study.",
             "className": "study-two"
           },
           {
             "src": "study 3.png",
+            "caption": "A Chair is a Toy white model tilt study.",
             "className": "study-three"
           },
           {
             "src": "study 4.png",
+            "caption": "A Chair is a Toy white model seat study.",
             "className": "study-four"
           }
         ]
       },
       {
         "src": "study 5.png",
-        "caption": "Final object study.",
+        "caption": "A Chair is a Toy final kinetic chair object.",
         "layout": "image"
       }
     ],
     "images": [
       {
         "src": "main hero shot.png",
-        "caption": "Final chair object"
+        "caption": "A Chair is a Toy final kinetic chair object"
       },
       {
         "src": "Analytic Collage.png",
-        "caption": "Analytic collage"
+        "caption": "A Chair is a Toy analytic force and balance collage"
       },
       {
         "src": "study 1.png",
-        "caption": "Study photograph"
+        "caption": "A Chair is a Toy white model balance study"
       }
     ],
     "position": {
@@ -862,41 +924,41 @@ window.PORTFOLIO_PROJECTS = [
     "story": [
       {
         "src": "Model Front View Shot 03 reduced.png",
-        "caption": "Front view study.",
+        "caption": "Design District Canteen structural model front view.",
         "layout": "image"
       },
       {
         "src": "Close Up Shot 02.png",
-        "caption": "Close-up assembly study.",
+        "caption": "Design District Canteen steel frame assembly close-up.",
         "layout": "image"
       },
       {
         "src": "model Top View Shot 04.png",
-        "caption": "Top view study.",
+        "caption": "Design District Canteen top view structural model.",
         "layout": "drawing"
       },
       {
         "src": "Model Front View Shot 01.png",
-        "caption": "Front view.",
+        "caption": "Design District Canteen translucent food hall model.",
         "layout": "image"
       }
     ],
     "images": [
       {
         "src": "Model Front View Shot 01.png",
-        "caption": "Front view"
+        "caption": "Design District Canteen translucent food hall model"
       },
       {
         "src": "Model Front View Shot 03 reduced.png",
-        "caption": "Front view study"
+        "caption": "Design District Canteen structural model front view"
       },
       {
         "src": "Close Up Shot 02.png",
-        "caption": "Close-up"
+        "caption": "Design District Canteen steel frame assembly close-up"
       },
       {
         "src": "model Top View Shot 04.png",
-        "caption": "Top view"
+        "caption": "Design District Canteen top view structural model"
       }
     ],
     "position": {
@@ -941,10 +1003,12 @@ window.PORTFOLIO_PROJECTS = [
         "items": [
           {
             "src": "curanto_5479-reg.jpg",
+            "caption": "Curanto Cookhouse traditional curanto preparation reference.",
             "className": "reference"
           },
           {
             "src": "abstracted program diagram.png",
+            "caption": "Curanto Cookhouse ingredient movement program diagram.",
             "className": "diagram"
           }
         ]
@@ -954,12 +1018,12 @@ window.PORTFOLIO_PROJECTS = [
         "items": [
           {
             "src": "Andrew Wheat_ajw288_Cookhouse Lower Floor Plan.png",
-            "caption": "Lower Plan",
+            "caption": "Curanto Cookhouse lower floor plan.",
             "className": "lower"
           },
           {
             "src": "Andrew Wheat_ajw288_Cookhouse Upper Floor Plan.png",
-            "caption": "Upper Plan",
+            "caption": "Curanto Cookhouse upper floor plan.",
             "className": "upper"
           }
         ]
@@ -970,10 +1034,12 @@ window.PORTFOLIO_PROJECTS = [
         "items": [
           {
             "src": "Andrew Wheat_ajw288_01B_Study Model (1).jpg",
+            "caption": "Curanto Cookhouse early roof and wall study model.",
             "className": "study-one"
           },
           {
             "src": "Andrew Wheat_ajw288_01B_study Model (2).jpg",
+            "caption": "Curanto Cookhouse early gabion wall study model.",
             "className": "study-two"
           }
         ]
@@ -984,14 +1050,17 @@ window.PORTFOLIO_PROJECTS = [
         "items": [
           {
             "src": "Andrew Wheat_ajw288_Cookhouse Final Model noisy.png",
+            "caption": "Curanto Cookhouse final model with gabion walls.",
             "className": "final-one"
           },
           {
             "src": "Andrew Wheat_ajw288_Cookhouse Final Model (9) noisy.png",
+            "caption": "Curanto Cookhouse roof panel and cooking ground model.",
             "className": "final-two"
           },
           {
             "src": "IMG_1651 noisy.png",
+            "caption": "Curanto Cookhouse material detail model photograph.",
             "className": "detail"
           }
         ]
@@ -1002,18 +1071,22 @@ window.PORTFOLIO_PROJECTS = [
         "items": [
           {
             "src": "Andrew Wheat_ajw288_Cookhouse Study Model (1).jpg",
+            "caption": "Curanto Cookhouse landscape study model.",
             "className": "study-one"
           },
           {
             "src": "Andrew Wheat_ajw288_Cookhouse Study Model (3).jpg",
+            "caption": "Curanto Cookhouse wall and roof study model.",
             "className": "study-two"
           },
           {
             "src": "Andrew Wheat_ajw288_Cookhouse Final Model (1).jpg",
+            "caption": "Curanto Cookhouse final model communal ground view.",
             "className": "final-one"
           },
           {
             "src": "Andrew Wheat_ajw288_Cookhouse Final Model (2).jpg",
+            "caption": "Curanto Cookhouse final model roof and gabion view.",
             "className": "final-two"
           }
         ]
@@ -1021,12 +1094,12 @@ window.PORTFOLIO_PROJECTS = [
       {
         "src": "Revised Cookhouse Axon.png",
         "mobileSrc": "Revised Cookhouse Axon mobile only.png",
-        "caption": "Axonometric drawing.",
+        "caption": "Curanto Cookhouse axonometric drawing.",
         "layout": "cookhouse-axon-large"
       },
       {
         "src": "hero 2.jpg",
-        "caption": "Final model atmosphere.",
+        "caption": "Curanto Cookhouse final model atmosphere.",
         "layout": "image"
       },
       {
@@ -1038,19 +1111,19 @@ window.PORTFOLIO_PROJECTS = [
     "images": [
       {
         "src": "hero.jpg",
-        "caption": "Project hero"
+        "caption": "Curanto Cookhouse final model with gabion walls"
       },
       {
         "src": "hero 2.jpg",
-        "caption": "Project atmosphere"
+        "caption": "Curanto Cookhouse final model atmosphere"
       },
       {
         "src": "abstracted program diagram.png",
-        "caption": "Program diagram"
+        "caption": "Curanto Cookhouse ingredient movement program diagram"
       },
       {
         "src": "Andrew Wheat_ajw288_Cookhouse Lower Floor Plan.png",
-        "caption": "Lower floor plan"
+        "caption": "Curanto Cookhouse lower floor plan"
       }
     ],
     "position": {
@@ -1088,23 +1161,23 @@ window.PORTFOLIO_PROJECTS = [
     "story": [
       {
         "src": "Andrew Wheat_ajw288_01C_York Study Model (1).jpg",
-        "caption": "Study model.",
+        "caption": "York Prize void and mass study model.",
         "layout": "image"
       },
       {
         "src": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
-        "caption": "Model view.",
+        "caption": "York Prize final cast model view.",
         "layout": "image"
       }
     ],
     "images": [
       {
         "src": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
-        "caption": "Model view"
+        "caption": "York Prize final cast model view"
       },
       {
         "src": "Andrew Wheat_ajw288_01C_York Study Model (1).jpg",
-        "caption": "Study model"
+        "caption": "York Prize void and mass study model"
       }
     ],
     "position": {
@@ -1145,81 +1218,81 @@ window.PORTFOLIO_PROJECTS = [
     "story": [
       {
         "src": "hero 2.JPG",
-        "caption": "Project atmosphere.",
+        "caption": "Woven Pavilion atmospheric model photograph.",
         "layout": "image"
       },
       {
         "src": "20231127_Andrew Wheat_A04_Folley_01.02.jpg",
-        "caption": "Folly drawing.",
+        "caption": "Woven Pavilion plan and section drawing.",
         "layout": "drawing"
       },
       {
         "src": "20231127_Andrew Wheat_A04_Folley_01.03.jpg",
-        "caption": "Folly drawing.",
+        "caption": "Woven Pavilion elevation and enclosure drawing.",
         "layout": "drawing"
       },
       {
         "src": "20231127_Andrew Wheat_A04_Folley_01.04.jpg",
-        "caption": "Folly drawing.",
+        "caption": "Woven Pavilion construction sequence drawing.",
         "layout": "drawing"
       },
       {
         "src": "iso_section_clean_scan.jpg",
-        "caption": "Iso drawing.",
+        "caption": "Woven Pavilion isometric section drawing.",
         "layout": "woven-iso-large"
       },
       {
         "src": "20231127_Andrew Wheat_A04_StudyModel_01.jpg",
-        "caption": "Study model.",
+        "caption": "Woven Pavilion study model photograph.",
         "layout": "image"
       },
       {
         "src": "ajw288_ANDREW WHEAT_A04_08.jpg",
-        "caption": "Presentation image.",
+        "caption": "Woven Pavilion presentation drawing.",
         "layout": "drawing"
       },
       {
         "src": "cube 1.JPG",
-        "caption": "Cube study.",
+        "caption": "Woven Pavilion cube weave study.",
         "layout": "image"
       },
       {
         "src": "cube 2.JPG",
-        "caption": "Cube study.",
+        "caption": "Woven Pavilion layered cube study.",
         "layout": "image"
       },
       {
         "src": "cube 3.JPG",
-        "caption": "Cube study.",
+        "caption": "Woven Pavilion open cube study.",
         "layout": "image"
       },
       {
         "src": "pinched cube.JPG",
-        "caption": "Pinched cube study.",
+        "caption": "Woven Pavilion pinched cube study.",
         "layout": "image"
       },
       {
         "src": "hero.jpg",
-        "caption": "Project hero.",
+        "caption": "Woven Pavilion final model hero photograph.",
         "layout": "image"
       }
     ],
     "images": [
       {
         "src": "hero.jpg",
-        "caption": "Project hero"
+        "caption": "Woven Pavilion final model hero photograph"
       },
       {
         "src": "hero 2.JPG",
-        "caption": "Project atmosphere"
+        "caption": "Woven Pavilion atmospheric model photograph"
       },
       {
         "src": "iso_section_clean_scan.jpg",
-        "caption": "Iso drawing"
+        "caption": "Woven Pavilion isometric section drawing"
       },
       {
         "src": "cube 1.JPG",
-        "caption": "Cube study"
+        "caption": "Woven Pavilion cube weave study"
       }
     ],
     "position": {
@@ -1267,66 +1340,66 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "src": "buildings.jpg",
-        "caption": "Campus buildings.",
+        "caption": "Sustainable Education Nepal campus building massing.",
         "layout": "image"
       },
       {
         "src": "ChatGPT Image Dec 29, 2025, 12_04_36 AMnoisy.jpg",
-        "caption": "Atmospheric study.",
+        "caption": "Sustainable Education Nepal courtyard atmosphere study.",
         "layout": "image"
       },
       {
         "src": "EXTERIOR 2 EDITED noisy COPY.jpg",
-        "caption": "Exterior render.",
+        "caption": "Sustainable Education Nepal school exterior render.",
         "layout": "image"
       },
       {
         "src": "INTERIOR RENDER noisy.jpg",
-        "caption": "Interior render.",
+        "caption": "Sustainable Education Nepal classroom interior render.",
         "layout": "image"
       },
       {
         "src": "Cafeteria and Trainers Lodging_Plan Drawings SMALLER.jpg",
-        "caption": "Plan drawings.",
+        "caption": "Sustainable Education Nepal cafeteria and lodging plans.",
         "layout": "drawing"
       },
       {
         "src": "Cafeteria and Trainers Lodging_Section Drawings SMALLER.jpg",
-        "caption": "Section drawings.",
+        "caption": "Sustainable Education Nepal cafeteria and lodging sections.",
         "layout": "drawing"
       },
       {
         "src": "Cafeteria and Trainers Lodging_elevation drawings SMALLER.jpg",
-        "caption": "Elevation drawings.",
+        "caption": "Sustainable Education Nepal cafeteria and lodging elevations.",
         "layout": "drawing"
       },
       {
         "src": "CUSD_A1_Flooding_Landslide Diagram.jpg",
-        "caption": "Flooding and landslide diagram.",
+        "caption": "Sustainable Education Nepal flooding and landslide diagram.",
         "layout": "drawing"
       },
       {
         "src": "unnamed.png",
-        "caption": "Project study.",
+        "caption": "Sustainable Education Nepal site and material study.",
         "layout": "image"
       }
     ],
     "images": [
       {
         "src": "EXTERIOR 2 EDITED noisy COPY.jpg",
-        "caption": "Exterior render"
+        "caption": "Sustainable Education Nepal school exterior render"
       },
       {
         "src": "INTERIOR RENDER noisy.jpg",
-        "caption": "Interior render"
+        "caption": "Sustainable Education Nepal classroom interior render"
       },
       {
         "src": "Cafeteria and Trainers Lodging_Plan Drawings SMALLER.jpg",
-        "caption": "Plan drawings"
+        "caption": "Sustainable Education Nepal cafeteria and lodging plans"
       },
       {
         "src": "CUSD_A1_Flooding_Landslide Diagram.jpg",
-        "caption": "Environmental diagram"
+        "caption": "Sustainable Education Nepal flooding and landslide diagram"
       }
     ],
     "position": {
