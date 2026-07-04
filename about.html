@@ -35,33 +35,102 @@
       "@context": "https://schema.org",
       "@graph": [
             {
+                  "@type": "ProfilePage",
+                  "@id": "https://andrew-wheat.com/about.html#profile",
+                  "url": "https://andrew-wheat.com/about.html",
+                  "name": "About Andrew Wheat",
+                  "isPartOf": {
+                        "@id": "https://andrew-wheat.com/#website"
+                  },
+                  "mainEntity": {
+                        "@id": "https://andrew-wheat.com/#andrew-wheat",
+                        "@type": "Person",
+                        "name": "Andrew Wheat"
+                  },
+                  "description": "Andrew Wheat is a Cornell B.Arch student and designer working across public architecture, materiality, civic infrastructure, food systems, housing, and environmental design."
+            },
+            {
                   "@type": "Person",
                   "@id": "https://andrew-wheat.com/#andrew-wheat",
                   "name": "Andrew Wheat",
+                  "alternateName": [
+                        "Andrew Wheat Architecture",
+                        "@andrewwheat3"
+                  ],
                   "url": "https://andrew-wheat.com/",
-                  "image": "https://andrew-wheat.com/assets/images/andrew-wheat-headshot.jpg",
-                  "jobTitle": "Bachelor of Architecture Student",
-                  "description": "Andrew Wheat is a Bachelor of Architecture student at Cornell University with work focused on public architecture, materiality, civic space, environmental systems, and assembly.",
+                  "mainEntityOfPage": {
+                        "@id": "https://andrew-wheat.com/about.html#profile"
+                  },
+                  "image": [
+                        {
+                              "@type": "ImageObject",
+                              "url": "https://andrew-wheat.com/assets/images/andrew-wheat-headshot.jpg",
+                              "width": 9912,
+                              "height": 9912
+                        },
+                        {
+                              "@type": "ImageObject",
+                              "url": "https://andrew-wheat.com/assets/images/seo/andrew-wheat-portrait-4x3.jpg",
+                              "width": 5973,
+                              "height": 4480
+                        },
+                        {
+                              "@type": "ImageObject",
+                              "url": "https://andrew-wheat.com/assets/images/seo/andrew-wheat-portrait-16x9.jpg",
+                              "width": 6720,
+                              "height": 3780
+                        }
+                  ],
+                  "jobTitle": "Cornell B.Arch Student and Designer",
+                  "description": "Andrew Wheat is a Cornell B.Arch student and designer working across public architecture, materiality, civic infrastructure, food systems, housing, and environmental design.",
                   "affiliation": {
                         "@type": "CollegeOrUniversity",
-                        "name": "Cornell University"
+                        "name": "Cornell University College of Architecture, Art, and Planning",
+                        "url": "https://aap.cornell.edu/"
                   },
                   "knowsAbout": [
                         "Architecture",
-                        "Public Architecture",
+                        "Architectural design",
                         "Materiality",
-                        "Sustainable Design",
-                        "Environmental Systems",
-                        "Civic Space",
+                        "Public architecture",
+                        "Civic infrastructure",
                         "Food Systems",
-                        "Water Systems",
-                        "Community Design",
-                        "Architectural Representation",
-                        "Physical Modeling",
-                        "Climate Analysis"
+                        "Housing",
+                        "Environmental design",
+                        "Community design"
+                  ],
+                  "award": [
+                        "Addison G. Crowley Prize, Cornell AAP"
                   ],
                   "sameAs": [
                         "https://www.linkedin.com/in/andrewwheat"
+                  ],
+                  "subjectOf": [
+                        {
+                              "@type": "CollectionPage",
+                              "name": "Andrew Wheat Architecture Portfolio Work",
+                              "url": "https://andrew-wheat.com/work.html"
+                        },
+                        {
+                              "@type": "CreativeWork",
+                              "name": "Wood Street Pool",
+                              "url": "https://andrew-wheat.com/project.html?id=wood-street-pool"
+                        },
+                        {
+                              "@type": "CreativeWork",
+                              "name": "Enfield Food Pantry",
+                              "url": "https://andrew-wheat.com/project.html?id=enfield-food-pantry"
+                        },
+                        {
+                              "@type": "CreativeWork",
+                              "name": "Deconstruct Reconfigure",
+                              "url": "https://andrew-wheat.com/project.html?id=deconstruct-reconfigure"
+                        },
+                        {
+                              "@type": "CreativeWork",
+                              "name": "Hunter's Point Cooperative Housing",
+                              "url": "https://andrew-wheat.com/project.html?id=hunters-point"
+                        }
                   ]
             },
             {
@@ -103,6 +172,11 @@
           <img src="assets/images/About/Large%20Headshot%20BW.png" alt="Black-and-white portrait of Andrew Wheat" loading="lazy" decoding="async">
         </figure>
         <div class="about-statement">
+          <p>
+            Andrew Wheat is a Cornell B.Arch student and designer working across
+            public architecture, materiality, civic infrastructure, food systems,
+            housing, and environmental design.
+          </p>
           <p>
             Studying architecture at Cornell has taught me that materiality is
             deeply embedded in the daily experiences of public life. It is felt in
@@ -214,7 +288,7 @@
           </article>
           <article class="cv-item">
             <div>
-              <h4>Thesis Research Assistant | Abhitha Batikeri</h4>
+              <h4>Research Assistant | Abhitha Batikeri</h4>
               <p>Ithaca, NY | Apr 2025-May 2025</p>
             </div>
             <p>
