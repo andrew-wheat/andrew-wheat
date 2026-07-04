@@ -460,15 +460,8 @@ window.PORTFOLIO_PROJECTS = [
         "text": "The roof shields without turning the pantry inward. Light timber framing, translucent corrugate, and exposed structural rhythm create a familiar agrarian language that remains open, legible, and adaptable."
       },
       {
-        "layout": "enfield-detail-pair",
-        "items": [
-          {
-            "src": "DETAIL SECTION png - Copy.png"
-          },
-          {
-            "src": "DETAIL SECTION png - Copy (2).png"
-          }
-        ]
+        "src": "DETAIL SECTION png.png",
+        "layout": "enfield-detail-large"
       },
       {
         "src": "3X6A0133 smaller.png",
