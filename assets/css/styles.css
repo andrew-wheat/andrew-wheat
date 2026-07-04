@@ -5144,6 +5144,7 @@ body[data-page="work"] .site-copyright {
 
   .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-mech-system {
     padding-top: clamp(74px, 19vw, 124px);
+    padding-bottom: clamp(72px, 18vw, 124px);
   }
 
   .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-section-wide {
