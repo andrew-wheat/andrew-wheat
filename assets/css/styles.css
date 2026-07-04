@@ -1750,7 +1750,7 @@ body[data-page="project"] img[data-image-skeleton].is-loaded {
 .about-portrait {
   justify-self: start;
   margin: 0;
-  width: 121%;
+  width: 108%;
 }
 
 .about-portrait img {
@@ -1772,6 +1772,10 @@ body[data-page="project"] img[data-image-skeleton].is-loaded {
 .about-statement p {
   margin: 0;
   text-indent: 2em;
+}
+
+.about-statement .about-identity {
+  font-style: italic;
 }
 
 @media (min-width: 901px) {
