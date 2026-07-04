@@ -1739,16 +1739,18 @@ body[data-page="project"] img[data-image-skeleton].is-loaded {
 
 .about-profile {
   display: grid;
-  grid-template-columns: minmax(220px, 0.78fr) minmax(0, 1fr);
-  gap: clamp(42px, 7vw, 104px);
+  grid-template-columns: minmax(220px, 0.5fr) minmax(0, 1.25fr);
+  gap: clamp(38px, 5vw, 82px);
   align-items: start;
-  max-width: min(1120px, calc(100% - (var(--gutter) * 2)));
+  max-width: min(1280px, calc(100% - (var(--gutter) * 2)));
   margin: 0 auto clamp(70px, 9vw, 118px);
-  padding: clamp(24px, 4vw, 58px) 0;
+  padding: clamp(24px, 4vw, 58px) clamp(24px, 4vw, 64px);
 }
 
 .about-portrait {
+  justify-self: start;
   margin: 0;
+  width: 121%;
 }
 
 .about-portrait img {
@@ -1761,7 +1763,7 @@ body[data-page="project"] img[data-image-skeleton].is-loaded {
 .about-statement {
   display: grid;
   gap: 1.45em;
-  max-width: 760px;
+  max-width: 960px;
   font-size: var(--type-copy);
   font-weight: var(--weight-copy);
   line-height: 1.56;
@@ -1770,6 +1772,12 @@ body[data-page="project"] img[data-image-skeleton].is-loaded {
 .about-statement p {
   margin: 0;
   text-indent: 2em;
+}
+
+@media (min-width: 901px) {
+  .about-profile .about-statement {
+    width: 100%;
+  }
 }
 
 .cv-heading {
