@@ -1,7 +1,12 @@
 (function () {
   const projects = window.PORTFOLIO_PROJECTS || [];
+  const archivedProjects = window.ARCHIVED_PORTFOLIO_PROJECTS || [];
+  const allProjects = [...projects, ...archivedProjects].filter(
+    (project, index, source) => source.findIndex((item) => item.id === project.id) === index
+  );
   const words = window.ARCHITECTURE_WORDS || [];
   const optimizedImages = window.PORTFOLIO_OPTIMIZED_IMAGES || {};
+  const imageDimensions = window.PORTFOLIO_IMAGE_DIMENSIONS || {};
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const workThemeMap = [
     ["Assembly", ["wood-street-pool", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "woven-pavilion", "hunters-point"]],
@@ -33,6 +38,94 @@
     ["Threshold", ["curanto-cookhouse", "wood-street-pool", "hunters-point", "enfield-food-pantry", "woven-pavilion", "york-prize", "design-district-canteen"]],
     ["Use", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "a-chair-is-a-toy", "deconstruct-reconfigure", "borinquen-healing-center"]]
   ];
+  const recruiterKeywords = [
+    "Andrew Wheat",
+    "Cornell Architecture",
+    "Cornell University Architecture",
+    "Cornell B.Arch",
+    "Bachelor of Architecture",
+    "architecture portfolio",
+    "architecture student portfolio",
+    "architectural intern",
+    "sustainable design",
+    "public architecture",
+    "civic architecture",
+    "materiality",
+    "environmental systems",
+    "architectural representation",
+    "physical modeling",
+    "Rhino",
+    "Revit",
+    "Grasshopper",
+    "ClimateStudio",
+    "Enscape",
+    "V-Ray",
+    "InDesign",
+    "Illustrator",
+    "Photoshop"
+  ];
+  const projectSeo = {
+    "hunters-point": {
+      title: "Hunter's Point Cooperative Housing | Andrew Wheat",
+      description: "Cooperative housing project by Andrew Wheat focused on shared production, public exchange, circulation, workshops, housing, and civic life in Hunters Point.",
+      keywords: ["cooperative housing", "public exchange", "housing", "production", "circulation", "community design"]
+    },
+    "wood-street-pool": {
+      title: "Wood Street Pool | Andrew Wheat",
+      description: "Public natatorium and civic landscape project by Andrew Wheat, integrating community recreation, water systems, planted roofs, geothermal strategies, and mass timber architecture.",
+      keywords: ["public natatorium", "water systems", "planted roofs", "geothermal strategies", "mass timber", "civic landscape"]
+    },
+    "enfield-food-pantry": {
+      title: "Enfield Food Pantry | Andrew Wheat",
+      description: "Architecture project by Andrew Wheat focused on food access, civic gathering, environmental performance, materiality, and community infrastructure.",
+      keywords: ["food access", "civic gathering", "environmental performance", "community infrastructure", "food systems"]
+    },
+    "deconstruct-reconfigure": {
+      title: "Deconstruct Reconfigure | Andrew Wheat",
+      description: "Produce stand and material reuse project by Andrew Wheat exploring assembly, disassembly, reuse, public exchange, and community food infrastructure.",
+      keywords: ["produce stand", "material reuse", "assembly", "disassembly", "public exchange", "community food infrastructure"]
+    },
+    "borinquen-healing-center": {
+      title: "Borinquen Healing Center | Andrew Wheat",
+      description: "Architecture project by Andrew Wheat focused on care, recovery, public space, material atmosphere, and community health.",
+      keywords: ["care", "recovery", "public space", "material atmosphere", "community health"]
+    },
+    "a-chair-is-a-toy": {
+      title: "A Chair is a Toy! | Andrew Wheat",
+      description: "Furniture and design study by Andrew Wheat exploring play, use, structure, and the boundary between object and architecture.",
+      keywords: ["furniture design", "play", "use", "structure", "object design"]
+    },
+    "design-district-canteen": {
+      title: "Design District Canteen | Andrew Wheat",
+      description: "Architecture project by Andrew Wheat focused on food, gathering, structure, materiality, and public interior space.",
+      keywords: ["food hall", "gathering", "structure", "materiality", "public interior"]
+    },
+    "curanto-cookhouse": {
+      title: "Curanto Cookhouse | Andrew Wheat",
+      description: "Architecture project by Andrew Wheat focused on cooking, ceremony, material assembly, landscape, and communal gathering.",
+      keywords: ["cooking", "ceremony", "material assembly", "landscape", "communal gathering"]
+    },
+    "york-prize": {
+      title: "York Prize | Andrew Wheat",
+      description: "Cornell architecture work by Andrew Wheat developed for the York Prize, including drawings, models, and architectural design research.",
+      keywords: ["York Prize", "Cornell architecture", "drawings", "models", "design research"]
+    },
+    "woven-pavilion": {
+      title: "Woven Pavilion | Andrew Wheat",
+      description: "Pavilion project by Andrew Wheat exploring enclosure, light, assembly, texture, and temporary public space.",
+      keywords: ["pavilion", "enclosure", "light", "assembly", "texture", "temporary public space"]
+    },
+    "sustainable-education": {
+      title: "Sustainable Education | Andrew Wheat",
+      description: "Sustainable education design work by Andrew Wheat with Cornell University Sustainable Design, focused on school infrastructure, climate resilience, cultural continuity, and environmental systems.",
+      keywords: ["sustainable education", "school infrastructure", "climate resilience", "cultural continuity", "environmental systems"]
+    },
+    "ephemeral-diptypque": {
+      title: "Ephemeral Diptyque | Andrew Wheat",
+      description: "Architecture and image sequence study by Andrew Wheat exploring atmosphere, temporality, pairing, and architectural reading.",
+      keywords: ["Ephemeral Diptyque", "image sequence", "atmosphere", "temporality", "architectural reading"]
+    }
+  };
 
   function planSvg(project, variant, options = {}) {
     const title = escapeHtml(project.title);
@@ -72,18 +165,22 @@
   function heroSvg(project, index, explicitImage = "") {
     const heroImage = explicitImage || project.heroImage || project.thumbnail;
     if (heroImage && !/\.pdf$/i.test(heroImage)) {
-      const imageSrc = optimizedSrc(heroImage.includes("/") ? heroImage : `${project.imageBase || ""}${heroImage}`);
+      const originalSrc = heroImage.includes("/") ? heroImage : `${project.imageBase || ""}${heroImage}`;
+      const imageSrc = optimizedSrc(originalSrc);
+      const dimensionAttrs = imageDimensionAttrs(imageSrc) || imageDimensionAttrs(originalSrc);
       return [
         '<article class="hero-slide hero-slide--image" aria-label="',
         escapeHtml(project.title),
         '">',
         '<img class="hero-image" src="',
-        escapeHtml(imageSrc),
+        escapeHtml(encodeURI(imageSrc)),
         '" alt="',
-        escapeHtml(project.title),
+        escapeHtml(projectImageAlt(project, heroImage, project.title)),
         '" loading="',
         index === 0 ? "eager" : "lazy",
-        '">',
+        '" decoding="async"',
+        dimensionAttrs,
+        '>',
         "</article>"
       ].join("");
     }
@@ -1433,43 +1530,65 @@
 
   function canonicalProjectId(id) {
     const aliases = {
-      "hunters-point-housing": "hunters-point"
+      "hunters-point-housing": "hunters-point",
+      "sustainable-education-nepal": "sustainable-education",
+      "ephemeral-diptyque": "ephemeral-diptypque"
     };
     return aliases[id] || id;
   }
 
   function setProjectMeta(project) {
-    const pageUrl = `https://andrew-wheat.com/project.html?id=${encodeURIComponent(project.id)}`;
-    const description = project.summary || project.description || "Architecture project by Andrew Wheat.";
+    const seo = projectSeo[project.id] || {};
+    const pageId = project.id === "ephemeral-diptypque" ? "ephemeral-diptyque" : project.id;
+    const pageUrl = `https://andrew-wheat.com/project.html?id=${encodeURIComponent(pageId)}`;
+    const title = seo.title || `${project.title} | Andrew Wheat`;
+    const description = seo.description || project.summary || project.description || "Architecture project by Andrew Wheat.";
+    const keywords = projectKeywords(project, seo).join(", ");
     const image = project.workListThumbnail || project.workThumbnail || project.heroImage || project.thumbnail || "assets/images/work-covers/wood-street-pool.webp";
-    const imageUrl = image.startsWith("http")
+    const imageUrl = encodeURI(image.startsWith("http")
       ? image
-      : `https://andrew-wheat.com/${image.includes("/") ? image : `${project.imageBase || ""}${image}`}`;
+      : `https://andrew-wheat.com/${image.includes("/") ? image : `${project.imageBase || ""}${image}`}`);
+    const imageAlt = `${seo.title ? seo.title.replace(" | Andrew Wheat", "") : project.title} architectural project by Andrew Wheat`;
 
+    document.title = title;
     setHeadAttribute('link[rel="canonical"]', "href", pageUrl);
     setHeadContent('meta[name="description"]', description);
-    setHeadContent('meta[property="og:title"]', `${project.title} | Andrew Wheat`);
+    setHeadContent('meta[name="keywords"]', keywords);
+    setHeadContent('meta[property="og:title"]', title);
     setHeadContent('meta[property="og:description"]', description);
     setHeadContent('meta[property="og:url"]', pageUrl);
     setHeadContent('meta[property="og:image"]', imageUrl);
-    setHeadContent('meta[name="twitter:title"]', `${project.title} | Andrew Wheat`);
+    setHeadContent('meta[property="og:image:alt"]', imageAlt);
+    setHeadContent('meta[name="twitter:title"]', title);
     setHeadContent('meta[name="twitter:description"]', description);
     setHeadContent('meta[name="twitter:image"]', imageUrl);
-    setProjectSchema(project, pageUrl, description, imageUrl);
+    setHeadContent('meta[name="twitter:image:alt"]', imageAlt);
+    setProjectSchema(project, pageUrl, description, imageUrl, keywords);
   }
 
-  function setProjectSchema(project, pageUrl, description, imageUrl) {
+  function projectKeywords(project, seo = {}) {
+    return [
+      seo.title ? seo.title.replace(" | Andrew Wheat", "") : project.title,
+      ...(seo.keywords || []),
+      project.type,
+      ...(project.themes || []),
+      ...recruiterKeywords
+    ].filter(Boolean).filter((item, index, source) => source.indexOf(item) === index);
+  }
+
+  function setProjectSchema(project, pageUrl, description, imageUrl, keywords) {
     const schema = document.getElementById("project-schema");
     if (!schema) return;
     schema.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "CreativeWork",
       "@id": `${pageUrl}#project`,
-      "name": project.title,
+      "name": projectDisplayName(project),
       "url": pageUrl,
       "description": description,
       "image": imageUrl,
       "dateCreated": project.year || undefined,
+      "keywords": keywords,
       "creator": {
         "@type": "Person",
         "@id": "https://andrew-wheat.com/#andrew-wheat",
@@ -1481,12 +1600,20 @@
         "@id": "https://andrew-wheat.com/#portfolio",
         "name": "Andrew Wheat Architecture Portfolio"
       },
-      "about": [project.type, ...(project.themes || [])].filter(Boolean)
+      "about": [project.type, ...(project.themes || []), ...(projectSeo[project.id]?.keywords || [])].filter(Boolean)
     });
   }
 
   function setHeadContent(selector, content) {
-    const node = document.head.querySelector(selector);
+    let node = document.head.querySelector(selector);
+    if (!node && selector.startsWith("meta[")) {
+      node = document.createElement("meta");
+      const nameMatch = selector.match(/name="([^"]+)"/);
+      const propertyMatch = selector.match(/property="([^"]+)"/);
+      if (nameMatch) node.setAttribute("name", nameMatch[1]);
+      if (propertyMatch) node.setAttribute("property", propertyMatch[1]);
+      document.head.appendChild(node);
+    }
     if (node) node.setAttribute("content", content);
   }
 
@@ -1505,7 +1632,7 @@
     if (!root) return;
     const params = new URLSearchParams(window.location.search);
     const id = canonicalProjectId(params.get("id") || projects[0]?.id);
-    const project = projects.find((item) => item.id === id) || projects[0];
+    const project = allProjects.find((item) => item.id === id) || projects[0];
 
     if (!project) {
       root.innerHTML = '<section class="section-grid page-intro"><h1>Project not found.</h1></section>';
@@ -1798,6 +1925,8 @@
       .replace(/\.[^.]+$/, "")
       .replace(/\s*\([^)]*\)\s*/g, " ")
       .replace(/[_-]+/g, " ")
+      .replace(/\b(andrew|wheat|ajw288)\b/gi, " ")
+      .replace(/\bproblem\s+\d+[a-z]?\b/gi, " ")
       .replace(/\s+/g, " ")
       .trim();
 
@@ -2399,11 +2528,44 @@
     `;
   }
 
+  function projectDisplayName(project) {
+    return (projectSeo[project.id]?.title || project.title).replace(" | Andrew Wheat", "");
+  }
+
+  function projectImageAlt(project, src, alt = "") {
+    const supplied = String(alt || "").trim();
+    const genericAlt =
+      !supplied ||
+      supplied === project.title ||
+      supplied === `${project.title} hero image` ||
+      supplied === `${project.title} opening image` ||
+      isPlaceholderCaption(supplied);
+    if (!genericAlt) {
+      const clean = supplied.replace(/\.$/, "");
+      if (/by Andrew Wheat$/i.test(clean) || clean.toLowerCase().includes(projectDisplayName(project).toLowerCase())) return clean;
+      return `${projectDisplayName(project)} ${clean.charAt(0).toLowerCase()}${clean.slice(1)} by Andrew Wheat`;
+    }
+
+    const mediaName = humanizeMediaName(src).toLowerCase();
+    return `${projectDisplayName(project)} ${mediaName || "architecture project image"} by Andrew Wheat`;
+  }
+
+  function imageDimensionAttrs(src) {
+    const dimensions = imageDimensions[src];
+    if (!Array.isArray(dimensions)) return "";
+    const [width, height] = dimensions;
+    if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) return "";
+    return ` width="${Math.round(width)}" height="${Math.round(height)}"`;
+  }
+
   function projectImage(project, src, alt = "", className = "", mobileSrc = "") {
-    const imageSrc = optimizedSrc(src.includes("/") ? src : `${project.imageBase || ""}${src}`);
+    const originalSrc = src.includes("/") ? src : `${project.imageBase || ""}${src}`;
+    const imageSrc = optimizedSrc(originalSrc);
     const imageClass = `project-lightbox-trigger${className ? ` ${className}` : ""}`;
-    const label = alt ? `Open larger image: ${alt}` : "Open larger image";
-    const img = `<img class="${escapeHtml(imageClass)}" src="${escapeHtml(encodeURI(imageSrc))}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="${escapeHtml(label)}">`;
+    const imageAlt = projectImageAlt(project, src, alt);
+    const label = `Open larger image: ${imageAlt}`;
+    const dimensionAttrs = imageDimensionAttrs(imageSrc) || imageDimensionAttrs(originalSrc);
+    const img = `<img class="${escapeHtml(imageClass)}" src="${escapeHtml(encodeURI(imageSrc))}" alt="${escapeHtml(imageAlt)}" loading="lazy" decoding="async"${dimensionAttrs} tabindex="0" role="button" aria-label="${escapeHtml(label)}">`;
     if (!mobileSrc) return img;
 
     const mobileImageSrc = optimizedSrc(mobileSrc.includes("/") ? mobileSrc : `${project.imageBase || ""}${mobileSrc}`);

@@ -1347,7 +1347,30 @@ window.PORTFOLIO_PROJECTS = [
   }
 ];
 
-window.ARCHIVED_PORTFOLIO_PROJECTS = [];
+window.ARCHIVED_PORTFOLIO_PROJECTS = [
+  {
+    "id": "ephemeral-diptypque",
+    "title": "Ephemeral Diptyque",
+    "year": "2024",
+    "studio": "Cornell Architecture",
+    "type": "Study / installation",
+    "themes": [
+      "sequence",
+      "atmosphere",
+      "image"
+    ],
+    "summary": "An architectural image sequence study exploring atmosphere, temporality, pairing, and spatial reading.",
+    "question": "How can a temporary image sequence shape architectural reading?",
+    "operation": "Use atmosphere, sequence, and image pairing as a spatial study.",
+    "position": {
+      "x": 67,
+      "y": 88,
+      "rotation": -4
+    },
+    "shape": "porous",
+    "imageBase": "assets/images/Projects/Ephemeral Diptypque/"
+  }
+];
 
 window.ARCHITECTURE_WORDS = [
   "collaboration",
