@@ -4246,7 +4246,7 @@ body[data-page="work"] .site-copyright {
 
   .about-profile {
     gap: clamp(34px, 8vw, 64px);
-    padding-top: clamp(20px, 6vw, 42px);
+    padding: clamp(20px, 6vw, 42px) var(--gutter) 0;
   }
 
   .about-portrait {
