@@ -1739,18 +1739,18 @@ body[data-page="project"] img[data-image-skeleton].is-loaded {
 
 .about-profile {
   display: grid;
-  grid-template-columns: minmax(220px, 0.5fr) minmax(0, 1.25fr);
-  gap: clamp(38px, 5vw, 82px);
+  grid-template-columns: minmax(360px, 500px) minmax(0, 1fr);
+  gap: clamp(72px, 6vw, 118px);
   align-items: start;
-  max-width: min(1280px, calc(100% - (var(--gutter) * 2)));
+  max-width: min(1760px, calc(100% - (var(--gutter) * 2)));
   margin: 0 auto clamp(70px, 9vw, 118px);
-  padding: clamp(24px, 4vw, 58px) clamp(24px, 4vw, 64px);
+  padding: clamp(24px, 4vw, 58px) 0;
 }
 
 .about-portrait {
   justify-self: start;
   margin: 0;
-  width: 108%;
+  width: 100%;
 }
 
 .about-portrait img {
@@ -1763,7 +1763,7 @@ body[data-page="project"] img[data-image-skeleton].is-loaded {
 .about-statement {
   display: grid;
   gap: 1.45em;
-  max-width: 960px;
+  max-width: 1120px;
   font-size: var(--type-copy);
   font-weight: var(--weight-copy);
   line-height: 1.56;
