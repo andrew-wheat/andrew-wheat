@@ -5,7 +5,7 @@ window.PORTFOLIO_PROJECTS = [
     "year": "2026",
     "course": "Core VI Studio Led by Sasa Zivkovic",
     "studio": "Spring 2026 Cornell University",
-    "type": "Landscape / ground",
+    "type": "Housing / production / civic",
     "professors": "Marta H. Wisniewska + Tom Carruthers",
     "partners": "Eric Liu",
     "themes": [

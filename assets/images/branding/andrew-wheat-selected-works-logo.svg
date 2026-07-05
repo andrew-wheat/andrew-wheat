@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2205" height="350" viewBox="0 0 2205 350" role="img" aria-labelledby="title desc">
+  <title id="title">Andrew Wheat Selected Works logo</title>
+  <desc id="desc">A black geometric logo and Helvetica text lockup with a transparent background. The mark is animated by subtracting rectangular voids from one poche rectangle.</desc>
+  <defs>
+    <style>
+      .cut {
+        animation: subtract-cut 90ms steps(1, end) both;
+        opacity: 0;
+        shape-rendering: crispEdges;
+        will-change: opacity;
+      }
+
+      .cut:nth-child(1) {
+        animation-delay: 260ms;
+      }
+
+      .cut:nth-child(2) {
+        animation-delay: 390ms;
+      }
+
+      .cut:nth-child(3) {
+        animation-delay: 520ms;
+      }
+
+      .cut:nth-child(4) {
+        animation-delay: 650ms;
+      }
+
+      .cut:nth-child(5) {
+        animation-delay: 780ms;
+      }
+
+      .cut:nth-child(6) {
+        animation-delay: 910ms;
+      }
+
+      .cut:nth-child(7) {
+        animation-delay: 1040ms;
+      }
+
+      .cut:nth-child(8) {
+        animation-delay: 1170ms;
+      }
+
+      .cut:nth-child(9) {
+        animation-delay: 1300ms;
+      }
+
+      .cut:nth-child(10) {
+        animation-delay: 1430ms;
+      }
+
+      .wordmark {
+        animation: reveal-wordmark 240ms ease-out 1560ms both;
+        opacity: 0;
+      }
+
+      @keyframes subtract-cut {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes reveal-wordmark {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .cut,
+        .wordmark {
+          animation: none;
+          opacity: 1;
+        }
+      }
+    </style>
+    <mask id="poche-cuts" maskUnits="userSpaceOnUse" x="0" y="0" width="939" height="350">
+      <rect width="939" height="350" fill="#ffffff"/>
+      <g fill="#000000" shape-rendering="crispEdges">
+        <rect class="cut" x="0" y="0" width="194" height="95"/>
+        <rect class="cut" x="0" y="0" width="93" height="196"/>
+        <rect class="cut" x="348" y="0" width="43" height="350"/>
+        <rect class="cut" x="545" y="0" width="43" height="95"/>
+        <rect class="cut" x="742" y="0" width="43" height="95"/>
+        <rect class="cut" x="247" y="154" width="243" height="42"/>
+        <rect class="cut" x="644" y="154" width="43" height="95"/>
+        <rect class="cut" x="841" y="154" width="98" height="42"/>
+        <rect class="cut" x="154" y="249" width="40" height="101"/>
+        <rect class="cut" x="545" y="249" width="240" height="101"/>
+      </g>
+    </mask>
+  </defs>
+  <rect width="939" height="350" fill="#000000" mask="url(#poche-cuts)" shape-rendering="crispEdges"/>
+  <g class="wordmark" fill="#000000" font-family="Helvetica, Arial, sans-serif" font-size="150" font-weight="700">
+    <text x="1025" y="145">Andrew Wheat</text>
+    <text x="1025" y="325">Selected Works</text>
+  </g>
+</svg>

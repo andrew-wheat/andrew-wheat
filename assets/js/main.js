@@ -436,6 +436,41 @@
     });
   }
 
+  function initHomeLogoIntro() {
+    const intro = document.querySelector("[data-home-logo-intro]");
+    if (!intro) return;
+
+    let removed = false;
+    let clearing = false;
+
+    document.body.classList.add("is-home-logo-intro-active");
+
+    const startClearing = () => {
+      if (clearing) return;
+      clearing = true;
+      document.body.classList.add("is-home-logo-intro-clearing");
+    };
+
+    const removeIntro = () => {
+      if (removed) return;
+      removed = true;
+      startClearing();
+      document.body.classList.remove("is-home-logo-intro-active", "is-home-logo-intro-clearing");
+      if (document.body.contains(intro)) intro.remove();
+    };
+
+    intro.addEventListener("animationstart", (event) => {
+      if (event.animationName === "home-logo-intro-fade") startClearing();
+    });
+
+    intro.addEventListener("animationend", (event) => {
+      if (event.animationName === "home-logo-intro-fade") removeIntro();
+    });
+
+    window.setTimeout(startClearing, reduceMotion ? 1000 : 2800);
+    window.setTimeout(removeIntro, reduceMotion ? 1600 : 3700);
+  }
+
   function initEmailCompose() {
     const compose = document.querySelector("[data-email-compose]");
     const openButton = document.querySelector("[data-email-compose-open]");
@@ -2887,6 +2922,7 @@
   initMobileMenu();
   initEmailCompose();
   renderHero();
+  initHomeLogoIntro();
   renderWordMarquee();
   renderHalftoneTitle();
   renderPlanField();
