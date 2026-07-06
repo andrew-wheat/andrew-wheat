@@ -323,13 +323,15 @@ a.brand {
 .brand-mark {
   display: block;
   flex: 0 0 auto;
-  width: 2.1em;
-  height: 0.78em;
+  width: clamp(54px, 2.1em, 68px);
+  height: auto;
+  aspect-ratio: 939 / 350;
   color: inherit;
   transform: translateY(0.01em);
 }
 
-.brand-mark rect {
+.brand-mark rect,
+.brand-mark path {
   shape-rendering: crispEdges;
 }
 
@@ -1389,8 +1391,8 @@ body[data-page="work"] .view-toggle {
 
 .view-icon {
   display: block;
-  width: 1.05em;
-  height: 1.05em;
+  width: 20px;
+  height: 20px;
   fill: currentColor;
   shape-rendering: crispEdges;
 }
