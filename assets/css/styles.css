@@ -286,6 +286,8 @@ select {
   line-height: 1;
   letter-spacing: 0.01em;
   color: inherit;
+  opacity: 1;
+  transition: opacity 420ms ease;
 }
 
 .static-header {
@@ -448,6 +450,11 @@ a.brand {
 .home-logo-intro ~ .site-header {
   opacity: 0;
   pointer-events: none;
+}
+
+body.is-home-logo-intro-clearing .home-logo-intro ~ .site-header {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 @keyframes home-logo-intro-fade {
@@ -5121,7 +5128,7 @@ body[data-page="work"] .site-copyright {
   }
 
   .site-header {
-    align-items: flex-start;
+    align-items: center;
     flex-direction: row;
     justify-content: space-between;
     gap: 14px;
