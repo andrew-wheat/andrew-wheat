@@ -255,7 +255,7 @@
       '<img class="cadavre-plan-image cadavre-plan-image--',
       escapeHtml(plan.shape),
       '" src="',
-      escapeHtml(plan.src),
+      escapeHtml(sitePath(plan.src)),
       '" alt="',
       escapeHtml(project.title),
       ' plan">'
@@ -2081,7 +2081,7 @@
   function huntersPointAnimation(project) {
     const layerBase = `${project.imageBase || ""}animation-layers/`;
     const image = (className, src, alt, attrs = "") => `
-      <img class="${className}" src="${escapeHtml(layerBase + src)}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async" data-image-skeleton ${attrs}>
+      <img class="${className}" src="${escapeHtml(sitePath(layerBase + src))}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async" data-image-skeleton ${attrs}>
     `;
 
     return `
@@ -2667,7 +2667,14 @@
   }
 
   function optimizedSrc(src) {
-    return optimizedImages[src] || src;
+    const normalizedSrc = src.startsWith("/") ? src.slice(1) : src;
+    return sitePath(optimizedImages[normalizedSrc] || optimizedImages[src] || src);
+  }
+
+  function sitePath(src) {
+    if (!src) return src;
+    if (/^(?:[a-z]+:|#|\/\/)/i.test(src)) return src;
+    return src.startsWith("/") ? src : `/${src}`;
   }
 
   function projectGallery(project) {
