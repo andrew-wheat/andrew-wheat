@@ -1137,60 +1137,6 @@ window.PORTFOLIO_PROJECTS = [
     "workListThumbnail": "assets/images/work-covers/curanto-cookhouse.webp"
   },
   {
-    "id": "york-prize",
-    "title": "York Prize",
-    "year": "2023",
-    "course": "Core I Studio Led by Felix Heisel",
-    "studio": "Fall 2023 Cornell University",
-    "type": "Competition / model study",
-    "professors": "Michael Jefferson",
-    "themes": [
-      "model",
-      "competition",
-      "form"
-    ],
-    "summary": "Exploring the tectonics of aggregation and extraction, how space, and the choreography of movement can be produced simply between the interplay of solid and void. The model is a diptyque - both an impression and relief of the mold.",
-    "description": "The model explores the tectonics of aggregation and extraction, how space, and the choreography of movement can be produced simply between the interplay of solid and void. The model is a diptyque - both an impression and relief of the mold.",
-    "parti": "A model study frames form as a compact architectural argument.",
-    "question": "",
-    "operation": "Use final and study model images to document the project's formal development.",
-    "imageBase": "assets/images/Projects/York Prize/",
-    "thumbnail": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
-    "heroImage": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
-    "overviewImage": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
-    "story": [
-      {
-        "src": "Andrew Wheat_ajw288_01C_York Study Model (1).jpg",
-        "caption": "York Prize void and mass study model.",
-        "layout": "image"
-      },
-      {
-        "src": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
-        "caption": "York Prize final cast model view.",
-        "layout": "image"
-      }
-    ],
-    "images": [
-      {
-        "src": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
-        "caption": "York Prize final cast model view"
-      },
-      {
-        "src": "Andrew Wheat_ajw288_01C_York Study Model (1).jpg",
-        "caption": "York Prize void and mass study model"
-      }
-    ],
-    "position": {
-      "x": 84,
-      "y": 76,
-      "rotation": -5
-    },
-    "shape": "porous",
-    "workThumbnail": "assets/images/work-heroes/york-prize.webp",
-    "workThumbnailAlt": "assets/images/work-heroes-alt/york-prize.webp",
-    "workListThumbnail": "assets/images/work-covers/york-prize.webp"
-  },
-  {
     "id": "woven-pavilion",
     "title": "Woven Pavilion",
     "year": "2023",
@@ -1414,6 +1360,60 @@ window.PORTFOLIO_PROJECTS = [
 ];
 
 window.ARCHIVED_PORTFOLIO_PROJECTS = [
+  {
+    "id": "york-prize",
+    "title": "York Prize",
+    "year": "2023",
+    "course": "Core I Studio Led by Felix Heisel",
+    "studio": "Fall 2023 Cornell University",
+    "type": "Competition / model study",
+    "professors": "Michael Jefferson",
+    "themes": [
+      "model",
+      "competition",
+      "form"
+    ],
+    "summary": "Exploring the tectonics of aggregation and extraction, how space, and the choreography of movement can be produced simply between the interplay of solid and void. The model is a diptyque - both an impression and relief of the mold.",
+    "description": "The model explores the tectonics of aggregation and extraction, how space, and the choreography of movement can be produced simply between the interplay of solid and void. The model is a diptyque - both an impression and relief of the mold.",
+    "parti": "A model study frames form as a compact architectural argument.",
+    "question": "",
+    "operation": "Use final and study model images to document the project's formal development.",
+    "imageBase": "assets/images/Projects/York Prize/",
+    "thumbnail": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
+    "heroImage": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
+    "overviewImage": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
+    "story": [
+      {
+        "src": "Andrew Wheat_ajw288_01C_York Study Model (1).jpg",
+        "caption": "York Prize void and mass study model.",
+        "layout": "image"
+      },
+      {
+        "src": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
+        "caption": "York Prize final cast model view.",
+        "layout": "image"
+      }
+    ],
+    "images": [
+      {
+        "src": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
+        "caption": "York Prize final cast model view"
+      },
+      {
+        "src": "Andrew Wheat_ajw288_01C_York Study Model (1).jpg",
+        "caption": "York Prize void and mass study model"
+      }
+    ],
+    "position": {
+      "x": 84,
+      "y": 76,
+      "rotation": -5
+    },
+    "shape": "porous",
+    "workThumbnail": "assets/images/work-heroes/york-prize.webp",
+    "workThumbnailAlt": "assets/images/work-heroes-alt/york-prize.webp",
+    "workListThumbnail": "assets/images/work-covers/york-prize.webp"
+  },
   {
     "id": "ephemeral-diptypque",
     "title": "Ephemeral Diptyque",

@@ -1395,7 +1395,7 @@
     const allThemes = themeEntries.map(([label]) => label);
     let activeTheme = "all";
     let activeView = "grid";
-    const mobileDefaultView = window.matchMedia("(max-width: 720px)").matches ? "list" : "grid";
+    const mobileDefaultView = "grid";
     if (filter) {
       filter.innerHTML =
         '<option value="all">All themes</option>' +
@@ -1411,6 +1411,7 @@
 
       const fadeOrder = workFadeOrder(visible);
       catalogue.innerHTML = visible.map((project, index) => projectCard(project, index, fadeOrder)).join("");
+      initImageSkeletons();
       updateThemeButtons();
     }
 
@@ -1458,12 +1459,12 @@
       const tokens = allThemes.flatMap((theme, index) =>
         index === allThemes.length - 1
           ? [{ type: "theme", value: theme }]
-          : [{ type: "theme", value: theme }, { type: "plus", value: "+" }]
+          : [{ type: "theme", value: theme }, { type: "separator", value: "/" }]
       );
       track.innerHTML = tokens
         .map((token, index) => {
-          if (token.type === "plus") {
-            return `<span class="marquee-token marquee-plus is-visible" style="--token-index:${index}">+</span>`;
+          if (token.type === "separator") {
+            return `<span class="marquee-token marquee-separator is-visible" style="--token-index:${index}">/</span>`;
           }
           return `<button type="button" class="marquee-token marquee-filter is-visible" data-theme-token="${escapeHtml(token.value)}" style="--token-index:${index}">${escapeHtml(token.value)}</button>`;
         })
