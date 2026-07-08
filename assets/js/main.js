@@ -469,12 +469,34 @@
 
     let removed = false;
     let clearing = false;
+    const cuts = Array.from(intro.querySelectorAll(".home-logo-cut"));
+    const cutDelays = [260, 390, 520, 650, 780, 910, 1040, 1170, 1300, 1430];
+    const finalLogoDelay = reduceMotion ? 1 : 1880;
 
     document.body.classList.add("is-home-logo-intro-active");
 
+    cuts.forEach((cut) => {
+      cut.style.opacity = "0";
+    });
+
+    if (reduceMotion) {
+      cuts.forEach((cut) => {
+        cut.style.opacity = "1";
+      });
+    } else {
+      cuts.forEach((cut, index) => {
+        window.setTimeout(() => {
+          cut.style.opacity = "1";
+        }, cutDelays[index] || cutDelays[cutDelays.length - 1]);
+      });
+    }
+
     window.setTimeout(() => {
+      cuts.forEach((cut) => {
+        cut.style.opacity = "1";
+      });
       intro.classList.add("is-logo-complete");
-    }, reduceMotion ? 1 : 1700);
+    }, finalLogoDelay);
 
     const startClearing = () => {
       if (clearing) return;

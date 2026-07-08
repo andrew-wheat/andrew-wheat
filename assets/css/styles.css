@@ -450,7 +450,6 @@ a.brand {
 
 .home-logo-cut {
   opacity: 0;
-  animation: home-logo-subtract-cut 90ms steps(1, end) both;
   shape-rendering: crispEdges;
 }
 
@@ -494,13 +493,8 @@ a.brand {
   animation-delay: 1430ms;
 }
 
-.home-logo-poche {
-  animation: home-logo-poche-hide 1ms steps(1, end) 1580ms forwards;
-}
-
 .home-logo-final-mark {
   opacity: 0;
-  animation: home-logo-final-show 1ms steps(1, end) 1580ms forwards;
 }
 
 .home-logo-wordmark {
@@ -510,6 +504,10 @@ a.brand {
 
 .home-logo-intro.is-logo-complete .home-logo-poche {
   opacity: 0;
+}
+
+.home-logo-intro.is-logo-complete .home-logo-cut {
+  opacity: 1;
 }
 
 .home-logo-intro.is-logo-complete .home-logo-final-mark,
@@ -530,18 +528,6 @@ body.is-home-logo-intro-clearing .home-logo-intro ~ .site-header {
 @keyframes home-logo-intro-fade {
   to {
     visibility: hidden;
-    opacity: 0;
-  }
-}
-
-@keyframes home-logo-subtract-cut {
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes home-logo-poche-hide {
-  to {
     opacity: 0;
   }
 }
