@@ -472,6 +472,10 @@
 
     document.body.classList.add("is-home-logo-intro-active");
 
+    window.setTimeout(() => {
+      intro.classList.add("is-logo-complete");
+    }, reduceMotion ? 1 : 1700);
+
     const startClearing = () => {
       if (clearing) return;
       clearing = true;
