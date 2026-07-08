@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2205" height="350" viewBox="0 0 2205 350" role="img" aria-labelledby="title desc">
+  <title id="title">Andrew Wheat Selected Works white logo</title>
+  <desc id="desc">A white geometric logo and Helvetica text lockup with a transparent background.</desc>
+  <g fill="#ffffff" shape-rendering="crispEdges">
+    <rect x="194" y="0" width="154" height="95"/>
+    <rect x="391" y="0" width="154" height="95"/>
+    <rect x="588" y="0" width="154" height="95"/>
+    <rect x="785" y="0" width="154" height="95"/>
+    <rect x="93" y="95" width="255" height="59"/>
+    <rect x="391" y="95" width="548" height="59"/>
+    <rect x="93" y="154" width="154" height="42"/>
+    <rect x="490" y="154" width="154" height="42"/>
+    <rect x="687" y="154" width="154" height="42"/>
+    <rect x="0" y="196" width="348" height="53"/>
+    <rect x="391" y="196" width="253" height="53"/>
+    <rect x="687" y="196" width="252" height="53"/>
+    <rect x="0" y="249" width="154" height="101"/>
+    <rect x="194" y="249" width="154" height="101"/>
+    <rect x="391" y="249" width="154" height="101"/>
+    <rect x="785" y="249" width="154" height="101"/>
+  </g>
+  <g fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="150" font-weight="700">
+    <text x="1025" y="145">Andrew Wheat</text>
+    <text x="1025" y="325">Selected Works</text>
+  </g>
+</svg>
