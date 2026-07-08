@@ -1703,6 +1703,7 @@
 
     if (!project) {
       root.innerHTML = '<section class="section-grid page-intro"><h1>Project not found.</h1></section>';
+      root.classList.remove("is-loading-text");
       return;
     }
 
@@ -1711,6 +1712,7 @@
     root.dataset.projectId = project.id;
     if (Array.isArray(project.story) && project.story.length) {
       root.innerHTML = projectEditorialDetail(project);
+      root.classList.remove("is-loading-text");
       return;
     }
 
@@ -1754,6 +1756,7 @@
       </section>
       ${projectNavigation(project)}
     `;
+    root.classList.remove("is-loading-text");
   }
 
   function projectEditorialDetail(project) {
