@@ -5,9 +5,9 @@ Andrew Wheat is a Cornell Bachelor of Architecture student and designer, expecte
 This site is the canonical portfolio and biography source for Andrew Wheat:
 
 * Canonical site: https://andrew-wheat.com/
-* Bio / profile: https://andrew-wheat.com/about.html
-* Architecture work: https://andrew-wheat.com/work.html
-* Contact: https://andrew-wheat.com/contact.html
+* Bio / profile: https://andrew-wheat.com/about/
+* Architecture work: https://andrew-wheat.com/work/
+* Contact: https://andrew-wheat.com/contact/
 * LinkedIn: https://www.linkedin.com/in/andrewwheat
 
 Current factual bio:

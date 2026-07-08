@@ -1261,7 +1261,7 @@ window.PORTFOLIO_PROJECTS = [
     "affiliation": "Cornell University Sustainable Design",
     "type": "Educational infrastructure / school / teacher institute",
     "program": "school / teacher institute",
-    "url": "project.html?id=sustainable-education",
+    "url": "/project/sustainable-education/",
     "themes": [
       "education",
       "material",

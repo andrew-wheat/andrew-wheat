@@ -64,6 +64,33 @@
     "Illustrator",
     "Photoshop"
   ];
+
+  redirectLegacyUrls();
+
+  function redirectLegacyUrls() {
+    if (window.location.protocol === "file:") return;
+    const url = new URL(window.location.href);
+    const legacyRoutes = {
+      "/index.html": "/",
+      "/work.html": "/work/",
+      "/about.html": "/about/",
+      "/contact.html": "/contact/"
+    };
+    let cleanPath = legacyRoutes[url.pathname];
+
+    if (url.pathname === "/project.html") {
+      const id = canonicalProjectId(url.searchParams.get("id") || "");
+      if (id) {
+        cleanPath = projectUrl(id);
+        url.searchParams.delete("id");
+      }
+    }
+
+    if (!cleanPath) return;
+    const cleanUrl = `${url.origin}${cleanPath}${url.search}${url.hash}`;
+    window.location.replace(cleanUrl);
+  }
+
   const projectSeo = {
     "hunters-point": {
       title: "Hunter's Point Cooperative Housing | Andrew Wheat",
@@ -1157,7 +1184,7 @@
         const shouldOpen = !moved;
         endGesture(event, fragment);
         if (shouldOpen) {
-          window.location.href = `project.html?id=${fragment.dataset.projectId}`;
+          window.location.href = projectUrl(fragment.dataset.projectId);
         }
       });
 
@@ -1372,7 +1399,7 @@
       .slice(0, 6)
       .map(
         (project, projectIndex) => `
-          <a class="index-row" href="project.html?id=${project.id}">
+          <a class="index-row" href="${projectUrl(project.id)}">
             <span>${String(projectIndex + 1).padStart(2, "0")}</span>
             <span>${escapeHtml(project.title)}</span>
             <span>${escapeHtml(project.type)}</span>
@@ -1542,7 +1569,7 @@
     const fadeDuration = Math.max(fadeInterval * fadeOrder.length, fadeInterval);
     const fadeDelay = Math.max(fadeSlot, 0) * fadeInterval;
     return `
-      <a class="project-card" data-project-id="${escapeHtml(project.id)}" href="project.html?id=${project.id}" style="--work-fade-duration: ${fadeDuration.toFixed(1)}s; --work-fade-delay: ${fadeDelay.toFixed(1)}s;">
+      <a class="project-card" data-project-id="${escapeHtml(project.id)}" href="${projectUrl(project.id)}" style="--work-fade-duration: ${fadeDuration.toFixed(1)}s; --work-fade-delay: ${fadeDelay.toFixed(1)}s;">
         <figure class="project-thumb">
           ${
             thumbnail
@@ -1573,10 +1600,15 @@
     return aliases[id] || id;
   }
 
+  function projectUrl(id) {
+    const pageId = id === "ephemeral-diptypque" ? "ephemeral-diptyque" : id;
+    return `/project/${encodeURIComponent(pageId)}/`;
+  }
+
   function setProjectMeta(project) {
     const seo = projectSeo[project.id] || {};
     const pageId = project.id === "ephemeral-diptypque" ? "ephemeral-diptyque" : project.id;
-    const pageUrl = `https://andrew-wheat.com/project.html?id=${encodeURIComponent(pageId)}`;
+    const pageUrl = `https://andrew-wheat.com/project/${encodeURIComponent(pageId)}/`;
     const title = seo.title || `${project.title} | Andrew Wheat`;
     const description = seo.description || project.summary || project.description || "Architecture project by Andrew Wheat.";
     const keywords = projectKeywords(project, seo).join(", ");
@@ -1666,8 +1698,7 @@
   function renderProjectDetail() {
     const root = document.querySelector("[data-project-detail]");
     if (!root) return;
-    const params = new URLSearchParams(window.location.search);
-    const id = canonicalProjectId(params.get("id") || projects[0]?.id);
+    const id = currentProjectId() || projects[0]?.id;
     const project = allProjects.find((item) => item.id === id) || projects[0];
 
     if (!project) {
@@ -1773,10 +1804,10 @@
 
     return `
       <nav class="project-page-nav" aria-label="Project navigation">
-        <a class="project-page-nav-link project-page-nav-link--previous" href="project.html?id=${escapeHtml(previous.id)}" aria-label="Previous project: ${escapeHtml(previous.title)}">
+        <a class="project-page-nav-link project-page-nav-link--previous" href="${projectUrl(previous.id)}" aria-label="Previous project: ${escapeHtml(previous.title)}">
           <span aria-hidden="true">←</span>
         </a>
-        <a class="project-page-nav-link project-page-nav-link--next" href="project.html?id=${escapeHtml(next.id)}" aria-label="Next project: ${escapeHtml(next.title)}">
+        <a class="project-page-nav-link project-page-nav-link--next" href="${projectUrl(next.id)}" aria-label="Next project: ${escapeHtml(next.title)}">
           <span aria-hidden="true">→</span>
         </a>
       </nav>
@@ -1787,10 +1818,20 @@
     if (document.body.dataset.page !== "project") return;
     if (document.querySelector(".project-page-nav")) return;
     const root = document.querySelector("[data-project-detail]");
-    const id = canonicalProjectId(new URLSearchParams(window.location.search).get("id"));
+    const id = currentProjectId();
     const project = projects.find((item) => item.id === id) || projects[0];
     if (!root || !project) return;
     root.insertAdjacentHTML("beforeend", projectNavigation(project));
+  }
+
+  function currentProjectId() {
+    const params = new URLSearchParams(window.location.search);
+    const queryId = params.get("id");
+    if (queryId) return canonicalProjectId(queryId);
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const projectIndex = pathParts.indexOf("project");
+    const pathId = projectIndex >= 0 ? pathParts[projectIndex + 1] : "";
+    return canonicalProjectId(pathId || "");
   }
 
   function projectAnnotation(label, text, index) {
