@@ -10,33 +10,13 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const workThemeMap = [
     ["Assembly", ["wood-street-pool", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "woven-pavilion", "hunters-point"]],
-    ["Balance", ["a-chair-is-a-toy", "borinquen-healing-center"]],
-    ["Body", ["wood-street-pool", "borinquen-healing-center", "a-chair-is-a-toy", "woven-pavilion"]],
     ["Care", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "borinquen-healing-center"]],
-    ["Circulation", ["hunters-point", "wood-street-pool", "borinquen-healing-center", "design-district-canteen", "curanto-cookhouse", "woven-pavilion"]],
-    ["Climate", ["wood-street-pool", "enfield-food-pantry", "curanto-cookhouse", "sustainable-education"]],
-    ["Commons", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "curanto-cookhouse", "design-district-canteen"]],
-    ["Community", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "curanto-cookhouse", "design-district-canteen", "deconstruct-reconfigure", "sustainable-education"]],
-    ["Competition", ["york-prize", "deconstruct-reconfigure", "a-chair-is-a-toy"]],
-    ["Configuration", ["hunters-point", "deconstruct-reconfigure", "a-chair-is-a-toy", "curanto-cookhouse"]],
-    ["Deconstruction", ["deconstruct-reconfigure", "curanto-cookhouse", "hunters-point"]],
-    ["Education", ["sustainable-education"]],
-    ["Form", ["borinquen-healing-center", "woven-pavilion", "design-district-canteen", "a-chair-is-a-toy", "york-prize"]],
-    ["Frame", ["hunters-point", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "woven-pavilion"]],
-    ["Gathering", ["hunters-point", "enfield-food-pantry", "wood-street-pool", "design-district-canteen", "curanto-cookhouse", "woven-pavilion"]],
-    ["Ground", ["wood-street-pool", "enfield-food-pantry", "borinquen-healing-center", "curanto-cookhouse", "woven-pavilion"]],
-    ["Housing", ["hunters-point"]],
-    ["Infrastructure", ["wood-street-pool", "hunters-point", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "borinquen-healing-center", "sustainable-education"]],
+    ["Climate", ["wood-street-pool", "enfield-food-pantry", "curanto-cookhouse", "sustainable-education", "hunters-point"]],
+    ["Ground", ["wood-street-pool", "enfield-food-pantry", "borinquen-healing-center", "curanto-cookhouse", "woven-pavilion", "hunters-point"]],
     ["Light", ["woven-pavilion", "curanto-cookhouse", "design-district-canteen", "wood-street-pool"]],
-    ["Movement", ["wood-street-pool", "hunters-point", "borinquen-healing-center", "woven-pavilion", "a-chair-is-a-toy"]],
-    ["Performance", ["a-chair-is-a-toy", "design-district-canteen", "woven-pavilion", "curanto-cookhouse", "hunters-point"]],
-    ["Play", ["a-chair-is-a-toy", "wood-street-pool", "design-district-canteen", "woven-pavilion"]],
-    ["Production", ["deconstruct-reconfigure", "hunters-point", "curanto-cookhouse"]],
-    ["Resilience", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "deconstruct-reconfigure", "curanto-cookhouse", "sustainable-education"]],
-    ["Ritual", ["curanto-cookhouse", "woven-pavilion", "wood-street-pool"]],
-    ["Texture", ["curanto-cookhouse", "woven-pavilion", "york-prize"]],
-    ["Threshold", ["curanto-cookhouse", "wood-street-pool", "hunters-point", "enfield-food-pantry", "woven-pavilion", "york-prize", "design-district-canteen"]],
-    ["Use", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "a-chair-is-a-toy", "deconstruct-reconfigure", "borinquen-healing-center"]]
+    ["Material", ["deconstruct-reconfigure", "curanto-cookhouse", "woven-pavilion", "wood-street-pool", "a-chair-is-a-toy", "borinquen-healing-center", "york-prize"]],
+    ["Movement", ["wood-street-pool", "hunters-point", "borinquen-healing-center", "woven-pavilion", "a-chair-is-a-toy", "design-district-canteen"]],
+    ["Structure", ["wood-street-pool", "hunters-point", "borinquen-healing-center", "woven-pavilion", "design-district-canteen", "curanto-cookhouse", "deconstruct-reconfigure"]]
   ];
   const recruiterKeywords = [
     "Andrew Wheat",
@@ -316,7 +296,17 @@
       setActive(0);
       window.addEventListener("resize", updateHeight, { passive: true });
       if (!reduceMotion && slides.length > 1) {
-        window.setInterval(() => setActive((active + 1) % slides.length), 4600);
+        let carouselTimer = null;
+        const startCarousel = () => {
+          if (carouselTimer) return;
+          carouselTimer = window.setInterval(() => setActive((active + 1) % slides.length), 4600);
+        };
+
+        if (document.body.classList.contains("is-home-logo-intro-active")) {
+          document.addEventListener("homeLogoIntroComplete", startCarousel, { once: true });
+        } else {
+          startCarousel();
+        }
       }
     });
   }
@@ -450,6 +440,7 @@
 
       button.addEventListener("click", () => {
         const isOpen = header.classList.toggle("is-menu-open");
+        document.body.classList.toggle("is-mobile-menu-open", isOpen);
         button.setAttribute("aria-expanded", String(isOpen));
         button.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
       });
@@ -457,8 +448,18 @@
       nav.addEventListener("click", (event) => {
         if (!(event.target instanceof Element) || !event.target.closest("a")) return;
         header.classList.remove("is-menu-open");
+        document.body.classList.remove("is-mobile-menu-open");
         button.setAttribute("aria-expanded", "false");
         button.setAttribute("aria-label", "Open menu");
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape" || !header.classList.contains("is-menu-open")) return;
+        header.classList.remove("is-menu-open");
+        document.body.classList.remove("is-mobile-menu-open");
+        button.setAttribute("aria-expanded", "false");
+        button.setAttribute("aria-label", "Open menu");
+        button.focus();
       });
     });
   }
@@ -510,6 +511,7 @@
       startClearing();
       document.body.classList.remove("is-home-logo-intro-active", "is-home-logo-intro-clearing");
       if (document.body.contains(intro)) intro.remove();
+      document.dispatchEvent(new CustomEvent("homeLogoIntroComplete"));
     };
 
     intro.addEventListener("animationstart", (event) => {
@@ -1505,60 +1507,13 @@
     function renderThemeMarquee() {
       const track = document.querySelector("[data-work-theme-track]");
       if (!track || !allThemes.length) return;
-      const viewport = track.closest(".marquee-window") || track.parentElement;
-      let edgeVelocity = 0;
-      let scrollFrame = 0;
-
-      const tokens = allThemes.flatMap((theme, index) =>
-        index === allThemes.length - 1
-          ? [{ type: "theme", value: theme }]
-          : [{ type: "theme", value: theme }, { type: "separator", value: "/" }]
-      );
+      const tokens = [{ label: "All", value: "all" }, ...allThemes.map((theme) => ({ label: theme, value: theme }))];
       track.innerHTML = tokens
-        .map((token, index) => {
-          if (token.type === "separator") {
-            return `<span class="marquee-token marquee-separator is-visible" style="--token-index:${index}">/</span>`;
-          }
-          return `<button type="button" class="marquee-token marquee-filter is-visible" data-theme-token="${escapeHtml(token.value)}" style="--token-index:${index}">${escapeHtml(token.value)}</button>`;
-        })
+        .map((token, index) =>
+          `<button type="button" class="marquee-token marquee-filter is-visible" data-theme-token="${escapeHtml(token.value)}" style="--token-index:${index}">${escapeHtml(token.label)}</button>`
+        )
         .join("");
       updateThemeButtons();
-
-      function scrollStep() {
-        if (!viewport || Math.abs(edgeVelocity) < 0.1) {
-          scrollFrame = 0;
-          return;
-        }
-        viewport.scrollLeft += edgeVelocity;
-        scrollFrame = window.requestAnimationFrame(scrollStep);
-      }
-
-      function setEdgeVelocity(event) {
-        if (!viewport) return;
-        if (event.pointerType && event.pointerType !== "mouse" && event.pointerType !== "pen") {
-          edgeVelocity = 0;
-          return;
-        }
-        const rect = viewport.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const edge = Math.min(170, rect.width * 0.26);
-        const maxSpeed = 18;
-        if (x < edge) {
-          edgeVelocity = -maxSpeed * (1 - x / edge);
-        } else if (x > rect.width - edge) {
-          edgeVelocity = maxSpeed * (1 - (rect.width - x) / edge);
-        } else {
-          edgeVelocity = 0;
-        }
-        if (!scrollFrame && Math.abs(edgeVelocity) >= 0.1) {
-          scrollFrame = window.requestAnimationFrame(scrollStep);
-        }
-      }
-
-      viewport?.addEventListener("pointermove", setEdgeVelocity, { passive: true });
-      viewport?.addEventListener("pointerleave", () => {
-        edgeVelocity = 0;
-      }, { passive: true });
 
       track.addEventListener("click", (event) => {
         const button = event.target instanceof Element ? event.target.closest("[data-theme-token]") : null;
