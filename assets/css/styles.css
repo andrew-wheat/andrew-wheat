@@ -2444,6 +2444,23 @@ body[data-page="project"] img[data-image-skeleton].is-loaded {
   line-height: 1.56;
 }
 
+.project-external-link {
+  margin: clamp(10px, 1.2vw, 16px) 0 clamp(24px, 2.8vw, 38px) !important;
+}
+
+.project-external-link a {
+  display: inline-block;
+  color: var(--ink);
+  font-family: var(--font-copy);
+  font-size: clamp(11.5px, 0.82vw, 13px);
+  font-style: italic;
+  font-weight: var(--weight-copy);
+  line-height: 1.48;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
 .project-pre-question {
   display: grid;
   place-items: center;

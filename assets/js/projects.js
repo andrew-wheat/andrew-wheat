@@ -1259,9 +1259,17 @@ window.PORTFOLIO_PROJECTS = [
     "location": "Nepal",
     "studio": "Cornell University Sustainable Design",
     "affiliation": "Cornell University Sustainable Design",
+    "additionalMetadata": [
+      "Role: Co-Team Lead With Hannah Obel",
+      "Supervised By Sirietta Simoncini"
+    ],
     "type": "Educational infrastructure / school / teacher institute",
     "program": "school / teacher institute",
     "url": "/project/sustainable-education/",
+    "externalLink": {
+      "label": "CUSD Sustainable Education",
+      "url": "https://www.cusd.cornell.edu/pages/subteams/sustainable-education.html"
+    },
     "themes": [
       "education",
       "material",
@@ -1269,11 +1277,11 @@ window.PORTFOLIO_PROJECTS = [
       "climate",
       "infrastructure"
     ],
-    "summary": "A school and teacher institute project in Nepal developed through Cornell University Sustainable Design, integrating cultural continuity, drainage, climate resilience, and educational infrastructure.",
-    "description": "A school and teacher institute project in Nepal developed through Cornell University Sustainable Design, integrating cultural continuity, drainage, climate resilience, and educational infrastructure.",
-    "parti": "Educational infrastructure is treated as a community-built material and climatic system.",
-    "question": "How can educational infrastructure support community-driven construction while responding to culture, drainage, and climate resilience?",
-    "operation": "Use material research, site work, cultural continuity, drainage, and partnership as design tools.",
+    "summary": "A Cornell University Sustainable Design project developing school infrastructure in Nepal through climate analysis, local building knowledge, and community participation.",
+    "description": "Sustainable Education is a Cornell University Sustainable Design project team focused on school infrastructure for underserved communities. The team works through research, design, environmental analysis, and stakeholder engagement to develop educational spaces that are buildable with local resources and responsive to the climate and culture of each place.",
+    "parti": "",
+    "question": "",
+    "operation": "",
     "imageBase": "assets/images/Projects/Sustainable Education Nepal/",
     "thumbnail": "EXTERIOR 2 EDITED noisy COPY.jpg",
     "heroImage": "EXTERIOR 2 EDITED noisy COPY.jpg",
@@ -1281,8 +1289,8 @@ window.PORTFOLIO_PROJECTS = [
     "story": [
       {
         "layout": "story-text",
-        "heading": "School / Institute",
-        "text": "This live project entry uses the existing Sustainable Education image archive. TODO: add any missing final project text when the full project package is available."
+        "heading": "Project Team",
+        "text": "Cornell University Sustainable Design is Cornell's largest sustainability project team, a student-run interdisciplinary organization focused on hands-on sustainability work and community impact. Within CUSD, the Sustainable Education team develops school infrastructure for remote and underserved communities, working across architecture, environmental systems, construction feasibility, and local stakeholder engagement. This project in Bandipur, Nepal explores how educational architecture can be shaped by environmental risk, local knowledge, and community participation. The design responds to monsoon flooding and landslide vulnerability through careful site placement, stepped ground strategies, and water-managed landscapes rather than defensive engineering alone. Developed in dialogue with local stakeholders and students, the work draws from Newari building practices, including brick construction, timber framing, deep overhangs, and courtyard-based organization. These systems inform both the spatial logic of the campus and its material economy, prioritizing locally available resources and construction techniques that can be built, maintained, and adapted by the community itself."
       },
       {
         "src": "buildings.jpg",

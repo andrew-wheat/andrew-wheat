@@ -1753,6 +1753,7 @@
           <h1>${escapeHtml(project.title)}</h1>
           ${projectMetadataLines(project)}
           <p>${escapeHtml(project.description || "")}</p>
+          ${projectExternalLink(project)}
           <p>${escapeHtml([project.tectonics, project.contribution].filter(Boolean).join(" "))}</p>
         </div>
       </section>
@@ -1842,6 +1843,11 @@
     return renderedLines.length
       ? `<p class="project-editorial-meta">${renderedLines.join("<br>")}</p>`
       : "";
+  }
+
+  function projectExternalLink(project) {
+    if (!project.externalLink?.url || !project.externalLink?.label) return "";
+    return `<p class="project-external-link"><a href="${escapeHtml(project.externalLink.url)}" target="_blank" rel="noreferrer">${escapeHtml(project.externalLink.label)}</a></p>`;
   }
 
   function professorLabel(project) {
