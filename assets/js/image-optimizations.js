@@ -48,13 +48,13 @@ window.PORTFOLIO_OPTIMIZED_IMAGES = {
   "assets/images/Projects/Enfield Food Pantry/Chapel Longitudinal Section.jpg": "assets/images/optimized/chapel-longitudinal-section-9dd32ee0c9.webp",
   "assets/images/Projects/Enfield Food Pantry/CHAPEL SECTION PDF smaller.jpg": "assets/images/optimized/chapel-section-pdf-smaller-0f7734e5fd.webp",
   "assets/images/Projects/Enfield Food Pantry/DETAIL SECTION png.png": "assets/images/optimized/detail-section-png-8e21d34c1a.webp",
-  "assets/images/Projects/Enfield Food Pantry/Enfield-ONLINE-scaled.jpg": "assets/images/optimized/enfield-online-scaled-17544a29e8.webp",
+  "assets/images/Projects/Enfield Food Pantry/Enfield-ONLINE-scaled.jpg": "assets/images/optimized/enfield-online-scaled-796c48ea87.webp",
   "assets/images/Projects/Enfield Food Pantry/Main Building Longitudinal Section.png": "assets/images/optimized/main-building-longitudinal-section-2acfb6067c.webp",
   "assets/images/Projects/Enfield Food Pantry/new light Firefly Upscaler 2x scale.jpg": "assets/images/optimized/new-light-firefly-upscaler-2x-scale-58287987d3.webp",
-  "assets/images/Projects/Enfield Food Pantry/site photo.jpg": "assets/images/optimized/site-photo-9d8402978f.webp",
+  "assets/images/Projects/Enfield Food Pantry/site photo.jpg": "assets/images/optimized/site-photo-971147ad3e.webp",
   "assets/images/Projects/Enfield Food Pantry/Transverse Section.png": "assets/images/optimized/transverse-section-2c0e49ce7e.webp",
   "assets/images/Projects/Enfield Food Pantry/Work Cover Photo.png": "assets/images/optimized/work-cover-photo-88e01b4705.webp",
-  "assets/images/Projects/Enfield Food Pantry/ZOOMED OUT RENDER FINAL edited tall.png": "assets/images/optimized/zoomed-out-render-final-edited-tall-dbddae72ed.webp",
+  "assets/images/Projects/Enfield Food Pantry/ZOOMED OUT RENDER FINAL edited tall.png": "assets/images/optimized/zoomed-out-render-final-edited-tall-5a9e00a627.webp",
   "assets/images/Projects/Hunter's Point Cooperative Housing/1.png": "assets/images/optimized/1-0cdfa61431.webp",
   "assets/images/Projects/Hunter's Point Cooperative Housing/1_1.png": "assets/images/optimized/1-1-7dcba25cdd.webp",
   "assets/images/Projects/Hunter's Point Cooperative Housing/2.png": "assets/images/optimized/2-4bf29b87f4.webp",
@@ -330,8 +330,8 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     3713
   ],
   "assets/images/Projects/Enfield Food Pantry/Enfield-ONLINE-scaled.jpg": [
-    2560,
-    1588
+    2200,
+    1571
   ],
   "assets/images/Projects/Enfield Food Pantry/Main Building Longitudinal Section.png": [
     3600,

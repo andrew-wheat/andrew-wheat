@@ -250,7 +250,6 @@
     const orderedHeroEntries = [
       ["borinquen-healing-center", "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png"],
       ["enfield-food-pantry", "Work Cover Photo.png"],
-      ["enfield-food-pantry", "ZOOMED OUT RENDER FINAL edited tall.png"],
       ["deconstruct-reconfigure", "MODEL 01 cropped.png"],
       ["curanto-cookhouse", "hero.jpg"],
       ["curanto-cookhouse", "hero 2.jpg"],
@@ -2512,7 +2511,7 @@
           ${paragraphs}
         </article>
         <figure class="wood-mech-axon">
-          ${projectImage(project, image.src, image.caption || "Mechanical axonometric")}
+          ${projectImage(project, image.src, image.caption || "Mechanical axonometric", "", image.mobileSrc)}
         </figure>
         <dl class="wood-mech-key">
           ${systems
