@@ -3547,6 +3547,10 @@ body.project-lightbox-open .site-cursor {
   padding-bottom: clamp(78px, 10vw, 150px);
 }
 
+.project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-site-plan {
+  padding-top: clamp(16px, 2.4vw, 40px);
+}
+
 .project-story-frame--wood-pool-board img {
   width: min(100%, 1065px);
   max-height: none;
@@ -5520,7 +5524,7 @@ body[data-page="work"] .site-copyright {
   }
 
   .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-site-plan {
-    padding-top: clamp(54px, 15vw, 92px);
+    padding-top: clamp(24px, 7vw, 42px);
     padding-bottom: clamp(54px, 15vw, 92px);
   }
 
