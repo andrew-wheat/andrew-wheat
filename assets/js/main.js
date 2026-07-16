@@ -250,12 +250,9 @@
     const orderedHeroEntries = [
       ["borinquen-healing-center", "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png"],
       ["enfield-food-pantry", "Work Cover Photo.png"],
-      ["deconstruct-reconfigure", "MODEL 01 cropped.png"],
       ["curanto-cookhouse", "hero.jpg"],
-      ["curanto-cookhouse", "hero 2.jpg"],
       ["wood-street-pool", "hero.png"],
       ["wood-street-pool", "hero 2.png"],
-      ["design-district-canteen", "Model Front View Shot 01.png"],
       ["york-prize", "Andrew Wheat_ajw288_01C_York Model (1).jpg"],
       ["woven-pavilion", "hero.jpg"]
     ];
@@ -1441,7 +1438,9 @@
     const catalogue = document.querySelector("[data-work-catalogue]");
     if (!catalogue) return;
     const filter = document.querySelector("[data-theme-filter]");
-    const availableProjectIds = new Set(projects.map((project) => project.id));
+    const visibleWorkProjects = projects.filter((project) => !project.workArchiveOnly);
+    const archiveWorkProjects = projects.filter((project) => project.workArchiveOnly);
+    const availableProjectIds = new Set(visibleWorkProjects.map((project) => project.id));
     const themeEntries = workThemeMap
       .map(([label, ids]) => [label, ids.filter((id) => availableProjectIds.has(id))])
       .filter(([, ids]) => ids.length);
@@ -1453,15 +1452,18 @@
     if (filter) {
       filter.innerHTML =
         '<option value="all">All themes</option>' +
+        (archiveWorkProjects.length ? '<option value="archive">Archive</option>' : "") +
         allThemes.map((theme) => `<option value="${theme}">${theme}</option>`).join("");
     }
 
     function draw() {
       activeTheme = filter?.value || activeTheme || "all";
       const visible =
-        activeTheme === "all"
-          ? projects
-          : projects.filter((project) => (themeLookup.get(activeTheme) || []).includes(project.id));
+        activeTheme === "archive"
+          ? archiveWorkProjects
+          : activeTheme === "all"
+            ? visibleWorkProjects
+            : visibleWorkProjects.filter((project) => (themeLookup.get(activeTheme) || []).includes(project.id));
 
       const fadeOrder = workFadeOrder(visible);
       catalogue.innerHTML = visible.map((project, index) => projectCard(project, index, fadeOrder)).join("");
@@ -1506,7 +1508,11 @@
     function renderThemeMarquee() {
       const track = document.querySelector("[data-work-theme-track]");
       if (!track || !allThemes.length) return;
-      const tokens = [{ label: "All", value: "all" }, ...allThemes.map((theme) => ({ label: theme, value: theme }))];
+      const tokens = [
+        { label: "All", value: "all" },
+        ...(archiveWorkProjects.length ? [{ label: "Archive", value: "archive" }] : []),
+        ...allThemes.map((theme) => ({ label: theme, value: theme }))
+      ];
       track.innerHTML = tokens
         .map((token, index) =>
           `<button type="button" class="marquee-token marquee-filter is-visible" data-theme-token="${escapeHtml(token.value)}" style="--token-index:${index}">${escapeHtml(token.label)}</button>`

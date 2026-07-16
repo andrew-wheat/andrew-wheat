@@ -209,9 +209,8 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": 4
     },
     "shape": "strata",
-    "workThumbnail": "assets/images/work-heroes/hunters-point.webp",
-    "workThumbnailAlt": "assets/images/work-heroes-alt/hunters-point.webp",
-    "workListThumbnail": "assets/images/work-covers/hunters-point.webp"
+    "workThumbnail": "assets/images/Projects/Hunter's Point Cooperative Housing/Model full shot.png",
+    "workListThumbnail": "assets/images/Projects/Hunter's Point Cooperative Housing/Model full shot.png"
   },
   {
     "id": "wood-street-pool",
@@ -374,9 +373,8 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": 5
     },
     "shape": "cells",
-    "workThumbnail": "assets/images/work-heroes/wood-street-pool.webp",
-    "workThumbnailAlt": "assets/images/work-heroes-alt/wood-street-pool.webp",
-    "workListThumbnail": "assets/images/work-covers/wood-street-pool.webp"
+    "workThumbnail": "assets/images/Projects/Wood Street Pool/hero 2.png",
+    "workListThumbnail": "assets/images/Projects/Wood Street Pool/hero 2.png"
   },
   {
     "id": "enfield-food-pantry",
@@ -569,9 +567,8 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": -4
     },
     "shape": "bar",
-    "workThumbnail": "assets/images/work-heroes/enfield-food-pantry.webp",
-    "workThumbnailAlt": "assets/images/work-heroes-alt/enfield-food-pantry.webp",
-    "workListThumbnail": "assets/images/work-covers/enfield-food-pantry.webp"
+    "workThumbnail": "assets/images/Projects/Enfield Food Pantry/3X6A0280 cropped SMALLER.png",
+    "workListThumbnail": "assets/images/Projects/Enfield Food Pantry/3X6A0280 cropped SMALLER.png"
   },
   {
     "id": "deconstruct-reconfigure",
@@ -964,9 +961,8 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": -2
     },
     "shape": "grid",
-    "workThumbnail": "assets/images/work-heroes/design-district-canteen.webp",
-    "workThumbnailAlt": "assets/images/work-heroes-alt/design-district-canteen.webp",
-    "workListThumbnail": "assets/images/work-covers/design-district-canteen.webp"
+    "workThumbnail": "assets/images/Projects/Design District Canteen/Model Front View Shot 03 reduced.png",
+    "workListThumbnail": "assets/images/Projects/Design District Canteen/Model Front View Shot 03 reduced.png"
   },
   {
     "id": "curanto-cookhouse",
@@ -1244,6 +1240,7 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": 6
     },
     "shape": "assembly",
+    "workArchiveOnly": true,
     "workThumbnail": "assets/images/work-heroes/woven-pavilion.webp",
     "workThumbnailAlt": "assets/images/work-heroes-alt/woven-pavilion.webp",
     "workListThumbnail": "assets/images/work-covers/woven-pavilion.webp"
