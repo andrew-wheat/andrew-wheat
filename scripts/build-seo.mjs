@@ -421,7 +421,15 @@ function homePage() {
       inLanguage: "en-US",
       isPartOf: { "@id": WEBSITE_ID },
       about: { "@id": PERSON_ID },
-      mainEntity: { "@id": PERSON_ID },
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: publicProjects.map((project, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: projectUrl(project),
+          name: project.title,
+        })),
+      },
       primaryImageOfPage: { "@id": `${ORIGIN}/#portrait` },
       dateModified: TODAY,
     },
@@ -438,34 +446,52 @@ ${buildHead({
   schema,
   profile: true,
 })}
-  <body data-page="landing">
-    <a class="skip-link" href="#main">Skip to main content</a>
-${siteHeader()}
+  <body data-page="work">
+    <a class="skip-link" href="#work-catalogue">Skip to work catalogue</a>
+${siteHeader("work")}
 
-    <main class="page-shell home-index-shell" id="main">
-      <section class="section-grid page-intro reveal visible">
-        <h1>Andrew Wheat</h1>
-        <p class="page-subtitle">Designer and Architecture Student at Cornell University</p>
+    <main class="page-shell">
+      <section class="section-grid page-intro reveal">
+        <h1>Projects</h1>
       </section>
 
-      <section class="about-profile home-profile reveal visible" aria-label="Andrew Wheat biography">
-        <figure class="about-portrait">
-          <img src="/assets/images/About/Large%20Headshot%20BW.png" alt="Black-and-white portrait of Andrew Wheat" width="9912" height="9912" fetchpriority="high" decoding="async">
-        </figure>
-        <div class="about-statement">
-          <p>${escapeHtml(BIO)}</p>
-          <p>His work explores civic space, housing, material systems, and the relationship between buildings and landscape, with particular attention to how construction, climate, and everyday use shape spatial experience.</p>
-          <p class="home-profile-links"><a href="/work/">View Architecture Projects</a> <a href="/about/">Read Andrew's Bio</a> <a href="/contact/">Contact Andrew</a></p>
-        </div>
-      </section>
-
-      <section class="home-project-index" aria-labelledby="selected-work-title">
-        <div class="cv-heading">
-          <h2 id="selected-work-title">Selected Work</h2>
-        </div>
-        <section class="work-catalogue reveal visible" data-work-catalogue data-view="grid" aria-label="Selected architecture projects">
-${staticProjectCards(publicProjects)}
+      <div class="work-toolbar">
+        <section class="work-equation" aria-label="Filter projects by category">
+          <div class="architecture-marquee work-equation-marquee">
+            <span class="marquee-window">
+              <span class="marquee-track" data-work-category-track></span>
+            </span>
+          </div>
         </section>
+
+        <section class="catalogue-controls" aria-label="Catalogue controls">
+          <div class="view-toggle" aria-label="View mode">
+            <button type="button" class="icon-button active" data-view-mode="grid" aria-label="Grid view" title="Grid view">
+              <svg class="view-icon view-icon--grid" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect x="1.5" y="1.5" width="6" height="6"/>
+                <rect x="9" y="1.5" width="6" height="6"/>
+                <rect x="16.5" y="1.5" width="6" height="6"/>
+                <rect x="1.5" y="9" width="6" height="6"/>
+                <rect x="9" y="9" width="6" height="6"/>
+                <rect x="16.5" y="9" width="6" height="6"/>
+                <rect x="1.5" y="16.5" width="6" height="6"/>
+                <rect x="9" y="16.5" width="6" height="6"/>
+                <rect x="16.5" y="16.5" width="6" height="6"/>
+              </svg>
+            </button>
+            <button type="button" class="icon-button" data-view-mode="list" aria-label="List view" title="List view">
+              <svg class="view-icon view-icon--list" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect x="1.5" y="1.5" width="21" height="6"/>
+                <rect x="1.5" y="9" width="21" height="6"/>
+                <rect x="1.5" y="16.5" width="21" height="6"/>
+              </svg>
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <section class="work-catalogue reveal visible" id="work-catalogue" data-work-catalogue data-view="grid" aria-label="Architecture projects by Andrew Wheat">
+${staticProjectCards(publicProjects)}
       </section>
     </main>
 ${siteFooter}
