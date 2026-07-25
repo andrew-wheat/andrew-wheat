@@ -256,6 +256,33 @@ for (const path of ["/llms.txt", "/llms-full.txt"]) {
   if (!text.includes("Andrew Wheat")) errors.push(`${path} lacks Andrew Wheat identity text`);
 }
 
+const homepage = pages.find((page) => page.pathname === "/");
+if (!homepage?.html.includes("/favicon-48.png?v=2")) {
+  errors.push("The homepage does not reference the current versioned favicon");
+}
+
+for (const path of ["/favicon.ico?v=2", "/favicon.svg?v=2", "/favicon-48.png?v=2"]) {
+  const response = await fetch(`${requestedBase}${path}`, {
+    redirect: "follow",
+    headers: { "user-agent": "Googlebot/2.1" },
+  });
+  if (response.status !== 200) {
+    errors.push(`${path} returned ${response.status}`);
+  } else if (!/^image\//i.test(response.headers.get("content-type") || "")) {
+    warnings.push(`${path} content type is ${response.headers.get("content-type")}`);
+  }
+}
+
+const { response: manifestResponse, text: manifest } = await fetchText(
+  `${requestedBase}/site.webmanifest?v=2`,
+);
+if (manifestResponse.status !== 200) {
+  errors.push(`/site.webmanifest?v=2 returned ${manifestResponse.status}`);
+}
+if (/#0000ff/i.test(manifest)) {
+  errors.push("The web manifest still declares the retired blue theme");
+}
+
 const notFoundResponse = await fetch(`${requestedBase}/definitely-not-a-real-page-404-check`, {
   redirect: "manual",
   headers: { "user-agent": "Googlebot/2.1" },
@@ -268,6 +295,7 @@ console.log(`SEO audit target: ${requestedBase}`);
 console.log(`Public pages: ${pages.length}`);
 console.log(`Internal links checked: ${internalLinks.size}`);
 console.log(`Sitemap images checked: ${new Set(sitemapImages).size}`);
+console.log("Favicon assets checked: 3");
 if (warnings.length) {
   console.log("\nWarnings:");
   for (const warning of warnings) console.log(`- ${warning}`);
