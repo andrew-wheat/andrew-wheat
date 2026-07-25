@@ -85,6 +85,7 @@ body {
   font-size: var(--type-copy);
   font-weight: var(--weight-copy);
   line-height: 1.45;
+  text-underline-offset: 4px;
   overflow-x: hidden;
   overflow-x: clip;
   text-rendering: geometricPrecision;
@@ -238,7 +239,7 @@ body::after {
 a {
   color: inherit;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
+  text-underline-offset: 4px;
 }
 
 a:focus-visible,
@@ -1008,7 +1009,7 @@ figcaption {
   font-style: italic;
   text-decoration-line: underline;
   text-decoration-thickness: 0.07em;
-  text-underline-offset: 0.08em;
+  text-underline-offset: 4px;
 }
 
 .page-subtitle {
@@ -2433,7 +2434,7 @@ body[data-page="project"] img[data-image-skeleton].is-loaded {
   line-height: 1.48;
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.22em;
+  text-underline-offset: 4px;
 }
 
 .project-pre-question {
@@ -5814,15 +5815,35 @@ body[data-page="landing-minimal"] {
   height: 100svh;
   min-height: 0;
   overflow: hidden;
-  background: var(--paper);
+  background: var(--bg);
 }
 
 body[data-page="landing-minimal"] .site-header {
   position: relative;
   z-index: 2;
   color: var(--ink);
-  background: var(--paper);
+  background: var(--bg);
   mix-blend-mode: normal;
+}
+
+body[data-page="landing-minimal"] .site-cursor {
+  mix-blend-mode: normal;
+}
+
+body[data-page="landing-minimal"]
+  .site-cursor:not(.is-rotate):not(.is-resize)::before {
+  background: var(--ink);
+  z-index: 1;
+}
+
+body[data-page="landing-minimal"]
+  .site-cursor:not(.is-rotate):not(.is-resize)::after {
+  inset: -1.25px;
+  z-index: 0;
+  border-radius: var(--cursor-radius);
+  background: var(--bg);
+  clip-path: var(--cursor-clip);
+  opacity: 1;
 }
 
 .minimal-landing {
@@ -5841,7 +5862,7 @@ body[data-page="landing-minimal"] .site-header {
 .minimal-landing-content {
   display: grid;
   justify-items: start;
-  gap: clamp(22px, 2.2vw, 32px);
+  gap: 16px;
   width: min(100%, 32em);
 }
 
@@ -5863,7 +5884,7 @@ body[data-page="landing-minimal"] .site-header {
   line-height: 1.2;
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
+  text-underline-offset: 4px;
 }
 
 .minimal-landing-visual {
@@ -5894,7 +5915,7 @@ body[data-page="landing-minimal"] .site-header {
     width: min(100%, 31em);
     justify-self: center;
     justify-items: start;
-    gap: 22px;
+    gap: 16px;
   }
 
   .minimal-landing-copy,
@@ -6456,7 +6477,7 @@ body[data-page="selected"] .site-header {
   font-weight: 400;
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
+  text-underline-offset: 4px;
   opacity: 1;
 }
 
@@ -6477,7 +6498,7 @@ body[data-page="work"] .work-equation-marquee button.marquee-filter.active:focus
   font-weight: 400;
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
+  text-underline-offset: 4px;
   opacity: 1;
 }
 
@@ -6502,5 +6523,5 @@ button:active,
 .contact-list a:active {
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
+  text-underline-offset: 4px;
 }

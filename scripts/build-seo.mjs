@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-07-25";
-const ASSET_VERSION = "20260725-wood-pool-interior-v23";
+const ASSET_VERSION = "20260725-landing-cursor-v24";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -17,7 +17,7 @@ const LINKEDIN = "https://www.linkedin.com/in/andrewwheat";
 const BIO =
   "Andrew Wheat is a designer and architecture student at Cornell University. He is currently based in Seattle and New York City.";
 const LANDING_STATEMENT =
-  "Andrew Wheat is a designer and architecture student at Cornell University. He is currently based between Seattle and New York City. His work explores civic space, housing, material systems, and the relationship between buildings and landscape.";
+  "Andrew Wheat is a designer and architecture student at Cornell University. Based between Seattle and New York City, his work explores civic space, housing, material systems, and the relationship between buildings and landscape.";
 const ROBOTS_INDEX =
   "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 const PROJECT_SEO = {
@@ -809,7 +809,6 @@ async function updateAboutPage(file) {
   source = source.replace(
     /        <div class="about-statement">[\s\S]*?        <\/div>\s*      <\/section>/i,
     `        <div class="about-statement">
-          <p class="about-identity">${escapeHtml(BIO)}</p>
           <p>
             I'm a Bachelor of Architecture student at Cornell interested in how
             architecture can give greater presence to public and collective life.
