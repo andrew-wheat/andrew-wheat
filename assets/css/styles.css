@@ -6471,6 +6471,11 @@ body[data-page="selected"] .site-header {
   opacity: 1;
 }
 
+.site-nav a[aria-current="page"],
+.site-nav .nav-dropdown-link[aria-current="page"] {
+  opacity: 0.46 !important;
+}
+
 body[data-page="work"] .work-equation-marquee button.marquee-filter,
 body[data-page="work"] .work-equation-marquee button.marquee-filter:not(.active),
 body[data-page="work"] .work-equation-marquee button.marquee-filter:hover,
