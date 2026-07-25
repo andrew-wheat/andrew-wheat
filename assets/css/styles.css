@@ -5826,26 +5826,6 @@ body[data-page="landing-minimal"] .site-header {
   mix-blend-mode: normal;
 }
 
-body[data-page="landing-minimal"] .site-cursor {
-  mix-blend-mode: normal;
-}
-
-body[data-page="landing-minimal"]
-  .site-cursor:not(.is-rotate):not(.is-resize)::before {
-  background: var(--ink);
-  z-index: 1;
-}
-
-body[data-page="landing-minimal"]
-  .site-cursor:not(.is-rotate):not(.is-resize)::after {
-  inset: -1.25px;
-  z-index: 0;
-  border-radius: var(--cursor-radius);
-  background: var(--bg);
-  clip-path: var(--cursor-clip);
-  opacity: 1;
-}
-
 .minimal-landing {
   display: grid;
   grid-template-columns: minmax(0, 1.16fr) minmax(280px, 0.74fr);
