@@ -1,6 +1,7 @@
 window.PORTFOLIO_PROJECTS = [
   {
     "id": "hunters-point",
+    "workCategory": "Academic",
     "title": "Hunter's Point Cooperative Housing",
     "year": "2026",
     "course": "Core VI Studio Led by Sasa Zivkovic",
@@ -214,6 +215,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     "id": "wood-street-pool",
+    "workCategory": "Academic",
     "title": "Wood Street Pool",
     "year": "2025",
     "course": "Core V Studio Led by Caroline O'Donnell",
@@ -378,6 +380,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     "id": "enfield-food-pantry",
+    "workCategory": "Academic",
     "title": "Enfield Food Pantry",
     "year": "2025",
     "course": "Core IV Studio Led by Hanna Tulis",
@@ -572,10 +575,11 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     "id": "deconstruct-reconfigure",
+    "workCategory": "Academic",
     "title": "[de]construct + [re]configure",
     "year": "2025",
     "course": "Core IV Studio Led by Hanna Tulis",
-    "studio": "Fall 2025 Cornell University",
+    "studio": "Spring 2025 Cornell University",
     "type": "Material / model study",
     "professors": "Ethan Chan + Hanna Tulis",
     "award": "Awarded Honorable Mention (Internal Competition)",
@@ -678,6 +682,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     "id": "borinquen-healing-center",
+    "workCategory": "Academic",
     "title": "Borinquen Healing Center",
     "year": "2024",
     "course": "Core III Studio Led by Andrea Simitch + Val Warke",
@@ -763,10 +768,11 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     "id": "a-chair-is-a-toy",
+    "workCategory": "Academic",
     "title": "A Chair is a Toy!",
-    "year": "2025",
+    "year": "2024",
     "course": "Core III Studio Led by Andrea Simitch + Val Warke",
-    "studio": "Fall 2025 Cornell University",
+    "studio": "Fall 2024 Cornell University",
     "type": "Furniture / kinetic object",
     "professors": "Andrew Lucia, Andrea Simitch",
     "themes": [
@@ -889,6 +895,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     "id": "design-district-canteen",
+    "workCategory": "Academic",
     "title": "Design District Canteen",
     "year": "2024",
     "course": "Structural Systems II",
@@ -966,6 +973,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     "id": "curanto-cookhouse",
+    "workCategory": "Academic",
     "title": "Curanto Cookhouse",
     "year": "2024",
     "course": "Core II Studio Led by Suzanne Lettieri",
@@ -1125,12 +1133,14 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": -6
     },
     "shape": "frame",
+    "workArchiveOnly": true,
     "workThumbnail": "assets/images/work-heroes/curanto-cookhouse.webp",
     "workThumbnailAlt": "assets/images/work-heroes-alt/curanto-cookhouse.webp",
     "workListThumbnail": "assets/images/work-covers/curanto-cookhouse.webp"
   },
   {
     "id": "woven-pavilion",
+    "workCategory": "Academic",
     "title": "Woven Pavilion",
     "year": "2023",
     "course": "Core I Studio Led by Felix Heisel",
@@ -1250,6 +1260,9 @@ window.PORTFOLIO_PROJECTS = [
 window.ARCHIVED_PORTFOLIO_PROJECTS = [
   {
     "id": "sustainable-education",
+    "workCategory": "Academic",
+    "showInWorkCatalogue": false,
+    "siteHidden": true,
     "slug": "sustainable-education",
     "title": "Sustainable Education",
     "year": "2024",
@@ -1364,6 +1377,7 @@ window.ARCHIVED_PORTFOLIO_PROJECTS = [
   },
   {
     "id": "york-prize",
+    "workCategory": "Academic",
     "title": "York Prize",
     "year": "2023",
     "course": "Core I Studio Led by Felix Heisel",
@@ -1418,6 +1432,7 @@ window.ARCHIVED_PORTFOLIO_PROJECTS = [
   },
   {
     "id": "ephemeral-diptypque",
+    "workCategory": "Academic",
     "title": "Ephemeral Diptyque",
     "year": "2024",
     "studio": "Cornell Architecture",

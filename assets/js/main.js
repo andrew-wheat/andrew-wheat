@@ -1,23 +1,18 @@
 (function () {
   const projects = window.PORTFOLIO_PROJECTS || [];
-  const archivedProjects = window.ARCHIVED_PORTFOLIO_PROJECTS || [];
+  const storedArchivedProjects = window.ARCHIVED_PORTFOLIO_PROJECTS || [];
+  const archivedProjects = storedArchivedProjects.filter((project) => !project.siteHidden);
   const allProjects = [...projects, ...archivedProjects].filter(
     (project, index, source) => source.findIndex((item) => item.id === project.id) === index
   );
   const words = window.ARCHITECTURE_WORDS || [];
   const optimizedImages = window.PORTFOLIO_OPTIMIZED_IMAGES || {};
   const imageDimensions = window.PORTFOLIO_IMAGE_DIMENSIONS || {};
+  const selectedCollections = window.SELECTED_COLLECTIONS || {};
+  const selectedCollectionOrder = ["models", "photography", "sketchbook", "renderings"];
+  const showSelectedSection = false;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const workThemeMap = [
-    ["Assembly", ["wood-street-pool", "enfield-food-pantry", "design-district-canteen", "curanto-cookhouse", "woven-pavilion", "hunters-point"]],
-    ["Care", ["hunters-point", "wood-street-pool", "enfield-food-pantry", "borinquen-healing-center"]],
-    ["Climate", ["wood-street-pool", "enfield-food-pantry", "curanto-cookhouse", "sustainable-education", "hunters-point"]],
-    ["Ground", ["wood-street-pool", "enfield-food-pantry", "borinquen-healing-center", "curanto-cookhouse", "woven-pavilion", "hunters-point"]],
-    ["Light", ["woven-pavilion", "curanto-cookhouse", "design-district-canteen", "wood-street-pool"]],
-    ["Material", ["deconstruct-reconfigure", "curanto-cookhouse", "woven-pavilion", "wood-street-pool", "a-chair-is-a-toy", "borinquen-healing-center", "york-prize"]],
-    ["Movement", ["wood-street-pool", "hunters-point", "borinquen-healing-center", "woven-pavilion", "a-chair-is-a-toy", "design-district-canteen"]],
-    ["Structure", ["wood-street-pool", "hunters-point", "borinquen-healing-center", "woven-pavilion", "design-district-canteen", "curanto-cookhouse", "deconstruct-reconfigure"]]
-  ];
+  const workCategoryOrder = ["Academic", "Professional"];
   const recruiterKeywords = [
     "Andrew Wheat",
     "Cornell Architecture",
@@ -46,6 +41,251 @@
   ];
 
   redirectLegacyUrls();
+  renderPrimaryNavigation();
+  syncPrimaryNavigationState();
+
+  function renderPrimaryNavigation() {
+    const availableSelectedCollections = showSelectedSection
+      ? selectedCollectionOrder.filter(
+          (collection) =>
+            Array.isArray(selectedCollections[collection]) && selectedCollections[collection].length > 0
+        )
+      : [];
+    const selectedNavigation = availableSelectedCollections.length
+      ? `
+        <div class="nav-folder nav-folder--selected">
+          <a class="nav-primary-link" data-nav-section="selected" href="/selected/?collection=${escapeHtml(availableSelectedCollections[0])}">selected</a>
+          <div class="nav-dropdown" aria-label="Selected collections">
+            ${availableSelectedCollections
+              .map(
+                (collection) =>
+                  `<a class="nav-dropdown-link" data-selected-category="${escapeHtml(collection)}" href="/selected/?collection=${escapeHtml(collection)}">${escapeHtml(collection)}</a>`
+              )
+              .join("")}
+          </div>
+        </div>
+      `
+      : "";
+    document.querySelectorAll(".site-nav").forEach((nav) => {
+      nav.innerHTML = `
+        ${selectedNavigation}
+        <a class="nav-primary-link" data-nav-section="work" href="/work/">work</a>
+        <a class="nav-primary-link" data-nav-section="about" href="/about/">about</a>
+        <a class="nav-primary-link" data-nav-section="contact" href="/contact/">contact</a>
+      `;
+    });
+  }
+
+  function syncPrimaryNavigationState() {
+    const page = document.body?.dataset.page || "";
+    const activeSection =
+      page === "selected"
+        ? "selected"
+        : page === "work" || page === "project"
+        ? "work"
+        : page === "about"
+          ? "about"
+          : page === "contact"
+            ? "contact"
+            : "";
+
+    document.querySelectorAll(".site-nav [data-nav-section]").forEach((link) => {
+      if (activeSection && link.dataset.navSection === activeSection) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+
+    const selectedCategory =
+      page === "selected" ? new URLSearchParams(window.location.search).get("collection") || "" : "";
+    document.querySelectorAll(".site-nav [data-selected-category]").forEach((link) => {
+      if (selectedCategory && link.dataset.selectedCategory === selectedCategory) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  function initSelectedPage() {
+    const shell = document.querySelector("[data-selected-shell]");
+    if (!shell) return;
+    if (!showSelectedSection) {
+      window.location.replace("/work/");
+      return;
+    }
+
+    const collections = new Set(selectedCollectionOrder);
+    const requestedCollection = new URLSearchParams(window.location.search).get("collection") || "";
+    const collection = collections.has(requestedCollection) ? requestedCollection : "";
+    const label = collection || "selected";
+    const title = shell.querySelector("[data-selected-title]");
+    const status = shell.querySelector("[data-selected-status]");
+    const canvas = shell.querySelector("[data-selected-canvas]");
+    const items = collection ? selectedCollections[collection] || [] : [];
+    const curatedLayouts = {
+      models: [
+        { key: "3x6a0205", row: 1, col: 1, span: 4, offset: "0px", max: "580px", align: "start" },
+        { key: "1", row: 1, col: 7, span: 2, offset: "92px", max: "280px", align: "center" },
+        { key: "work-cover-photo", row: 1, col: 10, span: 3, offset: "20px", max: "420px", align: "end" },
+        {
+          key: "andrew-wheat-ajw288-problem-03c-final-model-15",
+          row: 2,
+          col: 1,
+          span: 5,
+          offset: "0px",
+          max: "620px",
+          align: "start"
+        },
+        { key: "main-hero-shot", row: 2, col: 9, span: 3, offset: "106px", max: "330px", align: "center" },
+        { key: "model-01-cropped", row: 3, col: 2, span: 4, offset: "58px", max: "520px", align: "center" },
+        {
+          key: "model-front-view-shot-03-reduced",
+          row: 3,
+          col: 7,
+          span: 5,
+          offset: "0px",
+          max: "650px",
+          align: "end"
+        },
+        { key: "model-full-shot", row: 4, col: 1, span: 3, offset: "16px", max: "360px", align: "start" },
+        { key: "hero-2", row: 4, col: 5, span: 4, offset: "94px", max: "480px", align: "center" },
+        {
+          key: "3x6a0280-cropped-smaller",
+          row: 4,
+          col: 10,
+          span: 3,
+          offset: "24px",
+          max: "420px",
+          align: "end"
+        },
+        { key: "do4a0315", row: 5, col: 2, span: 4, offset: "0px", max: "480px", align: "center" },
+        {
+          key: "andrew-wheat-ajw288-01b-study-model-1",
+          row: 5,
+          col: 8,
+          span: 4,
+          offset: "84px",
+          max: "520px",
+          align: "end"
+        }
+      ],
+      sketchbook: [
+        { key: "iso-section-clean-scan", row: 1, col: 2, span: 4, offset: "0px", max: "520px", align: "start" }
+      ],
+      renderings: [
+        {
+          key: "andrew-wheat-ajw288-03c-exterior-render-02",
+          row: 1,
+          col: 1,
+          span: 4,
+          offset: "0px",
+          max: "620px",
+          align: "start"
+        },
+        {
+          key: "exterior-2-edited-noisy-copy",
+          row: 1,
+          col: 10,
+          span: 3,
+          offset: "28px",
+          max: "360px",
+          align: "end"
+        },
+        {
+          key: "andrew-wheat-ajw288-03c-interior-render",
+          row: 2,
+          col: 2,
+          span: 4,
+          offset: "0px",
+          max: "560px",
+          align: "start"
+        },
+        { key: "hero", row: 2, col: 8, span: 4, offset: "96px", max: "560px", align: "end" },
+        { key: "corridor-render", row: 3, col: 1, span: 4, offset: "0px", max: "560px", align: "start" },
+        { key: "market-render", row: 3, col: 8, span: 4, offset: "72px", max: "560px", align: "end" },
+        { key: "hero-2", row: 4, col: 2, span: 5, offset: "0px", max: "680px", align: "center" },
+        {
+          key: "updated-pantry-interior",
+          row: 4,
+          col: 10,
+          span: 3,
+          offset: "54px",
+          max: "390px",
+          align: "end"
+        }
+      ]
+    };
+
+    document.body.dataset.selectedCollection = collection || "selected";
+    if (title) title.textContent = label;
+    if (status) {
+      status.textContent = items.length
+        ? `${label} collection with ${items.length} selected images.`
+        : `${label} collection is ready for future image curation.`;
+    }
+    if (canvas) canvas.setAttribute("aria-label", `${label} collection`);
+    document.title = `${label.charAt(0).toUpperCase()}${label.slice(1)} | Andrew Wheat`;
+
+    if (canvas && items.length) {
+      const curated = curatedLayouts[collection] || [];
+      const itemByKey = new Map(items.map((item) => [item.key, item]));
+      const arrangedItems = curated
+        .map((layout) => {
+          const item = itemByKey.get(layout.key);
+          return item ? { item, layout } : null;
+        })
+        .filter(Boolean);
+      const arrangedKeys = new Set(arrangedItems.map(({ item }) => item.key));
+      const fallbackSlots = [
+        { col: 1, span: 4, offset: "0px", max: "560px", align: "start" },
+        { col: 6, span: 4, offset: "72px", max: "560px", align: "center" },
+        { col: 10, span: 3, offset: "20px", max: "420px", align: "end" }
+      ];
+      const fallbackStartRow = Math.max(0, ...curated.map((layout) => layout.row)) + 1;
+      items
+        .filter((item) => !arrangedKeys.has(item.key))
+        .forEach((item, index) => {
+          const slot = fallbackSlots[index % fallbackSlots.length];
+          arrangedItems.push({
+            item,
+            layout: {
+              ...slot,
+              row: fallbackStartRow + Math.floor(index / fallbackSlots.length)
+            }
+          });
+        });
+      canvas.classList.add("has-items");
+      canvas.innerHTML = arrangedItems
+        .map(({ item, layout }, index) => {
+          const titleText = escapeHtml(item.title || label);
+          return `
+            <figure
+              class="selected-image-card"
+              style="
+                --selected-grid-row: ${layout.row};
+                --selected-column-start: ${layout.col};
+                --selected-column-span: ${layout.span};
+                --selected-offset-y: ${layout.offset};
+                --selected-card-max: ${layout.max};
+                --selected-card-align: ${layout.align};
+              "
+            >
+              <img
+                src="${escapeHtml(item.src)}"
+                alt="${titleText} by Andrew Wheat"
+                width="${Number(item.width) || 1}"
+                height="${Number(item.height) || 1}"
+                loading="${index < 3 ? "eager" : "lazy"}"
+                decoding="async"
+              >
+            </figure>
+          `;
+        })
+        .join("");
+    }
+  }
 
   function redirectLegacyUrls() {
     if (window.location.protocol === "file:") return;
@@ -63,7 +303,13 @@
       if (id) {
         cleanPath = projectUrl(id);
         url.searchParams.delete("id");
+      } else {
+        cleanPath = "/work/";
       }
+    }
+
+    if (url.pathname === "/project/") {
+      cleanPath = "/work/";
     }
 
     if (!cleanPath) return;
@@ -250,11 +496,9 @@
     const orderedHeroEntries = [
       ["borinquen-healing-center", "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png"],
       ["enfield-food-pantry", "Work Cover Photo.png"],
-      ["curanto-cookhouse", "hero.jpg"],
       ["wood-street-pool", "hero.png"],
       ["wood-street-pool", "hero 2.png"],
-      ["york-prize", "Andrew Wheat_ajw288_01C_York Model (1).jpg"],
-      ["woven-pavilion", "hero.jpg"]
+      ["york-prize", "Andrew Wheat_ajw288_01C_York Model (1).jpg"]
     ];
     const slidesToRender = orderedHeroEntries
       .map(([id, image], index) => {
@@ -1437,49 +1681,71 @@
   function renderCatalogue() {
     const catalogue = document.querySelector("[data-work-catalogue]");
     if (!catalogue) return;
-    const filter = document.querySelector("[data-theme-filter]");
-    const visibleWorkProjects = projects.filter((project) => !project.workArchiveOnly);
-    const archiveWorkProjects = projects.filter((project) => project.workArchiveOnly);
-    const availableProjectIds = new Set(visibleWorkProjects.map((project) => project.id));
-    const themeEntries = workThemeMap
-      .map(([label, ids]) => [label, ids.filter((id) => availableProjectIds.has(id))])
-      .filter(([, ids]) => ids.length);
-    const themeLookup = new Map(themeEntries);
-    const allThemes = themeEntries.map(([label]) => label);
-    let activeTheme = "all";
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("collection") || params.has("type")) {
+      params.delete("collection");
+      params.delete("type");
+      const cleanUrl = new URL(window.location.href);
+      cleanUrl.search = params.toString();
+      window.history.replaceState({}, "", cleanUrl);
+    }
+    catalogue.dataset.collection = "work";
+    const filter = document.querySelector("[data-category-filter]");
+    const catalogueProjects = [
+      ...projects,
+      ...archivedProjects.filter((project) => project.showInWorkCatalogue)
+    ];
+    const visibleWorkProjects = catalogueProjects.filter((project) => !project.workArchiveOnly);
+    const archiveWorkProjects = catalogueProjects.filter((project) => project.workArchiveOnly);
+    const categoryForProject = (project) =>
+      workCategoryOrder.includes(project.workCategory) ? project.workCategory : "Academic";
+    const categoryEntries = workCategoryOrder
+      .map((category) => [
+        category,
+        visibleWorkProjects.filter((project) => categoryForProject(project) === category)
+      ]);
+    const categoryLookup = new Map(categoryEntries);
+    const populatedCategories = categoryEntries
+      .filter(([, categoryProjects]) => categoryProjects.length > 0)
+      .map(([category]) => category);
+    let activeCategory = "all";
     let activeView = "grid";
     const mobileDefaultView = "grid";
     if (filter) {
       filter.innerHTML =
-        '<option value="all">All themes</option>' +
-        (archiveWorkProjects.length ? '<option value="archive">Archive</option>' : "") +
-        allThemes.map((theme) => `<option value="${theme}">${theme}</option>`).join("");
+        '<option value="all">All</option>' +
+        populatedCategories
+          .map((category) => `<option value="${category}">${category}</option>`)
+          .join("") +
+        (archiveWorkProjects.length ? '<option value="archive">Archive</option>' : "");
     }
 
     function draw() {
-      activeTheme = filter?.value || activeTheme || "all";
+      activeCategory = filter?.value || activeCategory || "all";
       const visible =
-        activeTheme === "archive"
+        activeCategory === "archive"
           ? archiveWorkProjects
-          : activeTheme === "all"
+          : activeCategory === "all"
             ? visibleWorkProjects
-            : visibleWorkProjects.filter((project) => (themeLookup.get(activeTheme) || []).includes(project.id));
+            : categoryLookup.get(activeCategory) || [];
 
       const fadeOrder = workFadeOrder(visible);
       catalogue.innerHTML = visible.map((project, index) => projectCard(project, index, fadeOrder)).join("");
       initImageSkeletons();
-      updateThemeButtons();
+      updateCategoryButtons();
     }
 
-    function setTheme(theme) {
-      activeTheme = theme;
-      if (filter) filter.value = theme;
+    function setCategory(category) {
+      activeCategory = category;
+      if (filter) filter.value = category;
       draw();
     }
 
-    function updateThemeButtons() {
-      document.querySelectorAll("[data-theme-token]").forEach((button) => {
-        button.classList.toggle("active", button.dataset.themeToken === activeTheme);
+    function updateCategoryButtons() {
+      document.querySelectorAll("[data-category-token]").forEach((button) => {
+        const isActive = button.dataset.categoryToken === activeCategory;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
       });
     }
 
@@ -1505,48 +1771,53 @@
       window.history.replaceState({}, "", url);
     }
 
-    function renderThemeMarquee() {
-      const track = document.querySelector("[data-work-theme-track]");
-      if (!track || !allThemes.length) return;
+    function renderCategoryMarquee() {
+      const track = document.querySelector("[data-work-category-track]");
+      if (!track) return;
       const tokens = [
         { label: "All", value: "all" },
-        ...(archiveWorkProjects.length ? [{ label: "Archive", value: "archive" }] : []),
-        ...allThemes.map((theme) => ({ label: theme, value: theme }))
+        ...populatedCategories.map((category) => ({
+          label: category,
+          value: category
+        })),
+        ...(archiveWorkProjects.length ? [{ label: "Archive", value: "archive" }] : [])
       ];
       track.innerHTML = tokens
         .map((token, index) =>
-          `<button type="button" class="marquee-token marquee-filter is-visible" data-theme-token="${escapeHtml(token.value)}" style="--token-index:${index}">${escapeHtml(token.label)}</button>`
+          `<button type="button" class="marquee-token marquee-filter is-visible" data-category-token="${escapeHtml(token.value)}" style="--token-index:${index}">${escapeHtml(token.label)}</button>`
         )
         .join("");
-      updateThemeButtons();
+      updateCategoryButtons();
 
       track.addEventListener("click", (event) => {
-        const button = event.target instanceof Element ? event.target.closest("[data-theme-token]") : null;
+        const button =
+          event.target instanceof Element
+            ? event.target.closest("[data-category-token]")
+            : null;
         if (!button) return;
-        setTheme(button.dataset.themeToken || "all");
+        setCategory(button.dataset.categoryToken || "all");
       });
     }
 
-    document.querySelectorAll("[data-theme-token='all']").forEach((button) => {
-      button.addEventListener("click", () => setTheme("all"));
+    document.querySelectorAll("[data-category-token='all']").forEach((button) => {
+      button.addEventListener("click", () => setCategory("all"));
     });
 
-    filter?.addEventListener("change", () => setTheme(filter.value || "all"));
+    filter?.addEventListener("change", () => setCategory(filter.value || "all"));
     document.querySelectorAll("[data-view-mode]").forEach((button) => {
       button.addEventListener("click", () => {
         setView(button.dataset.viewMode || "grid");
       });
     });
 
-    renderThemeMarquee();
+    renderCategoryMarquee();
     draw();
-    const params = new URLSearchParams(window.location.search);
     const initialView = params.get("view") || mobileDefaultView;
     setView(initialView, { skipUrl: true });
   }
 
   function projectCard(project, index, fadeOrder = workFadeOrder(projects)) {
-    const projectNumber = projects.indexOf(project) + 1;
+    const projectNumber = index + 1;
     const thumbnail = project.workThumbnail || project.thumbnail;
     const thumbnailAlt = project.workThumbnailAlt || "";
     const listThumbnail = project.workListThumbnail || project.workThumbnail || project.thumbnail;
@@ -1570,8 +1841,7 @@
         <div class="project-card-text">
           <span class="project-number">${String(projectNumber).padStart(2, "0")}</span>
           <h2>${escapeHtml(project.title)}</h2>
-          <p class="project-card-meta">${escapeHtml(project.year)} / ${escapeHtml(project.type)}</p>
-          ${project.summary ? `<p class="project-card-summary">${escapeHtml(project.summary)}</p>` : ""}
+          <p class="project-card-meta">${escapeHtml(project.year)}</p>
         </div>
       </a>
     `;
@@ -1685,6 +1955,13 @@
     const root = document.querySelector("[data-project-detail]");
     if (!root) return;
     const id = currentProjectId() || projects[0]?.id;
+    const storedHiddenProject = storedArchivedProjects.find(
+      (item) => item.id === id && item.siteHidden
+    );
+    if (storedHiddenProject) {
+      window.location.replace("/work/");
+      return;
+    }
     const project = allProjects.find((item) => item.id === id) || projects[0];
 
     if (!project) {
@@ -2604,6 +2881,16 @@
     return (projectSeo[project.id]?.title || project.title).replace(" | Andrew Wheat", "");
   }
 
+  function imagePreviewCaption(value) {
+    return String(value || "")
+      .replace(/\s+by\s+Andrew Wheat\b/gi, "")
+      .replace(/Andrew Wheat(?:[\s_-]*ajw\d+)?/gi, "")
+      .replace(/ajw\d+/gi, "")
+      .replace(/\s{2,}/g, " ")
+      .replace(/\s+([,.;:])/g, "$1")
+      .trim();
+  }
+
   function projectImageAlt(project, src, alt = "") {
     const supplied = String(alt || "").trim();
     const genericAlt =
@@ -2743,11 +3030,12 @@
       const frame = sourceImage.closest(".project-story-frame");
       const animatedLayout = animatedLayouts.find((layout) => frame?.classList.contains(layout));
       const board = frame?.querySelector(".project-story-board");
-      const captionText =
+      const rawCaptionText =
         sourceImage.closest("figure")?.querySelector("figcaption")?.textContent?.trim() ||
         sourceImage.closest(".project-story-item")?.querySelector(".project-story-item-caption")?.textContent?.trim() ||
         sourceImage.alt ||
         "";
+      const captionText = imagePreviewCaption(rawCaptionText);
 
       if (animatedLayout && board) {
         const clone = board.cloneNode(true);
@@ -2938,33 +3226,10 @@
     });
   }
 
-  function syncAboutPortraitHeight() {
-    if (!document.body.matches('[data-page="about"]')) return;
-    const portrait = document.querySelector(".about-portrait");
-    const statement = document.querySelector(".about-statement");
-    if (!portrait || !statement) return;
-
-    const sync = () => {
-      if (!window.matchMedia("(min-width: 901px)").matches) {
-        portrait.style.height = "";
-        return;
-      }
-
-      portrait.style.height = `${Math.round(statement.getBoundingClientRect().height)}px`;
-    };
-
-    sync();
-    window.addEventListener("resize", sync, { passive: true });
-    if (document.fonts?.ready) document.fonts.ready.then(sync).catch(() => {});
-    if ("ResizeObserver" in window) {
-      const observer = new ResizeObserver(sync);
-      observer.observe(statement);
-    }
-  }
-
   initCustomCursor();
   initMobileMenu();
   initEmailCompose();
+  initSelectedPage();
   renderHero();
   initHomeLogoIntro();
   renderWordMarquee();
@@ -2974,7 +3239,6 @@
   renderCatalogue();
   renderProjectDetail();
   initImageSkeletons();
-  syncAboutPortraitHeight();
   initProjectLightbox();
   initHuntersPointAnimation();
   ensureProjectNavigation();

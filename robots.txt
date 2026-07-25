@@ -1,3 +1,5 @@
+# Andrew Wheat portfolio: public pages are available to search and AI crawlers.
 User-agent: *
 Allow: /
+
 Sitemap: https://andrew-wheat.com/sitemap.xml

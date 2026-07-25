@@ -2,107 +2,95 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://andrew-wheat.com/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>1.0</priority>
+    <lastmod>2026-07-25</lastmod>
     <image:image>
-      <image:loc>https://andrew-wheat.com/assets/images/work-covers/wood-street-pool.webp</image:loc>
-      <image:title>Wood Street Pool architectural project by Andrew Wheat</image:title>
+      <image:loc>https://andrew-wheat.com/assets/images/seo/andrew-wheat-portrait-4x3.jpg</image:loc>
+      <image:title>Andrew Wheat, designer and Cornell architecture student</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://andrew-wheat.com/work/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.9</priority>
+    <lastmod>2026-07-25</lastmod>
     <image:image>
-      <image:loc>https://andrew-wheat.com/assets/images/work-covers/wood-street-pool.webp</image:loc>
-      <image:title>Wood Street Pool architectural project by Andrew Wheat</image:title>
+      <image:loc>https://andrew-wheat.com/assets/images/Projects/Hunter&apos;s%20Point%20Cooperative%20Housing/Model%20full%20shot.png</image:loc>
+      <image:title>Hunter&apos;s Point Cooperative Housing architecture project by Andrew Wheat</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://andrew-wheat.com/about/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2026-07-25</lastmod>
     <image:image>
       <image:loc>https://andrew-wheat.com/assets/images/andrew-wheat-headshot.jpg</image:loc>
-      <image:title>Andrew Wheat portrait</image:title>
+      <image:title>Portrait of Andrew Wheat</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://andrew-wheat.com/contact/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-25</lastmod>
     <image:image>
-      <image:loc>https://andrew-wheat.com/assets/images/work-covers/wood-street-pool.webp</image:loc>
-      <image:title>Wood Street Pool architectural project by Andrew Wheat</image:title>
+      <image:loc>https://andrew-wheat.com/assets/images/seo/andrew-wheat-portrait-4x3.jpg</image:loc>
+      <image:title>Andrew Wheat</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://andrew-wheat.com/project/hunters-point/</loc>
+    <lastmod>2026-07-25</lastmod>
+    <image:image>
+      <image:loc>https://andrew-wheat.com/assets/images/Projects/Hunter&apos;s%20Point%20Cooperative%20Housing/Model%20full%20shot.png</image:loc>
+      <image:title>Hunter&apos;s Point Cooperative Housing architecture project by Andrew Wheat</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://andrew-wheat.com/project/wood-street-pool/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2026-07-25</lastmod>
     <image:image>
-      <image:loc>https://andrew-wheat.com/assets/images/work-covers/wood-street-pool.webp</image:loc>
-      <image:title>Wood Street Pool architectural project by Andrew Wheat</image:title>
+      <image:loc>https://andrew-wheat.com/assets/images/Projects/Wood%20Street%20Pool/hero%202.png</image:loc>
+      <image:title>Wood Street Pool architecture project by Andrew Wheat</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://andrew-wheat.com/project/enfield-food-pantry/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2026-07-25</lastmod>
     <image:image>
-      <image:loc>https://andrew-wheat.com/assets/images/work-covers/enfield-food-pantry.webp</image:loc>
+      <image:loc>https://andrew-wheat.com/assets/images/Projects/Enfield%20Food%20Pantry/3X6A0280%20cropped%20SMALLER.png</image:loc>
       <image:title>Enfield Food Pantry architecture project by Andrew Wheat</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://andrew-wheat.com/project/deconstruct-reconfigure/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2026-07-25</lastmod>
     <image:image>
       <image:loc>https://andrew-wheat.com/assets/images/work-covers/deconstruct-reconfigure.webp</image:loc>
-      <image:title>Deconstruct Reconfigure produce stand project by Andrew Wheat</image:title>
+      <image:title>[de]construct + [re]configure architecture project by Andrew Wheat</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://andrew-wheat.com/project/borinquen-healing-center/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2026-07-25</lastmod>
     <image:image>
       <image:loc>https://andrew-wheat.com/assets/images/work-covers/borinquen-healing-center.webp</image:loc>
       <image:title>Borinquen Healing Center architecture project by Andrew Wheat</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://andrew-wheat.com/project/hunters-point/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://andrew-wheat.com/assets/images/work-covers/hunters-point.webp</image:loc>
-      <image:title>Hunter's Point Cooperative Housing architecture project by Andrew Wheat</image:title>
-    </image:image>
-  </url>
-  <url>
     <loc>https://andrew-wheat.com/project/a-chair-is-a-toy/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2026-07-25</lastmod>
     <image:image>
       <image:loc>https://andrew-wheat.com/assets/images/work-covers/chair%20is%20a%20toy.jpg</image:loc>
-      <image:title>A Chair is a Toy design study by Andrew Wheat</image:title>
+      <image:title>A Chair is a Toy! architecture project by Andrew Wheat</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://andrew-wheat.com/project/design-district-canteen/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2026-07-25</lastmod>
     <image:image>
-      <image:loc>https://andrew-wheat.com/assets/images/work-covers/design-district-canteen.webp</image:loc>
-      <image:title>Design District Canteen architecture study by Andrew Wheat</image:title>
+      <image:loc>https://andrew-wheat.com/assets/images/Projects/Design%20District%20Canteen/Model%20Front%20View%20Shot%2003%20reduced.png</image:loc>
+      <image:title>Design District Canteen architecture project by Andrew Wheat</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://andrew-wheat.com/project/curanto-cookhouse/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2026-07-25</lastmod>
     <image:image>
       <image:loc>https://andrew-wheat.com/assets/images/work-covers/curanto-cookhouse.webp</image:loc>
       <image:title>Curanto Cookhouse architecture project by Andrew Wheat</image:title>
@@ -110,29 +98,10 @@
   </url>
   <url>
     <loc>https://andrew-wheat.com/project/woven-pavilion/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2026-07-25</lastmod>
     <image:image>
       <image:loc>https://andrew-wheat.com/assets/images/work-covers/woven-pavilion.webp</image:loc>
-      <image:title>Woven Pavilion project by Andrew Wheat</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://andrew-wheat.com/project/sustainable-education/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://andrew-wheat.com/assets/images/work-covers/sustainable-education-nepal.webp</image:loc>
-      <image:title>Sustainable Education architecture project by Andrew Wheat</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://andrew-wheat.com/project/ephemeral-diptyque/</loc>
-    <lastmod>2026-07-05</lastmod>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://andrew-wheat.com/assets/images/work-covers/wood-street-pool.webp</image:loc>
-      <image:title>Ephemeral Diptyque architecture study by Andrew Wheat</image:title>
+      <image:title>Woven Pavilion architecture project by Andrew Wheat</image:title>
     </image:image>
   </url>
 </urlset>

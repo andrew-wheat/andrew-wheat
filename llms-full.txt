@@ -1,0 +1,136 @@
+# Andrew Wheat — Full Portfolio Context
+
+Andrew Wheat is a designer and architecture student at Cornell University. He is currently based in Seattle and New York City.
+
+Andrew studies architecture at Cornell University College of Architecture, Art, and Planning and is expected to complete the Bachelor of Architecture program in May 2028. His work explores civic space, housing, material systems, landscape, construction, climate, and everyday use.
+
+Through Cornell University Sustainable Design, Andrew leads architectural work on schools in Nepal in partnership with United World Schools. At Mithun, he has contributed to interdisciplinary projects spanning housing, civic installations, and temporary public architecture through design research, physical modeling, visualization, and documentation.
+
+## Projects
+
+### Hunter's Point Cooperative Housing
+
+- Canonical URL: https://andrew-wheat.com/project/hunters-point/
+- Year: 2026
+- Category: Academic
+- Course: Core VI Studio Led by Sasa Zivkovic
+- Studio: Spring 2026 Cornell University
+- Professors: Marta H. Wisniewska + Tom Carruthers
+- Partners: Eric Liu
+
+Cooperative housing project by Andrew Wheat focused on shared production, public exchange, circulation, workshops, housing, and civic life in Hunters Point.
+
+The site is treated as an active but divided neighborhood, where residents, workers, amenities, and waterfront movement rarely converge. The proposal reworks the former rail-line logic and the current urban grid into a layered system of workshops, housing, green rooms, vendor stalls, and communal thresholds.
+
+### Wood Street Pool
+
+- Canonical URL: https://andrew-wheat.com/project/wood-street-pool/
+- Year: 2025
+- Category: Academic
+- Course: Core V Studio Led by Caroline O'Donnell
+- Studio: Fall 2025 Cornell University
+- Professors: Hanna Tulis + Caroline O'Donnell
+
+Public natatorium and civic landscape project by Andrew Wheat, integrating community recreation, water systems, planted roofs, geothermal strategies, and mass timber architecture.
+
+Wood Street Skate Park sits at the heart of central Ithaca, serving as a recreational hub for local youth and senior citizens alike. The site is surrounded by commercial zones to the west and single-family residential neighborhoods to the east, with direct adjacency to the Titus Towers senior facility. Currently, the park is bifurcated: youth congregate for skating and basketball on the western side, while seniors remain in the shaded, quieter areas to the east. Wood Street Pool proposes a place of gathering for all user groups, set between active recreation and shaded park space so swimmers, skaters, and residents can meet across levels.
+
+### Enfield Food Pantry
+
+- Canonical URL: https://andrew-wheat.com/project/enfield-food-pantry/
+- Year: 2025
+- Category: Academic
+- Course: Core IV Studio Led by Hanna Tulis
+- Studio: Spring 2025 Cornell University
+- Professors: Ethan Chan, Hanna Tulis
+- Partners: Lydia Brawley + Eric Liu
+
+Architecture project by Andrew Wheat focused on food access, civic gathering, environmental performance, materiality, and community infrastructure.
+
+Set at the corner of Bostwick and Teeter Roads, the project expands the pantry from a service building into a civic threshold. It links the immediate site to trails, gardens, soil networks, watersheds, and native planting systems while preserving the efficiency required for deliveries, storage, and weekly distribution.
+
+### [de]construct + [re]configure
+
+- Canonical URL: https://andrew-wheat.com/project/deconstruct-reconfigure/
+- Year: 2025
+- Category: Academic
+- Course: Core IV Studio Led by Hanna Tulis
+- Studio: Spring 2025 Cornell University
+- Professors: Ethan Chan + Hanna Tulis
+
+Produce stand and material reuse project by Andrew Wheat exploring assembly, disassembly, reuse, public exchange, and community food infrastructure.
+
+Designed as a piece of working architecture, the produce stand responds directly to the food pantry's reliance on folding card tables, retaining their mobility and affordability while addressing shortcomings of organization, hygiene, and display. The proposal combines a produce display with an integrated workstation, allowing food preparation and distribution to occur within a single, compact assembly. A hinged surface activates the stand during use, propping open to elevate and clearly present produce, then folding flat for storage and transport. The system remains lightweight and easily movable, preserving the operational flexibility of existing tables. Rather than functioning as furniture alone, the stand operates as an infrastructural object embedded within daily routines. At the scale of the hand and body, it extends the broader project's emphasis on legibility, economy, and care, translating architectural values into the ordinary but essential rituals of food distribution.
+
+### Borinquen Healing Center
+
+- Canonical URL: https://andrew-wheat.com/project/borinquen-healing-center/
+- Year: 2024
+- Category: Academic
+- Course: Core III Studio Led by Andrea Simitch + Val Warke
+- Studio: Fall 2024 Cornell University
+- Professors: Andrew Lucia
+
+Architecture project by Andrew Wheat focused on care, recovery, public space, material atmosphere, and community health.
+
+Set within the coastal landscape of Aguadilla, Puerto Rico, the project positions architecture as a framework for healing shaped through movement, access, and proximity to land and sea. Rather than concentrating program into a singular object, the design extends horizontally across the site, allowing form to follow topography and reducing physical and perceptual barriers. Movement is continuous and legible, emphasizing procession over arrival and enabling users to engage the landscape at varying speeds and capacities.
+
+### A Chair is a Toy!
+
+- Canonical URL: https://andrew-wheat.com/project/a-chair-is-a-toy/
+- Year: 2024
+- Category: Academic
+- Course: Core III Studio Led by Andrea Simitch + Val Warke
+- Studio: Fall 2024 Cornell University
+- Professors: Andrew Lucia, Andrea Simitch
+
+Furniture and design study by Andrew Wheat exploring play, use, structure, and the boundary between object and architecture.
+
+The Spring Chair for Minerva, designed by Setsuo Kitaoka in 1986, embodies playfulness and the celebration of movement through its bold materiality and inherent sense of dynamism. Limited documentation on the chair invites an intuitive, speculative approach to understanding its design.
+
+### Design District Canteen
+
+- Canonical URL: https://andrew-wheat.com/project/design-district-canteen/
+- Year: 2024
+- Category: Academic
+- Course: Structural Systems II
+
+Architecture project by Andrew Wheat focused on food, gathering, structure, materiality, and public interior space.
+
+Design District Canteen by SelgasCano is a structural study of a 660-square-meter food hall on London's Greenwich Peninsula. The project examines how a lightweight system of steel, tension, and transparent membrane can become more than support, using structure to create a place of gathering, exchange, and public life.
+
+### Curanto Cookhouse
+
+- Canonical URL: https://andrew-wheat.com/project/curanto-cookhouse/
+- Year: 2024
+- Category: Archive
+- Course: Core II Studio Led by Suzanne Lettieri
+- Studio: Spring 2024 Cornell University
+- Professors: Eduardo Terán, Suzanne Lettieri
+
+Architecture project by Andrew Wheat focused on cooking, ceremony, material assembly, landscape, and communal gathering.
+
+The cookhouse is a celebration of tradition, embodying curanto's cooking process, which innately acts in conversation with the site. The feast draws its essence from the earth, using an excavated pit, intricately layered to pressure cook meats, seafoods, and vegetables. Though the ceremony traditionally requires no structural intervention, urbanization has distanced communities from the land, allowing the practice to fade from daily life.
+
+### Woven Pavilion
+
+- Canonical URL: https://andrew-wheat.com/project/woven-pavilion/
+- Year: 2023
+- Category: Archive
+- Course: Core I Studio Led by Felix Heisel
+- Studio: Fall 2023 Cornell University
+- Professors: Michael Jefferson
+
+Pavilion project by Andrew Wheat exploring enclosure, light, assembly, texture, and temporary public space.
+
+Repeated members are layered, bent, and tensioned to form a small inhabitable room where pattern becomes enclosure, light becomes material, and movement is guided through shifting apertures.
+
+
+## Canonical Sources
+
+- Portfolio: https://andrew-wheat.com/
+- Biography: https://andrew-wheat.com/about/
+- Work index: https://andrew-wheat.com/work/
+- Contact: https://andrew-wheat.com/contact/
+- LinkedIn: https://www.linkedin.com/in/andrewwheat
+- Cornell AAP award reference: https://aap.cornell.edu/news/announcements/2025-26-student-academic-awards-and-prizes/
