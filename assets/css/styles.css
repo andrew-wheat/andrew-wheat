@@ -5826,6 +5826,19 @@ body[data-page="landing-minimal"] .site-header {
   mix-blend-mode: normal;
 }
 
+@media (min-width: 901px) {
+  body[data-page="landing-minimal"] {
+    grid-template-rows: 72px minmax(0, 1fr);
+  }
+
+  body[data-page="landing-minimal"] .site-header {
+    height: 72px;
+    min-height: 72px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
 .minimal-landing {
   display: grid;
   grid-template-columns: minmax(0, 1.16fr) minmax(280px, 0.74fr);
