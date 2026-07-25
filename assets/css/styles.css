@@ -6460,8 +6460,18 @@ body[data-page="selected"] .site-header {
 .site-nav a,
 .site-nav .nav-dropdown-link {
   font-weight: 400;
+  font-synthesis: none;
   text-decoration: none;
   opacity: 0.46;
+}
+
+.site-nav a,
+.site-nav .nav-primary-link,
+.site-nav .nav-dropdown-link,
+.site-nav a[aria-current="page"],
+.site-nav .nav-dropdown-link[aria-current="page"] {
+  font-weight: 400 !important;
+  font-synthesis: none;
 }
 
 .contact-list a,
