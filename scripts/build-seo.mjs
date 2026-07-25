@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-07-25";
-const ASSET_VERSION = "20260725-seo-crawl-v14";
+const ASSET_VERSION = "20260725-home-catalogue-v17";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -446,13 +446,17 @@ ${buildHead({
   schema,
   profile: true,
 })}
-  <body data-page="work">
+  <body data-page="work" data-home-index="true">
     <a class="skip-link" href="#work-catalogue">Skip to work catalogue</a>
 ${siteHeader("work")}
 
     <main class="page-shell">
       <section class="section-grid page-intro reveal">
         <h1>Projects</h1>
+      </section>
+
+      <section class="home-work-intro" aria-label="Andrew Wheat introduction">
+        <p>${escapeHtml(BIO)}</p>
       </section>
 
       <div class="work-toolbar">

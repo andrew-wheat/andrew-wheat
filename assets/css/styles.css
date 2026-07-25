@@ -5807,85 +5807,30 @@ body[data-page="work"] .site-copyright {
   }
 }
 
-/* Crawlable homepage: a concise identity page that preserves the site's editorial system. */
-body[data-page="landing"] .home-index-shell {
-  padding-bottom: clamp(72px, 8vw, 128px);
+/* The homepage sets context inside the useful Projects page instead of adding a gate. */
+body[data-home-index="true"] .home-work-intro {
+  width: min(1766px, calc(100% - (var(--work-edge) * 2)));
+  margin: 0 auto clamp(34px, 3vw, 52px);
 }
 
-body[data-page="landing"] .about-profile {
-  grid-template-columns: clamp(280px, 22vw, 360px) minmax(0, 560px);
-  align-items: center;
-  justify-content: center;
-  width: min(1180px, calc(100% - (var(--project-gutter) * 2)));
-  margin-inline: auto;
-  gap: clamp(88px, 8vw, 144px);
-  padding-top: clamp(54px, 6vw, 88px);
-  padding-bottom: clamp(88px, 9vw, 144px);
-}
-
-body[data-page="landing"] .about-portrait {
-  width: 100%;
-  max-width: 360px;
-  justify-self: center;
-}
-
-body[data-page="landing"] .about-portrait img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-body[data-page="landing"] .about-statement {
-  max-width: 560px;
-  text-align: left;
-}
-
-body[data-page="landing"] .about-statement p {
-  text-indent: 0;
-}
-
-body[data-page="landing"] .home-profile-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65em 1.35em;
-}
-
-body[data-page="landing"] .home-profile-links a {
-  text-decoration: underline;
-  text-underline-offset: 0.14em;
-}
-
-body[data-page="landing"] .home-project-index {
-  width: min(100%, 1720px);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-}
-
-body[data-page="landing"] .home-project-index .cv-heading {
-  margin-bottom: clamp(48px, 5vw, 76px);
+body[data-home-index="true"] .home-work-intro p {
+  width: min(100%, 39em);
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--randy-interface-size, 15px);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
 }
 
 @media (max-width: 900px) {
-  body[data-page="landing"] .about-profile {
-    grid-template-columns: 1fr;
-    gap: 52px;
-    width: 100%;
-    padding: clamp(36px, 8vw, 64px) var(--gutter) clamp(64px, 12vw, 96px);
+  body[data-home-index="true"] .home-work-intro {
+    width: calc(100% - (var(--project-gutter) * 2));
+    margin-bottom: clamp(28px, 7vw, 42px);
   }
 
-  body[data-page="landing"] .about-portrait {
-    order: -1;
-    width: min(72vw, 360px);
-  }
-
-  body[data-page="landing"] .about-statement {
-    justify-self: center;
-    width: min(100%, 36em);
-  }
-
-  body[data-page="landing"] .home-project-index {
-    padding-inline: var(--gutter);
+  body[data-home-index="true"] .home-work-intro p {
+    width: min(100%, 34em);
   }
 }
 
