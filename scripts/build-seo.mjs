@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-07-25";
-const ASSET_VERSION = "20260725-home-catalogue-v17";
+const ASSET_VERSION = "20260725-wood-pool-interior-v23";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -16,6 +16,8 @@ const CORNELL_AWARDS =
 const LINKEDIN = "https://www.linkedin.com/in/andrewwheat";
 const BIO =
   "Andrew Wheat is a designer and architecture student at Cornell University. He is currently based in Seattle and New York City.";
+const LANDING_STATEMENT =
+  "Andrew Wheat is a designer and architecture student at Cornell University. He is currently based between Seattle and New York City. His work explores civic space, housing, material systems, and the relationship between buildings and landscape.";
 const ROBOTS_INDEX =
   "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 const PROJECT_SEO = {
@@ -421,15 +423,7 @@ function homePage() {
       inLanguage: "en-US",
       isPartOf: { "@id": WEBSITE_ID },
       about: { "@id": PERSON_ID },
-      mainEntity: {
-        "@type": "ItemList",
-        itemListElement: publicProjects.map((project, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          url: projectUrl(project),
-          name: project.title,
-        })),
-      },
+      mainEntity: { "@id": PERSON_ID },
       primaryImageOfPage: { "@id": `${ORIGIN}/#portrait` },
       dateModified: TODAY,
     },
@@ -446,59 +440,26 @@ ${buildHead({
   schema,
   profile: true,
 })}
-  <body data-page="work" data-home-index="true">
-    <a class="skip-link" href="#work-catalogue">Skip to work catalogue</a>
-${siteHeader("work")}
+  <body data-page="landing-minimal">
+    <a class="skip-link" href="#main">Skip to introduction</a>
+${siteHeader()}
 
-    <main class="page-shell">
-      <section class="section-grid page-intro reveal">
-        <h1>Projects</h1>
-      </section>
-
-      <section class="home-work-intro" aria-label="Andrew Wheat introduction">
-        <p>${escapeHtml(BIO)}</p>
-      </section>
-
-      <div class="work-toolbar">
-        <section class="work-equation" aria-label="Filter projects by category">
-          <div class="architecture-marquee work-equation-marquee">
-            <span class="marquee-window">
-              <span class="marquee-track" data-work-category-track></span>
-            </span>
-          </div>
-        </section>
-
-        <section class="catalogue-controls" aria-label="Catalogue controls">
-          <div class="view-toggle" aria-label="View mode">
-            <button type="button" class="icon-button active" data-view-mode="grid" aria-label="Grid view" title="Grid view">
-              <svg class="view-icon view-icon--grid" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <rect x="1.5" y="1.5" width="6" height="6"/>
-                <rect x="9" y="1.5" width="6" height="6"/>
-                <rect x="16.5" y="1.5" width="6" height="6"/>
-                <rect x="1.5" y="9" width="6" height="6"/>
-                <rect x="9" y="9" width="6" height="6"/>
-                <rect x="16.5" y="9" width="6" height="6"/>
-                <rect x="1.5" y="16.5" width="6" height="6"/>
-                <rect x="9" y="16.5" width="6" height="6"/>
-                <rect x="16.5" y="16.5" width="6" height="6"/>
-              </svg>
-            </button>
-            <button type="button" class="icon-button" data-view-mode="list" aria-label="List view" title="List view">
-              <svg class="view-icon view-icon--list" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <rect x="1.5" y="1.5" width="21" height="6"/>
-                <rect x="1.5" y="9" width="21" height="6"/>
-                <rect x="1.5" y="16.5" width="21" height="6"/>
-              </svg>
-            </button>
-          </div>
-        </section>
+    <main class="minimal-landing" id="main">
+      <a class="minimal-landing-visual" href="/project/wood-street-pool/" aria-label="View the Wood Street Pool project">
+        <img
+          src="/assets/images/Projects/Wood%20Street%20Pool/hero%202.png"
+          alt="Wood Street Pool natatorium interior"
+          width="3840"
+          height="2160"
+          fetchpriority="high"
+          decoding="async"
+        >
+      </a>
+      <div class="minimal-landing-content">
+        <h1 class="minimal-landing-copy">${escapeHtml(LANDING_STATEMENT)}</h1>
+        <a class="minimal-landing-link" href="/work/">view work</a>
       </div>
-
-      <section class="work-catalogue reveal visible" id="work-catalogue" data-work-catalogue data-view="grid" aria-label="Architecture projects by Andrew Wheat">
-${staticProjectCards(publicProjects)}
-      </section>
     </main>
-${siteFooter}
 ${scriptTags()}
   </body>
 </html>
