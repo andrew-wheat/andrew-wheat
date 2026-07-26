@@ -5884,6 +5884,7 @@ body[data-page="landing-minimal"] .site-header {
 
 @media (min-width: 901px) {
   body[data-page="landing-minimal"] .minimal-landing {
+    grid-template-rows: max-content;
     align-content: start;
     padding-top: 130px;
   }

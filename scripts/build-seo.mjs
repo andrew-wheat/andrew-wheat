@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-07-25";
-const ASSET_VERSION = "20260726-pool-drawing-svgs-v3";
+const ASSET_VERSION = "20260726-landing-position-lock-v1";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -374,10 +374,10 @@ const siteFooter = `    <footer class="site-copyright" aria-label="Copyright">
       &copy; Andrew Wheat 2026
     </footer>`;
 
-const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260726-pool-drawing-svgs-v3"></script>
+const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260726-landing-position-lock-v1"></script>
     ${
       includeImageOptimizations
-        ? '<script src="/assets/js/image-optimizations.js?v=20260726-pool-drawing-svgs-v3"></script>\n    '
+        ? '<script src="/assets/js/image-optimizations.js?v=20260726-landing-position-lock-v1"></script>\n    '
         : ""
     }<script src="/assets/js/selected-collections.js?v=${ASSET_VERSION}"></script>
     <script src="/assets/js/main.js?v=${ASSET_VERSION}"></script>`;
@@ -441,7 +441,6 @@ ${buildHead({
   profile: true,
 })}
   <body data-page="landing-minimal">
-    <script src="/assets/js/landing-layout-probe.js"></script>
     <a class="skip-link" href="#main">Skip to introduction</a>
 ${siteHeader()}
 
@@ -1141,6 +1140,10 @@ for (const relativeFile of allHtmlFiles) {
       .replaceAll(
         "20260726-pool-drawing-svgs-v2",
         "20260726-pool-drawing-svgs-v3",
+      )
+      .replaceAll(
+        "20260726-pool-drawing-svgs-v3",
+        "20260726-landing-position-lock-v1",
       ),
   );
 }
