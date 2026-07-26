@@ -79,9 +79,13 @@ window.PORTFOLIO_OPTIMIZED_IMAGES = {
   "assets/images/Projects/Wood Street Pool/3.png": "assets/images/optimized/3-cfb29b0d82.webp",
   "assets/images/Projects/Wood Street Pool/4.png": "assets/images/optimized/4-371c079f07.webp",
   "assets/images/Projects/Wood Street Pool/ENVIRONMENTAL SECTION.png": "assets/images/optimized/environmental-section-7ce30aac29.webp",
-  "assets/images/Projects/Wood Street Pool/Ground Floor Plan.jpg": "assets/images/optimized/ground-floor-plan-9017a7a36d.webp",
-  "assets/images/Projects/Wood Street Pool/hero 2.png": "assets/images/optimized/hero-2-ce6c9475d9.webp",
-  "assets/images/Projects/Wood Street Pool/hero.png": "assets/images/optimized/hero-cc30ac9b66.webp",
+  "assets/images/Projects/Wood Street Pool/FP3.png": "assets/images/optimized/fp3-9d1f59fba7.webp",
+  "assets/images/Projects/Wood Street Pool/Ground Floor Plan.jpg": "assets/images/optimized/ground-floor-plan-385c196ede.webp",
+  "assets/images/Projects/Wood Street Pool/hero 2.png": "assets/images/optimized/hero-2-b77ffeda0a.webp",
+  "assets/images/Projects/Wood Street Pool/hero.png": "assets/images/optimized/hero-5c9e3444de.webp",
+  "assets/images/Projects/Wood Street Pool/long-elevation-cropped.png": "assets/images/optimized/long-elevation-cropped-047b2541ab.webp",
+  "assets/images/Projects/Wood Street Pool/short-elevation.png": "assets/images/optimized/short-elevation-efc0615cf0.webp",
+  "assets/images/Projects/Wood Street Pool/short-section.png": "assets/images/optimized/short-section-ef7896d8f0.webp",
   "assets/images/Projects/Woven Pavilion/20231127_Andrew Wheat_A04_Folley_01.02.jpg": "assets/images/optimized/20231127-andrew-wheat-a04-folley-01-02-a76f52bd5c.webp",
   "assets/images/Projects/Woven Pavilion/20231127_Andrew Wheat_A04_Folley_01.03.jpg": "assets/images/optimized/20231127-andrew-wheat-a04-folley-01-03-71c6853ac7.webp",
   "assets/images/Projects/Woven Pavilion/20231127_Andrew Wheat_A04_Folley_01.04.jpg": "assets/images/optimized/20231127-andrew-wheat-a04-folley-01-04-754da4e9c5.webp",
@@ -546,12 +550,12 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     1143
   ],
   "assets/images/Projects/Wood Street Pool/FP3.png": [
-    8435,
-    11005
+    9000,
+    12300
   ],
   "assets/images/Projects/Wood Street Pool/Ground Floor Plan.jpg": [
-    3000,
-    3000
+    12000,
+    12300
   ],
   "assets/images/Projects/Wood Street Pool/detail-sheet.svg": [
     8820,
@@ -562,8 +566,12 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     2160
   ],
   "assets/images/Projects/Wood Street Pool/hero.png": [
-    3344,
-    1882
+    3484,
+    1961
+  ],
+  "assets/images/Projects/Wood Street Pool/long-elevation-cropped.png": [
+    12600,
+    3000
   ],
   "assets/images/Projects/Wood Street Pool/long-elevation-cropped.svg": [
     10080,
@@ -573,9 +581,17 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     7560,
     2268
   ],
+  "assets/images/Projects/Wood Street Pool/short-elevation.png": [
+    9000,
+    3000
+  ],
   "assets/images/Projects/Wood Street Pool/short-section.svg": [
     7560,
     2520
+  ],
+  "assets/images/Projects/Wood Street Pool/short-section.png": [
+    7800,
+    3600
   ],
   "assets/images/Projects/Wood Street Pool/site plan.jpg": [
     10800,
@@ -905,9 +921,13 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     2400,
     1920
   ],
-  "assets/images/optimized/ground-floor-plan-9017a7a36d.webp": [
+  "assets/images/optimized/fp3-9d1f59fba7.webp": [
     2400,
-    2400
+    3280
+  ],
+  "assets/images/optimized/ground-floor-plan-385c196ede.webp": [
+    2400,
+    2460
   ],
   "assets/images/optimized/hero-2-51e28421ae.webp": [
     2400,
@@ -917,7 +937,7 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     2400,
     1600
   ],
-  "assets/images/optimized/hero-2-ce6c9475d9.webp": [
+  "assets/images/optimized/hero-2-b77ffeda0a.webp": [
     2400,
     1350
   ],
@@ -929,7 +949,7 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     2400,
     1600
   ],
-  "assets/images/optimized/hero-cc30ac9b66.webp": [
+  "assets/images/optimized/hero-5c9e3444de.webp": [
     2400,
     1351
   ],
@@ -952,6 +972,10 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
   "assets/images/optimized/laundry-da573c4993.webp": [
     540,
     576
+  ],
+  "assets/images/optimized/long-elevation-cropped-047b2541ab.webp": [
+    2400,
+    571
   ],
   "assets/images/optimized/main-building-longitudinal-section-2acfb6067c.webp": [
     3200,
@@ -1024,6 +1048,14 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
   "assets/images/optimized/site-plan-3a006f0777.webp": [
     2600,
     1589
+  ],
+  "assets/images/optimized/short-elevation-efc0615cf0.webp": [
+    2400,
+    800
+  ],
+  "assets/images/optimized/short-section-ef7896d8f0.webp": [
+    2400,
+    1108
   ],
   "assets/images/optimized/speculative-circulation-model-1a490fb218.webp": [
     1928,

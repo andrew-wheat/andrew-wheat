@@ -2149,7 +2149,7 @@ body[data-page="project"] img[data-image-skeleton].is-loaded {
   background: transparent;
   color: inherit;
   font-family: var(--font-button);
-  font-size: clamp(10.5px, 0.885vw, 14.25px);
+  font-size: var(--type-copy);
   font-weight: var(--weight-interface);
   line-height: 1.25;
   text-align: left;
@@ -3541,13 +3541,28 @@ body.project-lightbox-open .site-cursor {
   object-fit: contain;
 }
 
+@media (min-width: 901px) {
+  .project-story-frame--wood-pool-site-plan {
+    box-sizing: border-box;
+    width: 100%;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .project-story-frame--wood-pool-site-plan img {
+    width: min(167.73vh, calc(100vw - 32px), 1500px);
+    max-width: none;
+    max-height: none;
+  }
+}
+
 .project-story-frame--wood-pool-floor-plans .project-story-board {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
-  gap: clamp(24px, 3vw, 56px);
+  gap: clamp(16px, 2vw, 36px);
   justify-content: center;
-  width: min(100%, 1840px);
+  width: min(100vw, 1840px);
   min-height: 0;
   margin-bottom: clamp(20px, 4vw, 64px);
 }
@@ -3563,7 +3578,7 @@ body.project-lightbox-open .site-cursor {
 .project-story-frame--wood-pool-floor-plans .project-story-item img {
   width: auto;
   max-width: 100%;
-  height: min(92vh, 1230px);
+  height: min(94.3vh, 49.45vw, 1127px);
   object-fit: contain;
 }
 
@@ -5585,6 +5600,21 @@ body[data-page="work"] .site-copyright {
     padding-top: clamp(62px, 16vw, 106px);
     padding-bottom: clamp(62px, 16vw, 106px);
   }
+
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-floor-plans .project-story-item {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .project-shell[data-project-id="wood-street-pool"] .project-story-frame--wood-pool-floor-plans .project-story-item img {
+    width: auto !important;
+    height: min(70vh, 94vw) !important;
+    max-width: 100% !important;
+    max-height: none;
+    margin-right: auto;
+    margin-left: auto;
+    object-fit: contain;
+  }
 }
 
 .project-story-frame > figcaption,
@@ -5821,9 +5851,9 @@ body[data-page="landing-minimal"] {
 body[data-page="landing-minimal"] .site-header {
   position: relative;
   z-index: 2;
-  color: var(--ink);
-  background: var(--bg);
-  mix-blend-mode: normal;
+  color: #ffffff;
+  background: transparent;
+  mix-blend-mode: difference;
 }
 
 @media (min-width: 901px) {
@@ -5850,6 +5880,13 @@ body[data-page="landing-minimal"] .site-header {
     clamp(42px, 7vh, 76px)
     clamp(52px, 7vw, 116px)
     max(clamp(42px, 7vh, 76px), env(safe-area-inset-bottom));
+}
+
+@media (min-width: 901px) {
+  body[data-page="landing-minimal"] .minimal-landing {
+    align-content: start;
+    padding-top: 130px;
+  }
 }
 
 .minimal-landing-content {
@@ -6439,13 +6476,15 @@ body:has(.nav-folder--selected:focus-within) > footer {
 
 }
 
-/* Text controls use Randy's quiet hierarchy: regular black type, underline for the current choice. */
+/* Text controls mirror the work filters: muted when inactive, full black and underlined when current. */
 body[data-page="home"] .site-header,
+body[data-page="landing-minimal"] .site-header,
 body[data-page="work"] .site-header,
 body[data-page="project"] .site-header,
 body[data-page="about"] .site-header,
 body[data-page="contact"] .site-header,
-body[data-page="selected"] .site-header {
+body[data-page="selected"] .site-header,
+body[data-page="error"] .site-header {
   color: #ffffff;
   mix-blend-mode: difference;
 }
@@ -6455,6 +6494,10 @@ body[data-page="selected"] .site-header {
   font-weight: 400;
   font-synthesis: none;
   text-decoration: none;
+  opacity: 0.46;
+}
+
+body[data-page] .site-nav .nav-primary-link {
   opacity: 0.46;
 }
 
@@ -6486,7 +6529,7 @@ body[data-page="selected"] .site-header {
 
 .site-nav a[aria-current="page"],
 .site-nav .nav-dropdown-link[aria-current="page"] {
-  opacity: 0.46 !important;
+  opacity: 1 !important;
 }
 
 body[data-page="work"] .work-equation-marquee button.marquee-filter,

@@ -244,12 +244,12 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "wood-pool-floor-plans",
         "items": [
           {
-            "src": "Ground Floor Plan.jpg",
+            "src": "ground floor plan.svg",
             "caption": "Ground floor plan.",
             "label": "Ground Floor"
           },
           {
-            "src": "FP3.png",
+            "src": "FP3.svg",
             "caption": "Upper floor plan.",
             "label": "Upper Floor"
           }
@@ -324,12 +324,12 @@ window.PORTFOLIO_PROJECTS = [
         ]
       },
       {
-        "src": "short-elevation-cropped.svg",
+        "src": "short-elevation.svg",
         "caption": "Short elevation.",
         "layout": "wood-pool-elevation-large"
       },
       {
-        "src": "long-elevation-cropped.svg",
+        "src": "long-elevation.svg",
         "caption": "Long elevation.",
         "layout": "wood-pool-elevation-large"
       },
@@ -676,9 +676,8 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": 2
     },
     "shape": "archive",
-    "workThumbnail": "assets/images/work-heroes/deconstruct-reconfigure.webp",
-    "workThumbnailAlt": "assets/images/work-heroes-alt/deconstruct-reconfigure.webp",
-    "workListThumbnail": "assets/images/work-covers/deconstruct-reconfigure.webp"
+    "workThumbnail": "assets/images/Projects/[de]construct + [re]configure/DO4A0315.png",
+    "workListThumbnail": "assets/images/Projects/[de]construct + [re]configure/DO4A0315.png"
   },
   {
     "id": "borinquen-healing-center",

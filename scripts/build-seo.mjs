@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-07-25";
-const ASSET_VERSION = "20260725-stable-landing-header-v28";
+const ASSET_VERSION = "20260726-pool-drawing-svgs-v3";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -374,10 +374,10 @@ const siteFooter = `    <footer class="site-copyright" aria-label="Copyright">
       &copy; Andrew Wheat 2026
     </footer>`;
 
-const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260725-hidden-sustainable-v2"></script>
+const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260726-pool-drawing-svgs-v3"></script>
     ${
       includeImageOptimizations
-        ? '<script src="/assets/js/image-optimizations.js?v=20260711-enfield-online-refresh"></script>\n    '
+        ? '<script src="/assets/js/image-optimizations.js?v=20260726-pool-drawing-svgs-v3"></script>\n    '
         : ""
     }<script src="/assets/js/selected-collections.js?v=${ASSET_VERSION}"></script>
     <script src="/assets/js/main.js?v=${ASSET_VERSION}"></script>`;
@@ -441,13 +441,14 @@ ${buildHead({
   profile: true,
 })}
   <body data-page="landing-minimal">
+    <script src="/assets/js/landing-layout-probe.js"></script>
     <a class="skip-link" href="#main">Skip to introduction</a>
 ${siteHeader()}
 
     <main class="minimal-landing" id="main">
       <a class="minimal-landing-visual" href="/project/wood-street-pool/" aria-label="View the Wood Street Pool project">
         <img
-          src="/assets/images/Projects/Wood%20Street%20Pool/hero%202.png"
+          src="/assets/images/Projects/Wood%20Street%20Pool/hero%202.png?v=20260726-beam-detail"
           alt="Wood Street Pool natatorium interior"
           width="3840"
           height="2160"
@@ -1100,7 +1101,47 @@ for (const relativeFile of allHtmlFiles) {
     file,
     source
       .replaceAll("20260725-project-spacing-v13", ASSET_VERSION)
-      .replaceAll("20260725-title-case-v12", ASSET_VERSION),
+      .replaceAll("20260725-title-case-v12", ASSET_VERSION)
+      .replaceAll(
+        "20260711-enfield-online-refresh",
+        "20260726-wood-pool-heroes-v2",
+      )
+      .replaceAll(
+        "20260726-wood-pool-hero-v1",
+        "20260726-pool-floor-plans-v1",
+      )
+      .replaceAll(
+        "20260726-wood-pool-heroes-v2",
+        "20260726-pool-floor-plans-v1",
+      )
+      .replaceAll(
+        "20260725-hidden-sustainable-v2",
+        "20260726-pool-drawings-v1",
+      )
+      .replaceAll(
+        "20260726-deconstruct-work-image-v1",
+        "20260726-pool-drawings-v1",
+      )
+      .replaceAll(
+        "20260726-pool-floor-plans-v1",
+        "20260726-pool-svg-drawings-v1",
+      )
+      .replaceAll(
+        "20260726-pool-drawings-v1",
+        "20260726-pool-svg-drawings-v1",
+      )
+      .replaceAll(
+        "20260726-pool-svg-drawings-v1",
+        "20260726-pool-plan-svgs-v1",
+      )
+      .replaceAll(
+        "20260726-pool-plan-svgs-v1",
+        "20260726-pool-drawing-svgs-v2",
+      )
+      .replaceAll(
+        "20260726-pool-drawing-svgs-v2",
+        "20260726-pool-drawing-svgs-v3",
+      ),
   );
 }
 
