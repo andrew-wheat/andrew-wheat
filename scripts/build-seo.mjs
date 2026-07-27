@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-07-25";
-const ASSET_VERSION = "20260726-hunters-model-size-v2";
+const ASSET_VERSION = "20260726-selected-editorial-v16";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -374,10 +374,10 @@ const siteFooter = `    <footer class="site-copyright" aria-label="Copyright">
       &copy; Andrew Wheat 2026
     </footer>`;
 
-const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260726-hunters-model-size-v2"></script>
+const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260726-selected-editorial-v16"></script>
     ${
       includeImageOptimizations
-        ? '<script src="/assets/js/image-optimizations.js?v=20260726-hunters-model-size-v2"></script>\n    '
+        ? '<script src="/assets/js/image-optimizations.js?v=20260726-selected-editorial-v16"></script>\n    '
         : ""
     }<script src="/assets/js/selected-collections.js?v=${ASSET_VERSION}"></script>
     <script src="/assets/js/main.js?v=${ASSET_VERSION}"></script>`;
@@ -1099,6 +1099,8 @@ for (const relativeFile of allHtmlFiles) {
   await writeClean(
     file,
     source
+      .replaceAll("20260725-seo-crawl-v14", ASSET_VERSION)
+      .replaceAll("20260726-pool-plan-svg-v1", ASSET_VERSION)
       .replaceAll("20260725-project-spacing-v13", ASSET_VERSION)
       .replaceAll("20260725-title-case-v12", ASSET_VERSION)
       .replaceAll(
@@ -1160,6 +1162,70 @@ for (const relativeFile of allHtmlFiles) {
       .replaceAll(
         "20260726-hunters-model-refresh-v1",
         "20260726-hunters-model-size-v2",
+      )
+      .replaceAll(
+        "20260726-hunters-model-size-v2",
+        "20260726-selected-launch-v1",
+      )
+      .replaceAll(
+        "20260726-selected-launch-v1",
+        "20260726-selected-launch-v2",
+      )
+      .replaceAll(
+        "20260726-selected-launch-v2",
+        "20260726-selected-editorial-v3",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v3",
+        "20260726-selected-editorial-v4",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v4",
+        "20260726-selected-editorial-v5",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v5",
+        "20260726-selected-editorial-v6",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v6",
+        "20260726-selected-editorial-v7",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v7",
+        "20260726-selected-editorial-v8",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v8",
+        "20260726-selected-editorial-v9",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v9",
+        "20260726-selected-editorial-v10",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v10",
+        "20260726-selected-editorial-v11",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v11",
+        "20260726-selected-editorial-v12",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v12",
+        "20260726-selected-editorial-v13",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v13",
+        "20260726-selected-editorial-v14",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v14",
+        "20260726-selected-editorial-v15",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v15",
+        "20260726-selected-editorial-v16",
       ),
   );
 }

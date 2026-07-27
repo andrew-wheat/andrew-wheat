@@ -32,6 +32,8 @@ const projectTitles = {
     "work cover photo.png": "Enfield Food Pantry"
   },
   sketchbook: {
+    "20231129_andrew wheat_a04_isosection.png": "Woven Pavilion",
+    "andrew wheat_ajw288_cookhouse program diagram cropped.png": "Curanto Cookhouse",
     "iso_section_clean_scan.jpg": "Woven Pavilion"
   },
   renderings: {
@@ -56,7 +58,10 @@ function slugify(value) {
 }
 
 function projectTitle(filename, category) {
-  return projectTitles[category]?.[filename.toLowerCase()] || category;
+  return (
+    projectTitles[category]?.[filename.toLowerCase()] ||
+    `${category.charAt(0).toUpperCase()}${category.slice(1)}`
+  );
 }
 
 const manifest = Object.fromEntries(categories.map((category) => [category, []]));

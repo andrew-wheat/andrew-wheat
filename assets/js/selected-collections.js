@@ -71,6 +71,13 @@ window.SELECTED_COLLECTIONS = {
       "height": 1254
     },
     {
+      "key": "speculative-circulation-model",
+      "src": "/assets/images/selected/models/speculative-circulation-model-2a728a32.webp",
+      "title": "Models",
+      "width": 1928,
+      "height": 816
+    },
+    {
       "key": "work-cover-photo",
       "src": "/assets/images/selected/models/work-cover-photo-d1ab93e8.webp",
       "title": "Enfield Food Pantry",
@@ -79,7 +86,50 @@ window.SELECTED_COLLECTIONS = {
     }
   ],
   "photography": [],
-  "sketchbook": [],
+  "sketchbook": [
+    {
+      "key": "img-7841",
+      "src": "/assets/images/selected/sketchbook/img-7841-88cd17dc.webp",
+      "title": "Sketchbook",
+      "width": 2000,
+      "height": 1543
+    },
+    {
+      "key": "img-9544",
+      "src": "/assets/images/selected/sketchbook/img-9544-2828e76e.webp",
+      "title": "Sketchbook",
+      "width": 2000,
+      "height": 1106
+    },
+    {
+      "key": "img-9545",
+      "src": "/assets/images/selected/sketchbook/img-9545-b950e1fa.webp",
+      "title": "Sketchbook",
+      "width": 2000,
+      "height": 1516
+    },
+    {
+      "key": "img-9546",
+      "src": "/assets/images/selected/sketchbook/img-9546-ef6f818a.webp",
+      "title": "Sketchbook",
+      "width": 1321,
+      "height": 2000
+    },
+    {
+      "key": "scan-ajw288-2026-04-18-18-32-31-page-1",
+      "src": "/assets/images/selected/sketchbook/scan-ajw288-2026-04-18-18-32-31-page-1-cc3331ff.webp",
+      "title": "Sketchbook",
+      "width": 2000,
+      "height": 1294
+    },
+    {
+      "key": "scan-ajw288-2026-04-19-14-33-40-page-1",
+      "src": "/assets/images/selected/sketchbook/scan-ajw288-2026-04-19-14-33-40-page-1-b98933a9.webp",
+      "title": "Sketchbook",
+      "width": 2000,
+      "height": 1294
+    }
+  ],
   "renderings": [
     {
       "key": "andrew-wheat-ajw288-03c-exterior-render-02",

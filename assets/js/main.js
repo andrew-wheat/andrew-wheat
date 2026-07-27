@@ -10,7 +10,7 @@
   const imageDimensions = window.PORTFOLIO_IMAGE_DIMENSIONS || {};
   const selectedCollections = window.SELECTED_COLLECTIONS || {};
   const selectedCollectionOrder = ["models", "photography", "sketchbook", "renderings"];
-  const showSelectedSection = false;
+  const showSelectedSection = true;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const workCategoryOrder = ["Academic", "Professional"];
   const recruiterKeywords = [
@@ -126,95 +126,115 @@
     const items = collection ? selectedCollections[collection] || [] : [];
     const curatedLayouts = {
       models: [
-        { key: "3x6a0205", row: 1, col: 1, span: 4, offset: "0px", max: "580px", align: "start" },
-        { key: "1", row: 1, col: 7, span: 2, offset: "92px", max: "280px", align: "center" },
-        { key: "work-cover-photo", row: 1, col: 10, span: 3, offset: "20px", max: "420px", align: "end" },
+        { key: "3x6a0205", row: 1, col: 1, span: 7, offset: "0px", max: "900px", align: "start" },
+        { key: "1", row: 1, col: 9, span: 4, offset: "90px", max: "560px", align: "end" },
         {
           key: "andrew-wheat-ajw288-problem-03c-final-model-15",
           row: 2,
           col: 1,
           span: 5,
           offset: "0px",
-          max: "620px",
+          max: "720px",
           align: "start"
         },
-        { key: "main-hero-shot", row: 2, col: 9, span: 3, offset: "106px", max: "330px", align: "center" },
-        { key: "model-01-cropped", row: 3, col: 2, span: 4, offset: "58px", max: "520px", align: "center" },
+        { key: "work-cover-photo", row: 3, col: 7, span: 6, offset: "-80px", max: "820px", align: "end" },
+        { key: "main-hero-shot", row: 4, col: 1, span: 4, offset: "-80px", max: "520px", align: "start" },
+        { key: "model-01-cropped", row: 5, col: 7, span: 6, offset: "-80px", max: "820px", align: "end" },
         {
           key: "model-front-view-shot-03-reduced",
-          row: 3,
-          col: 7,
-          span: 5,
-          offset: "0px",
-          max: "650px",
-          align: "end"
+          row: 6,
+          col: 1,
+          span: 6,
+          offset: "-80px",
+          max: "900px",
+          align: "start"
         },
-        { key: "model-full-shot", row: 4, col: 1, span: 3, offset: "16px", max: "360px", align: "start" },
-        { key: "hero-2", row: 4, col: 5, span: 4, offset: "94px", max: "480px", align: "center" },
+        { key: "model-full-shot", row: 6, col: 9, span: 4, offset: "80px", max: "560px", align: "end" },
+        { key: "do4a0315", row: 7, col: 1, span: 5, offset: "-80px", max: "720px", align: "start" },
         {
           key: "3x6a0280-cropped-smaller",
-          row: 4,
-          col: 10,
-          span: 3,
-          offset: "24px",
-          max: "420px",
+          row: 8,
+          col: 7,
+          span: 6,
+          offset: "-80px",
+          max: "820px",
           align: "end"
         },
-        { key: "do4a0315", row: 5, col: 2, span: 4, offset: "0px", max: "480px", align: "center" },
         {
           key: "andrew-wheat-ajw288-01b-study-model-1",
-          row: 5,
-          col: 8,
-          span: 4,
-          offset: "84px",
-          max: "520px",
+          row: 9,
+          col: 1,
+          span: 5,
+          offset: "-80px",
+          max: "720px",
+          align: "start"
+        },
+        {
+          key: "speculative-circulation-model",
+          row: 10,
+          col: 7,
+          span: 6,
+          offset: "-80px",
+          max: "820px",
           align: "end"
         }
       ],
       sketchbook: [
-        { key: "iso-section-clean-scan", row: 1, col: 2, span: 4, offset: "0px", max: "520px", align: "start" }
+        { key: "img-9544", row: 1, col: 1, span: 7, offset: "0px", max: "920px", align: "start" },
+        { key: "img-9546", row: 1, col: 10, span: 3, offset: "100px", max: "440px", align: "end" },
+        { key: "img-7841", row: 2, col: 1, span: 5, offset: "-80px", max: "700px", align: "start" },
+        {
+          key: "scan-ajw288-2026-04-18-18-32-31-page-1",
+          row: 3,
+          col: 6,
+          span: 7,
+          offset: "-80px",
+          max: "920px",
+          align: "end"
+        },
+        { key: "img-9545", row: 4, col: 1, span: 5, offset: "-80px", max: "700px", align: "start" },
+        {
+          key: "scan-ajw288-2026-04-19-14-33-40-page-1",
+          row: 5,
+          col: 6,
+          span: 7,
+          offset: "-80px",
+          max: "920px",
+          align: "end"
+        }
       ],
       renderings: [
         {
           key: "andrew-wheat-ajw288-03c-exterior-render-02",
           row: 1,
           col: 1,
-          span: 4,
+          span: 7,
           offset: "0px",
-          max: "620px",
+          max: "920px",
           align: "start"
         },
         {
-          key: "exterior-2-edited-noisy-copy",
+          key: "updated-pantry-interior",
           row: 1,
-          col: 10,
-          span: 3,
-          offset: "28px",
-          max: "360px",
+          col: 9,
+          span: 4,
+          offset: "90px",
+          max: "560px",
           align: "end"
         },
         {
           key: "andrew-wheat-ajw288-03c-interior-render",
           row: 2,
-          col: 2,
-          span: 4,
-          offset: "0px",
-          max: "560px",
-          align: "start"
-        },
-        { key: "hero", row: 2, col: 8, span: 4, offset: "96px", max: "560px", align: "end" },
-        { key: "corridor-render", row: 3, col: 1, span: 4, offset: "0px", max: "560px", align: "start" },
-        { key: "market-render", row: 3, col: 8, span: 4, offset: "72px", max: "560px", align: "end" },
-        { key: "hero-2", row: 4, col: 2, span: 5, offset: "0px", max: "680px", align: "center" },
-        {
-          key: "updated-pantry-interior",
-          row: 4,
-          col: 10,
-          span: 3,
-          offset: "54px",
-          max: "390px",
+          col: 8,
+          span: 5,
+          offset: "10px",
+          max: "720px",
           align: "end"
-        }
+        },
+        { key: "hero", row: 3, col: 1, span: 5, offset: "-80px", max: "720px", align: "start" },
+        { key: "corridor-render", row: 4, col: 7, span: 6, offset: "-80px", max: "840px", align: "end" },
+        { key: "market-render", row: 5, col: 1, span: 5, offset: "-80px", max: "720px", align: "start" },
+        { key: "hero-2", row: 6, col: 6, span: 7, offset: "-80px", max: "920px", align: "end" }
       ]
     };
 
@@ -239,9 +259,8 @@
         .filter(Boolean);
       const arrangedKeys = new Set(arrangedItems.map(({ item }) => item.key));
       const fallbackSlots = [
-        { col: 1, span: 4, offset: "0px", max: "560px", align: "start" },
-        { col: 6, span: 4, offset: "72px", max: "560px", align: "center" },
-        { col: 10, span: 3, offset: "20px", max: "420px", align: "end" }
+        { col: 1, span: 6, offset: "0px", max: "820px", align: "start" },
+        { col: 7, span: 6, offset: "110px", max: "820px", align: "end" }
       ];
       const fallbackStartRow = Math.max(0, ...curated.map((layout) => layout.row)) + 1;
       items
