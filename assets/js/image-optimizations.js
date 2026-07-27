@@ -67,7 +67,7 @@ window.PORTFOLIO_OPTIMIZED_IMAGES = {
   "assets/images/Projects/Hunter's Point Cooperative Housing/hero.png": "assets/images/optimized/hero-71062e50a9.webp",
   "assets/images/Projects/Hunter's Point Cooperative Housing/Laundry.png": "assets/images/optimized/laundry-da573c4993.webp",
   "assets/images/Projects/Hunter's Point Cooperative Housing/Market Render.png": "assets/images/optimized/market-render-0a6e70a022.webp",
-  "assets/images/Projects/Hunter's Point Cooperative Housing/Model full shot.png": "assets/images/optimized/model-full-shot-a481e28919.webp",
+  "assets/images/Projects/Hunter's Point Cooperative Housing/Model full shot.png": "assets/images/optimized/model-full-shot-f3703fe1ba.webp",
   "assets/images/Projects/Hunter's Point Cooperative Housing/Speculative Circulation model.png": "assets/images/optimized/speculative-circulation-model-1a490fb218.webp",
   "assets/images/Projects/Hunter's Point Cooperative Housing/Unit Render.png": "assets/images/optimized/unit-render-c70ec4b5c5.webp",
   "assets/images/Projects/Hunter's Point Cooperative Housing/Workshop Stack 1.png": "assets/images/optimized/workshop-stack-1-8ecd5972a8.webp",

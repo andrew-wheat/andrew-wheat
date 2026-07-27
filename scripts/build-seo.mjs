@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-07-25";
-const ASSET_VERSION = "20260726-landing-position-lock-v1";
+const ASSET_VERSION = "20260726-hunters-model-size-v2";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -374,10 +374,10 @@ const siteFooter = `    <footer class="site-copyright" aria-label="Copyright">
       &copy; Andrew Wheat 2026
     </footer>`;
 
-const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260726-landing-position-lock-v1"></script>
+const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260726-hunters-model-size-v2"></script>
     ${
       includeImageOptimizations
-        ? '<script src="/assets/js/image-optimizations.js?v=20260726-landing-position-lock-v1"></script>\n    '
+        ? '<script src="/assets/js/image-optimizations.js?v=20260726-hunters-model-size-v2"></script>\n    '
         : ""
     }<script src="/assets/js/selected-collections.js?v=${ASSET_VERSION}"></script>
     <script src="/assets/js/main.js?v=${ASSET_VERSION}"></script>`;
@@ -1144,6 +1144,22 @@ for (const relativeFile of allHtmlFiles) {
       .replaceAll(
         "20260726-pool-drawing-svgs-v3",
         "20260726-landing-position-lock-v1",
+      )
+      .replaceAll(
+        "20260726-landing-position-lock-v1",
+        "20260726-landing-standard-header-v2",
+      )
+      .replaceAll(
+        "20260726-landing-standard-header-v2",
+        "20260726-landing-standard-header-v3",
+      )
+      .replaceAll(
+        "20260726-landing-standard-header-v3",
+        "20260726-hunters-model-refresh-v1",
+      )
+      .replaceAll(
+        "20260726-hunters-model-refresh-v1",
+        "20260726-hunters-model-size-v2",
       ),
   );
 }
