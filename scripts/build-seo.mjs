@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-07-25";
-const ASSET_VERSION = "20260726-selected-editorial-v39";
+const ASSET_VERSION = "20260727-photography-exif-v48";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -361,12 +361,19 @@ const siteHeader = (active = "") => `    <header class="site-header static-heade
         <a class="nav-primary-link" data-nav-section="work"${
           active === "work" ? ' aria-current="page"' : ""
         } href="/work/">work</a>
-        <a class="nav-primary-link" data-nav-section="about"${
-          active === "about" ? ' aria-current="page"' : ""
-        } href="/about/">about</a>
-        <a class="nav-primary-link" data-nav-section="contact"${
-          active === "contact" ? ' aria-current="page"' : ""
-        } href="/contact/">contact</a>
+        <div class="nav-folder nav-folder--info">
+          <button class="nav-primary-link nav-folder-trigger" type="button" data-nav-section="info"${
+            active === "about" || active === "contact" ? ' aria-current="page"' : ""
+          } aria-expanded="false" aria-haspopup="true">info</button>
+          <div class="nav-dropdown" aria-label="Information">
+            <a class="nav-dropdown-link" data-info-page="about"${
+              active === "about" ? ' aria-current="page"' : ""
+            } href="/about/">about</a>
+            <a class="nav-dropdown-link" data-info-page="contact"${
+              active === "contact" ? ' aria-current="page"' : ""
+            } href="/contact/">contact</a>
+          </div>
+        </div>
       </nav>
     </header>`;
 
@@ -374,10 +381,10 @@ const siteFooter = `    <footer class="site-copyright" aria-label="Copyright">
       &copy; Andrew Wheat 2026
     </footer>`;
 
-const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260726-selected-editorial-v39"></script>
+const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260727-photography-exif-v48"></script>
     ${
       includeImageOptimizations
-        ? '<script src="/assets/js/image-optimizations.js?v=20260726-selected-editorial-v39"></script>\n    '
+        ? '<script src="/assets/js/image-optimizations.js?v=20260727-photography-exif-v48"></script>\n    '
         : ""
     }<script src="/assets/js/selected-collections.js?v=${ASSET_VERSION}"></script>
     <script src="/assets/js/main.js?v=${ASSET_VERSION}"></script>`;
@@ -386,6 +393,9 @@ function staticProjectCards(projects) {
   return projects
     .map((project, index) => {
       const image = representativeImage(project);
+      const alternateImage = absoluteUrl(
+        project.workThumbnailAlt || `assets/images/work-heroes-alt/${project.id}.webp`,
+      );
       return `        <a class="project-card" data-project-id="${escapeHtml(
         project.id,
       )}" href="/project/${encodeURIComponent(pageIdForProject(project))}/">
@@ -395,6 +405,11 @@ function staticProjectCards(projects) {
             )}" alt="${escapeHtml(
               `${project.title} architecture project by Andrew Wheat`,
             )}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
+            <img class="project-thumb-image project-thumb-image--alt" src="${escapeHtml(
+              alternateImage,
+            )}" alt="${escapeHtml(
+              `${project.title} alternate hero image`,
+            )}" loading="eager" decoding="async">
           </figure>
           <figure class="project-thumb-list">
             <img src="${escapeHtml(image)}" alt="" loading="lazy" decoding="async">

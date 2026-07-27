@@ -98,84 +98,173 @@ window.SELECTED_COLLECTIONS = {
       "src": "/assets/images/selected/photography/img-0587-fba99bff.webp",
       "title": "Photography",
       "width": 2000,
-      "height": 1333
+      "height": 1333,
+      "camera": {
+        "make": "Canon",
+        "model": "Canon EOS R50",
+        "lens": "RF-S55-210mm F5-7.1 IS STM",
+        "exposureTime": 0.002,
+        "fNumber": 6.3,
+        "iso": 1250,
+        "focalLength": 110
+      }
     },
     {
       "key": "img-0767",
       "src": "/assets/images/selected/photography/img-0767-7a9a7051.webp",
       "title": "Photography",
       "width": 2000,
-      "height": 1333
+      "height": 1333,
+      "camera": {
+        "make": "Canon",
+        "model": "Canon EOS R50",
+        "lens": "RF-S18-45mm F4.5-6.3 IS STM",
+        "exposureTime": 0.004,
+        "fNumber": 5.6,
+        "iso": 100,
+        "focalLength": 37
+      }
     },
     {
       "key": "img-0915",
       "src": "/assets/images/selected/photography/img-0915-6d8b6d1d.webp",
       "title": "Photography",
       "width": 2000,
-      "height": 1333
+      "height": 1333,
+      "camera": {
+        "make": "Canon",
+        "model": "Canon EOS R50",
+        "lens": "RF-S18-45mm F4.5-6.3 IS STM",
+        "exposureTime": 0.01,
+        "fNumber": 5,
+        "iso": 100,
+        "focalLength": 18
+      }
     },
     {
       "key": "img-0982",
       "src": "/assets/images/selected/photography/img-0982-a880eb00.webp",
       "title": "Photography",
       "width": 2000,
-      "height": 1333
+      "height": 1333,
+      "camera": {
+        "make": "Canon",
+        "model": "Canon EOS R50",
+        "lens": "RF-S18-45mm F4.5-6.3 IS STM",
+        "exposureTime": 0.0015625,
+        "fNumber": 5,
+        "iso": 100,
+        "focalLength": 25
+      }
     },
     {
       "key": "img-1590",
       "src": "/assets/images/selected/photography/img-1590-8e724a27.webp",
       "title": "Photography",
       "width": 2000,
-      "height": 1123
-    },
-    {
-      "key": "img-1932",
-      "src": "/assets/images/selected/photography/img-1932-d7cf3c0b.webp",
-      "title": "Photography",
-      "width": 2000,
-      "height": 1123
+      "height": 1123,
+      "camera": {
+        "make": "Canon",
+        "model": "Canon EOS R50",
+        "lens": "RF-S55-210mm F5-7.1 IS STM",
+        "exposureTime": 0.000125,
+        "fNumber": 7.1,
+        "iso": 6400,
+        "focalLength": 210
+      }
     },
     {
       "key": "img-2003",
       "src": "/assets/images/selected/photography/img-2003-6ce8cd6d.webp",
       "title": "Photography",
       "width": 2000,
-      "height": 1123
+      "height": 1123,
+      "camera": {
+        "make": "Canon",
+        "model": "Canon EOS R50",
+        "lens": "RF-S18-45mm F4.5-6.3 IS STM",
+        "exposureTime": 0.002,
+        "fNumber": 5.6,
+        "iso": 100,
+        "focalLength": 20
+      }
     },
     {
       "key": "img-2273",
       "src": "/assets/images/selected/photography/img-2273-71282979.webp",
       "title": "Photography",
       "width": 2000,
-      "height": 1333
+      "height": 1333,
+      "camera": {
+        "make": "Canon",
+        "model": "Canon EOS R50",
+        "exposureTime": 0.004,
+        "fNumber": 8,
+        "iso": 100,
+        "focalLength": 45
+      }
     },
     {
       "key": "img-2623",
       "src": "/assets/images/selected/photography/img-2623-bcf32016.webp",
       "title": "Photography",
       "width": 2000,
-      "height": 1123
+      "height": 1123,
+      "camera": {
+        "make": "Canon",
+        "model": "Canon EOS R50",
+        "exposureTime": 0.0015625,
+        "fNumber": 5.6,
+        "iso": 100,
+        "focalLength": 33
+      }
     },
     {
       "key": "img-2697",
       "src": "/assets/images/selected/photography/img-2697-4f23eb0f.webp",
       "title": "Photography",
       "width": 2000,
-      "height": 1333
+      "height": 1333,
+      "camera": {
+        "make": "Canon",
+        "model": "Canon EOS R50",
+        "lens": "RF-S18-45mm F4.5-6.3 IS STM",
+        "exposureTime": 0.003125,
+        "fNumber": 9,
+        "iso": 100,
+        "focalLength": 45
+      }
     },
     {
       "key": "img-2778",
       "src": "/assets/images/selected/photography/img-2778-6090051c.webp",
       "title": "Photography",
       "width": 2000,
-      "height": 2000
+      "height": 2000,
+      "camera": {
+        "make": "Canon",
+        "model": "Canon EOS R50",
+        "lens": "RF-S18-45mm F4.5-6.3 IS STM",
+        "exposureTime": 0.003125,
+        "fNumber": 9,
+        "iso": 100,
+        "focalLength": 45
+      }
     },
     {
       "key": "img-2793-2",
       "src": "/assets/images/selected/photography/img-2793-2-868f9aec.webp",
       "title": "Photography",
       "width": 2000,
-      "height": 1429
+      "height": 1429,
+      "camera": {
+        "make": "Canon",
+        "model": "Canon EOS R50",
+        "exposureTime": 0.003125,
+        "fNumber": 9,
+        "iso": 100,
+        "focalLength": 45
+      }
     },
     {
       "key": "img-9549",

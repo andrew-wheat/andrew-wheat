@@ -14,7 +14,34 @@ const manifestPath = path.join(projectRoot, "assets", "js", "selected-collection
 const categories = ["models", "photography", "sketchbook", "renderings"];
 const supportedExtensions = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 const hiddenSelectedAssets = {
+  photography: new Set(["img_1932.jpg"]),
   renderings: new Set(["exterior 2 edited noisy copy.jpg"])
+};
+const photographyCameraOverrides = {
+  "img_2273.jpg": {
+    make: "Canon",
+    model: "Canon EOS R50",
+    exposureTime: 1 / 250,
+    fNumber: 8,
+    iso: 100,
+    focalLength: 45
+  },
+  "img_2623.jpg": {
+    make: "Canon",
+    model: "Canon EOS R50",
+    exposureTime: 1 / 640,
+    fNumber: 5.6,
+    iso: 100,
+    focalLength: 33
+  },
+  "img_2793-2.jpg": {
+    make: "Canon",
+    model: "Canon EOS R50",
+    exposureTime: 1 / 320,
+    fNumber: 9,
+    iso: 100,
+    focalLength: 45
+  }
 };
 const projectTitles = {
   models: {
@@ -64,6 +91,106 @@ function projectTitle(filename, category) {
   );
 }
 
+function readExifData(exifBuffer) {
+  if (!Buffer.isBuffer(exifBuffer) || exifBuffer.length < 14) return null;
+
+  try {
+    const tiffStart =
+      exifBuffer.subarray(0, 6).toString("ascii") === "Exif\u0000\u0000" ? 6 : 0;
+    const byteOrder = exifBuffer.subarray(tiffStart, tiffStart + 2).toString("ascii");
+    if (byteOrder !== "II" && byteOrder !== "MM") return null;
+    const littleEndian = byteOrder === "II";
+    const readUInt16 = (offset) =>
+      littleEndian ? exifBuffer.readUInt16LE(offset) : exifBuffer.readUInt16BE(offset);
+    const readUInt32 = (offset) =>
+      littleEndian ? exifBuffer.readUInt32LE(offset) : exifBuffer.readUInt32BE(offset);
+    const readInt32 = (offset) =>
+      littleEndian ? exifBuffer.readInt32LE(offset) : exifBuffer.readInt32BE(offset);
+    const typeSizes = new Map([
+      [1, 1],
+      [2, 1],
+      [3, 2],
+      [4, 4],
+      [5, 8],
+      [7, 1],
+      [9, 4],
+      [10, 8]
+    ]);
+
+    function entryValue(entryOffset) {
+      const type = readUInt16(entryOffset + 2);
+      const count = readUInt32(entryOffset + 4);
+      const byteLength = (typeSizes.get(type) || 0) * count;
+      if (!byteLength) return undefined;
+      const valueOffset =
+        byteLength <= 4 ? entryOffset + 8 : tiffStart + readUInt32(entryOffset + 8);
+      if (valueOffset < 0 || valueOffset + byteLength > exifBuffer.length) return undefined;
+
+      if (type === 2) {
+        return exifBuffer
+          .subarray(valueOffset, valueOffset + byteLength)
+          .toString("utf8")
+          .replace(/\u0000+$/g, "")
+          .trim();
+      }
+      if (type === 3) {
+        const values = Array.from({ length: count }, (_, index) =>
+          readUInt16(valueOffset + index * 2)
+        );
+        return values.length === 1 ? values[0] : values;
+      }
+      if (type === 4) {
+        const values = Array.from({ length: count }, (_, index) =>
+          readUInt32(valueOffset + index * 4)
+        );
+        return values.length === 1 ? values[0] : values;
+      }
+      if (type === 5 || type === 10) {
+        const values = Array.from({ length: count }, (_, index) => {
+          const position = valueOffset + index * 8;
+          const numerator = type === 10 ? readInt32(position) : readUInt32(position);
+          const denominator =
+            type === 10 ? readInt32(position + 4) : readUInt32(position + 4);
+          return denominator ? numerator / denominator : 0;
+        });
+        return values.length === 1 ? values[0] : values;
+      }
+      return undefined;
+    }
+
+    function readIfd(relativeOffset) {
+      const directoryOffset = tiffStart + Number(relativeOffset || 0);
+      if (directoryOffset < 0 || directoryOffset + 2 > exifBuffer.length) return new Map();
+      const entryCount = readUInt16(directoryOffset);
+      const tags = new Map();
+      for (let index = 0; index < entryCount; index += 1) {
+        const entryOffset = directoryOffset + 2 + index * 12;
+        if (entryOffset + 12 > exifBuffer.length) break;
+        tags.set(readUInt16(entryOffset), entryValue(entryOffset));
+      }
+      return tags;
+    }
+
+    const rootIfd = readIfd(readUInt32(tiffStart + 4));
+    const exifIfd = rootIfd.get(0x8769) ? readIfd(rootIfd.get(0x8769)) : new Map();
+    const clean = (value) => (typeof value === "string" ? value.replace(/\s+/g, " ").trim() : value);
+    const camera = {
+      make: clean(rootIfd.get(0x010f)),
+      model: clean(rootIfd.get(0x0110)),
+      lens: clean(exifIfd.get(0xa434)),
+      exposureTime: exifIfd.get(0x829a),
+      fNumber: exifIfd.get(0x829d),
+      iso: exifIfd.get(0x8827),
+      focalLength: exifIfd.get(0x920a)
+    };
+    return Object.values(camera).some((value) => value !== undefined && value !== "")
+      ? camera
+      : null;
+  } catch {
+    return null;
+  }
+}
+
 const manifest = Object.fromEntries(categories.map((category) => [category, []]));
 
 for (const category of categories) {
@@ -95,6 +222,11 @@ for (const category of categories) {
     const outputName = `${slugify(path.parse(file.name).name)}-${digest}.webp`;
     const outputPath = path.join(outputDirectory, outputName);
     expectedOutputs.add(outputName);
+    const sourceMetadata = await sharp(sourcePath).metadata();
+    const camera =
+      category === "photography"
+        ? photographyCameraOverrides[file.name.toLowerCase()] || readExifData(sourceMetadata.exif)
+        : null;
     const image = sharp(sourcePath).rotate().resize({
       width: 2000,
       height: 2000,
@@ -108,7 +240,8 @@ for (const category of categories) {
       src: `/assets/images/selected/${category}/${outputName}`,
       title: projectTitle(file.name, category),
       width: info.width,
-      height: info.height
+      height: info.height,
+      ...(camera ? { camera } : {})
     });
   }
 

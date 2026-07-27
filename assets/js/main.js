@@ -54,7 +54,7 @@
     const selectedNavigation = availableSelectedCollections.length
       ? `
         <div class="nav-folder nav-folder--selected">
-          <a class="nav-primary-link" data-nav-section="selected" href="/selected/?collection=${escapeHtml(availableSelectedCollections[0])}">selected</a>
+          <button class="nav-primary-link nav-folder-trigger" type="button" data-nav-section="selected" aria-expanded="false" aria-haspopup="true">selected</button>
           <div class="nav-dropdown" aria-label="Selected collections">
             ${availableSelectedCollections
               .map(
@@ -66,15 +66,52 @@
         </div>
       `
       : "";
+    const infoNavigation = `
+      <div class="nav-folder nav-folder--info">
+        <button class="nav-primary-link nav-folder-trigger" type="button" data-nav-section="info" aria-expanded="false" aria-haspopup="true">info</button>
+        <div class="nav-dropdown" aria-label="Information">
+          <a class="nav-dropdown-link" data-info-page="about" href="/about/">about</a>
+          <a class="nav-dropdown-link" data-info-page="contact" href="/contact/">contact</a>
+        </div>
+      </div>
+    `;
     document.querySelectorAll(".site-nav").forEach((nav) => {
       nav.innerHTML = `
         ${selectedNavigation}
         <a class="nav-primary-link" data-nav-section="work" href="/work/">work</a>
-        <a class="nav-primary-link" data-nav-section="about" href="/about/">about</a>
-        <a class="nav-primary-link" data-nav-section="contact" href="/contact/">contact</a>
+        ${infoNavigation}
       `;
+      initNavigationFolders(nav);
     });
   }
+
+  function setNavigationFolderOpen(folder, isOpen) {
+    folder.classList.toggle("is-open", isOpen);
+    folder.querySelector(".nav-folder-trigger")?.setAttribute("aria-expanded", String(isOpen));
+  }
+
+  function closeNavigationFolders(root = document) {
+    root.querySelectorAll(".nav-folder.is-open").forEach((folder) => {
+      setNavigationFolderOpen(folder, false);
+    });
+  }
+
+  function initNavigationFolders(nav) {
+    nav.querySelectorAll(".nav-folder").forEach((folder) => {
+      const trigger = folder.querySelector(".nav-folder-trigger");
+      if (!trigger) return;
+      trigger.addEventListener("click", () => {
+        const shouldOpen = !folder.classList.contains("is-open");
+        closeNavigationFolders(nav);
+        if (shouldOpen) setNavigationFolderOpen(folder, true);
+      });
+    });
+  }
+
+  document.addEventListener("click", (event) => {
+    if (event.target instanceof Element && event.target.closest(".nav-folder")) return;
+    closeNavigationFolders();
+  });
 
   function syncPrimaryNavigationState() {
     const page = document.body?.dataset.page || "";
@@ -83,10 +120,8 @@
         ? "selected"
         : page === "work" || page === "project"
         ? "work"
-        : page === "about"
-          ? "about"
-          : page === "contact"
-            ? "contact"
+        : page === "about" || page === "contact"
+          ? "info"
             : "";
 
     document.querySelectorAll(".site-nav [data-nav-section]").forEach((link) => {
@@ -101,6 +136,14 @@
       page === "selected" ? new URLSearchParams(window.location.search).get("collection") || "" : "";
     document.querySelectorAll(".site-nav [data-selected-category]").forEach((link) => {
       if (selectedCategory && link.dataset.selectedCategory === selectedCategory) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+
+    document.querySelectorAll(".site-nav [data-info-page]").forEach((link) => {
+      if (page && link.dataset.infoPage === page) {
         link.setAttribute("aria-current", "page");
       } else {
         link.removeAttribute("aria-current");
@@ -192,16 +235,15 @@
         { key: "img-2793-2", row: 1, col: 3, span: 15, offset: "0px", max: "1040px", align: "start" },
         { key: "img-2778", row: 19, col: 14, span: 10, offset: "0px", max: "700px", align: "end" },
         { key: "img-2697", row: 38, col: 15, span: 10, offset: "0px", max: "700px", align: "end" },
-        { key: "img-2623", row: 43, col: 1, span: 13, offset: "0px", max: "900px", align: "start" },
-        { key: "img-2273", row: 61, col: 11, span: 14, offset: "0px", max: "980px", align: "end" },
+        { key: "img-2273", row: 43, col: 1, span: 13, offset: "0px", max: "900px", align: "start" },
+        { key: "img-2623", row: 61, col: 11, span: 14, offset: "0px", max: "980px", align: "end" },
         { key: "img-0982", row: 82, col: 4, span: 17, offset: "0px", max: "1180px", align: "start" },
         { key: "img-2003", row: 103, col: 15, span: 10, offset: "0px", max: "700px", align: "end" },
         { key: "img-0915", row: 108, col: 1, span: 11, offset: "0px", max: "760px", align: "start" },
-        { key: "img-1932", row: 126, col: 1, span: 24, offset: "0px", max: "980px", align: "center" },
-        { key: "img-9549", row: 143, col: 14, span: 11, offset: "0px", max: "760px", align: "end" },
-        { key: "img-0587", row: 158, col: 1, span: 24, offset: "0px", max: "880px", align: "center" },
-        { key: "img-0767", row: 173, col: 12, span: 13, offset: "0px", max: "900px", align: "end" },
-        { key: "img-1590", row: 191, col: 1, span: 17, offset: "0px", max: "1180px", align: "start" }
+        { key: "img-9549", row: 126, col: 14, span: 11, offset: "0px", max: "760px", align: "end" },
+        { key: "img-0587", row: 141, col: 1, span: 24, offset: "0px", max: "880px", align: "center" },
+        { key: "img-0767", row: 161, col: 12, span: 13, offset: "0px", max: "900px", align: "end" },
+        { key: "img-1590", row: 179, col: 1, span: 17, offset: "0px", max: "1180px", align: "start" }
       ],
       sketchbook: [
         { key: "img-9544", row: 1, col: 1, span: 7, offset: "0px", max: "920px", align: "start" },
@@ -255,7 +297,7 @@
           max: "720px",
           align: "end"
         },
-        { key: "hero", row: 3, col: 1, span: 5, offset: "-80px", max: "720px", align: "start" },
+        { key: "hero", row: 3, col: 1, span: 7, offset: "-80px", max: "1040px", align: "start" },
         { key: "corridor-render", row: 4, col: 7, span: 6, offset: "-80px", max: "840px", align: "end" },
         { key: "market-render", row: 5, col: 1, span: 5, offset: "-80px", max: "720px", align: "start" },
         { key: "hero-2", row: 6, col: 6, span: 7, offset: "-80px", max: "920px", align: "end" }
@@ -303,9 +345,12 @@
       canvas.innerHTML = arrangedItems
         .map(({ item, layout }, index) => {
           const titleText = escapeHtml(item.title || label);
+          const cameraLine =
+            collection === "photography" ? formatPhotographyCameraLine(item.camera) : "";
           return `
             <figure
               class="selected-image-card"
+              data-selected-key="${escapeHtml(item.key)}"
               style="
                 --selected-grid-row: ${layout.row};
                 --selected-column-start: ${layout.col};
@@ -323,11 +368,51 @@
                 loading="${index < 3 ? "eager" : "lazy"}"
                 decoding="async"
               >
+              ${
+                cameraLine
+                  ? `<figcaption class="selected-camera-meta">${escapeHtml(cameraLine)}</figcaption>`
+                  : ""
+              }
             </figure>
           `;
         })
         .join("");
     }
+  }
+
+  function formatPhotographyCameraLine(camera) {
+    if (!camera || typeof camera !== "object") return "";
+
+    const make = String(camera.make || "").trim();
+    const model = String(camera.model || "").trim();
+    const cameraName =
+      model && make && !model.toLowerCase().startsWith(make.toLowerCase())
+        ? `${make} ${model}`
+        : model || make;
+    const parts = [cameraName, String(camera.lens || "").trim()].filter(Boolean);
+    const focalLength = Number(camera.focalLength);
+    const exposureTime = Number(camera.exposureTime);
+    const fNumber = Number(camera.fNumber);
+    const iso = Number(camera.iso);
+
+    if (Number.isFinite(focalLength) && focalLength > 0) {
+      parts.push(`${Number(focalLength.toFixed(1))} mm`);
+    }
+    if (Number.isFinite(exposureTime) && exposureTime > 0) {
+      parts.push(
+        exposureTime < 1
+          ? `1/${Math.max(1, Math.round(1 / exposureTime))} s`
+          : `${Number(exposureTime.toFixed(1))} s`
+      );
+    }
+    if (Number.isFinite(fNumber) && fNumber > 0) {
+      parts.push(`ƒ/${Number(fNumber.toFixed(1))}`);
+    }
+    if (Number.isFinite(iso) && iso > 0) {
+      parts.push(`ISO ${Math.round(iso)}`);
+    }
+
+    return parts.join(" · ");
   }
 
   function redirectLegacyUrls() {
@@ -724,6 +809,7 @@
       button.addEventListener("click", () => {
         const isOpen = header.classList.toggle("is-menu-open");
         document.body.classList.toggle("is-mobile-menu-open", isOpen);
+        if (!isOpen) closeNavigationFolders(header);
         button.setAttribute("aria-expanded", String(isOpen));
         button.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
       });
@@ -732,6 +818,7 @@
         if (!(event.target instanceof Element) || !event.target.closest("a")) return;
         header.classList.remove("is-menu-open");
         document.body.classList.remove("is-mobile-menu-open");
+        closeNavigationFolders(header);
         button.setAttribute("aria-expanded", "false");
         button.setAttribute("aria-label", "Open menu");
       });
@@ -740,6 +827,7 @@
         if (event.key !== "Escape" || !header.classList.contains("is-menu-open")) return;
         header.classList.remove("is-menu-open");
         document.body.classList.remove("is-mobile-menu-open");
+        closeNavigationFolders(header);
         button.setAttribute("aria-expanded", "false");
         button.setAttribute("aria-label", "Open menu");
         button.focus();
@@ -1859,22 +1947,19 @@
     setView(initialView, { skipUrl: true });
   }
 
-  function projectCard(project, index, fadeOrder = workFadeOrder(projects)) {
+  function projectCard(project, index) {
     const projectNumber = index + 1;
     const thumbnail = project.workThumbnail || project.thumbnail;
-    const thumbnailAlt = project.workThumbnailAlt || "";
+    const thumbnailAlt =
+      project.workThumbnailAlt || `assets/images/work-heroes-alt/${project.id}.webp`;
     const listThumbnail = project.workListThumbnail || project.workThumbnail || project.thumbnail;
-    const fadeInterval = 5;
-    const fadeSlot = fadeOrder.indexOf(project.id);
-    const fadeDuration = Math.max(fadeInterval * fadeOrder.length, fadeInterval);
-    const fadeDelay = Math.max(fadeSlot, 0) * fadeInterval;
     return `
-      <a class="project-card" data-project-id="${escapeHtml(project.id)}" href="${projectUrl(project.id)}" style="--work-fade-duration: ${fadeDuration.toFixed(1)}s; --work-fade-delay: ${fadeDelay.toFixed(1)}s;">
+      <a class="project-card" data-project-id="${escapeHtml(project.id)}" href="${projectUrl(project.id)}">
         <figure class="project-thumb">
           ${
             thumbnail
               ? `${projectImage(project, thumbnail, project.title, "project-thumb-image project-thumb-image--base")}
-                ${thumbnailAlt ? projectImage(project, thumbnailAlt, `${project.title} alternate`, "project-thumb-image project-thumb-image--alt") : ""}`
+                ${projectImage(project, thumbnailAlt, `${project.title} alternate`, "project-thumb-image project-thumb-image--alt").replace('loading="lazy"', 'loading="eager"')}`
               : planSvg(project, project.shape)
           }
         </figure>
