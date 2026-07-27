@@ -126,18 +126,26 @@
     const items = collection ? selectedCollections[collection] || [] : [];
     const curatedLayouts = {
       models: [
-        { key: "3x6a0205", row: 1, col: 1, span: 7, offset: "0px", max: "900px", align: "start" },
-        { key: "1", row: 1, col: 9, span: 4, offset: "90px", max: "560px", align: "end" },
         {
           key: "andrew-wheat-ajw288-problem-03c-final-model-15",
-          row: 2,
+          row: 1,
           col: 1,
-          span: 5,
+          span: 8,
           offset: "0px",
-          max: "720px",
+          max: "1180px",
           align: "start"
         },
-        { key: "work-cover-photo", row: 3, col: 7, span: 6, offset: "-80px", max: "820px", align: "end" },
+        { key: "work-cover-photo", row: 2, col: 7, span: 6, offset: "-80px", max: "820px", align: "end" },
+        { key: "3x6a0205", row: 3, col: 1, span: 7, offset: "0px", max: "900px", align: "start" },
+        {
+          key: "1",
+          row: 3,
+          col: 9,
+          span: 4,
+          offset: "clamp(180px, 18vw, 300px)",
+          max: "560px",
+          align: "end"
+        },
         { key: "main-hero-shot", row: 4, col: 1, span: 4, offset: "-80px", max: "520px", align: "start" },
         { key: "model-01-cropped", row: 5, col: 7, span: 6, offset: "-80px", max: "820px", align: "end" },
         {
@@ -177,22 +185,23 @@
           offset: "-80px",
           max: "820px",
           align: "end"
-        }
+        },
+        { key: "hero-2", row: 11, col: 1, span: 7, offset: "-40px", max: "900px", align: "start" }
       ],
       photography: [
-        { key: "img-1590", row: 1, col: 1, span: 17, offset: "0px", max: "1180px", align: "start" },
-        { key: "img-0767", row: 19, col: 12, span: 13, offset: "0px", max: "900px", align: "end" },
-        { key: "img-0587", row: 34, col: 1, span: 24, offset: "0px", max: "880px", align: "center" },
-        { key: "img-9549", row: 49, col: 14, span: 11, offset: "0px", max: "760px", align: "end" },
-        { key: "img-1932", row: 66, col: 1, span: 24, offset: "0px", max: "980px", align: "center" },
-        { key: "img-0915", row: 84, col: 1, span: 11, offset: "0px", max: "760px", align: "start" },
-        { key: "img-2003", row: 89, col: 15, span: 10, offset: "0px", max: "700px", align: "end" },
-        { key: "img-0982", row: 103, col: 4, span: 17, offset: "0px", max: "1180px", align: "start" },
-        { key: "img-2273", row: 124, col: 11, span: 14, offset: "0px", max: "980px", align: "end" },
-        { key: "img-2623", row: 142, col: 1, span: 13, offset: "0px", max: "900px", align: "start" },
-        { key: "img-2697", row: 147, col: 15, span: 10, offset: "0px", max: "700px", align: "end" },
-        { key: "img-2778", row: 163, col: 14, span: 10, offset: "0px", max: "700px", align: "end" },
-        { key: "img-2793-2", row: 181, col: 3, span: 15, offset: "0px", max: "1040px", align: "start" }
+        { key: "img-2793-2", row: 1, col: 3, span: 15, offset: "0px", max: "1040px", align: "start" },
+        { key: "img-2778", row: 19, col: 14, span: 10, offset: "0px", max: "700px", align: "end" },
+        { key: "img-2697", row: 38, col: 15, span: 10, offset: "0px", max: "700px", align: "end" },
+        { key: "img-2623", row: 43, col: 1, span: 13, offset: "0px", max: "900px", align: "start" },
+        { key: "img-2273", row: 61, col: 11, span: 14, offset: "0px", max: "980px", align: "end" },
+        { key: "img-0982", row: 82, col: 4, span: 17, offset: "0px", max: "1180px", align: "start" },
+        { key: "img-2003", row: 103, col: 15, span: 10, offset: "0px", max: "700px", align: "end" },
+        { key: "img-0915", row: 108, col: 1, span: 11, offset: "0px", max: "760px", align: "start" },
+        { key: "img-1932", row: 126, col: 1, span: 24, offset: "0px", max: "980px", align: "center" },
+        { key: "img-9549", row: 143, col: 14, span: 11, offset: "0px", max: "760px", align: "end" },
+        { key: "img-0587", row: 158, col: 1, span: 24, offset: "0px", max: "880px", align: "center" },
+        { key: "img-0767", row: 173, col: 12, span: 13, offset: "0px", max: "900px", align: "end" },
+        { key: "img-1590", row: 191, col: 1, span: 17, offset: "0px", max: "1180px", align: "start" }
       ],
       sketchbook: [
         { key: "img-9544", row: 1, col: 1, span: 7, offset: "0px", max: "920px", align: "start" },

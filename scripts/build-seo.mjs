@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-07-25";
-const ASSET_VERSION = "20260726-selected-editorial-v29";
+const ASSET_VERSION = "20260726-selected-editorial-v39";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -374,10 +374,10 @@ const siteFooter = `    <footer class="site-copyright" aria-label="Copyright">
       &copy; Andrew Wheat 2026
     </footer>`;
 
-const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260726-selected-editorial-v29"></script>
+const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260726-selected-editorial-v39"></script>
     ${
       includeImageOptimizations
-        ? '<script src="/assets/js/image-optimizations.js?v=20260726-selected-editorial-v29"></script>\n    '
+        ? '<script src="/assets/js/image-optimizations.js?v=20260726-selected-editorial-v39"></script>\n    '
         : ""
     }<script src="/assets/js/selected-collections.js?v=${ASSET_VERSION}"></script>
     <script src="/assets/js/main.js?v=${ASSET_VERSION}"></script>`;
@@ -1099,6 +1099,10 @@ for (const relativeFile of allHtmlFiles) {
   await writeClean(
     file,
     source
+      .replace(
+        /202607(?:11|25|26)-[a-z0-9-]+/g,
+        "__CURRENT_ASSET_VERSION__",
+      )
       .replaceAll("20260725-seo-crawl-v14", ASSET_VERSION)
       .replaceAll("20260726-pool-plan-svg-v1", ASSET_VERSION)
       .replaceAll("20260725-project-spacing-v13", ASSET_VERSION)
@@ -1278,7 +1282,12 @@ for (const relativeFile of allHtmlFiles) {
       .replaceAll(
         "20260726-selected-editorial-v28",
         "20260726-selected-editorial-v29",
-      ),
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v29",
+        "20260726-selected-editorial-v30",
+      )
+      .replaceAll("__CURRENT_ASSET_VERSION__", ASSET_VERSION),
   );
 }
 

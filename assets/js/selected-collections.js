@@ -43,6 +43,13 @@ window.SELECTED_COLLECTIONS = {
       "height": 1333
     },
     {
+      "key": "hero-2",
+      "src": "/assets/images/selected/models/hero-2-babc651e.webp",
+      "title": "Curanto Cookhouse",
+      "width": 2000,
+      "height": 1333
+    },
+    {
       "key": "main-hero-shot",
       "src": "/assets/images/selected/models/main-hero-shot-5baf2010.webp",
       "title": "A Chair is a Toy!",
