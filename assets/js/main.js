@@ -281,26 +281,26 @@
         },
         {
           key: "updated-pantry-interior",
-          row: 1,
-          col: 9,
-          span: 4,
-          offset: "90px",
-          max: "560px",
-          align: "end"
+          row: 2,
+          col: 3,
+          span: 8,
+          offset: "0px",
+          max: "920px",
+          align: "start"
         },
         {
           key: "andrew-wheat-ajw288-03c-interior-render",
-          row: 2,
+          row: 3,
           col: 8,
           span: 5,
           offset: "10px",
           max: "720px",
           align: "end"
         },
-        { key: "hero", row: 3, col: 1, span: 7, offset: "-80px", max: "1040px", align: "start" },
-        { key: "corridor-render", row: 4, col: 7, span: 6, offset: "-80px", max: "840px", align: "end" },
-        { key: "market-render", row: 5, col: 1, span: 5, offset: "-80px", max: "720px", align: "start" },
-        { key: "hero-2", row: 6, col: 6, span: 7, offset: "-80px", max: "920px", align: "end" }
+        { key: "hero", row: 4, col: 1, span: 7, offset: "-80px", max: "1040px", align: "start" },
+        { key: "corridor-render", row: 5, col: 7, span: 6, offset: "-80px", max: "840px", align: "end" },
+        { key: "market-render", row: 6, col: 1, span: 5, offset: "-80px", max: "720px", align: "start" },
+        { key: "hero-2", row: 7, col: 6, span: 7, offset: "-80px", max: "920px", align: "end" }
       ]
     };
 

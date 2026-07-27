@@ -41,6 +41,14 @@ const photographyCameraOverrides = {
     fNumber: 9,
     iso: 100,
     focalLength: 45
+  },
+  "img_9549.jpg": {
+    make: "Canon",
+    model: "Canon EOS R",
+    exposureTime: 1 / 320,
+    fNumber: 6.3,
+    iso: 100,
+    focalLength: 80
   }
 };
 const projectTitles = {

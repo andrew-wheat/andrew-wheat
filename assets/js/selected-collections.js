@@ -271,7 +271,15 @@ window.SELECTED_COLLECTIONS = {
       "src": "/assets/images/selected/photography/img-9549-6a67ffb7.webp",
       "title": "Photography",
       "width": 1200,
-      "height": 800
+      "height": 800,
+      "camera": {
+        "make": "Canon",
+        "model": "Canon EOS R",
+        "exposureTime": 0.003125,
+        "fNumber": 6.3,
+        "iso": 100,
+        "focalLength": 80
+      }
     }
   ],
   "sketchbook": [
