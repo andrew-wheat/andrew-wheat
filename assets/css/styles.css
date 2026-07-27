@@ -6383,6 +6383,21 @@ body[data-page="selected"] {
   height: auto;
 }
 
+@media (min-width: 901px) {
+  body[data-selected-collection="photography"] .selected-scatter.has-items {
+    grid-template-columns: repeat(24, minmax(0, 1fr));
+    grid-auto-rows: clamp(30px, 2.7vw, 46px);
+    column-gap: clamp(10px, 1vw, 18px);
+    row-gap: 0;
+    padding-bottom: clamp(620px, 44vw, 820px);
+  }
+
+  body[data-selected-collection="photography"] .selected-image-card {
+    --selected-rotation: 0deg;
+    transform: none;
+  }
+}
+
 body[data-page="selected"] .site-copyright {
   color: rgba(11, 11, 11, 0.62);
 }

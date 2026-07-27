@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { createRequire } from "node:module";
-import { mkdir, readdir, unlink, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -90,7 +90,8 @@ for (const category of categories) {
 
   for (const file of files) {
     const sourcePath = path.join(sourceDirectory, file.name);
-    const digest = createHash("sha1").update(file.name).digest("hex").slice(0, 8);
+    const sourceBuffer = await readFile(sourcePath);
+    const digest = createHash("sha1").update(sourceBuffer).digest("hex").slice(0, 8);
     const outputName = `${slugify(path.parse(file.name).name)}-${digest}.webp`;
     const outputPath = path.join(outputDirectory, outputName);
     expectedOutputs.add(outputName);

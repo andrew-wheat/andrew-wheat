@@ -179,6 +179,21 @@
           align: "end"
         }
       ],
+      photography: [
+        { key: "img-1590", row: 1, col: 1, span: 17, offset: "0px", max: "1180px", align: "start" },
+        { key: "img-0767", row: 19, col: 12, span: 13, offset: "0px", max: "900px", align: "end" },
+        { key: "img-0587", row: 34, col: 1, span: 24, offset: "0px", max: "880px", align: "center" },
+        { key: "img-9549", row: 49, col: 14, span: 11, offset: "0px", max: "760px", align: "end" },
+        { key: "img-1932", row: 66, col: 1, span: 24, offset: "0px", max: "980px", align: "center" },
+        { key: "img-0915", row: 84, col: 1, span: 11, offset: "0px", max: "760px", align: "start" },
+        { key: "img-2003", row: 89, col: 15, span: 10, offset: "0px", max: "700px", align: "end" },
+        { key: "img-0982", row: 103, col: 4, span: 17, offset: "0px", max: "1180px", align: "start" },
+        { key: "img-2273", row: 124, col: 11, span: 14, offset: "0px", max: "980px", align: "end" },
+        { key: "img-2623", row: 142, col: 1, span: 13, offset: "0px", max: "900px", align: "start" },
+        { key: "img-2697", row: 147, col: 15, span: 10, offset: "0px", max: "700px", align: "end" },
+        { key: "img-2778", row: 163, col: 14, span: 10, offset: "0px", max: "700px", align: "end" },
+        { key: "img-2793-2", row: 181, col: 3, span: 15, offset: "0px", max: "1040px", align: "start" }
+      ],
       sketchbook: [
         { key: "img-9544", row: 1, col: 1, span: 7, offset: "0px", max: "920px", align: "start" },
         { key: "img-9546", row: 1, col: 10, span: 3, offset: "100px", max: "440px", align: "end" },

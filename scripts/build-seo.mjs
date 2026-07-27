@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-07-25";
-const ASSET_VERSION = "20260726-selected-editorial-v16";
+const ASSET_VERSION = "20260726-selected-editorial-v29";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -374,10 +374,10 @@ const siteFooter = `    <footer class="site-copyright" aria-label="Copyright">
       &copy; Andrew Wheat 2026
     </footer>`;
 
-const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260726-selected-editorial-v16"></script>
+const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260726-selected-editorial-v29"></script>
     ${
       includeImageOptimizations
-        ? '<script src="/assets/js/image-optimizations.js?v=20260726-selected-editorial-v16"></script>\n    '
+        ? '<script src="/assets/js/image-optimizations.js?v=20260726-selected-editorial-v29"></script>\n    '
         : ""
     }<script src="/assets/js/selected-collections.js?v=${ASSET_VERSION}"></script>
     <script src="/assets/js/main.js?v=${ASSET_VERSION}"></script>`;
@@ -1226,6 +1226,58 @@ for (const relativeFile of allHtmlFiles) {
       .replaceAll(
         "20260726-selected-editorial-v15",
         "20260726-selected-editorial-v16",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v16",
+        "20260726-selected-editorial-v17",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v17",
+        "20260726-selected-editorial-v18",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v18",
+        "20260726-selected-editorial-v19",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v19",
+        "20260726-selected-editorial-v20",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v20",
+        "20260726-selected-editorial-v21",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v21",
+        "20260726-selected-editorial-v22",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v22",
+        "20260726-selected-editorial-v23",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v23",
+        "20260726-selected-editorial-v24",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v24",
+        "20260726-selected-editorial-v25",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v25",
+        "20260726-selected-editorial-v26",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v26",
+        "20260726-selected-editorial-v27",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v27",
+        "20260726-selected-editorial-v28",
+      )
+      .replaceAll(
+        "20260726-selected-editorial-v28",
+        "20260726-selected-editorial-v29",
       ),
   );
 }
