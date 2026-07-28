@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-07-25";
-const ASSET_VERSION = "20260727-sketchbook-center-v71";
+const ASSET_VERSION = "20260728-about-external-tabs-v95";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -14,10 +14,58 @@ const HEADSHOT_16X9 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-16x9.jp
 const CORNELL_AWARDS =
   "https://aap.cornell.edu/news/announcements/2025-26-student-academic-awards-and-prizes/";
 const LINKEDIN = "https://www.linkedin.com/in/andrewwheat";
+const INSTAGRAM = "https://www.instagram.com/awheat_arch/";
+const MITHUN = "https://mithun.com/";
+const BRIC_ARCHITECTURE = "https://www.bric-arch.com/";
+const CUSD = "https://cusd.cornell.edu/";
+const CORNELL_ARCHITECTURE =
+  "https://aap.cornell.edu/architecture/bachelor-of-architecture/";
 const BIO =
   "Andrew Wheat is a designer and architecture student at Cornell University. He is currently based in Seattle and New York City.";
 const LANDING_STATEMENT =
   "Andrew Wheat is a designer and architecture student at Cornell University. Based between Seattle and New York City, his work explores civic space, housing, material systems, and the relationship between buildings and landscape.";
+const TECHNICAL_SKILL_GROUPS = [
+  {
+    label: "Modeling and analysis",
+    skills: [
+      ["Revit", 2],
+      ["Rhino", 5],
+      ["Grasshopper", 3],
+      ["AutoCAD", 3],
+      ["SketchUp", 5],
+      ["BIM Modeling", 3],
+      ["ClimateStudio", 4],
+      ["HTFlux", 5],
+    ],
+  },
+  {
+    label: "Visualization and graphics",
+    skills: [
+      ["V-Ray", 5],
+      ["Enscape", 5],
+      ["Lumion", 5],
+      ["Twinmotion", 5],
+      ["Photoshop", 5],
+      ["Illustrator", 5],
+      ["InDesign", 5],
+      ["Lightroom", 5],
+    ],
+  },
+  {
+    label: "Fabrication and making",
+    skills: [
+      ["Laser cutting", 5],
+      ["3D printing", 4],
+      ["CNC milling", 4],
+      ["carpentry", 4],
+      ["metalwork", 3],
+      ["soldering", 2],
+      ["casting", 5],
+      ["textile work", 3],
+      ["precision physical modeling", 5],
+    ],
+  },
+];
 const ROBOTS_INDEX =
   "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 const PROJECT_SEO = {
@@ -66,11 +114,6 @@ const PROJECT_SEO = {
     description:
       "Pavilion project by Andrew Wheat exploring enclosure, light, assembly, texture, and temporary public space.",
   },
-  "sustainable-education": {
-    title: "Sustainable Education | Andrew Wheat",
-    description:
-      "Sustainable education design work by Andrew Wheat with Cornell University Sustainable Design, focused on school infrastructure, climate resilience, cultural continuity, and environmental systems.",
-  },
   "york-prize": {
     title: "York Prize | Andrew Wheat",
     description:
@@ -90,11 +133,28 @@ runInNewContext(
 );
 
 const publicProjects = projectContext.window.PORTFOLIO_PROJECTS ?? [];
-const archivedProjects = projectContext.window.ARCHIVED_PORTFOLIO_PROJECTS ?? [];
+const archivedProjects = (projectContext.window.ARCHIVED_PORTFOLIO_PROJECTS ?? []).filter(
+  (project) => !project.siteHidden,
+);
 const publicProjectIds = new Set(publicProjects.map((project) => project.id));
 
+const normalizeInterfaceLanguage = (content) =>
+  String(content)
+    .replace(
+      /(<a\b[^>]*href="\/work\/"[^>]*>)Projects(<\/a>)/gi,
+      "$1work$2",
+    )
+    .replace(/<img(?![^>]*\bdata-image-skeleton\b)/gi, "<img data-image-skeleton")
+    .replace(
+      /(\/assets\/(?:css\/styles\.css|js\/(?:projects|image-optimizations|selected-collections|main)\.js)\?v=)[^"'&]+/gi,
+      `$1${ASSET_VERSION}`,
+    );
+
 const writeClean = (file, content) =>
-  writeFile(file, String(content).replace(/[ \t]+(?=\r?\n|$)/g, ""));
+  writeFile(
+    file,
+    normalizeInterfaceLanguage(content).replace(/[ \t]+(?=\r?\n|$)/g, ""),
+  );
 
 const escapeHtml = (value = "") =>
   String(value)
@@ -116,6 +176,31 @@ const cleanText = (value = "") =>
   String(value)
     .replace(/\s+/g, " ")
     .trim();
+
+const technicalSkillsSection = () => `        <section class="cv-section" aria-labelledby="skills-title">
+          <h3 id="skills-title">Technical Skills</h3>
+          <div class="cv-skills">
+${TECHNICAL_SKILL_GROUPS.map(
+  ({ label, skills }) => `            <div class="cv-skill-line" role="list" aria-label="${escapeHtml(label)}">
+${skills
+  .map(
+    ([name, level]) => `              <span class="cv-skill" role="listitem" tabindex="0" aria-label="${escapeHtml(name)}, proficiency ${level} out of 5">
+                <span class="cv-skill-name" aria-hidden="true">${escapeHtml(name)}</span>
+                <span class="cv-skill-meter" aria-hidden="true">
+${Array.from(
+  { length: 5 },
+  (_, index) =>
+    `                  <span class="cv-skill-square${index < level ? " is-filled" : ""}"></span>`,
+).join("\n")}
+                </span>
+              </span>`,
+  )
+  .join("\n")}
+            </div>`,
+)
+  .join("\n")}
+          </div>
+        </section>`;
 
 const pageIdForProject = (project) =>
   project.id === "ephemeral-diptypque" ? "ephemeral-diptyque" : project.id;
@@ -241,7 +326,7 @@ const personNode = () => ({
     "Addison G. Crowley, B.L.Arch. '38 Prize",
     "Honorable Mention, Cornell AAP Internal Studio Competition",
   ],
-  sameAs: [LINKEDIN],
+  sameAs: [LINKEDIN, INSTAGRAM],
   subjectOf: [
     {
       "@type": "WebPage",
@@ -489,9 +574,9 @@ function workSchema() {
       "@type": "CollectionPage",
       "@id": `${ORIGIN}/work/#collection`,
       url: `${ORIGIN}/work/`,
-      name: "Architecture Projects by Andrew Wheat",
+      name: "Architecture Work by Andrew Wheat",
       description:
-        "Architecture projects, drawings, models, and design research by Andrew Wheat, a Cornell architecture student and designer.",
+        "Architecture work, drawings, models, and design research by Andrew Wheat, a Cornell architecture student and designer.",
       inLanguage: "en-US",
       isPartOf: { "@id": WEBSITE_ID },
       about: { "@id": PERSON_ID },
@@ -510,7 +595,7 @@ function workSchema() {
     {
       ...breadcrumbNode([
         { name: "Andrew Wheat", url: `${ORIGIN}/` },
-        { name: "Architecture Projects", url: `${ORIGIN}/work/` },
+        { name: "Work", url: `${ORIGIN}/work/` },
       ]),
       "@id": `${ORIGIN}/work/#breadcrumb`,
     },
@@ -644,7 +729,7 @@ function projectSchema(project, image, description) {
       {
         ...breadcrumbNode([
           { name: "Andrew Wheat", url: `${ORIGIN}/` },
-          { name: "Architecture Projects", url: `${ORIGIN}/work/` },
+          { name: "Work", url: `${ORIGIN}/work/` },
           { name: project.title, url },
         ]),
         "@id": breadcrumbId,
@@ -655,15 +740,28 @@ function projectSchema(project, image, description) {
 }
 
 function projectMetadata(project) {
+  const professorNames = peopleList(project.professors);
+  const partnerNames = peopleList(project.partners);
   return [
     project.course,
     ...(Array.isArray(project.additionalMetadata)
       ? project.additionalMetadata
       : []),
     project.studio,
-    project.professors ? `Professors: ${project.professors}` : "",
-    project.partners ? `Partners: ${project.partners}` : "",
+    professorNames.length
+      ? `${professorNames.length === 1 ? "Professor" : "Professors"}: ${professorNames.join(", ")}`
+      : "",
+    partnerNames.length
+      ? `${partnerNames.length === 1 ? "Partner" : "Partners"}: ${partnerNames.join(", ")}`
+      : "",
   ].filter(Boolean);
+}
+
+function peopleList(value) {
+  return String(value || "")
+    .split(/\s*(?:,|\+|&|\band\b)\s*/i)
+    .map((name) => name.trim())
+    .filter(Boolean);
 }
 
 function staticProjectMain(project) {
@@ -716,7 +814,7 @@ function staticProjectMain(project) {
                 pageIdForProject(previous),
               )}/" aria-label="Previous project: ${escapeHtml(
                 previous.title,
-              )}"><span aria-hidden="true">&larr;</span></a>`
+              )}" data-project-title="${escapeHtml(previous.title)}"><span aria-hidden="true">&larr;</span></a>`
             : ""
         }
         ${
@@ -725,7 +823,7 @@ function staticProjectMain(project) {
                 pageIdForProject(next),
               )}/" aria-label="Next project: ${escapeHtml(
                 next.title,
-              )}"><span aria-hidden="true">&rarr;</span></a>`
+              )}" data-project-title="${escapeHtml(next.title)}"><span aria-hidden="true">&rarr;</span></a>`
             : ""
         }
       </nav>
@@ -781,9 +879,9 @@ function noIndexHead({ title, canonical, description }) {
 }
 
 async function updateWorkPage(file) {
-  const title = "Architecture Projects | Andrew Wheat";
+  const title = "Work | Andrew Wheat";
   const description =
-    "Architecture projects, drawings, models, and design research by Andrew Wheat, a designer and Cornell architecture student.";
+    "Architecture work, drawings, models, and design research by Andrew Wheat, a designer and Cornell architecture student.";
   let source = await readFile(file, "utf8");
   source = source.replace(
     /  <head>[\s\S]*?  <\/head>/i,
@@ -792,16 +890,20 @@ async function updateWorkPage(file) {
       description,
       canonical: `${ORIGIN}/work/`,
       image: representativeImage(publicProjects[0]),
-      imageAlt: `${publicProjects[0].title} architecture project by Andrew Wheat`,
+      imageAlt: `${publicProjects[0].title} architecture work by Andrew Wheat`,
       schema: workSchema(),
     }),
   );
   source = source.replace(
     /      <section class="work-catalogue[\s\S]*?      <\/section>/i,
-    `      <section class="work-catalogue reveal visible" id="work-catalogue" data-work-catalogue data-view="grid" aria-label="Architecture projects by Andrew Wheat">
+    `      <section class="work-catalogue reveal visible" id="work-catalogue" data-work-catalogue data-view="grid" aria-label="Architecture work by Andrew Wheat">
 ${staticProjectCards(publicProjects)}
       </section>`,
   );
+  source = source
+    .replace(/<h1>Projects<\/h1>/i, "<h1>work</h1>")
+    .replace(/aria-label="Filter projects by category"/i, 'aria-label="Filter work by category"')
+    .replace(/\s*<noscript>[\s\S]*?<\/noscript>/i, "");
   await writeClean(file, source);
 }
 
@@ -833,9 +935,9 @@ async function updateAboutPage(file) {
             spatial experience.
           </p>
           <p>
-            Through Cornell University Sustainable Design, I lead architectural
-            work on schools in Nepal in partnership with United World Schools. At
-            Mithun, I have contributed to interdisciplinary projects spanning
+            Through Cornell University Sustainable Design, I contribute to
+            interdisciplinary design initiatives and student leadership. At Mithun,
+            I have contributed to projects spanning
             housing, civic installations, and temporary public architecture
             through design research, physical modeling, visualization, and
             documentation.
@@ -843,6 +945,31 @@ async function updateAboutPage(file) {
         </div>
       </section>`,
   );
+  source = source.replace(
+    /        <section class="cv-section" aria-labelledby="skills-title">[\s\S]*?        <\/section>/i,
+    technicalSkillsSection(),
+  );
+  source = source
+    .replace(
+      /<h4>(?:<a\b[^>]*>)?Cornell University \| Bachelor of Architecture(?:<\/a>)?<\/h4>/i,
+      `<h4><a class="cv-title-link" href="${CORNELL_ARCHITECTURE}" target="_blank" rel="noopener noreferrer">Cornell University | Bachelor of Architecture</a></h4>`,
+    )
+    .replace(
+      /<h4>(?:<a\b[^>]*>)?Mithun, Inc\.(?:<\/a>)? \| Architectural Intern<\/h4>/i,
+      `<h4><a class="cv-title-link" href="${MITHUN}" target="_blank" rel="noopener noreferrer">Mithun, Inc.</a> | Architectural Intern</h4>`,
+    )
+    .replace(
+      /<h4>(?:<a\b[^>]*>)?BRIC Architecture, Inc\.(?:<\/a>)? \| Architectural Intern<\/h4>/i,
+      `<h4><a class="cv-title-link" href="${BRIC_ARCHITECTURE}" target="_blank" rel="noopener noreferrer">BRIC Architecture, Inc.</a> | Architectural Intern</h4>`,
+    )
+    .replace(
+      /<h4>(?:<a\b[^>]*>)?Cornell University Sustainable Design(?:<\/a>)? \| Executive Board<\/h4>/i,
+      `<h4><a class="cv-title-link" href="${CUSD}" target="_blank" rel="noopener noreferrer">Cornell University Sustainable Design</a> | Executive Board</h4>`,
+    )
+    .replace(
+      /<h4>(?:<a\b[^>]*>)?Addison G\. Crowley, B\.L\.Arch\. (?:&#39;|')38 Prize(?:<\/a>)?<\/h4>/i,
+      `<h4><a class="cv-title-link" href="${CORNELL_AWARDS}" target="_blank" rel="noopener noreferrer">Addison G. Crowley, B.L.Arch. '38 Prize</a></h4>`,
+    );
   source = source.replace(
     /<a href="https:\/\/www\.linkedin\.com\/in\/andrewwheat"/g,
     `<a rel="me" href="${LINKEDIN}"`,
@@ -867,8 +994,8 @@ async function updateContactPage(file) {
     }),
   );
   source = source.replace(
-    /<a href="https:\/\/www\.linkedin\.com\/in\/andrewwheat"[^>]*>/g,
-    `<a href="${LINKEDIN}" rel="me noreferrer" target="_blank">`,
+    /href="https:\/\/www\.linkedin\.com\/in\/andrewwheat"/g,
+    `href="${LINKEDIN}"`,
   );
   await writeClean(file, source);
 }
@@ -929,7 +1056,7 @@ This is Andrew Wheat's canonical portfolio and biography source.
 ## Primary Pages
 
 - [Home](${ORIGIN}/): Andrew Wheat's canonical profile and portfolio entry point.
-- [Architecture Projects](${ORIGIN}/work/): Public architecture projects, drawings, models, and design research.
+- [Work](${ORIGIN}/work/): Public architecture work, drawings, models, and design research.
 - [About Andrew Wheat](${ORIGIN}/about/): Biography, education, professional experience, academic work, skills, and awards.
 - [Contact Andrew Wheat](${ORIGIN}/contact/): Professional contact information and verified LinkedIn profile.
 
@@ -940,11 +1067,11 @@ This is Andrew Wheat's canonical portfolio and biography source.
 - Education: Bachelor of Architecture candidate at Cornell University College of Architecture, Art, and Planning, expected May 2028
 - Based in: Seattle and New York City
 - Professional experience: Mithun and BRIC Architecture
-- Academic leadership: Cornell University Sustainable Design, Sustainable Education
+- Academic leadership: Cornell University Sustainable Design
 - Verified external profile: ${LINKEDIN}
 - Independent Cornell reference: ${CORNELL_AWARDS}
 
-## Public Projects
+## Public Work
 
 ${publicProjects
   .map(
@@ -970,9 +1097,9 @@ ${BIO}
 
 Andrew studies architecture at Cornell University College of Architecture, Art, and Planning and is expected to complete the Bachelor of Architecture program in May 2028. His work explores civic space, housing, material systems, landscape, construction, climate, and everyday use.
 
-Through Cornell University Sustainable Design, Andrew leads architectural work on schools in Nepal in partnership with United World Schools. At Mithun, he has contributed to interdisciplinary projects spanning housing, civic installations, and temporary public architecture through design research, physical modeling, visualization, and documentation.
+Through Cornell University Sustainable Design, Andrew contributes to interdisciplinary design initiatives and student leadership. At Mithun, he has contributed to projects spanning housing, civic installations, and temporary public architecture through design research, physical modeling, visualization, and documentation.
 
-## Projects
+## Work
 
 ${publicProjects
   .map(
@@ -1004,6 +1131,56 @@ ${cleanText(project.description ?? "")}
 `;
 }
 
+function notFoundMark() {
+  const digitPatterns = {
+    0: [
+      "11111",
+      "10001",
+      "10001",
+      "10001",
+      "10001",
+      "10001",
+      "11111",
+    ],
+    4: [
+      "10001",
+      "10001",
+      "10001",
+      "11111",
+      "00001",
+      "00001",
+      "00001",
+    ],
+  };
+  const digits = [4, 0, 4];
+  const square = 52;
+  const moduleGap = 14;
+  const digitGap = 56;
+  const pitch = square + moduleGap;
+  const digitWidth = square * 5 + moduleGap * 4;
+  const height = square * 7 + moduleGap * 6;
+  const width = digitWidth * digits.length + digitGap * (digits.length - 1);
+  const squares = digits.flatMap((digit, digitIndex) => {
+    const offsetX = digitIndex * (digitWidth + digitGap);
+    return digitPatterns[digit].flatMap((row, rowIndex) =>
+      [...row].flatMap((cell, columnIndex) =>
+        cell === "1"
+          ? [
+              `<rect x="${offsetX + columnIndex * pitch}" y="${rowIndex * pitch}" width="${square}" height="${square}"/>`,
+            ]
+          : [],
+      ),
+    );
+  });
+
+  return `<svg class="error-mark" viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="error-mark-title" focusable="false">
+          <title id="error-mark-title">404</title>
+          <g fill="currentColor" shape-rendering="crispEdges">
+            ${squares.join("\n            ")}
+          </g>
+        </svg>`;
+}
+
 function notFoundPage() {
   const title = "Page Not Found | Andrew Wheat";
   return `<!doctype html>
@@ -1020,15 +1197,17 @@ ${buildHead({
   <body data-page="error">
     <a class="skip-link" href="#main">Skip to main content</a>
 ${siteHeader()}
-    <main class="page-shell" id="main">
-      <section class="section-grid page-intro">
-        <h1>Page Not Found</h1>
-        <p class="page-copy">The page may have moved. Continue to Andrew Wheat's architecture projects, biography, or contact information.</p>
-        <nav class="project-index-fallback" aria-label="Continue browsing">
-          <a href="/work/">Architecture Projects</a>
-          <a href="/about/">About Andrew Wheat</a>
-          <a href="/contact/">Contact Andrew Wheat</a>
-        </nav>
+    <main class="page-shell error-shell" id="main">
+      <section class="error-page">
+        ${notFoundMark()}
+        <div class="error-content">
+          <h1>page not found</h1>
+          <p>The page may have moved or no longer exists.</p>
+          <nav class="error-links" aria-label="Continue browsing">
+            <a href="/work/">work</a>
+            <a href="/">home</a>
+          </nav>
+        </div>
       </section>
     </main>
 ${siteFooter}
@@ -1065,9 +1244,9 @@ for (const file of [`${ROOT}/project.html`, `${ROOT}/project/index.html`]) {
   await rewriteHead(
     file,
     noIndexHead({
-      title: "Architecture Project Index | Andrew Wheat",
+      title: "Work | Andrew Wheat",
       canonical: `${ORIGIN}/work/`,
-      description: "Browse architecture projects by Andrew Wheat.",
+      description: "Browse architecture work by Andrew Wheat.",
     }),
   );
 }
@@ -1133,10 +1312,6 @@ for (const relativeFile of allHtmlFiles) {
       .replaceAll(
         "20260726-wood-pool-heroes-v2",
         "20260726-pool-floor-plans-v1",
-      )
-      .replaceAll(
-        "20260725-hidden-sustainable-v2",
-        "20260726-pool-drawings-v1",
       )
       .replaceAll(
         "20260726-deconstruct-work-image-v1",
@@ -1307,5 +1482,5 @@ for (const relativeFile of allHtmlFiles) {
 }
 
 console.log(
-  `SEO build complete: ${publicProjects.length} public projects, ${allHtmlFiles.length} HTML pages.`,
+  `SEO build complete: ${publicProjects.length} public work entries, ${allHtmlFiles.length} HTML pages.`,
 );

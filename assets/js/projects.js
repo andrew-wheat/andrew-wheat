@@ -4,10 +4,10 @@ window.PORTFOLIO_PROJECTS = [
     "workCategory": "Academic",
     "title": "Hunter's Point Cooperative Housing",
     "year": "2026",
-    "course": "Core VI Studio Led by Sasa Zivkovic",
-    "studio": "Spring 2026 Cornell University",
+    "course": "Core VI Studio, led by Sasa Zivkovic",
+    "studio": "Spring 2026, Cornell University",
     "type": "Housing / production / civic",
-    "professors": "Marta H. Wisniewska + Tom Carruthers",
+    "professors": "Marta H. Wisniewska, Tom Carruthers",
     "partners": "Eric Liu",
     "themes": [
       "housing",
@@ -219,10 +219,10 @@ window.PORTFOLIO_PROJECTS = [
     "workCategory": "Academic",
     "title": "Wood Street Pool",
     "year": "2025",
-    "course": "Core V Studio Led by Caroline O'Donnell",
-    "studio": "Fall 2025 Cornell University",
+    "course": "Core V Studio, led by Caroline O'Donnell",
+    "studio": "Fall 2025, Cornell University",
     "type": "Environmental / civic",
-    "professors": "Hanna Tulis + Caroline O'Donnell",
+    "professors": "Hanna Tulis, Caroline O'Donnell",
     "themes": [
       "water",
       "climate",
@@ -385,11 +385,11 @@ window.PORTFOLIO_PROJECTS = [
     "workCategory": "Academic",
     "title": "Enfield Food Pantry",
     "year": "2025",
-    "course": "Core IV Studio Led by Hanna Tulis",
-    "studio": "Spring 2025 Cornell University",
+    "course": "Core IV Studio, led by Hanna Tulis",
+    "studio": "Spring 2025, Cornell University",
     "type": "Civic / food infrastructure",
     "professors": "Ethan Chan, Hanna Tulis",
-    "partners": "Lydia Brawley + Eric Liu",
+    "partners": "Lydia Brawley, Eric Liu",
     "themes": [
       "care",
       "infrastructure",
@@ -639,10 +639,10 @@ window.PORTFOLIO_PROJECTS = [
     "workCategory": "Academic",
     "title": "[de]construct + [re]configure",
     "year": "2025",
-    "course": "Core IV Studio Led by Hanna Tulis",
-    "studio": "Spring 2025 Cornell University",
+    "course": "Core IV Studio, led by Hanna Tulis",
+    "studio": "Spring 2025, Cornell University",
     "type": "Material / model study",
-    "professors": "Ethan Chan + Hanna Tulis",
+    "professors": "Ethan Chan, Hanna Tulis",
     "award": "Awarded Honorable Mention (Internal Competition)",
     "themes": [
       "assembly",
@@ -746,8 +746,8 @@ window.PORTFOLIO_PROJECTS = [
     "workCategory": "Academic",
     "title": "Borinquen Healing Center",
     "year": "2024",
-    "course": "Core III Studio Led by Andrea Simitch + Val Warke",
-    "studio": "Fall 2024 Cornell University",
+    "course": "Core III Studio, led by Andrea Simitch and Val Warke",
+    "studio": "Fall 2024, Cornell University",
     "type": "Health / civic",
     "professors": "Andrew Lucia",
     "themes": [
@@ -832,8 +832,8 @@ window.PORTFOLIO_PROJECTS = [
     "workCategory": "Academic",
     "title": "A Chair is a Toy!",
     "year": "2024",
-    "course": "Core III Studio Led by Andrea Simitch + Val Warke",
-    "studio": "Fall 2024 Cornell University",
+    "course": "Core III Studio, led by Andrea Simitch and Val Warke",
+    "studio": "Fall 2024, Cornell University",
     "type": "Furniture / kinetic object",
     "professors": "Andrew Lucia, Andrea Simitch",
     "themes": [
@@ -960,13 +960,10 @@ window.PORTFOLIO_PROJECTS = [
     "title": "Design District Canteen",
     "year": "2024",
     "course": "Structural Systems II",
-    "studio": "",
+    "studio": "Fall 2024, Cornell University",
     "type": "Object / model study",
-    "additionalMetadata": [
-      "Fall 2024 Cornell University",
-      "Professor: Mark Cruvellier",
-      "Partners: Hanae Matsumoto + Roy Park"
-    ],
+    "professors": "Mark Cruvellier",
+    "partners": "Hanae Matsumoto, Roy Park",
     "themes": [
       "assembly",
       "measure",
@@ -1038,8 +1035,8 @@ window.PORTFOLIO_PROJECTS = [
     "workCategory": "Academic",
     "title": "Curanto Cookhouse",
     "year": "2024",
-    "course": "Core II Studio Led by Suzanne Lettieri",
-    "studio": "Spring 2024 Cornell University",
+    "course": "Core II Studio, led by Suzanne Lettieri",
+    "studio": "Spring 2024, Cornell University",
     "type": "Cultural / food infrastructure",
     "professors": "Eduardo Terán, Suzanne Lettieri",
     "themes": [
@@ -1205,8 +1202,8 @@ window.PORTFOLIO_PROJECTS = [
     "workCategory": "Academic",
     "title": "Woven Pavilion",
     "year": "2023",
-    "course": "Core I Studio Led by Felix Heisel",
-    "studio": "Fall 2023 Cornell University",
+    "course": "Core I Studio, led by Felix Heisel",
+    "studio": "Fall 2023, Cornell University",
     "type": "Pavilion / folly",
     "professors": "Michael Jefferson",
     "themes": [
@@ -1321,129 +1318,12 @@ window.PORTFOLIO_PROJECTS = [
 
 window.ARCHIVED_PORTFOLIO_PROJECTS = [
   {
-    "id": "sustainable-education",
-    "workCategory": "Academic",
-    "showInWorkCatalogue": false,
-    "siteHidden": true,
-    "slug": "sustainable-education",
-    "title": "Sustainable Education",
-    "year": "2024",
-    "location": "Nepal",
-    "studio": "Cornell University Sustainable Design",
-    "affiliation": "Cornell University Sustainable Design",
-    "additionalMetadata": [
-      "Role: Co-Team Lead With Hannah Obel",
-      "Supervised By Sirietta Simoncini"
-    ],
-    "type": "Educational infrastructure / school / teacher institute",
-    "program": "school / teacher institute",
-    "url": "/project/sustainable-education/",
-    "externalLink": {
-      "label": "CUSD Sustainable Education",
-      "url": "https://www.cusd.cornell.edu/pages/subteams/sustainable-education.html"
-    },
-    "themes": [
-      "education",
-      "material",
-      "community",
-      "climate",
-      "infrastructure"
-    ],
-    "summary": "A Cornell University Sustainable Design project developing school infrastructure in Nepal through climate analysis, local building knowledge, and community participation.",
-    "description": "Sustainable Education is a Cornell University Sustainable Design project team focused on school infrastructure for underserved communities. The team works through research, design, environmental analysis, and stakeholder engagement to develop educational spaces that are buildable with local resources and responsive to the climate and culture of each place.",
-    "parti": "",
-    "question": "",
-    "operation": "",
-    "imageBase": "assets/images/Projects/Sustainable Education Nepal/",
-    "thumbnail": "EXTERIOR 2 EDITED noisy COPY.jpg",
-    "heroImage": "EXTERIOR 2 EDITED noisy COPY.jpg",
-    "overviewImage": "EXTERIOR 2 EDITED noisy COPY.jpg",
-    "story": [
-      {
-        "layout": "story-text",
-        "heading": "Project Team",
-        "text": "Cornell University Sustainable Design is Cornell's largest sustainability project team, a student-run interdisciplinary organization focused on hands-on sustainability work and community impact. Within CUSD, the Sustainable Education team develops school infrastructure for remote and underserved communities, working across architecture, environmental systems, construction feasibility, and local stakeholder engagement. This project in Bandipur, Nepal explores how educational architecture can be shaped by environmental risk, local knowledge, and community participation. The design responds to monsoon flooding and landslide vulnerability through careful site placement, stepped ground strategies, and water-managed landscapes rather than defensive engineering alone. Developed in dialogue with local stakeholders and students, the work draws from Newari building practices, including brick construction, timber framing, deep overhangs, and courtyard-based organization. These systems inform both the spatial logic of the campus and its material economy, prioritizing locally available resources and construction techniques that can be built, maintained, and adapted by the community itself."
-      },
-      {
-        "src": "buildings.jpg",
-        "caption": "Campus building massing.",
-        "layout": "image"
-      },
-      {
-        "src": "ChatGPT Image Dec 29, 2025, 12_04_36 AMnoisy.jpg",
-        "caption": "Courtyard atmosphere study.",
-        "layout": "image"
-      },
-      {
-        "src": "EXTERIOR 2 EDITED noisy COPY.jpg",
-        "caption": "School exterior view.",
-        "layout": "image"
-      },
-      {
-        "src": "INTERIOR RENDER noisy.jpg",
-        "caption": "Classroom interior view.",
-        "layout": "image"
-      },
-      {
-        "src": "Cafeteria and Trainers Lodging_Plan Drawings SMALLER.jpg",
-        "caption": "Cafeteria and lodging plans.",
-        "layout": "drawing"
-      },
-      {
-        "src": "Cafeteria and Trainers Lodging_Section Drawings SMALLER.jpg",
-        "caption": "Cafeteria and lodging sections.",
-        "layout": "drawing"
-      },
-      {
-        "src": "Cafeteria and Trainers Lodging_elevation drawings SMALLER.jpg",
-        "caption": "Cafeteria and lodging elevations.",
-        "layout": "drawing"
-      },
-      {
-        "src": "CUSD_A1_Flooding_Landslide Diagram.jpg",
-        "caption": "Flooding and landslide strategy.",
-        "layout": "drawing"
-      },
-      {
-        "src": "unnamed.png",
-        "caption": "Site and material study.",
-        "layout": "image"
-      }
-    ],
-    "images": [
-      {
-        "src": "EXTERIOR 2 EDITED noisy COPY.jpg",
-        "caption": "School exterior view"
-      },
-      {
-        "src": "INTERIOR RENDER noisy.jpg",
-        "caption": "Classroom interior view"
-      },
-      {
-        "src": "Cafeteria and Trainers Lodging_Plan Drawings SMALLER.jpg",
-        "caption": "Cafeteria and lodging plans"
-      },
-      {
-        "src": "CUSD_A1_Flooding_Landslide Diagram.jpg",
-        "caption": "Flooding and landslide strategy"
-      }
-    ],
-    "position": {
-      "x": 47,
-      "y": 86,
-      "rotation": 4
-    },
-    "shape": "cells",
-    "workThumbnail": "assets/images/work-covers/sustainable-education-nepal.webp",
-    "workListThumbnail": "assets/images/work-covers/sustainable-education-nepal.webp"
-  },
-  {
     "id": "york-prize",
     "workCategory": "Academic",
     "title": "York Prize",
     "year": "2023",
-    "course": "Core I Studio Led by Felix Heisel",
-    "studio": "Fall 2023 Cornell University",
+    "course": "Core I Studio, led by Felix Heisel",
+    "studio": "Fall 2023, Cornell University",
     "type": "Competition / model study",
     "professors": "Michael Jefferson",
     "themes": [

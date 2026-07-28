@@ -123,7 +123,6 @@ for (const path of [
 }
 for (const hiddenPath of [
   "/selected/",
-  "/project/sustainable-education/",
   "/project/york-prize/",
   "/project/ephemeral-diptyque/",
 ]) {

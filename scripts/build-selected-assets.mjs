@@ -174,7 +174,6 @@ const projectTitles = {
     "andrew wheat_ajw288_03c_exterior render 02.jpg": "Borinquen Healing Center",
     "andrew wheat_ajw288_03c_interior render.jpg": "Borinquen Healing Center",
     "corridor render.png": "Hunter's Point Cooperative Housing",
-    "exterior 2 edited noisy copy.jpg": "Sustainable Education Nepal",
     "hero 2.png": "Wood Street Pool",
     "hero.png": "Wood Street Pool",
     "market render.png": "Hunter's Point Cooperative Housing",

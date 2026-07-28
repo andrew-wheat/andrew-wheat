@@ -7,7 +7,7 @@ This is Andrew Wheat's canonical portfolio and biography source.
 ## Primary Pages
 
 - [Home](https://andrew-wheat.com/): Andrew Wheat's canonical profile and portfolio entry point.
-- [Architecture Projects](https://andrew-wheat.com/work/): Public architecture projects, drawings, models, and design research.
+- [Work](https://andrew-wheat.com/work/): Public architecture work, drawings, models, and design research.
 - [About Andrew Wheat](https://andrew-wheat.com/about/): Biography, education, professional experience, academic work, skills, and awards.
 - [Contact Andrew Wheat](https://andrew-wheat.com/contact/): Professional contact information and verified LinkedIn profile.
 
@@ -18,11 +18,11 @@ This is Andrew Wheat's canonical portfolio and biography source.
 - Education: Bachelor of Architecture candidate at Cornell University College of Architecture, Art, and Planning, expected May 2028
 - Based in: Seattle and New York City
 - Professional experience: Mithun and BRIC Architecture
-- Academic leadership: Cornell University Sustainable Design, Sustainable Education
+- Academic leadership: Cornell University Sustainable Design
 - Verified external profile: https://www.linkedin.com/in/andrewwheat
 - Independent Cornell reference: https://aap.cornell.edu/news/announcements/2025-26-student-academic-awards-and-prizes/
 
-## Public Projects
+## Public Work
 
 - [Hunter's Point Cooperative Housing](https://andrew-wheat.com/project/hunters-point/): Cooperative housing project by Andrew Wheat focused on shared production, public exchange, circulation, workshops, housing, and civic life in Hunters Point.
 - [Wood Street Pool](https://andrew-wheat.com/project/wood-street-pool/): Public natatorium and civic landscape project by Andrew Wheat, integrating community recreation, water systems, planted roofs, geothermal strategies, and mass timber architecture.

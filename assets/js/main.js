@@ -520,11 +520,6 @@
       description: "Pavilion project by Andrew Wheat exploring enclosure, light, assembly, texture, and temporary public space.",
       keywords: ["pavilion", "enclosure", "light", "assembly", "texture", "temporary public space"]
     },
-    "sustainable-education": {
-      title: "Sustainable Education | Andrew Wheat",
-      description: "Sustainable education design work by Andrew Wheat with Cornell University Sustainable Design, focused on school infrastructure, climate resilience, cultural continuity, and environmental systems.",
-      keywords: ["sustainable education", "school infrastructure", "climate resilience", "cultural continuity", "environmental systems"]
-    },
     "ephemeral-diptypque": {
       title: "Ephemeral Diptyque | Andrew Wheat",
       description: "Architecture and image sequence study by Andrew Wheat exploring atmosphere, temporality, pairing, and architectural reading.",
@@ -1833,6 +1828,29 @@
       .join("");
   }
 
+  function initContactSocialLinks() {
+    const emailLink = document.querySelector("[data-contact-email]");
+    if (!emailLink) return;
+    const address = String(emailLink.dataset.contactEmail || "").trim();
+    if (!address) return;
+    const defaultLabel = emailLink.dataset.contactLabel || address;
+    const defaultAriaLabel = emailLink.getAttribute("aria-label") || `Email: ${address}`;
+    let restoreTimer = 0;
+
+    emailLink.addEventListener("click", () => {
+      if (!navigator.clipboard?.writeText) return;
+      navigator.clipboard.writeText(address).then(() => {
+        window.clearTimeout(restoreTimer);
+        emailLink.dataset.contactLabel = `${address} copied`;
+        emailLink.setAttribute("aria-label", `Email: ${address}. Copied to clipboard.`);
+        restoreTimer = window.setTimeout(() => {
+          emailLink.dataset.contactLabel = defaultLabel;
+          emailLink.setAttribute("aria-label", defaultAriaLabel);
+        }, 1800);
+      }).catch(() => {});
+    });
+  }
+
   function renderCatalogue() {
     const catalogue = document.querySelector("[data-work-catalogue]");
     if (!catalogue) return;
@@ -2002,7 +2020,6 @@
   function canonicalProjectId(id) {
     const aliases = {
       "hunters-point-housing": "hunters-point",
-      "sustainable-education-nepal": "sustainable-education",
       "ephemeral-diptyque": "ephemeral-diptypque"
     };
     return aliases[id] || id;
@@ -2151,7 +2168,13 @@
         ${project.course ? `<div><span>Course</span>${escapeHtml(project.course)}</div>` : ""}
         ${project.studio ? `<div><span>Studio</span>${escapeHtml(project.studio)}</div>` : ""}
         <div><span>${escapeHtml(professorLabel(project))}</span>${escapeHtml(professorDisplay(project) || project.themes.join(", "))}</div>
-        ${project.partners ? `<div><span>Partners</span>${escapeHtml(project.partners)}</div>` : ""}
+        ${
+          project.partners
+            ? `<div><span>${escapeHtml(partnerLabel(project))}</span>${escapeHtml(
+                peopleDisplay(project.partners)
+              )}</div>`
+            : ""
+        }
         <div><span>Themes</span>${project.themes.map(escapeHtml).join(", ")}</div>
       </section>
       <section class="project-process reveal">
@@ -2223,10 +2246,10 @@
 
     return `
       <nav class="project-page-nav" aria-label="Project navigation">
-        <a class="project-page-nav-link project-page-nav-link--previous" href="${projectUrl(previous.id)}" aria-label="Previous project: ${escapeHtml(previous.title)}">
+        <a class="project-page-nav-link project-page-nav-link--previous" href="${projectUrl(previous.id)}" aria-label="Previous project: ${escapeHtml(previous.title)}" data-project-title="${escapeHtml(previous.title)}">
           <span aria-hidden="true">←</span>
         </a>
-        <a class="project-page-nav-link project-page-nav-link--next" href="${projectUrl(next.id)}" aria-label="Next project: ${escapeHtml(next.title)}">
+        <a class="project-page-nav-link project-page-nav-link--next" href="${projectUrl(next.id)}" aria-label="Next project: ${escapeHtml(next.title)}" data-project-title="${escapeHtml(next.title)}">
           <span aria-hidden="true">→</span>
         </a>
       </nav>
@@ -2241,6 +2264,15 @@
     const project = projects.find((item) => item.id === id) || projects[0];
     if (!root || !project) return;
     root.insertAdjacentHTML("beforeend", projectNavigation(project));
+  }
+
+  function initProjectNavigationLabels() {
+    document.querySelectorAll(".project-page-nav-link").forEach((link) => {
+      if (link.dataset.projectTitle) return;
+      const accessibleLabel = link.getAttribute("aria-label") || "";
+      const projectTitle = accessibleLabel.replace(/^(?:previous|next) project:\s*/i, "").trim();
+      if (projectTitle) link.dataset.projectTitle = projectTitle;
+    });
   }
 
   function currentProjectId() {
@@ -2268,7 +2300,9 @@
       ...(Array.isArray(project.additionalMetadata) ? project.additionalMetadata : []),
       project.studio,
       project.professors ? `${professorLabel(project)}: ${professorDisplay(project)}` : "",
-      project.partners ? `${project.partners.includes("+") ? "Partners" : "Partner"}: ${project.partners}` : ""
+      project.partners
+        ? `${partnerLabel(project)}: ${peopleDisplay(project.partners)}`
+        : ""
     ].filter(Boolean);
 
     const awardLine = project.award ? `<em>${escapeHtml(project.award)}</em>` : "";
@@ -2285,13 +2319,26 @@
   }
 
   function professorLabel(project) {
-    return project.id === "hunters-point" ? "Professors" : "Professor";
+    return peopleList(project.professors).length === 1 ? "Professor" : "Professors";
   }
 
   function professorDisplay(project) {
-    if (!project.professors) return "";
-    if (project.id === "hunters-point") return project.professors;
-    return project.professors.split(/\s*(?:,|\+|&| and )\s*/i)[0].trim();
+    return peopleDisplay(project.professors);
+  }
+
+  function partnerLabel(project) {
+    return peopleList(project.partners).length === 1 ? "Partner" : "Partners";
+  }
+
+  function peopleDisplay(value) {
+    return peopleList(value).join(", ");
+  }
+
+  function peopleList(value) {
+    return String(value || "")
+      .split(/\s*(?:,|\+|&|\band\b)\s*/i)
+      .map((name) => name.trim())
+      .filter(Boolean);
   }
 
   const mobileFullBleedLayouts = new Set([
@@ -3432,8 +3479,10 @@
   }
 
   function initImageSkeletons() {
-    if (!document.body.matches('[data-page="work"], [data-page="project"]')) return;
-    document.querySelectorAll("img[data-image-skeleton]").forEach((image) => {
+    const prepareImage = (image, sourceChanged = false) => {
+      if (!(image instanceof HTMLImageElement)) return;
+      image.setAttribute("data-image-skeleton", "");
+      if (sourceChanged) image.classList.remove("is-loaded");
       const markLoaded = () => image.classList.add("is-loaded");
       if (image.complete && image.naturalWidth > 0) {
         markLoaded();
@@ -3441,12 +3490,36 @@
       }
       image.addEventListener("load", markLoaded, { once: true });
       image.addEventListener("error", markLoaded, { once: true });
+    };
+
+    document.querySelectorAll("img").forEach((image) => prepareImage(image));
+
+    const observer = new MutationObserver((records) => {
+      records.forEach((record) => {
+        if (record.type === "attributes") {
+          prepareImage(record.target, true);
+          return;
+        }
+        record.addedNodes.forEach((node) => {
+          if (!(node instanceof Element)) return;
+          if (node.matches("img")) prepareImage(node);
+          node.querySelectorAll("img").forEach((image) => prepareImage(image));
+        });
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      attributeFilter: ["src", "srcset"]
     });
   }
 
   initCustomCursor();
   initMobileMenu();
   initEmailCompose();
+  initContactSocialLinks();
   initSelectedPage();
   renderHero();
   initHomeLogoIntro();
@@ -3460,5 +3533,6 @@
   initProjectLightbox();
   initHuntersPointAnimation();
   ensureProjectNavigation();
+  initProjectNavigationLabels();
   revealOnScroll();
 })();

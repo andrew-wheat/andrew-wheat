@@ -493,42 +493,6 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     10800,
     6600
   ],
-  "assets/images/Projects/Sustainable Education Nepal/CUSD_A1_Flooding_Landslide Diagram.jpg": [
-    1139,
-    1121
-  ],
-  "assets/images/Projects/Sustainable Education Nepal/Cafeteria and Trainers Lodging_Plan Drawings SMALLER.jpg": [
-    2483,
-    1653
-  ],
-  "assets/images/Projects/Sustainable Education Nepal/Cafeteria and Trainers Lodging_Section Drawings SMALLER.jpg": [
-    2483,
-    1653
-  ],
-  "assets/images/Projects/Sustainable Education Nepal/Cafeteria and Trainers Lodging_elevation drawings SMALLER.jpg": [
-    2438,
-    1653
-  ],
-  "assets/images/Projects/Sustainable Education Nepal/ChatGPT Image Dec 29, 2025, 12_04_36 AMnoisy.jpg": [
-    800,
-    800
-  ],
-  "assets/images/Projects/Sustainable Education Nepal/EXTERIOR 2 EDITED noisy COPY.jpg": [
-    930,
-    1024
-  ],
-  "assets/images/Projects/Sustainable Education Nepal/INTERIOR RENDER noisy.jpg": [
-    768,
-    512
-  ],
-  "assets/images/Projects/Sustainable Education Nepal/buildings.jpg": [
-    1079,
-    932
-  ],
-  "assets/images/Projects/Sustainable Education Nepal/unnamed.png": [
-    1600,
-    1213
-  ],
   "assets/images/Projects/Wood Street Pool/2.png": [
     3360,
     5040
@@ -1138,10 +1102,6 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     620
   ],
   "assets/images/work-covers/hunters-point.webp": [
-    900,
-    620
-  ],
-  "assets/images/work-covers/sustainable-education-nepal.webp": [
     900,
     620
   ],
