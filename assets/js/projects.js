@@ -409,9 +409,29 @@ window.PORTFOLIO_PROJECTS = [
     "overviewImage": "Work Cover Photo.png",
     "story": [
       {
+        "layout": "story-text",
+        "heading": "Landscape Axis",
+        "text": "The project begins from Enfield's agricultural and recreational landscapes. The pantry site is treated as an axis rather than an isolated parcel: a connection between rural roads, trails, soil systems, gardens, watersheds, and the daily logistics of food access."
+      },
+      {
+        "src": "04-23_Site Plan_Final.png",
+        "caption": "Landscape site plan.",
+        "layout": "enfield-site-drawing"
+      },
+      {
+        "src": "site photo.jpg",
+        "caption": "Rural site context.",
+        "layout": "enfield-current-photo"
+      },
+      {
+        "src": "Enfield-ONLINE-scaled.jpg",
+        "caption": "Existing pantry storage interior.",
+        "layout": "enfield-current-photo"
+      },
+      {
         "layout": "enfield-atlas",
         "heading": "Precedent Atlas",
-        "text": "The atlas organizes architectural, artistic, and social precedents through three paired lenses—ordinary/exceptional, singular/collective, and framed/expansive. Comparing how these works transform familiar objects, individual acts, and shared environments helped us translate the pantry brief and rural context into spatial strategies for dignity, collective use, orientation, and belonging.",
+        "text": "The atlas organizes architectural, artistic, and social precedents through three paired lenses: ordinary/exceptional, singular/collective, and framed/expansive. Comparing how these works transform familiar objects, individual acts, and shared environments helped us translate the pantry brief and rural context into spatial strategies for dignity, collective use, orientation, and belonging.",
         "groups": [
           {
             "heading": "ordinary / exceptional",
@@ -435,7 +455,7 @@ window.PORTFOLIO_PROJECTS = [
             "items": [
               {
                 "src": "Atlas/ARCHIZOOM NO STOP CITY.jpg",
-                "caption": "Archizoom Associati. No-Stop City, 1969–1972."
+                "caption": "Archizoom Associati. No-Stop City, 1969-1972."
               },
               {
                 "src": "Atlas/YOKO ONO WISH TREE REF 02.jpg",
@@ -452,7 +472,7 @@ window.PORTFOLIO_PROJECTS = [
             "items": [
               {
                 "src": "Atlas/TSCHUMI MANHATTAN TRANSCRIPTS.jpg",
-                "caption": "Bernard Tschumi. Manhattan Transcripts, 1976–1981."
+                "caption": "Bernard Tschumi. Manhattan Transcripts, 1976-1981."
               },
               {
                 "src": "Atlas/YAYOI KUSAMA INFINITY MIRROR ROOMS.jpg",
@@ -465,26 +485,6 @@ window.PORTFOLIO_PROJECTS = [
             ]
           }
         ]
-      },
-      {
-        "layout": "story-text",
-        "heading": "Landscape Axis",
-        "text": "The project begins from Enfield's agricultural and recreational landscapes. The pantry site is treated as an axis rather than an isolated parcel: a connection between rural roads, trails, soil systems, gardens, watersheds, and the daily logistics of food access."
-      },
-      {
-        "src": "04-23_Site Plan_Final.png",
-        "caption": "Landscape site plan.",
-        "layout": "enfield-site-drawing"
-      },
-      {
-        "src": "site photo.jpg",
-        "caption": "Rural site context.",
-        "layout": "enfield-current-photo"
-      },
-      {
-        "src": "Enfield-ONLINE-scaled.jpg",
-        "caption": "Existing pantry storage interior.",
-        "layout": "enfield-current-photo"
       },
       {
         "layout": "story-text",
