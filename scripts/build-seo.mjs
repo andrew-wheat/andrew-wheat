@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-07-25";
-const ASSET_VERSION = "20260727-renderings-pantry-v50";
+const ASSET_VERSION = "20260727-exhibit-captions-v66";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -381,10 +381,10 @@ const siteFooter = `    <footer class="site-copyright" aria-label="Copyright">
       &copy; Andrew Wheat 2026
     </footer>`;
 
-const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=20260727-renderings-pantry-v50"></script>
+const scriptTags = (includeImageOptimizations = true) => `    <script src="/assets/js/projects.js?v=${ASSET_VERSION}"></script>
     ${
       includeImageOptimizations
-        ? '<script src="/assets/js/image-optimizations.js?v=20260727-renderings-pantry-v50"></script>\n    '
+        ? `<script src="/assets/js/image-optimizations.js?v=${ASSET_VERSION}"></script>\n    `
         : ""
     }<script src="/assets/js/selected-collections.js?v=${ASSET_VERSION}"></script>
     <script src="/assets/js/main.js?v=${ASSET_VERSION}"></script>`;

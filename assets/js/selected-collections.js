@@ -5,91 +5,117 @@ window.SELECTED_COLLECTIONS = {
       "src": "/assets/images/selected/models/1-929b18c3.webp",
       "title": "Hunter's Point Cooperative Housing",
       "width": 540,
-      "height": 576
+      "height": 576,
+      "captionTitle": "Hunter's Point Cooperative Housing, Massing Study",
+      "materials": "High-density foam · Glycerine"
     },
     {
       "key": "3x6a0205",
       "src": "/assets/images/selected/models/3x6a0205-3cc01a26.webp",
       "title": "Enfield Food Pantry",
       "width": 2000,
-      "height": 1334
+      "height": 1334,
+      "captionTitle": "Enfield Food Pantry, Model",
+      "materials": "Basswood · Cardboard · Mylar"
     },
     {
       "key": "3x6a0280-cropped-smaller",
       "src": "/assets/images/selected/models/3x6a0280-cropped-smaller-1ca7b68b.webp",
       "title": "Enfield Food Pantry",
       "width": 2000,
-      "height": 1125
+      "height": 1125,
+      "captionTitle": "Enfield Food Pantry, Model",
+      "materials": "Basswood · Cardboard · Mylar · Miniature polycarbonate"
     },
     {
       "key": "andrew-wheat-ajw288-01b-study-model-1",
       "src": "/assets/images/selected/models/andrew-wheat-ajw288-01b-study-model-1-02f99fe1.webp",
       "title": "Curanto Cookhouse",
       "width": 2000,
-      "height": 1371
+      "height": 1371,
+      "captionTitle": "Curanto Cookhouse, Study Model",
+      "materials": "Foamcore · Laser-cut Bristol board"
     },
     {
       "key": "andrew-wheat-ajw288-problem-03c-final-model-15",
       "src": "/assets/images/selected/models/andrew-wheat-ajw288-problem-03c-final-model-15-40f088ad.webp",
       "title": "Borinquen Healing Center",
       "width": 2000,
-      "height": 1333
+      "height": 1333,
+      "captionTitle": "Borinquen Healing Center, Final Model",
+      "materials": "Laser-cut AlphaCore · Sanded acrylic"
     },
     {
       "key": "do4a0315",
       "src": "/assets/images/selected/models/do4a0315-06768a20.webp",
       "title": "[de]construct + [re]configure",
       "width": 2000,
-      "height": 1333
+      "height": 1333,
+      "captionTitle": "[de]construct + [re]configure, Final Model",
+      "materials": "Basswood · Zip ties"
     },
     {
       "key": "hero-2",
       "src": "/assets/images/selected/models/hero-2-babc651e.webp",
       "title": "Curanto Cookhouse",
       "width": 2000,
-      "height": 1333
+      "height": 1333,
+      "captionTitle": "Curanto Cookhouse, Material Study",
+      "materials": "1/8-inch galvanized wire mesh · Crushed Rockite · Found gravel"
     },
     {
       "key": "main-hero-shot",
       "src": "/assets/images/selected/models/main-hero-shot-5baf2010.webp",
       "title": "A Chair is a Toy!",
       "width": 1406,
-      "height": 1406
+      "height": 1406,
+      "captionTitle": "A Chair Is a Toy!, Final Model",
+      "materials": "Aluminum flashing · Steel rod · Found materials"
     },
     {
       "key": "model-01-cropped",
       "src": "/assets/images/selected/models/model-01-cropped-80e8a93f.webp",
       "title": "[de]construct + [re]configure",
       "width": 2000,
-      "height": 1125
+      "height": 1125,
+      "captionTitle": "[de]construct + [re]configure, Final Model",
+      "materials": "Basswood · Zip ties"
     },
     {
       "key": "model-front-view-shot-03-reduced",
       "src": "/assets/images/selected/models/model-front-view-shot-03-reduced-9113a605.webp",
       "title": "Design District Canteen",
       "width": 2000,
-      "height": 1125
+      "height": 1125,
+      "captionTitle": "Design District Canteen, Structural Study",
+      "materials": "Steel rod · Aluminum rod"
     },
     {
       "key": "model-full-shot",
       "src": "/assets/images/selected/models/model-full-shot-478d955d.webp",
       "title": "Hunter's Point Cooperative Housing",
       "width": 1254,
-      "height": 1254
+      "height": 1254,
+      "captionTitle": "Hunter's Point Cooperative Housing, Full Model",
+      "materials": "Basswood · Kraft paper · Coroplast"
     },
     {
       "key": "speculative-circulation-model",
       "src": "/assets/images/selected/models/speculative-circulation-model-5d378129.webp",
-      "title": "Models",
+      "title": "Hunter's Point Cooperative Housing",
       "width": 1928,
-      "height": 816
+      "height": 816,
+      "captionTitle": "Hunter's Point Cooperative Housing, Circulation Study",
+      "materials": "Acrylic · Vinyl"
     },
     {
       "key": "work-cover-photo",
       "src": "/assets/images/selected/models/work-cover-photo-8e812208.webp",
       "title": "Enfield Food Pantry",
       "width": 2000,
-      "height": 1334
+      "height": 1334,
+      "captionTitle": "Enfield Food Pantry, Model",
+      "materials": "Basswood · Cardboard · Mylar"
     }
   ],
   "photography": [
@@ -284,6 +310,13 @@ window.SELECTED_COLLECTIONS = {
   ],
   "sketchbook": [
     {
+      "key": "img-7838",
+      "src": "/assets/images/selected/sketchbook/img-7838-10fb42fd.webp",
+      "title": "Sketchbook",
+      "width": 2000,
+      "height": 1525
+    },
+    {
       "key": "img-7841",
       "src": "/assets/images/selected/sketchbook/img-7841-93d28c64.webp",
       "title": "Sketchbook",
@@ -312,18 +345,11 @@ window.SELECTED_COLLECTIONS = {
       "height": 2000
     },
     {
-      "key": "scan-ajw288-2026-04-18-18-32-31-page-1",
-      "src": "/assets/images/selected/sketchbook/scan-ajw288-2026-04-18-18-32-31-page-1-9e32a8a2.webp",
+      "key": "img-9554",
+      "src": "/assets/images/selected/sketchbook/img-9554-d9374112.webp",
       "title": "Sketchbook",
       "width": 2000,
-      "height": 1294
-    },
-    {
-      "key": "scan-ajw288-2026-04-19-14-33-40-page-1",
-      "src": "/assets/images/selected/sketchbook/scan-ajw288-2026-04-19-14-33-40-page-1-1b21612f.webp",
-      "title": "Sketchbook",
-      "width": 2000,
-      "height": 1294
+      "height": 1613
     }
   ],
   "renderings": [
@@ -332,49 +358,81 @@ window.SELECTED_COLLECTIONS = {
       "src": "/assets/images/selected/renderings/andrew-wheat-ajw288-03c-exterior-render-02-ac86292f.webp",
       "title": "Borinquen Healing Center",
       "width": 2000,
-      "height": 1294
+      "height": 1294,
+      "captionTitle": "Borinquen Healing Center, Exterior Courtyard",
+      "production": "Rhino · Photoshop"
     },
     {
       "key": "andrew-wheat-ajw288-03c-interior-render",
       "src": "/assets/images/selected/renderings/andrew-wheat-ajw288-03c-interior-render-b95af309.webp",
       "title": "Borinquen Healing Center",
       "width": 2000,
-      "height": 1500
+      "height": 1500,
+      "captionTitle": "Borinquen Healing Center, Interior Commons",
+      "production": "Rhino · Photoshop"
     },
     {
       "key": "corridor-render",
       "src": "/assets/images/selected/renderings/corridor-render-de3dbcf4.webp",
       "title": "Hunter's Point Cooperative Housing",
       "width": 2000,
-      "height": 1600
+      "height": 1600,
+      "captionTitle": "Hunter's Point Cooperative Housing, Circulation Corridor",
+      "production": "Rhino · V-Ray · Photoshop"
     },
     {
       "key": "hero-2",
+      "src": "/assets/images/selected/renderings/hero-2-57e3723f.webp",
+      "title": "Renderings",
+      "width": 2000,
+      "height": 1125,
+      "captionTitle": "Hunter's Point Cooperative Housing, Housing Landscape",
+      "production": "Rhino · V-Ray · Photoshop"
+    },
+    {
+      "key": "hero-2-pool",
       "src": "/assets/images/selected/renderings/hero-2-b77ffeda.webp",
       "title": "Wood Street Pool",
       "width": 2000,
-      "height": 1125
+      "height": 1125,
+      "captionTitle": "Wood Street Pool, Pool Hall Study",
+      "production": "Rhino · Enscape · Photoshop · Adobe Firefly assets"
     },
     {
       "key": "hero",
       "src": "/assets/images/selected/renderings/hero-5c9e3444.webp",
       "title": "Wood Street Pool",
       "width": 2000,
-      "height": 1126
+      "height": 1126,
+      "captionTitle": "Wood Street Pool, Pool Hall",
+      "production": "Rhino · Enscape · Photoshop · Adobe Firefly assets"
     },
     {
       "key": "market-render",
       "src": "/assets/images/selected/renderings/market-render-d617290e.webp",
       "title": "Hunter's Point Cooperative Housing",
       "width": 2000,
-      "height": 1600
+      "height": 1600,
+      "captionTitle": "Hunter's Point Cooperative Housing, Market Hall",
+      "production": "Rhino · V-Ray · Photoshop"
     },
     {
       "key": "updated-pantry-interior",
       "src": "/assets/images/selected/renderings/updated-pantry-interior-d089426e.webp",
       "title": "Enfield Food Pantry",
       "width": 1254,
-      "height": 1254
+      "height": 1254,
+      "captionTitle": "Enfield Food Pantry, Interior Gathering Hall",
+      "production": "Rhino · V-Ray · Photoshop · AI-assisted post-production"
+    },
+    {
+      "key": "zoomed-out-render-final-edited-tall",
+      "src": "/assets/images/selected/renderings/zoomed-out-render-final-edited-tall-5a9e00a6.webp",
+      "title": "Renderings",
+      "width": 1868,
+      "height": 1245,
+      "captionTitle": "Enfield Food Pantry, Field-Edge View",
+      "production": "Rhino · V-Ray · Photoshop"
     }
   ]
 };

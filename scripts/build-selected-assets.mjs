@@ -17,6 +17,12 @@ const hiddenSelectedAssets = {
   photography: new Set(["img_1932.jpg"]),
   renderings: new Set(["exterior 2 edited noisy copy.jpg"])
 };
+const selectedKeyOverrides = {
+  renderings: {
+    "hero (2).png": "hero-2",
+    "hero 2.png": "hero-2-pool"
+  }
+};
 const photographyCameraOverrides = {
   "img_2273.jpg": {
     make: "Canon",
@@ -51,6 +57,98 @@ const photographyCameraOverrides = {
     focalLength: 80
   }
 };
+const modelCaptionOverrides = {
+  "andrew wheat_ajw288_problem 03c_final model (15).png": {
+    captionTitle: "Borinquen Healing Center, Final Model",
+    materials: "Laser-cut AlphaCore · Sanded acrylic"
+  },
+  "work cover photo.png": {
+    captionTitle: "Enfield Food Pantry, Model",
+    materials: "Basswood · Cardboard · Mylar"
+  },
+  "3x6a0205.png": {
+    captionTitle: "Enfield Food Pantry, Model",
+    materials: "Basswood · Cardboard · Mylar"
+  },
+  "1.png": {
+    captionTitle: "Hunter's Point Cooperative Housing, Massing Study",
+    materials: "High-density foam · Glycerine"
+  },
+  "main hero shot.png": {
+    captionTitle: "A Chair Is a Toy!, Final Model",
+    materials: "Aluminum flashing · Steel rod · Found materials"
+  },
+  "model 01 cropped.png": {
+    captionTitle: "[de]construct + [re]configure, Final Model",
+    materials: "Basswood · Zip ties"
+  },
+  "model front view shot 03 reduced.png": {
+    captionTitle: "Design District Canteen, Structural Study",
+    materials: "Steel rod · Aluminum rod"
+  },
+  "model full shot.png": {
+    captionTitle: "Hunter's Point Cooperative Housing, Full Model",
+    materials: "Basswood · Kraft paper · Coroplast"
+  },
+  "do4a0315.png": {
+    captionTitle: "[de]construct + [re]configure, Final Model",
+    materials: "Basswood · Zip ties"
+  },
+  "3x6a0280 cropped smaller.png": {
+    captionTitle: "Enfield Food Pantry, Model",
+    materials: "Basswood · Cardboard · Mylar · Miniature polycarbonate"
+  },
+  "andrew wheat_ajw288_01b_study model (1).jpg": {
+    captionTitle: "Curanto Cookhouse, Study Model",
+    materials: "Foamcore · Laser-cut Bristol board"
+  },
+  "speculative circulation model.png": {
+    captionTitle: "Hunter's Point Cooperative Housing, Circulation Study",
+    materials: "Acrylic · Vinyl"
+  },
+  "hero 2.jpg": {
+    captionTitle: "Curanto Cookhouse, Material Study",
+    materials: "1/8-inch galvanized wire mesh · Crushed Rockite · Found gravel"
+  }
+};
+const renderingCaptionOverrides = {
+  "andrew wheat_ajw288_03c_exterior render 02.jpg": {
+    captionTitle: "Borinquen Healing Center, Exterior Courtyard",
+    production: "Rhino · Photoshop"
+  },
+  "updated pantry interior.webp": {
+    captionTitle: "Enfield Food Pantry, Interior Gathering Hall",
+    production: "Rhino · V-Ray · Photoshop · AI-assisted post-production"
+  },
+  "andrew wheat_ajw288_03c_interior render.jpg": {
+    captionTitle: "Borinquen Healing Center, Interior Commons",
+    production: "Rhino · Photoshop"
+  },
+  "hero.png": {
+    captionTitle: "Wood Street Pool, Pool Hall",
+    production: "Rhino · Enscape · Photoshop · Adobe Firefly assets"
+  },
+  "corridor render.png": {
+    captionTitle: "Hunter's Point Cooperative Housing, Circulation Corridor",
+    production: "Rhino · V-Ray · Photoshop"
+  },
+  "market render.png": {
+    captionTitle: "Hunter's Point Cooperative Housing, Market Hall",
+    production: "Rhino · V-Ray · Photoshop"
+  },
+  "hero (2).png": {
+    captionTitle: "Hunter's Point Cooperative Housing, Housing Landscape",
+    production: "Rhino · V-Ray · Photoshop"
+  },
+  "hero 2.png": {
+    captionTitle: "Wood Street Pool, Pool Hall Study",
+    production: "Rhino · Enscape · Photoshop · Adobe Firefly assets"
+  },
+  "zoomed out render final edited tall.png": {
+    captionTitle: "Enfield Food Pantry, Field-Edge View",
+    production: "Rhino · V-Ray · Photoshop"
+  }
+};
 const projectTitles = {
   models: {
     "1.png": "Hunter's Point Cooperative Housing",
@@ -64,6 +162,7 @@ const projectTitles = {
     "model 01 cropped.png": "[de]construct + [re]configure",
     "model front view shot 03 reduced.png": "Design District Canteen",
     "model full shot.png": "Hunter's Point Cooperative Housing",
+    "speculative circulation model.png": "Hunter's Point Cooperative Housing",
     "work cover photo.png": "Enfield Food Pantry"
   },
   sketchbook: {
@@ -229,11 +328,22 @@ for (const category of categories) {
     const digest = createHash("sha1").update(sourceBuffer).digest("hex").slice(0, 8);
     const outputName = `${slugify(path.parse(file.name).name)}-${digest}.webp`;
     const outputPath = path.join(outputDirectory, outputName);
+    const itemKey =
+      selectedKeyOverrides[category]?.[file.name.toLowerCase()] ||
+      slugify(path.parse(file.name).name);
     expectedOutputs.add(outputName);
     const sourceMetadata = await sharp(sourcePath).metadata();
     const camera =
       category === "photography"
         ? photographyCameraOverrides[file.name.toLowerCase()] || readExifData(sourceMetadata.exif)
+        : null;
+    const modelCaption =
+      category === "models"
+        ? modelCaptionOverrides[file.name.toLowerCase()] || null
+        : null;
+    const renderingCaption =
+      category === "renderings"
+        ? renderingCaptionOverrides[file.name.toLowerCase()] || null
         : null;
     const image = sharp(sourcePath).rotate().resize({
       width: 2000,
@@ -244,12 +354,14 @@ for (const category of categories) {
     const info = await image.webp({ quality: 84, alphaQuality: 90, effort: 5 }).toFile(outputPath);
 
     manifest[category].push({
-      key: slugify(path.parse(file.name).name),
+      key: itemKey,
       src: `/assets/images/selected/${category}/${outputName}`,
       title: projectTitle(file.name, category),
       width: info.width,
       height: info.height,
-      ...(camera ? { camera } : {})
+      ...(camera ? { camera } : {}),
+      ...(modelCaption || {}),
+      ...(renderingCaption || {})
     });
   }
 

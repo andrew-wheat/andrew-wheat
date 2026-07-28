@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" width="1872pt" height="792pt" viewBox="0 0 1872 792" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css"><![CDATA[
+    @font-face {
+      font-family: "Inter Portfolio";
+      src: url("../../../fonts/inter/Inter-Regular.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    text {
+      font-family: "Inter Portfolio", "Inter", Arial, sans-serif;
+    }
+
+    text[font-family*=" Medium"] {
+      font-weight: 500;
+    }
+
+    text[font-family*=" Light"] {
+      font-weight: 300;
+    }
+  ]]></style>
   <path d="M1434.15,193.548 L1435.628,192.0703" stroke="#CCCCCC" stroke-width="0.48" fill="none" />
   <path d="M1430.109,193.548 L1435.628,188.0292" stroke="#CCCCCC" stroke-width="0.48" fill="none" />
   <path d="M1426.068,193.548 L1435.628,183.9881" stroke="#CCCCCC" stroke-width="0.48" fill="none" />

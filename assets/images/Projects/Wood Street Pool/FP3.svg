@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" width="2160pt" height="2952pt" viewBox="0 0 2160 2952" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css"><![CDATA[
+    @font-face {
+      font-family: "Inter Portfolio";
+      src: url("../../../fonts/inter/Inter-Regular.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    text {
+      font-family: "Inter Portfolio", "Inter", Arial, sans-serif;
+    }
+
+    text[font-family*=" Medium"] {
+      font-weight: 500;
+    }
+
+    text[font-family*=" Light"] {
+      font-weight: 300;
+    }
+  ]]></style>
   <path d="M1525.063,826.6791 L1542.533,891.8803" stroke="#000000" stroke-width="0.24" fill="none" />
   <path d="M683.2363,703.8121 L683.2363,772.8134" stroke="#CCCCCC" stroke-width="0.48" fill="none" />
   <path d="M92.84499,1430.775 C98.58887,1432.151 104.7565,1436.578 108.2153,1442.569 C111.674,1448.559 112.4239,1456.114 110.7441,1461.777 C109.3675,1467.521 104.9408,1473.688 98.95003,1477.147 C92.9593,1480.606 85.40458,1481.355 79.74194,1479.676 C73.99805,1478.299 67.83039,1473.872 64.37164,1467.882 C60.91289,1461.891 60.16304,1454.336 61.84285,1448.674 C63.21941,1442.93 67.64616,1436.762 73.63689,1433.304 C79.62762,1429.845 87.18234,1429.095 92.84499,1430.775 z" stroke="Black" stroke-width="0" fill="#FFFFFF" fill-opacity="1" />

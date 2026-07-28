@@ -182,59 +182,59 @@
         { key: "3x6a0205", row: 3, col: 1, span: 7, offset: "0px", max: "900px", align: "start" },
         {
           key: "1",
-          row: 3,
-          col: 9,
-          span: 4,
-          offset: "clamp(180px, 18vw, 300px)",
-          max: "560px",
+          row: 4,
+          col: 7,
+          span: 5,
+          offset: "0px",
+          max: "680px",
           align: "end"
         },
-        { key: "main-hero-shot", row: 4, col: 1, span: 4, offset: "-80px", max: "520px", align: "start" },
-        { key: "model-01-cropped", row: 5, col: 7, span: 6, offset: "-80px", max: "820px", align: "end" },
+        { key: "main-hero-shot", row: 5, col: 1, span: 6, offset: "0px", max: "780px", align: "start" },
+        { key: "model-01-cropped", row: 6, col: 5, span: 8, offset: "0px", max: "1080px", align: "end" },
         {
           key: "model-front-view-shot-03-reduced",
-          row: 6,
+          row: 7,
           col: 1,
           span: 6,
-          offset: "-80px",
+          offset: "0px",
           max: "900px",
           align: "start"
         },
-        { key: "model-full-shot", row: 6, col: 9, span: 4, offset: "80px", max: "560px", align: "end" },
-        { key: "do4a0315", row: 7, col: 1, span: 5, offset: "-80px", max: "720px", align: "start" },
+        { key: "model-full-shot", row: 8, col: 7, span: 6, offset: "0px", max: "780px", align: "end" },
+        { key: "do4a0315", row: 9, col: 1, span: 7, offset: "0px", max: "960px", align: "start" },
         {
           key: "3x6a0280-cropped-smaller",
-          row: 8,
+          row: 10,
           col: 7,
           span: 6,
-          offset: "-80px",
+          offset: "0px",
           max: "820px",
           align: "end"
         },
         {
           key: "andrew-wheat-ajw288-01b-study-model-1",
-          row: 9,
+          row: 11,
           col: 1,
           span: 5,
-          offset: "-80px",
+          offset: "0px",
           max: "720px",
           align: "start"
         },
         {
           key: "speculative-circulation-model",
-          row: 10,
-          col: 7,
-          span: 6,
-          offset: "-80px",
-          max: "820px",
+          row: 12,
+          col: 4,
+          span: 9,
+          offset: "0px",
+          max: "1180px",
           align: "end"
         },
-        { key: "hero-2", row: 11, col: 1, span: 7, offset: "-40px", max: "900px", align: "start" }
+        { key: "hero-2", row: 13, col: 1, span: 7, offset: "0px", max: "900px", align: "start" }
       ],
       photography: [
         { key: "img-2793-2", row: 1, col: 3, span: 15, offset: "0px", max: "1040px", align: "start" },
         { key: "img-2778", row: 19, col: 14, span: 10, offset: "0px", max: "700px", align: "end" },
-        { key: "img-2697", row: 38, col: 15, span: 10, offset: "0px", max: "700px", align: "end" },
+        { key: "img-2697", row: 38, col: 16, span: 9, offset: "0px", max: "660px", align: "end" },
         { key: "img-2273", row: 43, col: 1, span: 13, offset: "0px", max: "900px", align: "start" },
         { key: "img-2623", row: 61, col: 11, span: 14, offset: "0px", max: "980px", align: "end" },
         { key: "img-0982", row: 82, col: 4, span: 17, offset: "0px", max: "1180px", align: "start" },
@@ -246,11 +246,11 @@
         { key: "img-1590", row: 179, col: 1, span: 17, offset: "0px", max: "1180px", align: "start" }
       ],
       sketchbook: [
-        { key: "img-9544", row: 1, col: 1, span: 7, offset: "0px", max: "920px", align: "start" },
+        { key: "img-9544", row: 1, col: 1, span: 6, offset: "0px", max: "820px", align: "start" },
         { key: "img-9546", row: 1, col: 10, span: 3, offset: "100px", max: "440px", align: "end" },
-        { key: "img-7841", row: 2, col: 1, span: 5, offset: "-80px", max: "700px", align: "start" },
+        { key: "img-7841", row: 2, col: 1, span: 6, offset: "-80px", max: "820px", align: "start" },
         {
-          key: "scan-ajw288-2026-04-18-18-32-31-page-1",
+          key: "img-7838",
           row: 3,
           col: 6,
           span: 7,
@@ -260,7 +260,7 @@
         },
         { key: "img-9545", row: 4, col: 1, span: 5, offset: "-80px", max: "700px", align: "start" },
         {
-          key: "scan-ajw288-2026-04-19-14-33-40-page-1",
+          key: "img-9554",
           row: 5,
           col: 6,
           span: 7,
@@ -337,7 +337,7 @@
             item,
             layout: {
               ...slot,
-              row: fallbackStartRow + Math.floor(index / fallbackSlots.length)
+              row: fallbackStartRow + index
             }
           });
         });
@@ -347,6 +347,30 @@
           const titleText = escapeHtml(item.title || label);
           const cameraLine =
             collection === "photography" ? formatPhotographyCameraLine(item.camera) : "";
+          const exhibitCaption =
+            (collection === "models" || collection === "renderings") &&
+            (item.captionTitle || item.materials || item.production)
+              ? `<figcaption class="${
+                  collection === "models"
+                    ? "selected-model-meta"
+                    : "selected-rendering-meta"
+                }">
+                  ${
+                    item.captionTitle
+                      ? collection === "models"
+                        ? `<strong>${escapeHtml(item.captionTitle)}</strong>`
+                        : `<span class="selected-exhibit-title">${escapeHtml(
+                            item.captionTitle
+                          )}</span>`
+                      : ""
+                  }
+                  ${
+                    item.materials || item.production
+                      ? `<span>${escapeHtml(item.materials || item.production)}</span>`
+                      : ""
+                  }
+                </figcaption>`
+              : "";
           return `
             <figure
               class="selected-image-card"
@@ -371,7 +395,7 @@
               ${
                 cameraLine
                   ? `<figcaption class="selected-camera-meta">${escapeHtml(cameraLine)}</figcaption>`
-                  : ""
+                  : exhibitCaption
               }
             </figure>
           `;
@@ -2322,6 +2346,8 @@
     "wood-pool-model-feature",
     "enfield-current-photo",
     "enfield-render-large",
+    "enfield-rendering",
+    "enfield-model-photo",
     "enfield-model-row",
     "enfield-detail-pair",
     "cookhouse-map",
@@ -2427,6 +2453,8 @@
       ? woodPoolSiteIso(project, image)
       : layout === "wood-pool-mech-system"
       ? woodPoolMechSystem(project, image)
+      : layout === "enfield-atlas"
+      ? enfieldAtlas(project, image)
       : image.text
       ? projectStoryText(image)
       : Array.isArray(image.items)
@@ -2455,6 +2483,68 @@
         ${media}
         ${caption}
       </figure>
+    `;
+  }
+
+  function enfieldAtlasImage(project, src, alt) {
+    const originalSrc = /^(?:assets\/|\/|[a-z]+:|\/\/)/i.test(src)
+      ? src
+      : `${project.imageBase || ""}${src}`;
+    const imageSrc = optimizedSrc(originalSrc);
+    const dimensionAttrs = imageDimensionAttrs(imageSrc) || imageDimensionAttrs(originalSrc);
+    return `<img src="${escapeHtml(encodeURI(imageSrc))}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async" data-image-skeleton${dimensionAttrs}>`;
+  }
+
+  function enfieldAtlas(project, atlas) {
+    const groups = Array.isArray(atlas.groups) ? atlas.groups : [];
+    return `
+      <div class="enfield-atlas">
+        <header class="enfield-atlas-intro">
+          ${atlas.heading ? `<h2>${escapeHtml(atlas.heading)}</h2>` : ""}
+          ${atlas.text ? `<p>${escapeHtml(atlas.text)}</p>` : ""}
+        </header>
+        <div class="enfield-atlas-groups">
+          ${groups
+            .map(
+              (group) => `
+                <section class="enfield-atlas-group" aria-labelledby="enfield-atlas-${escapeHtml(
+                  group.heading.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+                )}">
+                  <h3 id="enfield-atlas-${escapeHtml(
+                    group.heading.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+                  )}">${escapeHtml(group.heading)}</h3>
+                  <div class="enfield-atlas-cards">
+                    ${(Array.isArray(group.items) ? group.items : [])
+                      .map((item) => {
+                        const sources = Array.isArray(item.srcs) ? item.srcs : [item.src];
+                        return `
+                          <figure class="enfield-atlas-card" tabindex="0">
+                            <div class="enfield-atlas-media${sources.length > 1 ? " enfield-atlas-media--pair" : ""}">
+                              ${sources
+                                .filter(Boolean)
+                                .map((src, sourceIndex) =>
+                                  enfieldAtlasImage(
+                                    project,
+                                    src,
+                                    sources.length > 1
+                                      ? `${item.caption} Drawing ${sourceIndex + 1}.`
+                                      : item.caption
+                                  )
+                                )
+                                .join("")}
+                            </div>
+                            <figcaption>${escapeHtml(item.caption || "")}</figcaption>
+                          </figure>
+                        `;
+                      })
+                      .join("")}
+                  </div>
+                </section>
+              `
+            )
+            .join("")}
+        </div>
+      </div>
     `;
   }
 

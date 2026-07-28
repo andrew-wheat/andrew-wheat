@@ -3373,6 +3373,144 @@ body.project-lightbox-open .site-cursor {
   min-height: 62vh;
 }
 
+.project-shell[data-project-id="enfield-food-pantry"] .project-story .project-story-frame--enfield-atlas {
+  display: block;
+  min-height: 0;
+  padding: clamp(110px, 10vw, 170px) clamp(70px, 7vw, 130px);
+  background: #ffffff;
+}
+
+.enfield-atlas {
+  width: min(1760px, 100%);
+  margin: 0 auto;
+}
+
+.enfield-atlas-intro {
+  width: min(760px, 100%);
+  margin: 0 auto clamp(82px, 8vw, 132px);
+  text-align: center;
+}
+
+.enfield-atlas-intro h2 {
+  margin: 0 0 0.55em;
+  font-size: var(--type-project-copy);
+  font-weight: 700;
+  line-height: 1.48;
+}
+
+.enfield-atlas-intro p {
+  margin: 0;
+  font-size: var(--type-project-copy);
+  line-height: 1.48;
+}
+
+.enfield-atlas-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(48px, 4vw, 76px);
+  align-items: start;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.enfield-atlas-group {
+  min-width: 0;
+}
+
+.enfield-atlas-group h3 {
+  margin: 0 0 clamp(28px, 2.6vw, 44px);
+  font-size: clamp(14px, 1.15vw, 20px);
+  font-weight: 400;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.enfield-atlas-cards {
+  display: grid;
+  gap: clamp(66px, 6vw, 104px);
+}
+
+.enfield-atlas-card {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  overflow: visible;
+  background: #ffffff;
+  outline: 0;
+}
+
+.enfield-atlas-media {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.enfield-atlas-media--pair {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  background: #ffffff;
+}
+
+.enfield-atlas-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: contain;
+  background: #ffffff;
+}
+
+.enfield-atlas-card figcaption {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  display: block;
+  width: 100%;
+  padding: 0;
+  color: var(--ink);
+  background: transparent;
+  font-family: var(--font-copy);
+  font-size: clamp(10px, 0.68vw, 12px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  text-align: left;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-3px);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 769px) {
+  .enfield-atlas-card:hover figcaption,
+  .enfield-atlas-card:focus-visible figcaption,
+  .enfield-atlas-card:focus-within figcaption {
+    opacity: 0.62;
+    transform: none;
+  }
+
+  .enfield-atlas-card:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1099px) {
+  .enfield-atlas-groups {
+    grid-template-columns: 1fr;
+    gap: clamp(92px, 11vw, 132px);
+    width: min(760px, 100%);
+  }
+
+  .enfield-atlas-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(38px, 5vw, 58px);
+  }
+}
+
 .project-story-frame--enfield-site-drawing,
 .project-story-frame--enfield-plan-wide,
 .project-story-frame--enfield-section-wide,
@@ -4938,9 +5076,9 @@ body[data-page="work"] .site-copyright {
   }
 
   .project-editorial-cover {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    width: calc(100% + (var(--gutter) * 2));
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
   }
 
   .project-editorial-cover img,
@@ -5056,9 +5194,9 @@ body[data-page="work"] .site-copyright {
   }
 
   .mobile-full-bleed {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
     padding-left: 0;
     padding-right: 0;
   }
@@ -5193,16 +5331,16 @@ body[data-page="work"] .site-copyright {
 
   .project-story-frame--wood-pool-detail-pair {
     --mobile-plate-width: 1100px;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
     padding-left: 0;
     padding-right: 0;
   }
 
   .project-story-frame--wood-pool-detail-pair .project-story-board {
     grid-template-columns: minmax(430px, 0.9fr) minmax(560px, 1.2fr);
-    width: 100vw !important;
+    width: 100% !important;
     padding-right: 0;
     padding-left: 0;
   }
@@ -5395,6 +5533,54 @@ body[data-page="work"] .site-copyright {
 }
 
 @media (max-width: 768px) {
+  .project-shell[data-project-id="enfield-food-pantry"] .project-story .project-story-frame--enfield-atlas {
+    width: 100%;
+    padding: clamp(80px, 20vw, 112px) 24px;
+  }
+
+  .enfield-atlas-intro {
+    margin-bottom: clamp(64px, 17vw, 92px);
+  }
+
+  .enfield-atlas-intro h2 {
+    font-size: var(--type-project-copy);
+    font-weight: 700;
+  }
+
+  .enfield-atlas-groups {
+    grid-template-columns: 1fr;
+    gap: clamp(70px, 18vw, 104px);
+  }
+
+  .enfield-atlas-group h3 {
+    margin-bottom: 24px;
+    font-size: var(--type-project-copy);
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .enfield-atlas-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: stretch;
+    gap: 12px;
+  }
+
+  .enfield-atlas-card {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .project-shell[data-project-id="enfield-food-pantry"] .enfield-atlas-media img {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+    object-fit: contain;
+  }
+
+  .enfield-atlas-card figcaption {
+    display: none !important;
+  }
+
   .project-shell[data-project-id="a-chair-is-a-toy"] .project-story-frame--chair-precedent .project-story-item--precedent {
     width: min(76vw, 320px);
   }
@@ -5821,6 +6007,17 @@ body[data-page="work"] .site-copyright {
     height: auto;
   }
 
+  body[data-page="work"] .work-catalogue[data-view="grid"]
+    .project-card:is(
+      [data-project-id="deconstruct-reconfigure"],
+      [data-project-id="design-district-canteen"],
+      [data-project-id="enfield-food-pantry"],
+      [data-project-id="wood-street-pool"]
+    )
+    .project-thumb-image--alt {
+    object-fit: cover;
+  }
+
   body[data-page="work"] .work-catalogue[data-view="grid"] .project-card-text {
     grid-row: 2;
     align-self: start;
@@ -5903,15 +6100,28 @@ body[data-page="landing-minimal"] {
 }
 
 @media (max-width: 900px) {
+  body[data-page="landing-minimal"] {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  body[data-page="landing-minimal"] .site-header {
+    flex: 0 0 auto;
+  }
+
   .minimal-landing {
+    flex: 1 0 auto;
     grid-template-columns: 1fr;
     grid-template-rows: minmax(0, 1fr) auto;
     align-content: center;
     gap: clamp(26px, 7vw, 42px);
+    min-height: 0;
     padding:
       clamp(20px, 4vh, 34px)
       var(--project-gutter)
-      max(clamp(24px, 5vh, 38px), env(safe-area-inset-bottom));
+      max(clamp(24px, 5vh, 38px), calc(env(safe-area-inset-bottom) + 16px));
   }
 
   .minimal-landing-content {
@@ -5987,6 +6197,12 @@ body[data-page="work"] .work-catalogue[data-view="grid"] .project-card:focus-vis
 @media (hover: none) {
   body[data-page="work"] .work-catalogue[data-view="grid"] .project-card-text {
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  body[data-page="work"] .work-catalogue[data-view="grid"] .project-card-text {
+    display: none;
   }
 }
 
@@ -6110,6 +6326,27 @@ body[data-page="project"] .project-story-frame > img,
 body[data-page="project"] .project-story-item img {
   margin-right: auto;
   margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  body[data-page="project"] .project-editorial-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body[data-page="project"] .project-editorial-cover {
+    align-self: stretch;
+    justify-self: stretch;
+    width: calc(100% + (var(--gutter) * 2));
+    max-width: calc(100% + (var(--gutter) * 2));
+    margin-right: calc(var(--gutter) * -1);
+    margin-left: calc(var(--gutter) * -1);
+  }
+
+  body[data-page="project"] .project-editorial-text {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
 }
 
 /* Reference-matched desktop type sizing and quiet active states. */
@@ -6328,7 +6565,7 @@ body[data-page="selected"] {
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-auto-rows: auto;
   column-gap: clamp(24px, 2.4vw, 46px);
-  row-gap: clamp(220px, 14vw, 285px);
+  row-gap: clamp(280px, 18vw, 360px);
   align-items: start;
   min-height: 0;
   padding-top: var(--selected-top-space);
@@ -6344,30 +6581,10 @@ body[data-page="selected"] {
   justify-self: var(--selected-card-align);
   width: 100%;
   max-width: var(--selected-card-max);
-  margin: var(--selected-offset-y) 0 0;
+  margin: max(0px, var(--selected-offset-y)) 0 0;
   outline: none;
-  transform: translateX(var(--selected-offset-x)) rotate(var(--selected-rotation));
+  transform: none;
   transform-origin: center;
-}
-
-.selected-image-card:nth-child(4n + 1) {
-  --selected-offset-x: -28px;
-  --selected-rotation: -0.55deg;
-}
-
-.selected-image-card:nth-child(4n + 2) {
-  --selected-offset-x: 24px;
-  --selected-rotation: 0.35deg;
-}
-
-.selected-image-card:nth-child(4n + 3) {
-  --selected-offset-x: 14px;
-  --selected-rotation: -0.3deg;
-}
-
-.selected-image-card:nth-child(4n) {
-  --selected-offset-x: -8px;
-  --selected-rotation: 0.5deg;
 }
 
 .selected-image-card img {
@@ -6376,7 +6593,9 @@ body[data-page="selected"] {
   height: auto;
 }
 
-.selected-camera-meta {
+.selected-camera-meta,
+.selected-model-meta,
+.selected-rendering-meta {
   display: none;
 }
 
@@ -6400,10 +6619,10 @@ body[data-page="selected"] {
 
   body[data-selected-collection="photography"] .selected-scatter.has-items {
     grid-template-columns: repeat(24, minmax(0, 1fr));
-    grid-auto-rows: clamp(30px, 2.7vw, 46px);
+    grid-auto-rows: clamp(36px, 3.2vw, 54px);
     column-gap: clamp(10px, 1vw, 18px);
     row-gap: 0;
-    padding-bottom: clamp(620px, 44vw, 820px);
+    padding-bottom: clamp(700px, 50vw, 940px);
   }
 
   body[data-selected-collection="photography"] .selected-image-card {
@@ -6411,7 +6630,9 @@ body[data-page="selected"] {
     transform: none;
   }
 
-  body[data-selected-collection="photography"] .selected-camera-meta {
+  body[data-selected-collection="photography"] .selected-camera-meta,
+  body[data-selected-collection="models"] .selected-model-meta,
+  body[data-selected-collection="renderings"] .selected-rendering-meta {
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
@@ -6430,12 +6651,44 @@ body[data-page="selected"] {
     transition: opacity 140ms ease, transform 140ms ease;
   }
 
+  body[data-selected-collection="models"] .selected-model-meta strong,
+  body[data-selected-collection="models"] .selected-model-meta span,
+  body[data-selected-collection="renderings"] .selected-rendering-meta span {
+    display: block;
+  }
+
+  body[data-selected-collection="models"] .selected-model-meta strong {
+    font-weight: 600;
+  }
+
+  body[data-selected-collection="renderings"] .selected-exhibit-title {
+    font-weight: 400;
+  }
+
+  body[data-selected-collection="models"] .selected-model-meta span,
+  body[data-selected-collection="renderings"] .selected-rendering-meta span {
+    margin-top: 2px;
+    font-weight: 400;
+  }
+
   body[data-selected-collection="photography"]
     .selected-image-card:hover
     .selected-camera-meta,
   body[data-selected-collection="photography"]
     .selected-image-card:focus-within
-    .selected-camera-meta {
+    .selected-camera-meta,
+  body[data-selected-collection="models"]
+    .selected-image-card:hover
+    .selected-model-meta,
+  body[data-selected-collection="models"]
+    .selected-image-card:focus-within
+    .selected-model-meta,
+  body[data-selected-collection="renderings"]
+    .selected-image-card:hover
+    .selected-rendering-meta,
+  body[data-selected-collection="renderings"]
+    .selected-image-card:focus-within
+    .selected-rendering-meta {
     opacity: 0.62;
     transform: none;
   }
@@ -6539,7 +6792,7 @@ body:has(.nav-folder--selected:focus-within) > footer {
 
   .selected-scatter.has-items {
     grid-template-columns: 1fr;
-    gap: clamp(80px, 18vw, 112px);
+    gap: clamp(110px, 28vw, 170px);
     padding: calc(var(--header-height) + 44px) var(--project-gutter) clamp(90px, 22vw, 140px);
   }
 
@@ -6562,6 +6815,81 @@ body:has(.nav-folder--selected:focus-within) > footer {
     justify-self: start;
   }
 
+  body[data-selected-collection="sketchbook"]
+    .selected-image-card[data-selected-key="img-9544"] {
+    width: 88%;
+  }
+
+  body[data-selected-collection="sketchbook"]
+    .selected-image-card[data-selected-key="img-7841"] {
+    width: 86%;
+  }
+
+  body[data-selected-collection="models"]
+    .selected-image-card:is(
+      [data-selected-key="model-full-shot"],
+      [data-selected-key="speculative-circulation-model"],
+      [data-selected-key="model-01-cropped"],
+      [data-selected-key="do4a0315"],
+      [data-selected-key="main-hero-shot"]
+    ) {
+    width: 100%;
+  }
+
+}
+
+/* Pantry renderings and model photography move as full-height beats on desktop,
+   then keep generous but compact separation on smaller screens. */
+@media (min-width: 901px) {
+  .project-shell[data-project-id="enfield-food-pantry"]
+    .project-story-frame:is(
+      .project-story-frame--enfield-rendering,
+      .project-story-frame--enfield-model-photo
+    ) {
+    box-sizing: border-box;
+    min-height: 100svh;
+    padding-top: clamp(96px, 12vh, 150px);
+    padding-bottom: clamp(96px, 12vh, 150px);
+  }
+
+  .project-shell[data-project-id="enfield-food-pantry"]
+    .project-story-frame--enfield-rendering img {
+    width: min(82vw, 1320px);
+    max-height: 72svh;
+    object-fit: contain;
+  }
+
+  .project-shell[data-project-id="enfield-food-pantry"]
+    .project-story-frame--enfield-model-photo img {
+    width: min(72vw, 1080px);
+    max-height: 72svh;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 900px) {
+  .project-shell[data-project-id="enfield-food-pantry"]
+    .project-story-frame:is(
+      .project-story-frame--enfield-rendering,
+      .project-story-frame--enfield-model-photo
+    ) {
+    min-height: 0;
+    padding-top: clamp(68px, 18vw, 104px);
+    padding-bottom: clamp(68px, 18vw, 104px);
+  }
+
+  .project-shell[data-project-id="enfield-food-pantry"]
+    .project-story-frame:is(
+      .project-story-frame--enfield-rendering,
+      .project-story-frame--enfield-model-photo
+    )
+    img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: none;
+    object-fit: contain;
+  }
 }
 
 /* Text controls mirror the work filters: muted when inactive, full black and underlined when current. */
@@ -6694,4 +7022,18 @@ body[data-page="work"] .icon-button:hover,
 body[data-page="work"] .icon-button:focus-visible {
   color: var(--hover-cyan) !important;
   opacity: 1 !important;
+}
+
+/* Keep primary navigation typography aligned with the Pantry atlas labels. */
+body[data-page] .site-nav .nav-primary-link {
+  font-size: clamp(14px, 1.15vw, 20px);
+  font-weight: 400 !important;
+  text-transform: lowercase;
+}
+
+/* Primary header controls use the light Inter cut; submenu labels remain regular. */
+body[data-page] .site-nav > a.nav-primary-link,
+body[data-page] .site-nav > button,
+body[data-page] .site-nav > .nav-folder > .nav-primary-link {
+  font-weight: 300 !important;
 }

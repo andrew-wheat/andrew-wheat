@@ -211,6 +211,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     "shape": "strata",
     "workThumbnail": "assets/images/Projects/Hunter's Point Cooperative Housing/Model full shot.png",
+    "workThumbnailAlt": "assets/images/work-heroes/hunters-point.webp",
     "workListThumbnail": "assets/images/Projects/Hunter's Point Cooperative Housing/Model full shot.png"
   },
   {
@@ -376,6 +377,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     "shape": "cells",
     "workThumbnail": "assets/images/Projects/Wood Street Pool/hero 2.png",
+    "workThumbnailAlt": "assets/images/work-heroes/wood-street-pool.webp",
     "workListThumbnail": "assets/images/Projects/Wood Street Pool/hero 2.png"
   },
   {
@@ -406,6 +408,64 @@ window.PORTFOLIO_PROJECTS = [
     "heroImage": "Work Cover Photo.png",
     "overviewImage": "Work Cover Photo.png",
     "story": [
+      {
+        "layout": "enfield-atlas",
+        "heading": "Precedent Atlas",
+        "text": "The atlas organizes architectural, artistic, and social precedents through three paired lenses—ordinary/exceptional, singular/collective, and framed/expansive. Comparing how these works transform familiar objects, individual acts, and shared environments helped us translate the pantry brief and rural context into spatial strategies for dignity, collective use, orientation, and belonging.",
+        "groups": [
+          {
+            "heading": "ordinary / exceptional",
+            "items": [
+              {
+                "src": "Atlas/SHIGERU BAN PAPER LOG HOUSE.jpg",
+                "caption": "Shigeru Ban. Paper Log House."
+              },
+              {
+                "src": "Atlas/Screenshot 2025-03-02 124915.png",
+                "caption": "Sarah Wigglesworth. The Disorder of the Dining Table, 2001."
+              },
+              {
+                "src": "Atlas/MEXICO CITY FOOD STALLS.jpg",
+                "caption": "Jordi Ruiz Cirera. Mexico City Food Stalls, 2022."
+              }
+            ]
+          },
+          {
+            "heading": "singular / collective",
+            "items": [
+              {
+                "src": "Atlas/ARCHIZOOM NO STOP CITY.jpg",
+                "caption": "Archizoom Associati. No-Stop City, 1969–1972."
+              },
+              {
+                "src": "Atlas/YOKO ONO WISH TREE REF 02.jpg",
+                "caption": "Yoko Ono. Wish Tree."
+              },
+              {
+                "src": "Atlas/MONOBLOC CHAIR.png",
+                "caption": "Unknown. Monobloc Chair, 1972. Italy."
+              }
+            ]
+          },
+          {
+            "heading": "framed / expansive",
+            "items": [
+              {
+                "src": "Atlas/TSCHUMI MANHATTAN TRANSCRIPTS.jpg",
+                "caption": "Bernard Tschumi. Manhattan Transcripts, 1976–1981."
+              },
+              {
+                "src": "Atlas/YAYOI KUSAMA INFINITY MIRROR ROOMS.jpg",
+                "caption": "Yayoi Kusama. Infinity Mirror Rooms, 2013."
+              },
+              {
+                "src": "Atlas/CHRISTO AND JEANNE-CLAUDE THE GATES REF 02.jpg",
+                "caption": "Christo and Jeanne-Claude. The Gates, 2005."
+              }
+            ]
+          }
+        ]
+      },
       {
         "layout": "story-text",
         "heading": "Landscape Axis",
@@ -455,12 +515,12 @@ window.PORTFOLIO_PROJECTS = [
       {
         "src": "03-25_Long View_Comprehensive tall.png",
         "caption": "Field-edge landscape alignment study.",
-        "layout": "enfield-landscape-single"
+        "layout": "enfield-rendering"
       },
       {
         "src": "ZOOMED OUT RENDER FINAL edited tall.png",
         "caption": "Long field-edge view.",
-        "layout": "enfield-landscape-single"
+        "layout": "enfield-rendering"
       },
       {
         "src": "05-01_Plan.png",
@@ -510,32 +570,32 @@ window.PORTFOLIO_PROJECTS = [
       {
         "src": "3X6A0133 smaller.png",
         "caption": "Public hall and service edge model.",
-        "layout": "image"
+        "layout": "enfield-model-photo"
       },
       {
         "src": "3X6A0190 SMALLER.jpg",
         "caption": "Timber hall model.",
-        "layout": "image"
+        "layout": "enfield-model-photo"
       },
       {
         "src": "3X6A0205.png",
         "caption": "Roof framing model detail.",
-        "layout": "image"
+        "layout": "enfield-model-photo"
       },
       {
         "src": "updated pantry interior.webp",
         "caption": "Warm interior gathering view.",
-        "layout": "enfield-render-large"
+        "layout": "enfield-rendering"
       },
       {
         "src": "3X6A0280 cropped SMALLER.png",
         "caption": "Exterior threshold model.",
-        "layout": "image"
+        "layout": "enfield-model-photo"
       },
       {
         "src": "Work Cover Photo.png",
         "caption": "Exterior threshold view.",
-        "layout": "image"
+        "layout": "enfield-model-photo"
       }
     ],
     "images": [
@@ -571,6 +631,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     "shape": "bar",
     "workThumbnail": "assets/images/Projects/Enfield Food Pantry/3X6A0280 cropped SMALLER.png",
+    "workThumbnailAlt": "assets/images/work-heroes/enfield-food-pantry.webp",
     "workListThumbnail": "assets/images/Projects/Enfield Food Pantry/3X6A0280 cropped SMALLER.png"
   },
   {
@@ -677,6 +738,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     "shape": "archive",
     "workThumbnail": "assets/images/Projects/[de]construct + [re]configure/DO4A0315.png",
+    "workThumbnailAlt": "assets/images/work-heroes/deconstruct-reconfigure.webp",
     "workListThumbnail": "assets/images/Projects/[de]construct + [re]configure/DO4A0315.png"
   },
   {
@@ -968,6 +1030,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     "shape": "grid",
     "workThumbnail": "assets/images/Projects/Design District Canteen/Model Front View Shot 03 reduced.png",
+    "workThumbnailAlt": "assets/images/work-heroes/design-district-canteen.webp",
     "workListThumbnail": "assets/images/Projects/Design District Canteen/Model Front View Shot 03 reduced.png"
   },
   {
