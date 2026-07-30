@@ -59,7 +59,7 @@
             ${availableSelectedCollections
               .map(
                 (collection) =>
-                  `<a class="nav-dropdown-link" data-selected-category="${escapeHtml(collection)}" href="/selected/?collection=${escapeHtml(collection)}">${escapeHtml(collection)}</a>`
+                  `<a class="nav-dropdown-link" data-selected-category="${escapeHtml(collection)}" href="/selected/${escapeHtml(collection)}/">${escapeHtml(collection)}</a>`
               )
               .join("")}
           </div>
@@ -132,8 +132,7 @@
       }
     });
 
-    const selectedCategory =
-      page === "selected" ? new URLSearchParams(window.location.search).get("collection") || "" : "";
+    const selectedCategory = page === "selected" ? selectedCollectionFromLocation() : "";
     document.querySelectorAll(".site-nav [data-selected-category]").forEach((link) => {
       if (selectedCategory && link.dataset.selectedCategory === selectedCategory) {
         link.setAttribute("aria-current", "page");
@@ -160,7 +159,7 @@
     }
 
     const collections = new Set(selectedCollectionOrder);
-    const requestedCollection = new URLSearchParams(window.location.search).get("collection") || "";
+    const requestedCollection = selectedCollectionFromLocation();
     const collection = collections.has(requestedCollection) ? requestedCollection : "";
     const label = collection || "selected";
     const title = shell.querySelector("[data-selected-title]");
@@ -341,6 +340,7 @@
             }
           });
         });
+      canvas.classList.remove("selected-crawl-list");
       canvas.classList.add("has-items");
       canvas.innerHTML = arrangedItems
         .map(({ item, layout }, index) => {
@@ -446,13 +446,30 @@
       "/index.html": "/",
       "/work.html": "/work/",
       "/about.html": "/about/",
-      "/contact.html": "/contact/"
+      "/contact.html": "/contact/",
+      "/selected/index.html": "/selected/"
     };
     let cleanPath = legacyRoutes[url.pathname];
 
+    const selectedIndexMatch = url.pathname.match(
+      /^\/selected\/(models|photography|sketchbook|renderings)\/index\.html$/
+    );
+    if (selectedIndexMatch) {
+      cleanPath = `/selected/${selectedIndexMatch[1]}/`;
+    }
+
+    const legacySelectedCollection = url.searchParams.get("collection") || "";
+    if (
+      ["/selected/", "/selected/index.html"].includes(url.pathname) &&
+      selectedCollectionOrder.includes(legacySelectedCollection)
+    ) {
+      cleanPath = `/selected/${legacySelectedCollection}/`;
+      url.searchParams.delete("collection");
+    }
+
     if (url.pathname === "/project.html") {
       const id = canonicalProjectId(url.searchParams.get("id") || "");
-      if (id) {
+      if (id && allProjects.some((project) => project.id === id)) {
         cleanPath = projectUrl(id);
         url.searchParams.delete("id");
       } else {
@@ -467,6 +484,17 @@
     if (!cleanPath) return;
     const cleanUrl = `${url.origin}${cleanPath}${url.search}${url.hash}`;
     window.location.replace(cleanUrl);
+  }
+
+  function selectedCollectionFromLocation() {
+    const pathMatch = window.location.pathname.match(
+      /^\/selected\/(models|photography|sketchbook|renderings)\/(?:index\.html)?$/
+    );
+    if (pathMatch && selectedCollectionOrder.includes(pathMatch[1])) {
+      return pathMatch[1];
+    }
+    const queryCollection = new URLSearchParams(window.location.search).get("collection") || "";
+    return selectedCollectionOrder.includes(queryCollection) ? queryCollection : "";
   }
 
   const projectSeo = {
@@ -519,11 +547,6 @@
       title: "Woven Pavilion | Andrew Wheat",
       description: "Pavilion project by Andrew Wheat exploring enclosure, light, assembly, texture, and temporary public space.",
       keywords: ["pavilion", "enclosure", "light", "assembly", "texture", "temporary public space"]
-    },
-    "ephemeral-diptypque": {
-      title: "Ephemeral Diptyque | Andrew Wheat",
-      description: "Architecture and image sequence study by Andrew Wheat exploring atmosphere, temporality, pairing, and architectural reading.",
-      keywords: ["Ephemeral Diptyque", "image sequence", "atmosphere", "temporality", "architectural reading"]
     }
   };
 
@@ -2019,21 +2042,18 @@
 
   function canonicalProjectId(id) {
     const aliases = {
-      "hunters-point-housing": "hunters-point",
-      "ephemeral-diptyque": "ephemeral-diptypque"
+      "hunters-point-housing": "hunters-point"
     };
     return aliases[id] || id;
   }
 
   function projectUrl(id) {
-    const pageId = id === "ephemeral-diptypque" ? "ephemeral-diptyque" : id;
-    return `/project/${encodeURIComponent(pageId)}/`;
+    return `/project/${encodeURIComponent(id)}/`;
   }
 
   function setProjectMeta(project) {
     const seo = projectSeo[project.id] || {};
-    const pageId = project.id === "ephemeral-diptypque" ? "ephemeral-diptyque" : project.id;
-    const pageUrl = `https://andrew-wheat.com/project/${encodeURIComponent(pageId)}/`;
+    const pageUrl = `https://andrew-wheat.com/project/${encodeURIComponent(project.id)}/`;
     const title = seo.title || `${project.title} | Andrew Wheat`;
     const description = seo.description || project.summary || project.description || "Architecture project by Andrew Wheat.";
     const keywords = projectKeywords(project, seo).join(", ");

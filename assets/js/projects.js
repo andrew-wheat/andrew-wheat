@@ -1374,6 +1374,7 @@ window.ARCHIVED_PORTFOLIO_PROJECTS = [
   },
   {
     "id": "ephemeral-diptypque",
+    "siteHidden": true,
     "workCategory": "Academic",
     "title": "Ephemeral Diptyque",
     "year": "2024",

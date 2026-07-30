@@ -10,6 +10,10 @@ This is Andrew Wheat's canonical portfolio and biography source.
 - [Work](https://andrew-wheat.com/work/): Public architecture work, drawings, models, and design research.
 - [About Andrew Wheat](https://andrew-wheat.com/about/): Biography, education, professional experience, academic work, skills, and awards.
 - [Contact Andrew Wheat](https://andrew-wheat.com/contact/): Professional contact information and verified LinkedIn profile.
+- [Architectural Models](https://andrew-wheat.com/selected/models/): Selected physical models, material studies, and fabrication work.
+- [Photography](https://andrew-wheat.com/selected/photography/): Selected architectural and observational photography.
+- [Sketchbook](https://andrew-wheat.com/selected/sketchbook/): Selected sketches, drawings, and design studies.
+- [Architectural Renderings](https://andrew-wheat.com/selected/renderings/): Selected architectural visualization work.
 
 ## Identity
 

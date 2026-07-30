@@ -1,11 +1,11 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { runInNewContext } from "node:vm";
 
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
-const TODAY = "2026-07-25";
-const ASSET_VERSION = "20260728-about-external-tabs-v95";
+const TODAY = "2026-07-28";
+const ASSET_VERSION = "20260728-crawlable-selected-routes-v96";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -66,6 +66,32 @@ const TECHNICAL_SKILL_GROUPS = [
     ],
   },
 ];
+const SELECTED_COLLECTION_META = {
+  models: {
+    title: "Architectural Models | Andrew Wheat",
+    heading: "models",
+    description:
+      "Selected architectural models by Andrew Wheat, including physical models, material studies, fabrication, and assembly.",
+  },
+  photography: {
+    title: "Photography | Andrew Wheat",
+    heading: "photography",
+    description:
+      "Selected architectural and observational photography by Andrew Wheat, documenting buildings, landscapes, materials, and atmosphere.",
+  },
+  sketchbook: {
+    title: "Sketchbook | Andrew Wheat",
+    heading: "sketchbook",
+    description:
+      "Selected sketches and architectural drawings by Andrew Wheat, tracing design studies, plans, spatial observations, and working ideas.",
+  },
+  renderings: {
+    title: "Architectural Renderings | Andrew Wheat",
+    heading: "renderings",
+    description:
+      "Selected architectural renderings by Andrew Wheat, including interior, exterior, atmospheric, and visualization studies.",
+  },
+};
 const ROBOTS_INDEX =
   "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 const PROJECT_SEO = {
@@ -119,11 +145,6 @@ const PROJECT_SEO = {
     description:
       "Cornell architecture work by Andrew Wheat developed for the York Prize, including drawings, models, and architectural design research.",
   },
-  "ephemeral-diptypque": {
-    title: "Ephemeral Diptyque | Andrew Wheat",
-    description:
-      "Architecture and image sequence study by Andrew Wheat exploring atmosphere, temporality, pairing, and architectural reading.",
-  },
 };
 
 const projectContext = { window: {} };
@@ -137,6 +158,16 @@ const archivedProjects = (projectContext.window.ARCHIVED_PORTFOLIO_PROJECTS ?? [
   (project) => !project.siteHidden,
 );
 const publicProjectIds = new Set(publicProjects.map((project) => project.id));
+
+const selectedContext = { window: {} };
+runInNewContext(
+  await readFile(`${ROOT}/assets/js/selected-collections.js`, "utf8"),
+  selectedContext,
+);
+const selectedCollections = selectedContext.window.SELECTED_COLLECTIONS ?? {};
+const selectedCollectionOrder = ["models", "photography", "sketchbook", "renderings"].filter(
+  (collection) => Array.isArray(selectedCollections[collection]),
+);
 
 const normalizeInterfaceLanguage = (content) =>
   String(content)
@@ -202,8 +233,7 @@ ${Array.from(
           </div>
         </section>`;
 
-const pageIdForProject = (project) =>
-  project.id === "ephemeral-diptypque" ? "ephemeral-diptyque" : project.id;
+const pageIdForProject = (project) => project.id;
 
 const projectUrl = (project) =>
   `${ORIGIN}/project/${encodeURIComponent(pageIdForProject(project))}/`;
@@ -440,9 +470,24 @@ function buildHead({
 
 const brandMark = `<svg class="brand-mark" viewBox="0 0 939 350" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="194" y="0" width="154" height="95"/><rect x="391" y="0" width="154" height="95"/><rect x="588" y="0" width="154" height="95"/><rect x="785" y="0" width="154" height="95"/><rect x="93" y="95" width="255" height="59"/><rect x="391" y="95" width="548" height="59"/><rect x="93" y="154" width="154" height="42"/><rect x="490" y="154" width="154" height="42"/><rect x="687" y="154" width="154" height="42"/><rect x="0" y="196" width="348" height="53"/><rect x="391" y="196" width="253" height="53"/><rect x="687" y="196" width="252" height="53"/><rect x="0" y="249" width="154" height="101"/><rect x="194" y="249" width="154" height="101"/><rect x="391" y="249" width="154" height="101"/><rect x="785" y="249" width="154" height="101"/></g></svg>`;
 
-const siteHeader = (active = "") => `    <header class="site-header static-header" aria-label="Primary navigation">
+const siteHeader = (active = "", selectedCollection = "") => `    <header class="site-header static-header" aria-label="Primary navigation">
       <a class="brand" href="/" aria-label="Andrew Wheat home">${brandMark}<span>Andrew Wheat</span></a>
       <nav class="site-nav">
+        <div class="nav-folder nav-folder--selected">
+          <button class="nav-primary-link nav-folder-trigger" type="button" data-nav-section="selected"${
+            active === "selected" ? ' aria-current="page"' : ""
+          } aria-expanded="false" aria-haspopup="true">selected</button>
+          <div class="nav-dropdown" aria-label="Selected collections">
+            ${selectedCollectionOrder
+              .map(
+                (collection) =>
+                  `<a class="nav-dropdown-link" data-selected-category="${escapeHtml(collection)}"${
+                    selectedCollection === collection ? ' aria-current="page"' : ""
+                  } href="/selected/${escapeHtml(collection)}/">${escapeHtml(collection)}</a>`,
+              )
+              .join("\n            ")}
+          </div>
+        </div>
         <a class="nav-primary-link" data-nav-section="work"${
           active === "work" ? ' aria-current="page"' : ""
         } href="/work/">work</a>
@@ -507,6 +552,126 @@ function staticProjectCards(projects) {
         </a>`;
     })
     .join("\n");
+}
+
+const selectedCollectionUrl = (collection) =>
+  `${ORIGIN}/selected/${encodeURIComponent(collection)}/`;
+
+const selectedCollectionImage = (collection) => {
+  const firstItem = selectedCollections[collection]?.[0];
+  return absoluteUrl(firstItem?.src || HEADSHOT_4X3);
+};
+
+function selectedCollectionSchema(collection) {
+  const meta = SELECTED_COLLECTION_META[collection];
+  const items = selectedCollections[collection] || [];
+  const url = selectedCollectionUrl(collection);
+  return [
+    personNode(),
+    websiteNode(),
+    {
+      "@type": ["CollectionPage", "ImageGallery"],
+      "@id": `${url}#webpage`,
+      url,
+      name: meta.title,
+      description: meta.description,
+      isPartOf: { "@id": WEBSITE_ID },
+      author: { "@id": PERSON_ID },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        contentUrl: selectedCollectionImage(collection),
+      },
+      hasPart: items.map((item, index) => ({
+        "@type": "ImageObject",
+        position: index + 1,
+        contentUrl: absoluteUrl(item.src),
+        caption: item.captionTitle || item.title || meta.heading,
+        creator: { "@id": PERSON_ID },
+      })),
+    },
+    breadcrumbNode([
+      { name: "Home", url: `${ORIGIN}/` },
+      { name: "Selected", url: `${ORIGIN}/selected/` },
+      { name: meta.heading, url },
+    ]),
+  ];
+}
+
+function selectedCollectionPage(collection) {
+  const meta = SELECTED_COLLECTION_META[collection];
+  const items = selectedCollections[collection] || [];
+  const canonical = selectedCollectionUrl(collection);
+  const image = selectedCollectionImage(collection);
+  return `<!doctype html>
+<html lang="en">
+${buildHead({
+  title: meta.title,
+  description: meta.description,
+  canonical,
+  image,
+  imageAlt: `${meta.heading} by Andrew Wheat`,
+  schema: selectedCollectionSchema(collection),
+})}
+  <body data-page="selected" data-selected-collection="${escapeHtml(collection)}">
+    <a class="skip-link" href="#selected-collection">Skip to ${escapeHtml(meta.heading)}</a>
+${siteHeader("selected", collection)}
+    <main class="selected-shell" id="selected-collection" data-selected-shell>
+      <h1 class="selected-page-title" data-selected-title>${escapeHtml(meta.heading)}</h1>
+      <p class="selected-status" data-selected-status>${escapeHtml(meta.description)}</p>
+      <section class="selected-scatter selected-crawl-list has-items" data-selected-canvas aria-label="${escapeHtml(meta.heading)} collection">
+${items
+  .map((item, index) => {
+    const caption = item.captionTitle || item.title || meta.heading;
+    return `        <figure class="selected-image-card" data-selected-key="${escapeHtml(item.key || String(index + 1))}">
+          <img src="${escapeHtml(item.src)}" alt="${escapeHtml(`${caption} by Andrew Wheat`)}" width="${Number(item.width) || 1}" height="${Number(item.height) || 1}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
+          <figcaption class="selected-crawl-caption">${escapeHtml(caption)}</figcaption>
+        </figure>`;
+  })
+  .join("\n")}
+      </section>
+    </main>
+${siteFooter}
+${scriptTags()}
+  </body>
+</html>
+`;
+}
+
+function selectedHubPage() {
+  const title = "Selected Work | Andrew Wheat";
+  const description =
+    "Browse selected architectural models, photography, sketchbook work, and renderings by Andrew Wheat.";
+  return `<!doctype html>
+<html lang="en">
+${buildHead({
+  title,
+  description,
+  canonical: `${ORIGIN}/selected/`,
+  image: selectedCollectionImage("models"),
+  imageAlt: "Selected work by Andrew Wheat",
+  robots: "noindex, follow",
+  schema: [personNode(), websiteNode()],
+})}
+  <body data-page="selected">
+    <a class="skip-link" href="#selected-collection">Skip to selected collections</a>
+${siteHeader("selected")}
+    <main class="selected-shell" id="selected-collection" data-selected-shell>
+      <h1 class="selected-page-title" data-selected-title>selected</h1>
+      <p class="selected-status" data-selected-status>${escapeHtml(description)}</p>
+      <nav class="selected-directory" aria-label="Selected collections">
+${selectedCollectionOrder
+  .map(
+    (collection) =>
+      `        <a href="/selected/${escapeHtml(collection)}/">${escapeHtml(SELECTED_COLLECTION_META[collection].heading)}</a>`,
+  )
+  .join("\n")}
+      </nav>
+    </main>
+${siteFooter}
+${scriptTags()}
+  </body>
+</html>
+`;
 }
 
 function homePage() {
@@ -830,14 +995,6 @@ function staticProjectMain(project) {
     </main>`;
 }
 
-async function rewriteHead(file, head) {
-  const source = await readFile(file, "utf8");
-  if (!/<head>[\s\S]*?<\/head>/i.test(source)) {
-    throw new Error(`No <head> found in ${file}`);
-  }
-  await writeClean(file, source.replace(/  <head>[\s\S]*?  <\/head>/i, head));
-}
-
 async function rewriteProjectPage(project, { indexable }) {
   const slug = pageIdForProject(project);
   const file = `${ROOT}/project/${slug}/index.html`;
@@ -859,6 +1016,10 @@ async function rewriteProjectPage(project, { indexable }) {
   });
   let source = await readFile(file, "utf8");
   source = source.replace(/  <head>[\s\S]*?  <\/head>/i, head);
+  source = source.replace(
+    /    <header class="site-header[\s\S]*?    <\/header>/i,
+    siteHeader("work"),
+  );
   source = source.replace(
     /    <main class="project-shell[\s\S]*?    <\/main>/i,
     staticProjectMain(project),
@@ -895,6 +1056,10 @@ async function updateWorkPage(file) {
     }),
   );
   source = source.replace(
+    /    <header class="site-header[\s\S]*?    <\/header>/i,
+    siteHeader("work"),
+  );
+  source = source.replace(
     /      <section class="work-catalogue[\s\S]*?      <\/section>/i,
     `      <section class="work-catalogue reveal visible" id="work-catalogue" data-work-catalogue data-view="grid" aria-label="Architecture work by Andrew Wheat">
 ${staticProjectCards(publicProjects)}
@@ -922,6 +1087,10 @@ async function updateAboutPage(file) {
       schema: aboutSchema(),
       profile: true,
     }),
+  );
+  source = source.replace(
+    /    <header class="site-header[\s\S]*?    <\/header>/i,
+    siteHeader("about"),
   );
   source = source.replace(
     /        <div class="about-statement">[\s\S]*?        <\/div>\s*      <\/section>/i,
@@ -994,6 +1163,10 @@ async function updateContactPage(file) {
     }),
   );
   source = source.replace(
+    /    <header class="site-header[\s\S]*?    <\/header>/i,
+    siteHeader("contact"),
+  );
+  source = source.replace(
     /href="https:\/\/www\.linkedin\.com\/in\/andrewwheat"/g,
     `href="${LINKEDIN}"`,
   );
@@ -1022,6 +1195,11 @@ function sitemapXml() {
       image: HEADSHOT_4X3,
       imageTitle: "Andrew Wheat",
     },
+    ...selectedCollectionOrder.map((collection) => ({
+      url: selectedCollectionUrl(collection),
+      image: selectedCollectionImage(collection),
+      imageTitle: `${SELECTED_COLLECTION_META[collection].heading} by Andrew Wheat`,
+    })),
     ...publicProjects.map((project) => ({
       url: projectUrl(project),
       image: representativeImage(project),
@@ -1059,6 +1237,10 @@ This is Andrew Wheat's canonical portfolio and biography source.
 - [Work](${ORIGIN}/work/): Public architecture work, drawings, models, and design research.
 - [About Andrew Wheat](${ORIGIN}/about/): Biography, education, professional experience, academic work, skills, and awards.
 - [Contact Andrew Wheat](${ORIGIN}/contact/): Professional contact information and verified LinkedIn profile.
+- [Architectural Models](${ORIGIN}/selected/models/): Selected physical models, material studies, and fabrication work.
+- [Photography](${ORIGIN}/selected/photography/): Selected architectural and observational photography.
+- [Sketchbook](${ORIGIN}/selected/sketchbook/): Selected sketches, drawings, and design studies.
+- [Architectural Renderings](${ORIGIN}/selected/renderings/): Selected architectural visualization work.
 
 ## Identity
 
@@ -1217,6 +1399,35 @@ ${scriptTags(false)}
 `;
 }
 
+function legacyProjectIndexPage() {
+  return `<!doctype html>
+<html lang="en">
+${noIndexHead({
+  title: "Work | Andrew Wheat",
+  canonical: `${ORIGIN}/work/`,
+  description: "Browse architecture work by Andrew Wheat.",
+})}
+  <body data-page="project">
+    <a class="skip-link" href="#main">Skip to work</a>
+${siteHeader("work")}
+    <main class="page-shell error-shell" id="main">
+      <section class="error-page">
+        <div class="error-content">
+          <h1>work has moved</h1>
+          <p>Browse the current architecture portfolio on the Work page.</p>
+          <nav class="error-links" aria-label="Continue browsing">
+            <a href="/work/">view work</a>
+          </nav>
+        </div>
+      </section>
+    </main>
+${siteFooter}
+${scriptTags(false)}
+  </body>
+</html>
+`;
+}
+
 await writeClean(`${ROOT}/index.html`, homePage());
 
 for (const file of [`${ROOT}/work/index.html`, `${ROOT}/work.html`]) {
@@ -1231,6 +1442,13 @@ for (const file of [`${ROOT}/contact/index.html`, `${ROOT}/contact.html`]) {
   await updateContactPage(file);
 }
 
+await writeClean(`${ROOT}/selected/index.html`, selectedHubPage());
+for (const collection of selectedCollectionOrder) {
+  const directory = `${ROOT}/selected/${collection}`;
+  await mkdir(directory, { recursive: true });
+  await writeClean(`${directory}/index.html`, selectedCollectionPage(collection));
+}
+
 for (const project of publicProjects) {
   await rewriteProjectPage(project, { indexable: true });
 }
@@ -1241,14 +1459,7 @@ for (const project of archivedProjects) {
 }
 
 for (const file of [`${ROOT}/project.html`, `${ROOT}/project/index.html`]) {
-  await rewriteHead(
-    file,
-    noIndexHead({
-      title: "Work | Andrew Wheat",
-      canonical: `${ORIGIN}/work/`,
-      description: "Browse architecture work by Andrew Wheat.",
-    }),
-  );
+  await writeClean(file, legacyProjectIndexPage());
 }
 
 await writeClean(
@@ -1276,6 +1487,9 @@ const allHtmlFiles = [
   "contact/index.html",
   "project/index.html",
   "selected/index.html",
+  ...selectedCollectionOrder.map(
+    (collection) => `selected/${collection}/index.html`,
+  ),
   ...publicProjects.map(
     (project) => `project/${pageIdForProject(project)}/index.html`,
   ),

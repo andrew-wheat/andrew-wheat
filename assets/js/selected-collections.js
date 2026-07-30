@@ -120,6 +120,13 @@ window.SELECTED_COLLECTIONS = {
   ],
   "photography": [
     {
+      "key": "ajw288-andrew-wheat-week-12-image-9",
+      "src": "/assets/images/selected/photography/ajw288-andrew-wheat-week-12-image-9-4ed45f69.webp",
+      "title": "Photography",
+      "width": 2000,
+      "height": 1333
+    },
+    {
       "key": "img-0587",
       "src": "/assets/images/selected/photography/img-0587-fba99bff.webp",
       "title": "Photography",
@@ -165,22 +172,6 @@ window.SELECTED_COLLECTIONS = {
         "fNumber": 5,
         "iso": 100,
         "focalLength": 18
-      }
-    },
-    {
-      "key": "img-0982",
-      "src": "/assets/images/selected/photography/img-0982-a880eb00.webp",
-      "title": "Photography",
-      "width": 2000,
-      "height": 1333,
-      "camera": {
-        "make": "Canon",
-        "model": "Canon EOS R50",
-        "lens": "RF-S18-45mm F4.5-6.3 IS STM",
-        "exposureTime": 0.0015625,
-        "fNumber": 5,
-        "iso": 100,
-        "focalLength": 25
       }
     },
     {

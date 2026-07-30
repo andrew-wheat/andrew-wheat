@@ -37,7 +37,7 @@
     <meta name="twitter:image" content="https://andrew-wheat.com/assets/images/seo/andrew-wheat-portrait-4x3.jpg">
     <meta name="twitter:image:alt" content="Portrait of Andrew Wheat">
 
-    <link rel="stylesheet" href="/assets/css/styles.css?v=20260728-about-external-tabs-v95">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=20260728-crawlable-selected-routes-v96">
     <script id="site-schema" type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -196,7 +196,7 @@
       "breadcrumb": {
         "@id": "https://andrew-wheat.com/contact/#breadcrumb"
       },
-      "dateModified": "2026-07-25"
+      "dateModified": "2026-07-28"
     },
     {
       "@type": "BreadcrumbList",
@@ -227,9 +227,23 @@
     <header class="site-header static-header" aria-label="Primary navigation">
       <a class="brand" href="/" aria-label="Andrew Wheat home"><svg class="brand-mark" viewBox="0 0 939 350" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="194" y="0" width="154" height="95"/><rect x="391" y="0" width="154" height="95"/><rect x="588" y="0" width="154" height="95"/><rect x="785" y="0" width="154" height="95"/><rect x="93" y="95" width="255" height="59"/><rect x="391" y="95" width="548" height="59"/><rect x="93" y="154" width="154" height="42"/><rect x="490" y="154" width="154" height="42"/><rect x="687" y="154" width="154" height="42"/><rect x="0" y="196" width="348" height="53"/><rect x="391" y="196" width="253" height="53"/><rect x="687" y="196" width="252" height="53"/><rect x="0" y="249" width="154" height="101"/><rect x="194" y="249" width="154" height="101"/><rect x="391" y="249" width="154" height="101"/><rect x="785" y="249" width="154" height="101"/></g></svg><span>Andrew Wheat</span></a>
       <nav class="site-nav">
-        <a href="/work/">work</a>
-        <a href="/about/">About</a>
-        <a aria-current="page" href="/contact/">Contact</a>
+        <div class="nav-folder nav-folder--selected">
+          <button class="nav-primary-link nav-folder-trigger" type="button" data-nav-section="selected" aria-expanded="false" aria-haspopup="true">selected</button>
+          <div class="nav-dropdown" aria-label="Selected collections">
+            <a class="nav-dropdown-link" data-selected-category="models" href="/selected/models/">models</a>
+            <a class="nav-dropdown-link" data-selected-category="photography" href="/selected/photography/">photography</a>
+            <a class="nav-dropdown-link" data-selected-category="sketchbook" href="/selected/sketchbook/">sketchbook</a>
+            <a class="nav-dropdown-link" data-selected-category="renderings" href="/selected/renderings/">renderings</a>
+          </div>
+        </div>
+        <a class="nav-primary-link" data-nav-section="work" href="/work/">work</a>
+        <div class="nav-folder nav-folder--info">
+          <button class="nav-primary-link nav-folder-trigger" type="button" data-nav-section="info" aria-current="page" aria-expanded="false" aria-haspopup="true">info</button>
+          <div class="nav-dropdown" aria-label="Information">
+            <a class="nav-dropdown-link" data-info-page="about" href="/about/">about</a>
+            <a class="nav-dropdown-link" data-info-page="contact" aria-current="page" href="/contact/">contact</a>
+          </div>
+        </div>
       </nav>
     </header>
 
@@ -263,9 +277,9 @@
       &copy; Andrew Wheat 2026
     </footer>
 
-    <script src="/assets/js/projects.js?v=20260728-about-external-tabs-v95"></script>
-    <script src="/assets/js/selected-collections.js?v=20260728-about-external-tabs-v95"></script>
-    <script src="/assets/js/main.js?v=20260728-about-external-tabs-v95"></script>
+    <script src="/assets/js/projects.js?v=20260728-crawlable-selected-routes-v96"></script>
+    <script src="/assets/js/selected-collections.js?v=20260728-crawlable-selected-routes-v96"></script>
+    <script src="/assets/js/main.js?v=20260728-crawlable-selected-routes-v96"></script>
   </body>
 </html>
 

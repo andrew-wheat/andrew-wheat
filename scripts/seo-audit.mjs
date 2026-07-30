@@ -107,6 +107,10 @@ for (const path of [
   "/work/",
   "/about/",
   "/contact/",
+  "/selected/models/",
+  "/selected/photography/",
+  "/selected/sketchbook/",
+  "/selected/renderings/",
   "/project/hunters-point/",
   "/project/wood-street-pool/",
   "/project/enfield-food-pantry/",
@@ -124,10 +128,23 @@ for (const path of [
 for (const hiddenPath of [
   "/selected/",
   "/project/york-prize/",
-  "/project/ephemeral-diptyque/",
 ]) {
   if (sitemapUrls.includes(`${canonicalOrigin}${hiddenPath}`)) {
     errors.push(`sitemap.xml includes non-indexable route ${hiddenPath}`);
+  }
+}
+
+for (const retiredPath of [
+  "/project/ephemeral-diptyque/",
+  "/project/ephemeral-diptypque/",
+  "/project/sustainable-education/",
+]) {
+  const response = await fetch(`${requestedBase}${retiredPath}`, {
+    redirect: "manual",
+    headers: { "user-agent": "Googlebot/2.1" },
+  });
+  if (![404, 410].includes(response.status)) {
+    errors.push(`Retired route ${retiredPath} returned ${response.status}, expected 404 or 410`);
   }
 }
 
