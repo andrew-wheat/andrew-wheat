@@ -7181,6 +7181,15 @@ body:has(.nav-folder--selected:focus-within) > footer {
     justify-self: start;
   }
 
+  body[data-selected-collection="photography"]
+    .selected-image-card:is(
+      [data-selected-key="ajw288-andrew-wheat-week-12-image-9"],
+      [data-selected-key="img-0767"]
+    ) {
+    width: 76%;
+    justify-self: center;
+  }
+
   body[data-selected-collection="sketchbook"]
     .selected-image-card[data-selected-key="img-9544"] {
     width: 88%;

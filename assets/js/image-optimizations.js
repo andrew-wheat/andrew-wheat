@@ -79,13 +79,9 @@ window.PORTFOLIO_OPTIMIZED_IMAGES = {
   "assets/images/Projects/Wood Street Pool/3.png": "assets/images/optimized/3-cfb29b0d82.webp",
   "assets/images/Projects/Wood Street Pool/4.png": "assets/images/optimized/4-371c079f07.webp",
   "assets/images/Projects/Wood Street Pool/ENVIRONMENTAL SECTION.png": "assets/images/optimized/environmental-section-7ce30aac29.webp",
-  "assets/images/Projects/Wood Street Pool/FP3.png": "assets/images/optimized/fp3-9d1f59fba7.webp",
   "assets/images/Projects/Wood Street Pool/Ground Floor Plan.jpg": "assets/images/optimized/ground-floor-plan-385c196ede.webp",
   "assets/images/Projects/Wood Street Pool/hero 2.png": "assets/images/optimized/hero-2-b77ffeda0a.webp",
   "assets/images/Projects/Wood Street Pool/hero.png": "assets/images/optimized/hero-5c9e3444de.webp",
-  "assets/images/Projects/Wood Street Pool/long-elevation-cropped.png": "assets/images/optimized/long-elevation-cropped-047b2541ab.webp",
-  "assets/images/Projects/Wood Street Pool/short-elevation.png": "assets/images/optimized/short-elevation-efc0615cf0.webp",
-  "assets/images/Projects/Wood Street Pool/short-section.png": "assets/images/optimized/short-section-ef7896d8f0.webp",
   "assets/images/Projects/Woven Pavilion/20231127_Andrew Wheat_A04_Folley_01.02.jpg": "assets/images/optimized/20231127-andrew-wheat-a04-folley-01-02-a76f52bd5c.webp",
   "assets/images/Projects/Woven Pavilion/20231127_Andrew Wheat_A04_Folley_01.03.jpg": "assets/images/optimized/20231127-andrew-wheat-a04-folley-01-03-71c6853ac7.webp",
   "assets/images/Projects/Woven Pavilion/20231127_Andrew Wheat_A04_Folley_01.04.jpg": "assets/images/optimized/20231127-andrew-wheat-a04-folley-01-04-754da4e9c5.webp",
@@ -417,7 +413,7 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     540,
     576
   ],
-  "assets/images/Projects/Hunter's Point Cooperative Housing/Figure Ground Plan.svg": [
+  "assets/images/Projects/Hunter's Point Cooperative Housing/Figure Ground Plan render.png": [
     4200,
     4200
   ],
@@ -429,7 +425,7 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     7200,
     4200
   ],
-  "assets/images/Projects/Hunter's Point Cooperative Housing/Ground Floor Plan.svg": [
+  "assets/images/Projects/Hunter's Point Cooperative Housing/Ground Floor Plan render.png": [
     4200,
     2100
   ],
@@ -437,15 +433,15 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     540,
     576
   ],
-  "assets/images/Projects/Hunter's Point Cooperative Housing/Long Elevation.svg": [
+  "assets/images/Projects/Hunter's Point Cooperative Housing/Long Elevation render.png": [
     4200,
     1000
   ],
-  "assets/images/Projects/Hunter's Point Cooperative Housing/Long Section.svg": [
+  "assets/images/Projects/Hunter's Point Cooperative Housing/Long Section render.png": [
     4200,
     1000
   ],
-  "assets/images/Projects/Hunter's Point Cooperative Housing/Long Site Section.svg": [
+  "assets/images/Projects/Hunter's Point Cooperative Housing/Long Site Section render.png": [
     4200,
     1000
   ],
@@ -457,7 +453,7 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     1254,
     1254
   ],
-  "assets/images/Projects/Hunter's Point Cooperative Housing/Section Perspective.svg": [
+  "assets/images/Projects/Hunter's Point Cooperative Housing/Section Perspective render.png": [
     4200,
     2100
   ],
@@ -469,7 +465,7 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     5333,
     3000
   ],
-  "assets/images/Projects/Hunter's Point Cooperative Housing/Upper Floor Plan.svg": [
+  "assets/images/Projects/Hunter's Point Cooperative Housing/Upper Floor Plan render.png": [
     4200,
     1000
   ],
@@ -521,9 +517,9 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     12000,
     12300
   ],
-  "assets/images/Projects/Wood Street Pool/detail-sheet.svg": [
-    8820,
-    10080
+  "assets/images/Projects/Wood Street Pool/ground-floor-plan-high-res.png": [
+    9000,
+    9225
   ],
   "assets/images/Projects/Wood Street Pool/hero 2.png": [
     3840,
@@ -537,21 +533,9 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     12600,
     3000
   ],
-  "assets/images/Projects/Wood Street Pool/long-elevation-cropped.svg": [
-    10080,
-    2268
-  ],
-  "assets/images/Projects/Wood Street Pool/short-elevation-cropped.svg": [
-    7560,
-    2268
-  ],
   "assets/images/Projects/Wood Street Pool/short-elevation.png": [
     9000,
     3000
-  ],
-  "assets/images/Projects/Wood Street Pool/short-section.svg": [
-    7560,
-    2520
   ],
   "assets/images/Projects/Wood Street Pool/short-section.png": [
     7800,
@@ -637,7 +621,7 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     6720,
     3780
   ],
-  "assets/images/Projects/[de]construct + [re]configure/back-elevation.svg": [
+  "assets/images/Projects/[de]construct + [re]configure/back-elevation.png": [
     3780,
     3780
   ],
@@ -645,15 +629,15 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     2842,
     1237
   ],
-  "assets/images/Projects/[de]construct + [re]configure/front-elevation.svg": [
+  "assets/images/Projects/[de]construct + [re]configure/front-elevation.png": [
     3780,
     3780
   ],
-  "assets/images/Projects/[de]construct + [re]configure/plan.svg": [
+  "assets/images/Projects/[de]construct + [re]configure/plan.png": [
     3780,
     3780
   ],
-  "assets/images/Projects/[de]construct + [re]configure/side-elevation.svg": [
+  "assets/images/Projects/[de]construct + [re]configure/side-elevation.png": [
     3780,
     3780
   ],

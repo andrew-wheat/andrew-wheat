@@ -231,18 +231,17 @@
         { key: "hero-2", row: 13, col: 1, span: 7, offset: "0px", max: "900px", align: "start" }
       ],
       photography: [
-        { key: "img-2793-2", row: 1, col: 3, span: 15, offset: "0px", max: "1040px", align: "start" },
+        { key: "img-2793-2", row: 1, col: 2, span: 18, offset: "0px", max: "1240px", align: "start" },
         { key: "img-2778", row: 19, col: 14, span: 10, offset: "0px", max: "700px", align: "end" },
         { key: "img-2697", row: 38, col: 16, span: 9, offset: "0px", max: "660px", align: "end" },
         { key: "img-2273", row: 43, col: 1, span: 13, offset: "0px", max: "900px", align: "start" },
         { key: "img-2623", row: 61, col: 11, span: 14, offset: "0px", max: "980px", align: "end" },
-        { key: "img-0982", row: 82, col: 4, span: 17, offset: "0px", max: "1180px", align: "start" },
+        { key: "ajw288-andrew-wheat-week-12-image-9", row: 82, col: 7, span: 12, offset: "0px", max: "840px", align: "start" },
         { key: "img-2003", row: 103, col: 15, span: 10, offset: "0px", max: "700px", align: "end" },
         { key: "img-0915", row: 108, col: 1, span: 11, offset: "0px", max: "760px", align: "start" },
         { key: "img-9549", row: 126, col: 14, span: 11, offset: "0px", max: "760px", align: "end" },
-        { key: "img-0587", row: 141, col: 1, span: 24, offset: "0px", max: "880px", align: "center" },
-        { key: "img-0767", row: 161, col: 12, span: 13, offset: "0px", max: "900px", align: "end" },
-        { key: "img-1590", row: 179, col: 1, span: 17, offset: "0px", max: "1180px", align: "start" }
+        { key: "img-0767", row: 145, col: 13, span: 12, offset: "0px", max: "840px", align: "end" },
+        { key: "img-1590", row: 164, col: 1, span: 17, offset: "0px", max: "1180px", align: "start" }
       ],
       sketchbook: [
         { key: "img-9544", row: 1, col: 1, span: 6, offset: "0px", max: "820px", align: "start" },
@@ -633,11 +632,11 @@
   function cadavrePlanMarkup(project) {
     const planMap = {
       "curanto-cookhouse": {
-        src: "assets/images/cadavre plans/processed/cadavre-curanto-cookhouse.svg",
+        src: "assets/images/cadavre plans/processed/cadavre-curanto-cookhouse.png",
         shape: "tall"
       },
       "hunters-point": {
-        src: "assets/images/cadavre plans/processed/cadavre-hunters-point.svg",
+        src: "assets/images/cadavre plans/processed/cadavre-hunters-point.png",
         shape: "wide"
       },
       "wood-street-pool": {
@@ -2187,10 +2186,10 @@
         <div><span>Year</span>${escapeHtml(project.year)}</div>
         ${project.course ? `<div><span>Course</span>${escapeHtml(project.course)}</div>` : ""}
         ${project.studio ? `<div><span>Studio</span>${escapeHtml(project.studio)}</div>` : ""}
-        <div><span>${escapeHtml(professorLabel(project))}</span>${escapeHtml(professorDisplay(project) || project.themes.join(", "))}</div>
+        <div><span>${escapeHtml(criticLabel(project))}</span>${escapeHtml(criticDisplay(project) || project.themes.join(", "))}</div>
         ${
           project.partners
-            ? `<div><span>${escapeHtml(partnerLabel(project))}</span>${escapeHtml(
+            ? `<div><span>${escapeHtml(collaboratorLabel(project))}</span>${escapeHtml(
                 peopleDisplay(project.partners)
               )}</div>`
             : ""
@@ -2319,9 +2318,9 @@
       project.course,
       ...(Array.isArray(project.additionalMetadata) ? project.additionalMetadata : []),
       project.studio,
-      project.professors ? `${professorLabel(project)}: ${professorDisplay(project)}` : "",
+      project.professors ? `${criticLabel(project)}: ${criticDisplay(project)}` : "",
       project.partners
-        ? `${partnerLabel(project)}: ${peopleDisplay(project.partners)}`
+        ? `${collaboratorLabel(project)}: ${peopleDisplay(project.partners)}`
         : ""
     ].filter(Boolean);
 
@@ -2338,16 +2337,29 @@
     return `<p class="project-external-link"><a href="${escapeHtml(project.externalLink.url)}" target="_blank" rel="noreferrer">${escapeHtml(project.externalLink.label)}</a></p>`;
   }
 
-  function professorLabel(project) {
-    return peopleList(project.professors).length === 1 ? "Professor" : "Professors";
+  function criticLabel(project) {
+    return projectCritics(project).length === 1 ? "Critic" : "Critics";
   }
 
-  function professorDisplay(project) {
-    return peopleDisplay(project.professors);
+  function criticDisplay(project) {
+    return projectCritics(project).join(", ");
   }
 
-  function partnerLabel(project) {
-    return peopleList(project.partners).length === 1 ? "Partner" : "Partners";
+  function collaboratorLabel(project) {
+    return peopleList(project.partners).length === 1 ? "Collaborator" : "Collaborators";
+  }
+
+  function projectCritics(project) {
+    const names = peopleList(project.professors);
+    const normalizedNames = names.map((name) => name.toLowerCase());
+    const pairedCritics = [
+      normalizedNames.findIndex((name) => name.includes("marta") && name.includes("wisniewska")),
+      normalizedNames.findIndex((name) => name.includes("tom") && name.includes("carruthers"))
+    ];
+    if (pairedCritics.every((index) => index >= 0)) {
+      return pairedCritics.map((index) => names[index]);
+    }
+    return names.slice(0, 1);
   }
 
   function peopleDisplay(value) {
@@ -2644,21 +2656,17 @@
           <div class="hunters-diagram-stage" data-hunters-diagram-stage>
             ${image("hunters-diagram-reference", "full-diagram-reference.png", "Full Hunter's Point reference diagram", "data-final-reference")}
 
-            <div class="hunters-diagram-layer hunters-diagram-layer--vector" data-svg-layer="industrial"></div>
             ${image("hunters-diagram-layer hunters-diagram-layer--raster", "industrial-production-step-1.png", "", "data-raster-layer=\"industrial\"")}
             ${image("hunters-diagram-layer hunters-diagram-layer--text hunters-diagram-layer--text-industrial", "industrial-production-step-1.png", "", "data-text-layer=\"industrial\"")}
 
-            <div class="hunters-diagram-layer hunters-diagram-layer--vector" data-svg-layer="scattered"></div>
             ${image("hunters-diagram-layer hunters-diagram-layer--raster", "scattered-consumption-step-2.png", "", "data-raster-layer=\"scattered\"")}
             ${image("hunters-diagram-layer hunters-diagram-layer--text hunters-diagram-layer--text-scattered", "scattered-consumption-step-2.png", "", "data-text-layer=\"scattered\"")}
 
             ${image("hunters-diagram-layer hunters-diagram-layer--raster hunters-diagram-layer--base", "site-base.png", "", "data-raster-layer=\"base\"")}
 
-            <div class="hunters-diagram-layer hunters-diagram-layer--vector" data-svg-layer="info"></div>
             ${image("hunters-diagram-layer hunters-diagram-layer--raster", "site-information-step-3.png", "", "data-raster-layer=\"info\"")}
             ${image("hunters-diagram-layer hunters-diagram-layer--text hunters-diagram-layer--text-info", "site-information-step-3.png", "", "data-text-layer=\"info\"")}
 
-            <div class="hunters-diagram-layer hunters-diagram-layer--vector" data-svg-layer="interwoven"></div>
             ${image("hunters-diagram-layer hunters-diagram-layer--raster", "interwoven-production-step-4.png", "", "data-raster-layer=\"interwoven\"")}
             ${image("hunters-diagram-layer hunters-diagram-layer--text hunters-diagram-layer--text-interwoven", "interwoven-production-step-4.png", "", "data-text-layer=\"interwoven\"")}
 
@@ -2679,16 +2687,12 @@
       {
         id: "industrial",
         start: 0.025,
-        end: 0.225,
-        svg: `${layerBase}Industrial Production step 1.svg`,
-        lineColors: ["#bf3f3f"]
+        end: 0.225
       },
       {
         id: "scattered",
         start: 0.19,
-        end: 0.405,
-        svg: `${layerBase}Scattered Consumption step 2.svg`,
-        lineColors: ["#f49f4a"]
+        end: 0.405
       },
       {
         id: "base",
@@ -2698,16 +2702,12 @@
       {
         id: "info",
         start: 0.535,
-        end: 0.745,
-        svg: `${layerBase}Site Information step 3.svg`,
-        lineColors: []
+        end: 0.745
       },
       {
         id: "interwoven",
         start: 0.715,
-        end: 0.925,
-        svg: `${layerBase}Interwoven Production step 4.svg`,
-        lineColors: ["#8f64a5", "#c187df"]
+        end: 0.925
       }
     ];
 
@@ -2957,7 +2957,7 @@
 
       if (textRaster) textRaster.style.opacity = String(easeOutCubic(stageProgress(local, 0.02, 0.2)));
 
-      const exactOpacity = easeInOutCubic(stageProgress(local, 0.84, 1));
+      const exactOpacity = easeInOutCubic(stageProgress(local, 0.12, 1));
       if (vector) vector.style.opacity = String(clamp(1 - exactOpacity, 0, 1));
       if (raster) raster.style.opacity = String(exactOpacity);
 

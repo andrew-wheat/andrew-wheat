@@ -24,6 +24,14 @@ const selectedKeyOverrides = {
   }
 };
 const photographyCameraOverrides = {
+  "ajw288_andrew wheat_week 12_image  (9).jpg": {
+    make: "Canon",
+    model: "Canon EOS R",
+    exposureTime: 1 / 160,
+    fNumber: 4,
+    iso: 125,
+    focalLength: 80
+  },
   "img_2273.jpg": {
     make: "Canon",
     model: "Canon EOS R50",

@@ -124,22 +124,14 @@ window.SELECTED_COLLECTIONS = {
       "src": "/assets/images/selected/photography/ajw288-andrew-wheat-week-12-image-9-4ed45f69.webp",
       "title": "Photography",
       "width": 2000,
-      "height": 1333
-    },
-    {
-      "key": "img-0587",
-      "src": "/assets/images/selected/photography/img-0587-fba99bff.webp",
-      "title": "Photography",
-      "width": 2000,
       "height": 1333,
       "camera": {
         "make": "Canon",
-        "model": "Canon EOS R50",
-        "lens": "RF-S55-210mm F5-7.1 IS STM",
-        "exposureTime": 0.002,
-        "fNumber": 6.3,
-        "iso": 1250,
-        "focalLength": 110
+        "model": "Canon EOS R",
+        "exposureTime": 0.00625,
+        "fNumber": 4,
+        "iso": 125,
+        "focalLength": 80
       }
     },
     {
@@ -238,10 +230,10 @@ window.SELECTED_COLLECTIONS = {
     },
     {
       "key": "img-2697",
-      "src": "/assets/images/selected/photography/img-2697-4f23eb0f.webp",
+      "src": "/assets/images/selected/photography/img-2697-6f3f0de4.webp",
       "title": "Photography",
       "width": 2000,
-      "height": 1333,
+      "height": 1331,
       "camera": {
         "make": "Canon",
         "model": "Canon EOS R50",

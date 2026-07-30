@@ -4,8 +4,8 @@ import { runInNewContext } from "node:vm";
 
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
-const TODAY = "2026-07-28";
-const ASSET_VERSION = "20260728-crawlable-selected-routes-v96";
+const TODAY = "2026-07-29";
+const ASSET_VERSION = "20260729-raster-drawings-v104";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -179,6 +179,10 @@ const normalizeInterfaceLanguage = (content) =>
     .replace(
       /(\/assets\/(?:css\/styles\.css|js\/(?:projects|image-optimizations|selected-collections|main)\.js)\?v=)[^"'&]+/gi,
       `$1${ASSET_VERSION}`,
+    )
+    .replace(
+      /\s*<script src="\/assets\/js\/hunters-point-animation-data\.js[^"]*"><\/script>/gi,
+      "",
     );
 
 const writeClean = (file, content) =>
@@ -867,6 +871,9 @@ function projectSchema(project, image, description) {
     isPartOf: { "@id": `${ORIGIN}/work/#collection` },
     about: [project.type, ...(project.themes ?? [])].filter(Boolean),
   };
+  if (project.award) {
+    creativeWork.award = project.award;
+  }
   if (project.location) {
     creativeWork.spatialCoverage = {
       "@type": "Place",
@@ -905,21 +912,34 @@ function projectSchema(project, image, description) {
 }
 
 function projectMetadata(project) {
-  const professorNames = peopleList(project.professors);
-  const partnerNames = peopleList(project.partners);
+  const criticNames = projectCritics(project);
+  const collaboratorNames = peopleList(project.partners);
   return [
     project.course,
     ...(Array.isArray(project.additionalMetadata)
       ? project.additionalMetadata
       : []),
     project.studio,
-    professorNames.length
-      ? `${professorNames.length === 1 ? "Professor" : "Professors"}: ${professorNames.join(", ")}`
+    criticNames.length
+      ? `${criticNames.length === 1 ? "Critic" : "Critics"}: ${criticNames.join(", ")}`
       : "",
-    partnerNames.length
-      ? `${partnerNames.length === 1 ? "Partner" : "Partners"}: ${partnerNames.join(", ")}`
+    collaboratorNames.length
+      ? `${collaboratorNames.length === 1 ? "Collaborator" : "Collaborators"}: ${collaboratorNames.join(", ")}`
       : "",
   ].filter(Boolean);
+}
+
+function projectCritics(project) {
+  const names = peopleList(project.professors);
+  const normalizedNames = names.map((name) => name.toLowerCase());
+  const pairedCritics = [
+    normalizedNames.findIndex((name) => name.includes("marta") && name.includes("wisniewska")),
+    normalizedNames.findIndex((name) => name.includes("tom") && name.includes("carruthers")),
+  ];
+  if (pairedCritics.every((index) => index >= 0)) {
+    return pairedCritics.map((index) => names[index]);
+  }
+  return names.slice(0, 1);
 }
 
 function peopleList(value) {
@@ -936,6 +956,9 @@ function staticProjectMain(project) {
     [project.tectonics, project.contribution].filter(Boolean).join(" "),
   );
   const metadata = projectMetadata(project);
+  const award = project.award
+    ? `<em>${escapeHtml(project.award)}</em>`
+    : "";
   const index = publicProjects.findIndex((item) => item.id === project.id);
   const previous =
     index >= 0
@@ -956,8 +979,12 @@ function staticProjectMain(project) {
           <h1>${escapeHtml(project.title)}</h1>
           ${
             metadata.length
-              ? `<p class="project-editorial-meta">${metadata
-                  .map(escapeHtml)
+              || award
+              ? `<p class="project-editorial-meta">${[
+                  ...metadata.map(escapeHtml),
+                  award,
+                ]
+                  .filter(Boolean)
                   .join("<br>")}</p>`
               : ""
           }
@@ -1292,8 +1319,16 @@ ${publicProjects
 - Category: ${project.workArchiveOnly ? "Archive" : project.workCategory ?? "Academic"}
 ${project.course ? `- Course: ${project.course}\n` : ""}${
       project.studio ? `- Studio: ${project.studio}\n` : ""
-    }${project.professors ? `- Professors: ${project.professors}\n` : ""}${
-      project.partners ? `- Partners: ${project.partners}\n` : ""
+    }${
+      projectCritics(project).length
+        ? `- ${projectCritics(project).length === 1 ? "Critic" : "Critics"}: ${projectCritics(project).join(", ")}\n`
+        : ""
+    }${
+      project.partners
+        ? `- ${peopleList(project.partners).length === 1 ? "Collaborator" : "Collaborators"}: ${peopleList(project.partners).join(", ")}\n`
+        : ""
+    }${
+      project.award ? `- Award: ${project.award}\n` : ""
     }
 ${projectDescription(project)}
 

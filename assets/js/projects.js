@@ -43,7 +43,7 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "hunters-drawing-oversize"
       },
       {
-        "src": "Figure Ground Plan.svg",
+        "src": "Figure Ground Plan render.png",
         "caption": "Figure-ground plan.",
         "layout": "hunters-drawing-large"
       },
@@ -53,12 +53,12 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "image"
       },
       {
-        "src": "Ground Floor Plan.svg",
+        "src": "Ground Floor Plan render.png",
         "caption": "Ground floor plan.",
         "layout": "hunters-drawing-large"
       },
       {
-        "src": "Upper Floor Plan.svg",
+        "src": "Upper Floor Plan render.png",
         "caption": "Upper floor plan.",
         "layout": "hunters-drawing-large"
       },
@@ -130,22 +130,22 @@ window.PORTFOLIO_PROJECTS = [
         "text": "The corridor becomes the primary architectural element. Split levels, widened landings, stairs, porches, and apertures turn circulation into a visible social interior rather than residual access space."
       },
       {
-        "src": "Section Perspective.svg",
+        "src": "Section Perspective render.png",
         "caption": "Shared circulation section perspective.",
         "layout": "hunters-drawing-large"
       },
       {
-        "src": "Long Site Section.svg",
+        "src": "Long Site Section render.png",
         "caption": "Long site section.",
         "layout": "hunters-drawing-large"
       },
       {
-        "src": "Long Section.svg",
+        "src": "Long Section render.png",
         "caption": "Housing long section.",
         "layout": "hunters-drawing-large"
       },
       {
-        "src": "Long Elevation.svg",
+        "src": "Long Elevation render.png",
         "caption": "Housing long elevation.",
         "layout": "hunters-drawing-large"
       },
@@ -223,6 +223,7 @@ window.PORTFOLIO_PROJECTS = [
     "studio": "Fall 2025, Cornell University",
     "type": "Environmental / civic",
     "professors": "Hanna Tulis, Caroline O'Donnell",
+    "award": "Awarded Addison G. Crowley, B.L.Arch. '38 Prize",
     "themes": [
       "water",
       "climate",
@@ -245,12 +246,12 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "wood-pool-floor-plans",
         "items": [
           {
-            "src": "ground floor plan.svg",
+            "src": "ground-floor-plan-high-res.png",
             "caption": "Ground floor plan.",
             "label": "Ground Floor"
           },
           {
-            "src": "FP3.svg",
+            "src": "FP3.png",
             "caption": "Upper floor plan.",
             "label": "Upper Floor"
           }
@@ -262,7 +263,7 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "wood-pool-interior"
       },
       {
-        "src": "short-section.svg",
+        "src": "short-section.png",
         "caption": "Natatorium building section.",
         "layout": "wood-pool-section-large"
       },
@@ -325,12 +326,12 @@ window.PORTFOLIO_PROJECTS = [
         ]
       },
       {
-        "src": "short-elevation.svg",
+        "src": "short-elevation.png",
         "caption": "Short elevation.",
         "layout": "wood-pool-elevation-large"
       },
       {
-        "src": "long-elevation.svg",
+        "src": "long-elevation-cropped.png",
         "caption": "Long elevation.",
         "layout": "wood-pool-elevation-large"
       },
@@ -671,11 +672,11 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "deconstruct-plan-elevation-pair",
         "items": [
           {
-            "src": "plan.svg",
+            "src": "plan.png",
             "caption": "Produce stand plan."
           },
           {
-            "src": "side-elevation.svg",
+            "src": "side-elevation.png",
             "caption": "Side elevation."
           }
         ]
@@ -684,11 +685,11 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "deconstruct-front-back-pair",
         "items": [
           {
-            "src": "front-elevation.svg",
+            "src": "front-elevation.png",
             "caption": "Front elevation."
           },
           {
-            "src": "back-elevation.svg",
+            "src": "back-elevation.png",
             "caption": "Back elevation."
           }
         ]

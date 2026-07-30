@@ -15,8 +15,8 @@ Through Cornell University Sustainable Design, Andrew contributes to interdiscip
 - Category: Academic
 - Course: Core VI Studio, led by Sasa Zivkovic
 - Studio: Spring 2026, Cornell University
-- Professors: Marta H. Wisniewska, Tom Carruthers
-- Partners: Eric Liu
+- Critics: Marta H. Wisniewska, Tom Carruthers
+- Collaborator: Eric Liu
 
 Cooperative housing project by Andrew Wheat focused on shared production, public exchange, circulation, workshops, housing, and civic life in Hunters Point.
 
@@ -29,7 +29,8 @@ The site is treated as an active but divided neighborhood, where residents, work
 - Category: Academic
 - Course: Core V Studio, led by Caroline O'Donnell
 - Studio: Fall 2025, Cornell University
-- Professors: Hanna Tulis, Caroline O'Donnell
+- Critic: Hanna Tulis
+- Award: Awarded Addison G. Crowley, B.L.Arch. '38 Prize
 
 Public natatorium and civic landscape project by Andrew Wheat, integrating community recreation, water systems, planted roofs, geothermal strategies, and mass timber architecture.
 
@@ -42,8 +43,8 @@ Wood Street Skate Park sits at the heart of central Ithaca, serving as a recreat
 - Category: Academic
 - Course: Core IV Studio, led by Hanna Tulis
 - Studio: Spring 2025, Cornell University
-- Professors: Ethan Chan, Hanna Tulis
-- Partners: Lydia Brawley, Eric Liu
+- Critic: Ethan Chan
+- Collaborators: Lydia Brawley, Eric Liu
 
 Architecture project by Andrew Wheat focused on food access, civic gathering, environmental performance, materiality, and community infrastructure.
 
@@ -56,7 +57,8 @@ Set at the corner of Bostwick and Teeter Roads, the project expands the pantry f
 - Category: Academic
 - Course: Core IV Studio, led by Hanna Tulis
 - Studio: Spring 2025, Cornell University
-- Professors: Ethan Chan, Hanna Tulis
+- Critic: Ethan Chan
+- Award: Awarded Honorable Mention (Internal Competition)
 
 Produce stand and material reuse project by Andrew Wheat exploring assembly, disassembly, reuse, public exchange, and community food infrastructure.
 
@@ -69,7 +71,7 @@ Designed as a piece of working architecture, the produce stand responds directly
 - Category: Academic
 - Course: Core III Studio, led by Andrea Simitch and Val Warke
 - Studio: Fall 2024, Cornell University
-- Professors: Andrew Lucia
+- Critic: Andrew Lucia
 
 Architecture project by Andrew Wheat focused on care, recovery, public space, material atmosphere, and community health.
 
@@ -82,7 +84,7 @@ Set within the coastal landscape of Aguadilla, Puerto Rico, the project position
 - Category: Academic
 - Course: Core III Studio, led by Andrea Simitch and Val Warke
 - Studio: Fall 2024, Cornell University
-- Professors: Andrew Lucia, Andrea Simitch
+- Critic: Andrew Lucia
 
 Furniture and design study by Andrew Wheat exploring play, use, structure, and the boundary between object and architecture.
 
@@ -95,8 +97,8 @@ The Spring Chair for Minerva, designed by Setsuo Kitaoka in 1986, embodies playf
 - Category: Academic
 - Course: Structural Systems II
 - Studio: Fall 2024, Cornell University
-- Professors: Mark Cruvellier
-- Partners: Hanae Matsumoto, Roy Park
+- Critic: Mark Cruvellier
+- Collaborators: Hanae Matsumoto, Roy Park
 
 Architecture project by Andrew Wheat focused on food, gathering, structure, materiality, and public interior space.
 
@@ -109,7 +111,7 @@ Design District Canteen by SelgasCano is a structural study of a 660-square-mete
 - Category: Archive
 - Course: Core II Studio, led by Suzanne Lettieri
 - Studio: Spring 2024, Cornell University
-- Professors: Eduardo Terán, Suzanne Lettieri
+- Critic: Eduardo Terán
 
 Architecture project by Andrew Wheat focused on cooking, ceremony, material assembly, landscape, and communal gathering.
 
@@ -122,7 +124,7 @@ The cookhouse is a celebration of tradition, embodying curanto's cooking process
 - Category: Archive
 - Course: Core I Studio, led by Felix Heisel
 - Studio: Fall 2023, Cornell University
-- Professors: Michael Jefferson
+- Critic: Michael Jefferson
 
 Pavilion project by Andrew Wheat exploring enclosure, light, assembly, texture, and temporary public space.
 
