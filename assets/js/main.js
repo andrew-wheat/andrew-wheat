@@ -244,26 +244,25 @@
         { key: "img-1590", row: 164, col: 1, span: 17, offset: "0px", max: "1180px", align: "start" }
       ],
       sketchbook: [
-        { key: "img-9544", row: 1, col: 1, span: 6, offset: "0px", max: "820px", align: "start" },
-        { key: "img-9546", row: 1, col: 10, span: 3, offset: "100px", max: "440px", align: "end" },
-        { key: "img-7841", row: 2, col: 1, span: 6, offset: "-80px", max: "820px", align: "start" },
+        { key: "img-9544", row: 1, col: 1, span: 7, offset: "0px", max: "920px", align: "start" },
+        { key: "img-9546", row: 1, col: 9, span: 4, offset: "60px", max: "560px", align: "end" },
+        { key: "img-7841", row: 2, col: 1, span: 7, offset: "0px", max: "920px", align: "start" },
         {
           key: "img-7838",
           row: 3,
-          col: 6,
-          span: 7,
-          offset: "-80px",
-          max: "920px",
+          col: 5,
+          span: 8,
+          offset: "0px",
+          max: "1040px",
           align: "end"
         },
-        { key: "img-9545", row: 4, col: 1, span: 5, offset: "-80px", max: "700px", align: "start" },
         {
           key: "img-9554",
-          row: 5,
-          col: 6,
-          span: 7,
-          offset: "-80px",
-          max: "920px",
+          row: 4,
+          col: 5,
+          span: 8,
+          offset: "0px",
+          max: "1040px",
           align: "end"
         }
       ],
@@ -346,6 +345,19 @@
           const titleText = escapeHtml(item.title || label);
           const cameraLine =
             collection === "photography" ? formatPhotographyCameraLine(item.camera) : "";
+          const locationLine =
+            collection === "photography" ? String(item.location || "").trim() : "";
+          const photographyCaption =
+            locationLine || cameraLine
+              ? `<figcaption class="selected-camera-meta">
+                  ${
+                    locationLine
+                      ? `<span class="selected-photo-location">${escapeHtml(locationLine)}</span>`
+                      : ""
+                  }
+                  ${cameraLine ? `<span>${escapeHtml(cameraLine)}</span>` : ""}
+                </figcaption>`
+              : "";
           const exhibitCaption =
             (collection === "models" || collection === "renderings") &&
             (item.captionTitle || item.materials || item.production)
@@ -392,9 +404,7 @@
                 decoding="async"
               >
               ${
-                cameraLine
-                  ? `<figcaption class="selected-camera-meta">${escapeHtml(cameraLine)}</figcaption>`
-                  : exhibitCaption
+                photographyCaption || exhibitCaption
               }
             </figure>
           `;

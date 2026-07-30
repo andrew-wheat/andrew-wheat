@@ -65,6 +65,20 @@ const photographyCameraOverrides = {
     focalLength: 80
   }
 };
+const photographyLocationOverrides = {
+  "ajw288_andrew wheat_week 12_image  (9).jpg":
+    "Herbert F. Johnson Museum of Art · Ithaca, New York",
+  "img_0767.jpg": "Buffalo, New York",
+  "img_0915.jpg": "Corning Museum of Glass · Corning, New York",
+  "img_1590.jpg": "Velebit Mountains · Croatia",
+  "img_2003.jpg": "Split, Croatia",
+  "img_2273.jpg": "Diocletian's Palace · Split, Croatia",
+  "img_2623.jpg": "Dubrovnik City Walls · Dubrovnik, Croatia",
+  "img_2697.jpg": "Dubrovnik City Walls · Dubrovnik, Croatia",
+  "img_2778.jpg": "Dubrovnik, Croatia",
+  "img_2793-2.jpg": "Old Town · Dubrovnik, Croatia",
+  "img_9549.jpg": "Herbert F. Johnson Museum of Art · Ithaca, New York"
+};
 const modelCaptionOverrides = {
   "andrew wheat_ajw288_problem 03c_final model (15).png": {
     captionTitle: "Borinquen Healing Center, Final Model",
@@ -344,6 +358,10 @@ for (const category of categories) {
       category === "photography"
         ? photographyCameraOverrides[file.name.toLowerCase()] || readExifData(sourceMetadata.exif)
         : null;
+    const location =
+      category === "photography"
+        ? photographyLocationOverrides[file.name.toLowerCase()] || null
+        : null;
     const modelCaption =
       category === "models"
         ? modelCaptionOverrides[file.name.toLowerCase()] || null
@@ -367,6 +385,7 @@ for (const category of categories) {
       width: info.width,
       height: info.height,
       ...(camera ? { camera } : {}),
+      ...(location ? { location } : {}),
       ...(modelCaption || {}),
       ...(renderingCaption || {})
     });

@@ -132,7 +132,8 @@ window.SELECTED_COLLECTIONS = {
         "fNumber": 4,
         "iso": 125,
         "focalLength": 80
-      }
+      },
+      "location": "Herbert F. Johnson Museum of Art · Ithaca, New York"
     },
     {
       "key": "img-0767",
@@ -148,7 +149,8 @@ window.SELECTED_COLLECTIONS = {
         "fNumber": 5.6,
         "iso": 100,
         "focalLength": 37
-      }
+      },
+      "location": "Buffalo, New York"
     },
     {
       "key": "img-0915",
@@ -164,7 +166,8 @@ window.SELECTED_COLLECTIONS = {
         "fNumber": 5,
         "iso": 100,
         "focalLength": 18
-      }
+      },
+      "location": "Corning Museum of Glass · Corning, New York"
     },
     {
       "key": "img-1590",
@@ -180,7 +183,8 @@ window.SELECTED_COLLECTIONS = {
         "fNumber": 7.1,
         "iso": 6400,
         "focalLength": 210
-      }
+      },
+      "location": "Velebit Mountains · Croatia"
     },
     {
       "key": "img-2003",
@@ -196,7 +200,8 @@ window.SELECTED_COLLECTIONS = {
         "fNumber": 5.6,
         "iso": 100,
         "focalLength": 20
-      }
+      },
+      "location": "Split, Croatia"
     },
     {
       "key": "img-2273",
@@ -211,7 +216,8 @@ window.SELECTED_COLLECTIONS = {
         "fNumber": 8,
         "iso": 100,
         "focalLength": 45
-      }
+      },
+      "location": "Diocletian's Palace · Split, Croatia"
     },
     {
       "key": "img-2623",
@@ -226,7 +232,8 @@ window.SELECTED_COLLECTIONS = {
         "fNumber": 5.6,
         "iso": 100,
         "focalLength": 33
-      }
+      },
+      "location": "Dubrovnik City Walls · Dubrovnik, Croatia"
     },
     {
       "key": "img-2697",
@@ -242,7 +249,8 @@ window.SELECTED_COLLECTIONS = {
         "fNumber": 9,
         "iso": 100,
         "focalLength": 45
-      }
+      },
+      "location": "Dubrovnik City Walls · Dubrovnik, Croatia"
     },
     {
       "key": "img-2778",
@@ -258,7 +266,8 @@ window.SELECTED_COLLECTIONS = {
         "fNumber": 9,
         "iso": 100,
         "focalLength": 45
-      }
+      },
+      "location": "Dubrovnik, Croatia"
     },
     {
       "key": "img-2793-2",
@@ -273,7 +282,8 @@ window.SELECTED_COLLECTIONS = {
         "fNumber": 9,
         "iso": 100,
         "focalLength": 45
-      }
+      },
+      "location": "Old Town · Dubrovnik, Croatia"
     },
     {
       "key": "img-9549",
@@ -288,7 +298,8 @@ window.SELECTED_COLLECTIONS = {
         "fNumber": 6.3,
         "iso": 100,
         "focalLength": 80
-      }
+      },
+      "location": "Herbert F. Johnson Museum of Art · Ithaca, New York"
     }
   ],
   "sketchbook": [
@@ -312,13 +323,6 @@ window.SELECTED_COLLECTIONS = {
       "title": "Sketchbook",
       "width": 2000,
       "height": 1106
-    },
-    {
-      "key": "img-9545",
-      "src": "/assets/images/selected/sketchbook/img-9545-3a9c5391.webp",
-      "title": "Sketchbook",
-      "width": 2000,
-      "height": 1516
     },
     {
       "key": "img-9546",

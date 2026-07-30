@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-07-29";
-const ASSET_VERSION = "20260729-raster-drawings-v104";
+const ASSET_VERSION = "20260729-selected-captions-v105";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -28,7 +28,7 @@ const TECHNICAL_SKILL_GROUPS = [
   {
     label: "Modeling and analysis",
     skills: [
-      ["Revit", 2],
+      ["Revit", 3],
       ["Rhino", 5],
       ["Grasshopper", 3],
       ["AutoCAD", 3],

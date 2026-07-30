@@ -6957,8 +6957,9 @@ body[data-page="selected"] {
 
 @media (min-width: 901px) {
   body[data-selected-collection="sketchbook"] .selected-scatter.has-items {
-    padding-right: clamp(80px, 9vw, 160px);
-    padding-left: clamp(80px, 9vw, 160px);
+    row-gap: clamp(100px, 8vw, 150px);
+    padding-right: clamp(56px, 6vw, 104px);
+    padding-left: clamp(56px, 6vw, 104px);
   }
 
   body[data-selected-collection="renderings"]
@@ -7014,8 +7015,13 @@ body[data-page="selected"] {
 
   body[data-selected-collection="models"] .selected-model-meta strong,
   body[data-selected-collection="models"] .selected-model-meta span,
+  body[data-selected-collection="photography"] .selected-camera-meta span,
   body[data-selected-collection="renderings"] .selected-rendering-meta span {
     display: block;
+  }
+
+  body[data-selected-collection="photography"] .selected-photo-location {
+    font-weight: 500;
   }
 
   body[data-selected-collection="models"] .selected-model-meta strong {
@@ -7192,20 +7198,22 @@ body:has(.nav-folder--selected:focus-within) > footer {
 
   body[data-selected-collection="sketchbook"]
     .selected-image-card[data-selected-key="img-9544"] {
-    width: 88%;
+    width: 96%;
   }
 
   body[data-selected-collection="sketchbook"]
     .selected-image-card[data-selected-key="img-7841"] {
-    width: 86%;
+    width: 96%;
   }
 
   body[data-selected-collection="sketchbook"] .selected-scatter.has-items {
+    gap: clamp(72px, 18vw, 110px);
     padding-right: clamp(24px, 8vw, 40px);
     padding-left: clamp(24px, 8vw, 40px);
   }
 
   body[data-selected-collection="sketchbook"] .selected-image-card {
+    width: 92%;
     justify-self: center;
   }
 
