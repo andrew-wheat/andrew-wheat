@@ -4,13 +4,12 @@ import { runInNewContext } from "node:vm";
 
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
-const TODAY = "2026-07-29";
-const ASSET_VERSION = "20260729-selected-captions-v105";
+const TODAY = "2026-08-02";
+const ASSET_VERSION = "20260802-seo-sitelinks-v106";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;
-const HEADSHOT_16X9 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-16x9.jpg`;
 const CORNELL_AWARDS =
   "https://aap.cornell.edu/news/announcements/2025-26-student-academic-awards-and-prizes/";
 const LINKEDIN = "https://www.linkedin.com/in/andrewwheat";
@@ -21,9 +20,10 @@ const CUSD = "https://cusd.cornell.edu/";
 const CORNELL_ARCHITECTURE =
   "https://aap.cornell.edu/architecture/bachelor-of-architecture/";
 const BIO =
-  "Andrew Wheat is a designer and architecture student at Cornell University. He is currently based in Seattle and New York City.";
-const LANDING_STATEMENT =
-  "Andrew Wheat is a designer and architecture student at Cornell University. Based between Seattle and New York City, his work explores civic space, housing, material systems, and the relationship between buildings and landscape.";
+  "Andrew Wheat is a designer and Bachelor of Architecture student at Cornell University working across civic architecture, housing, material systems, and landscape.";
+const ABOUT_DESCRIPTION =
+  "Andrew Wheat is a Cornell Bachelor of Architecture student whose work explores civic space, housing, material systems, climate, and landscape.";
+const LANDING_STATEMENT = BIO;
 const TECHNICAL_SKILL_GROUPS = [
   {
     label: "Modeling and analysis",
@@ -68,26 +68,26 @@ const TECHNICAL_SKILL_GROUPS = [
 ];
 const SELECTED_COLLECTION_META = {
   models: {
-    title: "Architectural Models | Andrew Wheat",
-    heading: "models",
+    title: "Models | Andrew Wheat",
+    heading: "Models",
     description:
       "Selected architectural models by Andrew Wheat, including physical models, material studies, fabrication, and assembly.",
   },
   photography: {
     title: "Photography | Andrew Wheat",
-    heading: "photography",
+    heading: "Photography",
     description:
       "Selected architectural and observational photography by Andrew Wheat, documenting buildings, landscapes, materials, and atmosphere.",
   },
   sketchbook: {
     title: "Sketchbook | Andrew Wheat",
-    heading: "sketchbook",
+    heading: "Sketchbook",
     description:
       "Selected sketches and architectural drawings by Andrew Wheat, tracing design studies, plans, spatial observations, and working ideas.",
   },
   renderings: {
-    title: "Architectural Renderings | Andrew Wheat",
-    heading: "renderings",
+    title: "Renderings | Andrew Wheat",
+    heading: "Renderings",
     description:
       "Selected architectural renderings by Andrew Wheat, including interior, exterior, atmospheric, and visualization studies.",
   },
@@ -111,7 +111,7 @@ const PROJECT_SEO = {
       "Architecture project by Andrew Wheat focused on food access, civic gathering, environmental performance, materiality, and community infrastructure.",
   },
   "deconstruct-reconfigure": {
-    title: "Deconstruct Reconfigure | Andrew Wheat",
+    title: "[de]construct + [re]configure | Andrew Wheat",
     description:
       "Produce stand and material reuse project by Andrew Wheat exploring assembly, disassembly, reuse, public exchange, and community food infrastructure.",
   },
@@ -260,6 +260,21 @@ const representativeImage = (project) => {
   return absoluteUrl(source);
 };
 
+const projectOpeningImage = (project) =>
+  absoluteUrl(
+    project.overviewImage
+      ? `${project.imageBase ?? ""}${project.overviewImage}`
+      : project.heroImage
+        ? `${project.imageBase ?? ""}${project.heroImage}`
+        : representativeImage(project),
+  );
+
+const projectOpeningAlt = (project) =>
+  project.overviewImageAlt || `${project.title} opening project image`;
+
+const projectWorkAlt = (project) =>
+  project.workImageAlt || `${project.title} architecture project by Andrew Wheat`;
+
 const projectDescription = (project) =>
   cleanText(
     PROJECT_SEO[project.id]?.description ||
@@ -272,118 +287,32 @@ const personNode = () => ({
   "@type": "Person",
   "@id": PERSON_ID,
   name: "Andrew Wheat",
-  givenName: "Andrew",
-  familyName: "Wheat",
   url: `${ORIGIN}/`,
-  mainEntityOfPage: `${ORIGIN}/about/`,
-  image: [
-    {
-      "@type": "ImageObject",
-      "@id": `${ORIGIN}/#portrait`,
-      url: HEADSHOT,
-      contentUrl: HEADSHOT,
-      width: 9912,
-      height: 9912,
-      caption: "Portrait of Andrew Wheat",
-    },
-    {
-      "@type": "ImageObject",
-      url: HEADSHOT_4X3,
-      contentUrl: HEADSHOT_4X3,
-      width: 5973,
-      height: 4480,
-      caption: "Andrew Wheat, designer and Cornell architecture student",
-    },
-    {
-      "@type": "ImageObject",
-      url: HEADSHOT_16X9,
-      contentUrl: HEADSHOT_16X9,
-      width: 6720,
-      height: 3780,
-      caption: "Andrew Wheat architecture portfolio",
-    },
-  ],
-  jobTitle: ["Designer", "Architecture Student"],
+  jobTitle: "Designer",
   description: BIO,
-  disambiguatingDescription:
-    "Andrew Wheat is the Cornell architecture student and designer whose portfolio is published at andrew-wheat.com.",
-  hasOccupation: [
-    {
-      "@type": "Occupation",
-      name: "Designer",
-      occupationLocation: [
-        { "@type": "City", name: "Seattle" },
-        { "@type": "City", name: "New York City" },
-      ],
-    },
-    {
-      "@type": "Occupation",
-      name: "Architecture Student",
-      educationRequirements: "Bachelor of Architecture candidate",
-    },
-  ],
-  affiliation: [
-    {
-      "@type": "CollegeOrUniversity",
-      name: "Cornell University College of Architecture, Art, and Planning",
-      url: "https://aap.cornell.edu/",
-    },
-    {
-      "@type": "Organization",
-      name: "Mithun",
-      url: "https://mithun.com/",
-    },
-    {
-      "@type": "Organization",
-      name: "Cornell University Sustainable Design",
-      url: "https://www.cusd.cornell.edu/",
-    },
-  ],
-  homeLocation: [
-    { "@type": "City", name: "Seattle" },
-    { "@type": "City", name: "New York City" },
-  ],
-  knowsAbout: [
-    "Architecture",
-    "Architectural design",
-    "Public architecture",
-    "Civic space",
-    "Housing",
-    "Material systems",
-    "Landscape",
-    "Climate-responsive design",
-    "Environmental systems",
-    "Architectural drawings",
-    "Physical models",
-  ],
-  award: [
-    "Addison G. Crowley, B.L.Arch. '38 Prize",
-    "Honorable Mention, Cornell AAP Internal Studio Competition",
-  ],
+  affiliation: {
+    "@type": "CollegeOrUniversity",
+    name: "Cornell University",
+    sameAs: "https://www.cornell.edu/",
+  },
+  image: {
+    "@type": "ImageObject",
+    "@id": `${ORIGIN}/#portrait`,
+    url: HEADSHOT,
+    contentUrl: HEADSHOT,
+    width: 9912,
+    height: 9912,
+    caption: "Portrait of Andrew Wheat",
+  },
   sameAs: [LINKEDIN, INSTAGRAM],
-  subjectOf: [
-    {
-      "@type": "WebPage",
-      name: "2025–26 Student Academic Awards and Prizes",
-      url: CORNELL_AWARDS,
-      publisher: {
-        "@type": "CollegeOrUniversity",
-        name: "Cornell University College of Architecture, Art, and Planning",
-        url: "https://aap.cornell.edu/",
-      },
-    },
-  ],
 });
 
 const websiteNode = () => ({
   "@type": "WebSite",
   "@id": WEBSITE_ID,
   name: "Andrew Wheat",
-  alternateName: "Andrew Wheat Architecture Portfolio",
+  alternateName: "Andrew Wheat Architecture and Design",
   url: `${ORIGIN}/`,
-  description: BIO,
-  inLanguage: "en-US",
-  author: { "@id": PERSON_ID },
   publisher: { "@id": PERSON_ID },
 });
 
@@ -467,7 +396,7 @@ function buildHead({
         : ""
     }
     <link rel="stylesheet" href="/assets/css/styles.css?v=${ASSET_VERSION}">
-    ${jsonLd({ "@context": "https://schema.org", "@graph": schema }, "site-schema")}
+    ${schema.length ? jsonLd({ "@context": "https://schema.org", "@graph": schema }, "site-schema") : ""}
     ${projectSchema ? jsonLd(projectSchema, "project-schema") : ""}
   </head>`;
 }
@@ -536,14 +465,10 @@ function staticProjectCards(projects) {
           <figure class="project-thumb">
             <img class="project-thumb-image project-thumb-image--base" src="${escapeHtml(
               image,
-            )}" alt="${escapeHtml(
-              `${project.title} architecture project by Andrew Wheat`,
-            )}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
+            )}" alt="${escapeHtml(projectWorkAlt(project))}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
             <img class="project-thumb-image project-thumb-image--alt" src="${escapeHtml(
               alternateImage,
-            )}" alt="${escapeHtml(
-              `${project.title} alternate hero image`,
-            )}" loading="eager" decoding="async">
+            )}" alt="" loading="eager" decoding="async">
           </figure>
           <figure class="project-thumb-list">
             <img src="${escapeHtml(image)}" alt="" loading="lazy" decoding="async">
@@ -566,13 +491,22 @@ const selectedCollectionImage = (collection) => {
   return absoluteUrl(firstItem?.src || HEADSHOT_4X3);
 };
 
+const selectedItemCaption = (collection, item) =>
+  item.captionTitle ||
+  (collection === "photography" && item.location
+    ? `Photograph at ${item.location}`
+    : item.title || SELECTED_COLLECTION_META[collection].heading);
+
+const selectedItemAlt = (collection, item) => {
+  const caption = selectedItemCaption(collection, item);
+  return `${caption} by Andrew Wheat`;
+};
+
 function selectedCollectionSchema(collection) {
   const meta = SELECTED_COLLECTION_META[collection];
   const items = selectedCollections[collection] || [];
   const url = selectedCollectionUrl(collection);
   return [
-    personNode(),
-    websiteNode(),
     {
       "@type": ["CollectionPage", "ImageGallery"],
       "@id": `${url}#webpage`,
@@ -589,7 +523,7 @@ function selectedCollectionSchema(collection) {
         "@type": "ImageObject",
         position: index + 1,
         contentUrl: absoluteUrl(item.src),
-        caption: item.captionTitle || item.title || meta.heading,
+        caption: selectedItemCaption(collection, item),
         creator: { "@id": PERSON_ID },
       })),
     },
@@ -625,9 +559,9 @@ ${siteHeader("selected", collection)}
       <section class="selected-scatter selected-crawl-list has-items" data-selected-canvas aria-label="${escapeHtml(meta.heading)} collection">
 ${items
   .map((item, index) => {
-    const caption = item.captionTitle || item.title || meta.heading;
+    const caption = selectedItemCaption(collection, item);
     return `        <figure class="selected-image-card" data-selected-key="${escapeHtml(item.key || String(index + 1))}">
-          <img src="${escapeHtml(item.src)}" alt="${escapeHtml(`${caption} by Andrew Wheat`)}" width="${Number(item.width) || 1}" height="${Number(item.height) || 1}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
+          <img src="${escapeHtml(item.src)}" alt="${escapeHtml(selectedItemAlt(collection, item))}" width="${Number(item.width) || 1}" height="${Number(item.height) || 1}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async">
           <figcaption class="selected-crawl-caption">${escapeHtml(caption)}</figcaption>
         </figure>`;
   })
@@ -654,7 +588,7 @@ ${buildHead({
   image: selectedCollectionImage("models"),
   imageAlt: "Selected work by Andrew Wheat",
   robots: "noindex, follow",
-  schema: [personNode(), websiteNode()],
+  schema: [],
 })}
   <body data-page="selected">
     <a class="skip-link" href="#selected-collection">Skip to selected collections</a>
@@ -679,7 +613,7 @@ ${scriptTags()}
 }
 
 function homePage() {
-  const title = "Andrew Wheat | Designer & Cornell Architecture Student";
+  const title = "Andrew Wheat | Architecture & Design";
   const schema = [
     personNode(),
     websiteNode(),
@@ -729,6 +663,13 @@ ${siteHeader()}
         <a class="minimal-landing-link" href="/work/">view work</a>
       </div>
     </main>
+    <nav class="home-destinations" aria-label="Explore Andrew Wheat's portfolio">
+      <a href="/work/">Selected architecture projects</a>
+      <a href="/selected/photography/">Architectural and travel photography</a>
+      <a href="/selected/sketchbook/">Sketchbook and field observations</a>
+      <a href="/about/">About Andrew Wheat</a>
+      <a href="/contact/">Contact Andrew Wheat</a>
+    </nav>
 ${scriptTags()}
   </body>
 </html>
@@ -737,15 +678,13 @@ ${scriptTags()}
 
 function workSchema() {
   return [
-    personNode(),
-    websiteNode(),
     {
       "@type": "CollectionPage",
       "@id": `${ORIGIN}/work/#collection`,
       url: `${ORIGIN}/work/`,
       name: "Architecture Work by Andrew Wheat",
       description:
-        "Architecture work, drawings, models, and design research by Andrew Wheat, a Cornell architecture student and designer.",
+        "Architecture projects, drawings, models, and design research by Andrew Wheat across civic space, housing, material systems, and landscape.",
       inLanguage: "en-US",
       isPartOf: { "@id": WEBSITE_ID },
       about: { "@id": PERSON_ID },
@@ -773,17 +712,19 @@ function workSchema() {
 
 function aboutSchema() {
   return [
-    personNode(),
-    websiteNode(),
     {
       "@type": "ProfilePage",
-      "@id": `${ORIGIN}/about/#profile`,
+      "@id": `${ORIGIN}/about/#profile-page`,
       url: `${ORIGIN}/about/`,
       name: "About Andrew Wheat",
-      description: BIO,
+      description: ABOUT_DESCRIPTION,
       inLanguage: "en-US",
       isPartOf: { "@id": WEBSITE_ID },
-      mainEntity: { "@id": PERSON_ID },
+      mainEntity: {
+        "@id": PERSON_ID,
+        "@type": "Person",
+        name: "Andrew Wheat",
+      },
       primaryImageOfPage: { "@id": `${ORIGIN}/#portrait` },
       breadcrumb: { "@id": `${ORIGIN}/about/#breadcrumb` },
       dateCreated: "2026-07-05",
@@ -801,15 +742,13 @@ function aboutSchema() {
 
 function contactSchema() {
   return [
-    personNode(),
-    websiteNode(),
     {
       "@type": "ContactPage",
       "@id": `${ORIGIN}/contact/#contact`,
       url: `${ORIGIN}/contact/`,
       name: "Contact Andrew Wheat",
       description:
-        "Contact Andrew Wheat, designer and architecture student at Cornell University.",
+        "Contact Andrew Wheat for professional inquiries, collaborations, or academic correspondence.",
       inLanguage: "en-US",
       isPartOf: { "@id": WEBSITE_ID },
       about: { "@id": PERSON_ID },
@@ -852,7 +791,7 @@ function projectSchema(project, image, description) {
       "@type": "ImageObject",
       url: image,
       contentUrl: image,
-      caption: `${project.title} architecture project by Andrew Wheat`,
+      caption: projectWorkAlt(project),
       representativeOfPage: true,
     },
     dateCreated: project.year || undefined,
@@ -882,8 +821,6 @@ function projectSchema(project, image, description) {
   }
   return {
     graph: [
-      personNode(),
-      websiteNode(),
       {
         "@type": "WebPage",
         "@id": pageId,
@@ -900,7 +837,7 @@ function projectSchema(project, image, description) {
       },
       {
         ...breadcrumbNode([
-          { name: "Andrew Wheat", url: `${ORIGIN}/` },
+          { name: "Home", url: `${ORIGIN}/` },
           { name: "Work", url: `${ORIGIN}/work/` },
           { name: project.title, url },
         ]),
@@ -949,8 +886,18 @@ function peopleList(value) {
     .filter(Boolean);
 }
 
+function projectBreadcrumbs(project) {
+  return `      <nav class="project-breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/work/">Work</a></li>
+          <li aria-current="page">${escapeHtml(project.title)}</li>
+        </ol>
+      </nav>`;
+}
+
 function staticProjectMain(project) {
-  const image = representativeImage(project);
+  const image = projectOpeningImage(project);
   const description = cleanText(project.description || project.summary || "");
   const supporting = cleanText(
     [project.tectonics, project.contribution].filter(Boolean).join(" "),
@@ -971,11 +918,10 @@ function staticProjectMain(project) {
   )}">
       <section class="project-editorial-hero reveal visible">
         <figure class="project-editorial-cover">
-          <img src="${escapeHtml(image)}" alt="${escapeHtml(
-            `${project.title} architecture project by Andrew Wheat`,
-          )}" fetchpriority="high" decoding="async">
+          <img src="${escapeHtml(image)}" alt="${escapeHtml(projectOpeningAlt(project))}" fetchpriority="high" decoding="async">
         </figure>
         <div class="project-editorial-text">
+${projectBreadcrumbs(project)}
           <h1>${escapeHtml(project.title)}</h1>
           ${
             metadata.length
@@ -1035,7 +981,7 @@ async function rewriteProjectPage(project, { indexable }) {
     description,
     canonical: url,
     image,
-    imageAlt: `${project.title} architecture project by Andrew Wheat`,
+    imageAlt: projectWorkAlt(project),
     type: "article",
     robots: indexable ? ROBOTS_INDEX : "noindex, follow",
     schema: schemas.graph,
@@ -1062,14 +1008,14 @@ function noIndexHead({ title, canonical, description }) {
     image: HEADSHOT_4X3,
     imageAlt: "Portrait of Andrew Wheat",
     robots: "noindex, follow",
-    schema: [personNode(), websiteNode()],
+    schema: [],
   });
 }
 
-async function updateWorkPage(file) {
+async function updateWorkPage(file, { legacy = false } = {}) {
   const title = "Work | Andrew Wheat";
   const description =
-    "Architecture work, drawings, models, and design research by Andrew Wheat, a designer and Cornell architecture student.";
+    "Architecture projects, drawings, models, and design research by Andrew Wheat across civic space, housing, material systems, and landscape.";
   let source = await readFile(file, "utf8");
   source = source.replace(
     /  <head>[\s\S]*?  <\/head>/i,
@@ -1078,8 +1024,9 @@ async function updateWorkPage(file) {
       description,
       canonical: `${ORIGIN}/work/`,
       image: representativeImage(publicProjects[0]),
-      imageAlt: `${publicProjects[0].title} architecture work by Andrew Wheat`,
-      schema: workSchema(),
+      imageAlt: projectWorkAlt(publicProjects[0]),
+      robots: legacy ? "noindex, follow" : ROBOTS_INDEX,
+      schema: legacy ? [] : workSchema(),
     }),
   );
   source = source.replace(
@@ -1099,19 +1046,20 @@ ${staticProjectCards(publicProjects)}
   await writeClean(file, source);
 }
 
-async function updateAboutPage(file) {
-  const title = "About Andrew Wheat | Designer & Cornell Architecture Student";
+async function updateAboutPage(file, { legacy = false } = {}) {
+  const title = "About Andrew Wheat";
   let source = await readFile(file, "utf8");
   source = source.replace(
     /  <head>[\s\S]*?  <\/head>/i,
     buildHead({
       title,
-      description: BIO,
+      description: ABOUT_DESCRIPTION,
       canonical: `${ORIGIN}/about/`,
       image: HEADSHOT_4X3,
       imageAlt: "Portrait of Andrew Wheat",
       type: "profile",
-      schema: aboutSchema(),
+      robots: legacy ? "noindex, follow" : ROBOTS_INDEX,
+      schema: legacy ? [] : aboutSchema(),
       profile: true,
     }),
   );
@@ -1119,6 +1067,7 @@ async function updateAboutPage(file) {
     /    <header class="site-header[\s\S]*?    <\/header>/i,
     siteHeader("about"),
   );
+  source = source.replace(/<h1>About(?: Andrew Wheat)?<\/h1>/i, "<h1>About Andrew Wheat</h1>");
   source = source.replace(
     /        <div class="about-statement">[\s\S]*?        <\/div>\s*      <\/section>/i,
     `        <div class="about-statement">
@@ -1173,10 +1122,10 @@ async function updateAboutPage(file) {
   await writeClean(file, source);
 }
 
-async function updateContactPage(file) {
-  const title = "Contact Andrew Wheat | Architecture & Design";
+async function updateContactPage(file, { legacy = false } = {}) {
+  const title = "Contact Andrew Wheat";
   const description =
-    "Contact Andrew Wheat, designer and architecture student at Cornell University, based in Seattle and New York City.";
+    "Contact Andrew Wheat for professional inquiries, collaborations, or academic correspondence.";
   let source = await readFile(file, "utf8");
   source = source.replace(
     /  <head>[\s\S]*?  <\/head>/i,
@@ -1186,13 +1135,26 @@ async function updateContactPage(file) {
       canonical: `${ORIGIN}/contact/`,
       image: HEADSHOT_4X3,
       imageAlt: "Portrait of Andrew Wheat",
-      schema: contactSchema(),
+      robots: legacy ? "noindex, follow" : ROBOTS_INDEX,
+      schema: legacy ? [] : contactSchema(),
     }),
   );
   source = source.replace(
     /    <header class="site-header[\s\S]*?    <\/header>/i,
     siteHeader("contact"),
   );
+  source = source
+    .replace(/<h1>Contact(?: Andrew Wheat)?<\/h1>/i, "<h1>Contact Andrew Wheat</h1>")
+    .replace(/\s*<section class="contact-copy[\s\S]*?<\/section>/i, "")
+    .replace(
+      /\n      <section class="contact-list/i,
+      `
+      <section class="contact-copy reveal" aria-label="Contact Andrew Wheat">
+        <p>For professional inquiries, collaborations, or academic correspondence, contact Andrew Wheat by <a href="mailto:ajw288@cornell.edu">email at ajw288@cornell.edu</a> or connect on <a href="${LINKEDIN}" rel="me noreferrer" target="_blank">LinkedIn</a>.</p>
+      </section>
+
+      <section class="contact-list`,
+    );
   source = source.replace(
     /href="https:\/\/www\.linkedin\.com\/in\/andrewwheat"/g,
     `href="${LINKEDIN}"`,
@@ -1205,12 +1167,12 @@ function sitemapXml() {
     {
       url: `${ORIGIN}/`,
       image: HEADSHOT_4X3,
-      imageTitle: "Andrew Wheat, designer and Cornell architecture student",
+      imageTitle: "Andrew Wheat | Architecture & Design",
     },
     {
       url: `${ORIGIN}/work/`,
       image: representativeImage(publicProjects[0]),
-      imageTitle: `${publicProjects[0].title} architecture project by Andrew Wheat`,
+      imageTitle: projectWorkAlt(publicProjects[0]),
     },
     {
       url: `${ORIGIN}/about/`,
@@ -1230,7 +1192,7 @@ function sitemapXml() {
     ...publicProjects.map((project) => ({
       url: projectUrl(project),
       image: representativeImage(project),
-      imageTitle: `${project.title} architecture project by Andrew Wheat`,
+      imageTitle: projectWorkAlt(project),
     })),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -1254,7 +1216,7 @@ ${entries
 function llmsSummary() {
   return `# Andrew Wheat
 
-> Andrew Wheat is a designer and architecture student at Cornell University. He is currently based in Seattle and New York City.
+> ${BIO}
 
 This is Andrew Wheat's canonical portfolio and biography source.
 
@@ -1264,15 +1226,15 @@ This is Andrew Wheat's canonical portfolio and biography source.
 - [Work](${ORIGIN}/work/): Public architecture work, drawings, models, and design research.
 - [About Andrew Wheat](${ORIGIN}/about/): Biography, education, professional experience, academic work, skills, and awards.
 - [Contact Andrew Wheat](${ORIGIN}/contact/): Professional contact information and verified LinkedIn profile.
-- [Architectural Models](${ORIGIN}/selected/models/): Selected physical models, material studies, and fabrication work.
+- [Models](${ORIGIN}/selected/models/): Selected physical models, material studies, and fabrication work.
 - [Photography](${ORIGIN}/selected/photography/): Selected architectural and observational photography.
 - [Sketchbook](${ORIGIN}/selected/sketchbook/): Selected sketches, drawings, and design studies.
-- [Architectural Renderings](${ORIGIN}/selected/renderings/): Selected architectural visualization work.
+- [Renderings](${ORIGIN}/selected/renderings/): Selected architectural visualization work.
 
 ## Identity
 
 - Full name: Andrew Wheat
-- Role: Designer and architecture student
+- Role: Designer and Bachelor of Architecture student
 - Education: Bachelor of Architecture candidate at Cornell University College of Architecture, Art, and Planning, expected May 2028
 - Based in: Seattle and New York City
 - Professional experience: Mithun and BRIC Architecture
@@ -1291,7 +1253,7 @@ ${publicProjects
 
 ## Preferred Attribution
 
-Andrew Wheat, designer and architecture student at Cornell University.
+Andrew Wheat, designer and Bachelor of Architecture student at Cornell University.
 
 ## Disambiguation
 
@@ -1409,7 +1371,7 @@ ${buildHead({
   image: HEADSHOT_4X3,
   imageAlt: "Portrait of Andrew Wheat",
   robots: "noindex, follow",
-  schema: [personNode(), websiteNode()],
+  schema: [],
 })}
   <body data-page="error">
     <a class="skip-link" href="#main">Skip to main content</a>
@@ -1466,15 +1428,15 @@ ${scriptTags(false)}
 await writeClean(`${ROOT}/index.html`, homePage());
 
 for (const file of [`${ROOT}/work/index.html`, `${ROOT}/work.html`]) {
-  await updateWorkPage(file);
+  await updateWorkPage(file, { legacy: file.endsWith("work.html") });
 }
 
 for (const file of [`${ROOT}/about/index.html`, `${ROOT}/about.html`]) {
-  await updateAboutPage(file);
+  await updateAboutPage(file, { legacy: file.endsWith("about.html") });
 }
 
 for (const file of [`${ROOT}/contact/index.html`, `${ROOT}/contact.html`]) {
-  await updateContactPage(file);
+  await updateContactPage(file, { legacy: file.endsWith("contact.html") });
 }
 
 await writeClean(`${ROOT}/selected/index.html`, selectedHubPage());

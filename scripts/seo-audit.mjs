@@ -1,5 +1,8 @@
 const requestedBase = (process.argv[2] || "http://127.0.0.1:4173").replace(/\/+$/, "");
 const canonicalOrigin = "https://andrew-wheat.com";
+const homepageTitle = "Andrew Wheat | Architecture & Design";
+const homepageDescription =
+  "Andrew Wheat is a designer and Bachelor of Architecture student at Cornell University working across civic architecture, housing, material systems, and landscape.";
 const errors = [];
 const warnings = [];
 
@@ -55,6 +58,22 @@ const plainText = (html) =>
       .replace(/\s+/g, " ")
       .trim(),
   );
+
+const schemaNodesFromHtml = (html) => {
+  const nodes = [];
+  for (const match of html.matchAll(
+    /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi,
+  )) {
+    try {
+      const data = JSON.parse(match[1]);
+      if (Array.isArray(data?.["@graph"])) nodes.push(...data["@graph"]);
+      else nodes.push(data);
+    } catch {
+      // Invalid blocks are reported by the main page loop.
+    }
+  }
+  return nodes;
+};
 
 async function fetchText(url, options = {}) {
   const response = await fetch(url, {
@@ -170,6 +189,15 @@ for (const canonicalUrl of sitemapUrls) {
   if (!title) errors.push(`${pathname} has no title`);
   if (!description) errors.push(`${pathname} has no meta description`);
   if (!canonical) errors.push(`${pathname} has no canonical URL`);
+  if ((html.match(/<title\b/gi) || []).length !== 1) {
+    errors.push(`${pathname} must contain exactly one title element`);
+  }
+  if ((html.match(/<meta[^>]+name=["']description["']/gi) || []).length !== 1) {
+    errors.push(`${pathname} must contain exactly one meta description`);
+  }
+  if ((html.match(/<link[^>]+rel=["']canonical["']/gi) || []).length !== 1) {
+    errors.push(`${pathname} must contain exactly one canonical link`);
+  }
   if (canonical !== canonicalUrl) {
     errors.push(`${pathname} canonical is ${canonical || "(missing)"}, expected ${canonicalUrl}`);
   }
@@ -178,6 +206,22 @@ for (const canonicalUrl of sitemapUrls) {
     warnings.push(`${pathname} does not request large image previews`);
   }
   if (h1Count !== 1) errors.push(`${pathname} has ${h1Count} H1 elements`);
+  for (const property of ["og:title", "og:description", "og:url", "og:image"]) {
+    if (!getAttributeContent(html, "property", property)) {
+      errors.push(`${pathname} has no ${property} metadata`);
+    }
+  }
+  if (getAttributeContent(html, "property", "og:url") !== canonicalUrl) {
+    errors.push(`${pathname} Open Graph URL does not match its canonical URL`);
+  }
+  if (!getAttributeContent(html, "name", "twitter:card")) {
+    errors.push(`${pathname} has no Twitter card metadata`);
+  }
+  for (const imageTag of html.match(/<img\b[^>]*>/gi) || []) {
+    if (!/\balt=["'][^"']*["']/i.test(imageTag)) {
+      errors.push(`${pathname} contains an image without an alt attribute`);
+    }
+  }
   if (textLength < 140) warnings.push(`${pathname} has only ${textLength} characters of static text`);
   if (!jsonLdScripts.length) errors.push(`${pathname} has no JSON-LD`);
   for (const [index, script] of jsonLdScripts.entries()) {
@@ -194,6 +238,14 @@ for (const canonicalUrl of sitemapUrls) {
   if (/project\//.test(pathname) && !plainText(html).includes("Andrew Wheat")) {
     errors.push(`${pathname} lacks static author text`);
   }
+  if (/^\/project\//.test(pathname)) {
+    if (!/<nav[^>]+class=["'][^"']*project-breadcrumbs/i.test(html)) {
+      errors.push(`${pathname} has no semantic HTML breadcrumbs`);
+    }
+    if (!schemaNodesFromHtml(html).some((node) => node?.["@type"] === "BreadcrumbList")) {
+      errors.push(`${pathname} has no BreadcrumbList JSON-LD`);
+    }
+  }
   if (pathname === "/" && /http-equiv=["']refresh/i.test(html)) {
     errors.push("The homepage still contains a meta refresh");
   }
@@ -208,6 +260,18 @@ for (const page of pages) {
 }
 for (const [title, owners] of titleOwners) {
   if (owners.length > 1) errors.push(`Duplicate title "${title}" on ${owners.join(", ")}`);
+}
+
+const descriptionOwners = new Map();
+for (const page of pages) {
+  const owners = descriptionOwners.get(page.description) || [];
+  owners.push(page.pathname);
+  descriptionOwners.set(page.description, owners);
+}
+for (const [description, owners] of descriptionOwners) {
+  if (owners.length > 1) {
+    errors.push(`Duplicate description "${description}" on ${owners.join(", ")}`);
+  }
 }
 
 const canonicalOwners = new Map();
@@ -273,6 +337,103 @@ for (const path of ["/llms.txt", "/llms-full.txt"]) {
 }
 
 const homepage = pages.find((page) => page.pathname === "/");
+if (homepage?.title !== homepageTitle) {
+  errors.push(`Homepage title is "${homepage?.title || "(missing)"}", expected "${homepageTitle}"`);
+}
+if (homepage?.description !== homepageDescription) {
+  errors.push("Homepage description does not match the requested identifying statement");
+}
+if (!plainText(homepage?.html || "").includes(homepageDescription)) {
+  errors.push("Homepage lacks the identifying statement as crawlable HTML text");
+}
+for (const href of [
+  "/work/",
+  "/selected/photography/",
+  "/selected/sketchbook/",
+  "/about/",
+  "/contact/",
+]) {
+  if (!new RegExp(`<a[^>]+href=["']${href.replaceAll("/", "\\/")}["']`, "i").test(homepage?.html || "")) {
+    errors.push(`Homepage destination hierarchy is missing ${href}`);
+  }
+}
+
+const homepageSchemas = schemaNodesFromHtml(homepage?.html || "");
+const personSchema = homepageSchemas.find((node) => node?.["@type"] === "Person");
+const websiteSchema = homepageSchemas.find((node) => node?.["@type"] === "WebSite");
+if (personSchema?.["@id"] !== `${canonicalOrigin}/#andrew-wheat`) {
+  errors.push("Homepage Person JSON-LD has the wrong or missing @id");
+}
+if (personSchema?.description !== homepageDescription || personSchema?.jobTitle !== "Designer") {
+  errors.push("Homepage Person JSON-LD does not match the requested identity fields");
+}
+if (personSchema?.affiliation?.name !== "Cornell University") {
+  errors.push("Homepage Person JSON-LD lacks the Cornell University affiliation");
+}
+if (websiteSchema?.["@id"] !== `${canonicalOrigin}/#website`) {
+  errors.push("Homepage WebSite JSON-LD has the wrong or missing @id");
+}
+if (websiteSchema?.alternateName !== "Andrew Wheat Architecture and Design") {
+  errors.push("Homepage WebSite JSON-LD has the wrong alternateName");
+}
+
+const aboutPage = pages.find((page) => page.pathname === "/about/");
+const aboutProfile = schemaNodesFromHtml(aboutPage?.html || "").find(
+  (node) => node?.["@type"] === "ProfilePage",
+);
+if (aboutPage?.title !== "About Andrew Wheat") errors.push("About page title is incorrect");
+if (aboutProfile?.["@id"] !== `${canonicalOrigin}/about/#profile-page`) {
+  errors.push("About page ProfilePage JSON-LD has the wrong or missing @id");
+}
+if (aboutProfile?.mainEntity?.["@id"] !== `${canonicalOrigin}/#andrew-wheat`) {
+  errors.push("About page ProfilePage does not reference the canonical Person entity");
+}
+
+for (const [path, expectedTitle] of Object.entries({
+  "/work/": "Work | Andrew Wheat",
+  "/contact/": "Contact Andrew Wheat",
+  "/selected/models/": "Models | Andrew Wheat",
+  "/selected/photography/": "Photography | Andrew Wheat",
+  "/selected/sketchbook/": "Sketchbook | Andrew Wheat",
+  "/selected/renderings/": "Renderings | Andrew Wheat",
+})) {
+  const page = pages.find((item) => item.pathname === path);
+  if (page?.title !== expectedTitle) errors.push(`${path} title is not "${expectedTitle}"`);
+}
+
+const contactPage = pages.find((page) => page.pathname === "/contact/");
+if (!/href=["']mailto:ajw288@cornell\.edu["']/i.test(contactPage?.html || "")) {
+  errors.push("Contact page lacks the verified email link");
+}
+if (!/href=["']https:\/\/www\.linkedin\.com\/in\/andrewwheat["']/i.test(contactPage?.html || "")) {
+  errors.push("Contact page lacks the verified LinkedIn link");
+}
+
+for (const path of ["/work.html", "/about.html", "/contact.html"]) {
+  const { text: html } = await fetchText(`${requestedBase}${path}`);
+  if (!/noindex/i.test(getAttributeContent(html, "name", "robots"))) {
+    errors.push(`${path} should be noindex as a legacy duplicate`);
+  }
+  const expectedCanonical = `${canonicalOrigin}${path.replace(/\.html$/, "/")}`;
+  if (canonicalFromHtml(html) !== expectedCanonical) {
+    errors.push(`${path} canonical does not point to ${expectedCanonical}`);
+  }
+}
+
+for (const page of pages) {
+  for (const href of [
+    "/work/",
+    "/selected/photography/",
+    "/selected/sketchbook/",
+    "/about/",
+    "/contact/",
+  ]) {
+    if (!new RegExp(`<a[^>]+href=["']${href.replaceAll("/", "\\/")}["']`, "i").test(page.html)) {
+      errors.push(`${page.pathname} primary navigation is missing ${href}`);
+    }
+  }
+}
+
 if (!homepage?.html.includes("/favicon-48.png?v=2")) {
   errors.push("The homepage does not reference the current versioned favicon");
 }

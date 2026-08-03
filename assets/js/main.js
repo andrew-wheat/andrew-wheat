@@ -342,7 +342,11 @@
       canvas.classList.add("has-items");
       canvas.innerHTML = arrangedItems
         .map(({ item, layout }, index) => {
-          const titleText = escapeHtml(item.title || label);
+          const itemDescription =
+            item.captionTitle ||
+            (collection === "photography" && item.location
+              ? `Photograph at ${item.location}`
+              : item.title || label);
           const cameraLine =
             collection === "photography" ? formatPhotographyCameraLine(item.camera) : "";
           const locationLine =
@@ -397,7 +401,7 @@
             >
               <img
                 src="${escapeHtml(item.src)}"
-                alt="${titleText} by Andrew Wheat"
+                alt="${escapeHtml(itemDescription)} by Andrew Wheat"
                 width="${Number(item.width) || 1}"
                 height="${Number(item.height) || 1}"
                 loading="${index < 3 ? "eager" : "lazy"}"
@@ -491,6 +495,9 @@
     }
 
     if (!cleanPath) return;
+    const canonicalUrl = `${url.origin}${cleanPath}`;
+    document.querySelector('link[rel="canonical"]')?.setAttribute("href", canonicalUrl);
+    document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonicalUrl);
     const cleanUrl = `${url.origin}${cleanPath}${url.search}${url.hash}`;
     window.location.replace(cleanUrl);
   }
@@ -523,7 +530,7 @@
       keywords: ["food access", "civic gathering", "environmental performance", "community infrastructure", "food systems"]
     },
     "deconstruct-reconfigure": {
-      title: "Deconstruct Reconfigure | Andrew Wheat",
+      title: "[de]construct + [re]configure | Andrew Wheat",
       description: "Produce stand and material reuse project by Andrew Wheat exploring assembly, disassembly, reuse, public exchange, and community food infrastructure.",
       keywords: ["produce stand", "material reuse", "assembly", "disassembly", "public exchange", "community food infrastructure"]
     },
@@ -2032,13 +2039,13 @@
         <figure class="project-thumb">
           ${
             thumbnail
-              ? `${projectImage(project, thumbnail, project.title, "project-thumb-image project-thumb-image--base")}
-                ${projectImage(project, thumbnailAlt, `${project.title} alternate`, "project-thumb-image project-thumb-image--alt").replace('loading="lazy"', 'loading="eager"')}`
+              ? `${projectImage(project, thumbnail, project.workImageAlt || project.title, "project-thumb-image project-thumb-image--base")}
+                ${projectImage(project, thumbnailAlt, "", "project-thumb-image project-thumb-image--alt").replace('loading="lazy"', 'loading="eager"')}`
               : planSvg(project, project.shape)
           }
         </figure>
         <figure class="project-thumb-list">
-          ${listThumbnail ? projectImage(project, listThumbnail, project.title) : planSvg(project, project.shape)}
+          ${listThumbnail ? projectImage(project, listThumbnail, "") : planSvg(project, project.shape)}
         </figure>
         <div class="project-card-text">
           <span class="project-number">${String(projectNumber).padStart(2, "0")}</span>
@@ -2070,7 +2077,7 @@
     const imageUrl = encodeURI(image.startsWith("http")
       ? image
       : `https://andrew-wheat.com/${image.includes("/") ? image : `${project.imageBase || ""}${image}`}`);
-    const imageAlt = `${seo.title ? seo.title.replace(" | Andrew Wheat", "") : project.title} architectural project by Andrew Wheat`;
+    const imageAlt = project.workImageAlt || `${project.title} architecture project by Andrew Wheat`;
 
     document.title = title;
     setHeadAttribute('link[rel="canonical"]', "href", pageUrl);
@@ -2112,10 +2119,7 @@
       "dateCreated": project.year || undefined,
       "keywords": keywords,
       "creator": {
-        "@type": "Person",
-        "@id": "https://andrew-wheat.com/#andrew-wheat",
-        "name": "Andrew Wheat",
-        "url": "https://andrew-wheat.com/"
+        "@id": "https://andrew-wheat.com/#andrew-wheat"
       },
       "isPartOf": {
         "@type": "CreativeWork",
@@ -2182,11 +2186,12 @@
         <div class="project-hero-drawing">
           ${
             project.heroImage
-              ? projectImage(project, project.heroImage, `${project.title} hero image`)
+              ? projectImage(project, project.heroImage, project.overviewImageAlt || `${project.title} hero image`)
               : planSvg(project, project.shape)
           }
         </div>
         <div class="project-hero-text">
+          ${projectBreadcrumbs(project)}
           <p class="section-kicker">${escapeHtml(project.type)}</p>
           <h1>${escapeHtml(project.title)}</h1>
           ${project.description ? `<p class="project-description">${escapeHtml(project.description)}</p>` : ""}
@@ -2233,9 +2238,10 @@
     return `
       <section class="project-editorial-hero reveal">
         <figure class="project-editorial-cover">
-          ${openingImage ? projectImage(project, openingImage, `${project.title} opening image`) : planSvg(project, project.shape)}
+          ${openingImage ? projectImage(project, openingImage, project.overviewImageAlt || `${project.title} opening image`) : planSvg(project, project.shape)}
         </figure>
         <div class="project-editorial-text">
+          ${projectBreadcrumbs(project)}
           <h1>${escapeHtml(project.title)}</h1>
           ${projectMetadataLines(project)}
           <p>${escapeHtml(project.description || "")}</p>
@@ -2293,6 +2299,18 @@
     const project = projects.find((item) => item.id === id) || projects[0];
     if (!root || !project) return;
     root.insertAdjacentHTML("beforeend", projectNavigation(project));
+  }
+
+  function projectBreadcrumbs(project) {
+    return `
+      <nav class="project-breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/work/">Work</a></li>
+          <li aria-current="page">${escapeHtml(project.title)}</li>
+        </ol>
+      </nav>
+    `;
   }
 
   function initProjectNavigationLabels() {

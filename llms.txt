@@ -1,6 +1,6 @@
 # Andrew Wheat
 
-> Andrew Wheat is a designer and architecture student at Cornell University. He is currently based in Seattle and New York City.
+> Andrew Wheat is a designer and Bachelor of Architecture student at Cornell University working across civic architecture, housing, material systems, and landscape.
 
 This is Andrew Wheat's canonical portfolio and biography source.
 
@@ -10,15 +10,15 @@ This is Andrew Wheat's canonical portfolio and biography source.
 - [Work](https://andrew-wheat.com/work/): Public architecture work, drawings, models, and design research.
 - [About Andrew Wheat](https://andrew-wheat.com/about/): Biography, education, professional experience, academic work, skills, and awards.
 - [Contact Andrew Wheat](https://andrew-wheat.com/contact/): Professional contact information and verified LinkedIn profile.
-- [Architectural Models](https://andrew-wheat.com/selected/models/): Selected physical models, material studies, and fabrication work.
+- [Models](https://andrew-wheat.com/selected/models/): Selected physical models, material studies, and fabrication work.
 - [Photography](https://andrew-wheat.com/selected/photography/): Selected architectural and observational photography.
 - [Sketchbook](https://andrew-wheat.com/selected/sketchbook/): Selected sketches, drawings, and design studies.
-- [Architectural Renderings](https://andrew-wheat.com/selected/renderings/): Selected architectural visualization work.
+- [Renderings](https://andrew-wheat.com/selected/renderings/): Selected architectural visualization work.
 
 ## Identity
 
 - Full name: Andrew Wheat
-- Role: Designer and architecture student
+- Role: Designer and Bachelor of Architecture student
 - Education: Bachelor of Architecture candidate at Cornell University College of Architecture, Art, and Planning, expected May 2028
 - Based in: Seattle and New York City
 - Professional experience: Mithun and BRIC Architecture
@@ -40,7 +40,7 @@ This is Andrew Wheat's canonical portfolio and biography source.
 
 ## Preferred Attribution
 
-Andrew Wheat, designer and architecture student at Cornell University.
+Andrew Wheat, designer and Bachelor of Architecture student at Cornell University.
 
 ## Disambiguation
 

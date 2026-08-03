@@ -35,7 +35,7 @@ window.PORTFOLIO_PROJECTS = [
       {
         "layout": "story-text",
         "heading": "Convergence",
-        "text": "Census data shows Hunter's Point is a transitory environment. It is largely high-income and young, but more importantly, living and working are spatially separated. Most people that live there commute to work in Manhattan, while many of the people working in Hunters Point live in Astoria. Because of this, the area remains active throughout the day, but there is little sustained overlap between these groups. This promts the need for design that allows living, working, production, and play to share space."
+        "text": "Census data shows Hunter's Point is a transitory environment. It is largely high-income and young, but more importantly, living and working are spatially separated. Most people that live there commute to work in Manhattan, while many of the people working in Hunters Point live in Astoria. Because of this, the area remains active throughout the day, but there is little sustained overlap between these groups. This prompts the need for design that allows living, working, production, and play to share space."
       },
       {
         "src": "Full Diagram Reference High Res.png",
@@ -211,8 +211,10 @@ window.PORTFOLIO_PROJECTS = [
     },
     "shape": "strata",
     "workThumbnail": "assets/images/Projects/Hunter's Point Cooperative Housing/Model full shot.png",
-    "workThumbnailAlt": "assets/images/work-heroes/hunters-point.webp",
-    "workListThumbnail": "assets/images/Projects/Hunter's Point Cooperative Housing/Model full shot.png"
+    "workThumbnailAlt": "assets/images/Projects/Hunter's Point Cooperative Housing/Corridor Render.png",
+    "workListThumbnail": "assets/images/Projects/Hunter's Point Cooperative Housing/Model full shot.png",
+    "overviewImageAlt": "Interior rendering of a shared woodworking shop and red stair within Hunter's Point Cooperative Housing",
+    "workImageAlt": "Physical model of Hunter's Point Cooperative Housing with a timber frame, exterior walkways, and green stairs"
   },
   {
     "id": "wood-street-pool",
@@ -379,7 +381,9 @@ window.PORTFOLIO_PROJECTS = [
     "shape": "cells",
     "workThumbnail": "assets/images/Projects/Wood Street Pool/hero 2.png",
     "workThumbnailAlt": "assets/images/work-heroes/wood-street-pool.webp",
-    "workListThumbnail": "assets/images/Projects/Wood Street Pool/hero 2.png"
+    "workListThumbnail": "assets/images/Projects/Wood Street Pool/hero 2.png",
+    "overviewImageAlt": "Exterior rendering of Wood Street Pool beside planted terraces and a public path",
+    "workImageAlt": "Interior rendering of swimmers in the mass-timber Wood Street Pool natatorium"
   },
   {
     "id": "enfield-food-pantry",
@@ -633,7 +637,9 @@ window.PORTFOLIO_PROJECTS = [
     "shape": "bar",
     "workThumbnail": "assets/images/Projects/Enfield Food Pantry/3X6A0280 cropped SMALLER.png",
     "workThumbnailAlt": "assets/images/work-heroes/enfield-food-pantry.webp",
-    "workListThumbnail": "assets/images/Projects/Enfield Food Pantry/3X6A0280 cropped SMALLER.png"
+    "workListThumbnail": "assets/images/Projects/Enfield Food Pantry/3X6A0280 cropped SMALLER.png",
+    "overviewImageAlt": "Physical model of Enfield Food Pantry seen through garden planting",
+    "workImageAlt": "Close-up of the Enfield Food Pantry physical model with a corrugated roof"
   },
   {
     "id": "deconstruct-reconfigure",
@@ -740,7 +746,9 @@ window.PORTFOLIO_PROJECTS = [
     "shape": "archive",
     "workThumbnail": "assets/images/Projects/[de]construct + [re]configure/DO4A0315.png",
     "workThumbnailAlt": "assets/images/work-heroes/deconstruct-reconfigure.webp",
-    "workListThumbnail": "assets/images/Projects/[de]construct + [re]configure/DO4A0315.png"
+    "workListThumbnail": "assets/images/Projects/[de]construct + [re]configure/DO4A0315.png",
+    "overviewImageAlt": "Hand lifting the hinged display surface of the [de]construct + [re]configure produce stand model",
+    "workImageAlt": "Front view of the [de]construct + [re]configure produce stand model"
   },
   {
     "id": "borinquen-healing-center",
@@ -826,7 +834,9 @@ window.PORTFOLIO_PROJECTS = [
     "shape": "theater",
     "workThumbnail": "assets/images/work-heroes/borinquen-healing-center.webp",
     "workThumbnailAlt": "assets/images/work-heroes-alt/borinquen-healing-center.webp",
-    "workListThumbnail": "assets/images/work-covers/borinquen-healing-center.webp"
+    "workListThumbnail": "assets/images/work-covers/borinquen-healing-center.webp",
+    "overviewImageAlt": "White physical site model of Borinquen Healing Center's curved processional landscape",
+    "workImageAlt": "White physical site model of Borinquen Healing Center's curved processional landscape"
   },
   {
     "id": "a-chair-is-a-toy",
@@ -953,7 +963,9 @@ window.PORTFOLIO_PROJECTS = [
     "shape": "courtyard",
     "workThumbnail": "assets/images/work-heroes/a-chair-is-a-toy.webp",
     "workThumbnailAlt": "assets/images/work-heroes-alt/a-chair-is-a-toy.webp",
-    "workListThumbnail": "assets/images/work-covers/chair is a toy.jpg"
+    "workListThumbnail": "assets/images/work-covers/chair is a toy.jpg",
+    "overviewImageAlt": "Kinetic chair model balancing metal rods, springs, cables, and planes",
+    "workImageAlt": "Kinetic chair model balancing metal rods, springs, cables, and planes"
   },
   {
     "id": "design-district-canteen",
@@ -1029,7 +1041,9 @@ window.PORTFOLIO_PROJECTS = [
     "shape": "grid",
     "workThumbnail": "assets/images/Projects/Design District Canteen/Model Front View Shot 03 reduced.png",
     "workThumbnailAlt": "assets/images/work-heroes/design-district-canteen.webp",
-    "workListThumbnail": "assets/images/Projects/Design District Canteen/Model Front View Shot 03 reduced.png"
+    "workListThumbnail": "assets/images/Projects/Design District Canteen/Model Front View Shot 03 reduced.png",
+    "overviewImageAlt": "Front view of the Design District Canteen wire structural model on an orange site base",
+    "workImageAlt": "Close view of Design District Canteen's arched wire structural model"
   },
   {
     "id": "curanto-cookhouse",
@@ -1196,7 +1210,9 @@ window.PORTFOLIO_PROJECTS = [
     "workArchiveOnly": true,
     "workThumbnail": "assets/images/work-heroes/curanto-cookhouse.webp",
     "workThumbnailAlt": "assets/images/work-heroes-alt/curanto-cookhouse.webp",
-    "workListThumbnail": "assets/images/work-covers/curanto-cookhouse.webp"
+    "workListThumbnail": "assets/images/work-covers/curanto-cookhouse.webp",
+    "overviewImageAlt": "Black-and-white physical model of Curanto Cookhouse with mesh gabion walls and a slatted roof",
+    "workImageAlt": "Black-and-white physical model of Curanto Cookhouse with mesh gabion walls and a slatted roof"
   },
   {
     "id": "woven-pavilion",
@@ -1313,7 +1329,9 @@ window.PORTFOLIO_PROJECTS = [
     "workArchiveOnly": true,
     "workThumbnail": "assets/images/work-heroes/woven-pavilion.webp",
     "workThumbnailAlt": "assets/images/work-heroes-alt/woven-pavilion.webp",
-    "workListThumbnail": "assets/images/work-covers/woven-pavilion.webp"
+    "workListThumbnail": "assets/images/work-covers/woven-pavilion.webp",
+    "overviewImageAlt": "Black-and-white physical model of Woven Pavilion's folded wall enclosures",
+    "workImageAlt": "Black-and-white physical model of Woven Pavilion's folded wall enclosures"
   }
 ];
 
