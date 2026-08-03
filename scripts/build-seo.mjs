@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-08-02";
-const ASSET_VERSION = "20260802-sketchbook-v114";
+const ASSET_VERSION = "20260802-drawings-knoll-v123";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -67,6 +67,12 @@ const TECHNICAL_SKILL_GROUPS = [
   },
 ];
 const SELECTED_COLLECTION_META = {
+  drawings: {
+    title: "Drawings | Andrew Wheat",
+    heading: "Drawings",
+    description:
+      "Selected architectural line drawings by Andrew Wheat, including sections, sectional perspectives, detail sections, elevations, and axonometric studies.",
+  },
   models: {
     title: "Models | Andrew Wheat",
     heading: "Models",
@@ -165,7 +171,7 @@ runInNewContext(
   selectedContext,
 );
 const selectedCollections = selectedContext.window.SELECTED_COLLECTIONS ?? {};
-const selectedCollectionOrder = ["models", "photography", "sketchbook", "renderings"].filter(
+const selectedCollectionOrder = ["drawings", "models", "photography", "sketchbook", "renderings"].filter(
   (collection) => Array.isArray(selectedCollections[collection]),
 );
 
@@ -578,7 +584,7 @@ ${scriptTags()}
 function selectedHubPage() {
   const title = "Selected Work | Andrew Wheat";
   const description =
-    "Browse selected architectural models, photography, sketchbook work, and renderings by Andrew Wheat.";
+    "Browse selected architectural drawings, models, photography, sketchbook work, and renderings by Andrew Wheat.";
   return `<!doctype html>
 <html lang="en">
 ${buildHead({
@@ -660,16 +666,18 @@ ${siteHeader()}
       </a>
       <div class="minimal-landing-content">
         <h1 class="minimal-landing-copy">${escapeHtml(LANDING_STATEMENT)}</h1>
-        <a class="minimal-landing-link" href="/work/">view work</a>
+        <nav class="minimal-work-menu" aria-label="Work and selected collections">
+          <a class="minimal-landing-link" href="/work/">view work</a>
+          <div class="minimal-work-submenu" aria-label="Selected collections">
+            <a href="/selected/models/">models</a>
+            <a href="/selected/photography/">photography</a>
+            <a href="/selected/sketchbook/">sketchbook</a>
+            <a href="/selected/renderings/">renderings</a>
+            <a href="/selected/drawings/">drawings</a>
+          </div>
+        </nav>
       </div>
     </main>
-    <nav class="home-destinations" aria-label="Explore Andrew Wheat's portfolio">
-      <a href="/work/">Work</a>
-      <a href="/selected/photography/">Photography</a>
-      <a href="/selected/sketchbook/">Sketchbook</a>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-    </nav>
 ${scriptTags()}
   </body>
 </html>

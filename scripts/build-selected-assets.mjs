@@ -11,7 +11,7 @@ const projectRoot = path.resolve(scriptDirectory, "..");
 const sourceRoot = path.resolve(projectRoot, "..", "assets", "images");
 const outputRoot = path.join(projectRoot, "assets", "images", "selected");
 const manifestPath = path.join(projectRoot, "assets", "js", "selected-collections.js");
-const categories = ["models", "photography", "sketchbook", "renderings"];
+const categories = ["drawings", "models", "photography", "sketchbook", "renderings"];
 const supportedExtensions = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 const hiddenSelectedAssets = {
   photography: new Set(["img_1932.jpg"]),
@@ -22,6 +22,20 @@ const selectedKeyOverrides = {
   renderings: {
     "hero (2).png": "hero-2",
     "hero 2.png": "hero-2-pool"
+  }
+};
+const drawingCropOverrides = {
+  "hunters-point-long-site-section.png": {
+    left: 102,
+    top: 102,
+    width: 3996,
+    height: 796
+  },
+  "hunters-point-section-perspective.png": {
+    left: 212,
+    top: 212,
+    width: 3776,
+    height: 1676
   }
 };
 const photographyCameraOverrides = {
@@ -189,7 +203,51 @@ const sketchbookCaptionOverrides = {
     captionTitle: "Seattle Market and Space Needle"
   }
 };
+const drawingCaptionOverrides = {
+  "curanto-cookhouse-exploded-axon.png": {
+    captionTitle: "Curanto Cookhouse, Exploded Roof Axonometric"
+  },
+  "enfield-food-pantry-chapel-longitudinal-section.jpg": {
+    captionTitle: "Enfield Food Pantry, Chapel Longitudinal Section"
+  },
+  "enfield-food-pantry-envelope-detail-section.png": {
+    captionTitle: "Enfield Food Pantry, Envelope Detail Section"
+  },
+  "enfield-food-pantry-main-building-longitudinal-section.png": {
+    captionTitle: "Enfield Food Pantry, Main Building Longitudinal Section"
+  },
+  "enfield-food-pantry-transverse-section.png": {
+    captionTitle: "Enfield Food Pantry, Transverse Section"
+  },
+  "hunters-point-long-site-section.png": {
+    captionTitle: "Hunter's Point Cooperative Housing, Urban Site Section"
+  },
+  "hunters-point-section-perspective.png": {
+    captionTitle: "Hunter's Point Cooperative Housing, Section Perspective"
+  },
+  "wood-street-pool-long-elevation.png": {
+    captionTitle: "Wood Street Pool, Long Elevation"
+  },
+  "wood-street-pool-envelope-detail-section.png": {
+    captionTitle: "Wood Street Pool, Envelope and Pool-Edge Detail Section"
+  },
+  "wood-street-pool-short-section.png": {
+    captionTitle: "Wood Street Pool, Short Section"
+  }
+};
 const projectTitles = {
+  drawings: {
+    "curanto-cookhouse-exploded-axon.png": "Curanto Cookhouse",
+    "enfield-food-pantry-chapel-longitudinal-section.jpg": "Enfield Food Pantry",
+    "enfield-food-pantry-envelope-detail-section.png": "Enfield Food Pantry",
+    "enfield-food-pantry-main-building-longitudinal-section.png": "Enfield Food Pantry",
+    "enfield-food-pantry-transverse-section.png": "Enfield Food Pantry",
+    "hunters-point-long-site-section.png": "Hunter's Point Cooperative Housing",
+    "hunters-point-section-perspective.png": "Hunter's Point Cooperative Housing",
+    "wood-street-pool-long-elevation.png": "Wood Street Pool",
+    "wood-street-pool-envelope-detail-section.png": "Wood Street Pool",
+    "wood-street-pool-short-section.png": "Wood Street Pool"
+  },
   models: {
     "1.png": "Hunter's Point Cooperative Housing",
     "3x6a0205.png": "Enfield Food Pantry",
@@ -364,7 +422,13 @@ for (const category of categories) {
   for (const file of files) {
     const sourcePath = path.join(sourceDirectory, file.name);
     const sourceBuffer = await readFile(sourcePath);
-    const digest = createHash("sha1").update(sourceBuffer).digest("hex").slice(0, 8);
+    const drawingCrop =
+      category === "drawings" ? drawingCropOverrides[file.name.toLowerCase()] || null : null;
+    const digest = createHash("sha1")
+      .update(sourceBuffer)
+      .update(drawingCrop ? JSON.stringify(drawingCrop) : "")
+      .digest("hex")
+      .slice(0, 8);
     const outputName = `${slugify(path.parse(file.name).name)}-${digest}.webp`;
     const outputPath = path.join(outputDirectory, outputName);
     const itemKey =
@@ -392,7 +456,13 @@ for (const category of categories) {
       category === "sketchbook"
         ? sketchbookCaptionOverrides[file.name.toLowerCase()] || null
         : null;
-    const image = sharp(sourcePath).rotate().resize({
+    const drawingCaption =
+      category === "drawings"
+        ? drawingCaptionOverrides[file.name.toLowerCase()] || null
+        : null;
+    let image = sharp(sourcePath).rotate();
+    if (drawingCrop) image = image.extract(drawingCrop);
+    image = image.resize({
       width: 2000,
       height: 2000,
       fit: "inside",
@@ -410,7 +480,8 @@ for (const category of categories) {
       ...(location ? { location } : {}),
       ...(modelCaption || {}),
       ...(renderingCaption || {}),
-      ...(sketchbookCaption || {})
+      ...(sketchbookCaption || {}),
+      ...(drawingCaption || {})
     });
   }
 

@@ -9,7 +9,7 @@
   const optimizedImages = window.PORTFOLIO_OPTIMIZED_IMAGES || {};
   const imageDimensions = window.PORTFOLIO_IMAGE_DIMENSIONS || {};
   const selectedCollections = window.SELECTED_COLLECTIONS || {};
-  const selectedCollectionOrder = ["models", "photography", "sketchbook", "renderings"];
+  const selectedCollectionOrder = ["drawings", "models", "photography", "sketchbook", "renderings"];
   const showSelectedSection = true;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const workCategoryOrder = ["Academic", "Professional"];
@@ -167,6 +167,18 @@
     const canvas = shell.querySelector("[data-selected-canvas]");
     const items = collection ? selectedCollections[collection] || [] : [];
     const curatedLayouts = {
+      drawings: [
+        { key: "hunters-point-section-perspective", row: 1, col: 1, span: 22, offset: "0px", max: "1580px", align: "start" },
+        { key: "curanto-cookhouse-exploded-axon", row: 25, col: 12, span: 13, offset: "0px", max: "1050px", align: "end" },
+        { key: "enfield-food-pantry-transverse-section", row: 43, col: 6, span: 19, offset: "0px", max: "1400px", align: "end" },
+        { key: "wood-street-pool-envelope-detail-section", row: 61, col: 1, span: 13, offset: "0px", max: "950px", align: "start" },
+        { key: "enfield-food-pantry-envelope-detail-section", row: 78, col: 12, span: 13, offset: "0px", max: "960px", align: "end" },
+        { key: "wood-street-pool-short-section", row: 101, col: 2, span: 22, offset: "0px", max: "1580px", align: "start" },
+        { key: "enfield-food-pantry-chapel-longitudinal-section", row: 115, col: 6, span: 19, offset: "0px", max: "1350px", align: "end" },
+        { key: "hunters-point-long-site-section", row: 128, col: 1, span: 23, offset: "0px", max: "1660px", align: "start" },
+        { key: "enfield-food-pantry-main-building-longitudinal-section", row: 140, col: 3, span: 21, offset: "0px", max: "1520px", align: "end" },
+        { key: "wood-street-pool-long-elevation", row: 152, col: 1, span: 23, offset: "0px", max: "1660px", align: "start" }
+      ],
       models: [
         {
           key: "andrew-wheat-ajw288-problem-03c-final-model-15",
@@ -361,12 +373,14 @@
                 </figcaption>`
               : "";
           const exhibitCaption =
-            (collection === "models" || collection === "renderings") &&
+            (collection === "drawings" || collection === "models" || collection === "renderings") &&
             (item.captionTitle || item.materials || item.production)
               ? `<figcaption class="${
                   collection === "models"
                     ? "selected-model-meta"
-                    : "selected-rendering-meta"
+                    : collection === "drawings"
+                      ? "selected-drawing-meta"
+                      : "selected-rendering-meta"
                 }">
                   ${
                     item.captionTitle
@@ -463,7 +477,7 @@
     let cleanPath = legacyRoutes[url.pathname];
 
     const selectedIndexMatch = url.pathname.match(
-      /^\/selected\/(models|photography|sketchbook|renderings)\/index\.html$/
+      /^\/selected\/(drawings|models|photography|sketchbook|renderings)\/index\.html$/
     );
     if (selectedIndexMatch) {
       cleanPath = `/selected/${selectedIndexMatch[1]}/`;
@@ -502,7 +516,7 @@
 
   function selectedCollectionFromLocation() {
     const pathMatch = window.location.pathname.match(
-      /^\/selected\/(models|photography|sketchbook|renderings)\/(?:index\.html)?$/
+      /^\/selected\/(drawings|models|photography|sketchbook|renderings)\/(?:index\.html)?$/
     );
     if (pathMatch && selectedCollectionOrder.includes(pathMatch[1])) {
       return pathMatch[1];

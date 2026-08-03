@@ -1,4 +1,86 @@
 window.SELECTED_COLLECTIONS = {
+  "drawings": [
+    {
+      "key": "curanto-cookhouse-exploded-axon",
+      "src": "/assets/images/selected/drawings/curanto-cookhouse-exploded-axon-4ade4414.webp",
+      "title": "Curanto Cookhouse",
+      "width": 1778,
+      "height": 2000,
+      "captionTitle": "Curanto Cookhouse, Exploded Roof Axonometric"
+    },
+    {
+      "key": "enfield-food-pantry-chapel-longitudinal-section",
+      "src": "/assets/images/selected/drawings/enfield-food-pantry-chapel-longitudinal-section-b4cad28e.webp",
+      "title": "Enfield Food Pantry",
+      "width": 2000,
+      "height": 683,
+      "captionTitle": "Enfield Food Pantry, Chapel Longitudinal Section"
+    },
+    {
+      "key": "enfield-food-pantry-envelope-detail-section",
+      "src": "/assets/images/selected/drawings/enfield-food-pantry-envelope-detail-section-9bc7d348.webp",
+      "title": "Enfield Food Pantry",
+      "width": 2000,
+      "height": 1931,
+      "captionTitle": "Enfield Food Pantry, Envelope Detail Section"
+    },
+    {
+      "key": "enfield-food-pantry-main-building-longitudinal-section",
+      "src": "/assets/images/selected/drawings/enfield-food-pantry-main-building-longitudinal-section-93e96366.webp",
+      "title": "Enfield Food Pantry",
+      "width": 2000,
+      "height": 457,
+      "captionTitle": "Enfield Food Pantry, Main Building Longitudinal Section"
+    },
+    {
+      "key": "enfield-food-pantry-transverse-section",
+      "src": "/assets/images/selected/drawings/enfield-food-pantry-transverse-section-81488129.webp",
+      "title": "Enfield Food Pantry",
+      "width": 2000,
+      "height": 979,
+      "captionTitle": "Enfield Food Pantry, Transverse Section"
+    },
+    {
+      "key": "hunters-point-long-site-section",
+      "src": "/assets/images/selected/drawings/hunters-point-long-site-section-ec498d0b.webp",
+      "title": "Hunter's Point Cooperative Housing",
+      "width": 2000,
+      "height": 398,
+      "captionTitle": "Hunter's Point Cooperative Housing, Urban Site Section"
+    },
+    {
+      "key": "hunters-point-section-perspective",
+      "src": "/assets/images/selected/drawings/hunters-point-section-perspective-8e3c7d31.webp",
+      "title": "Hunter's Point Cooperative Housing",
+      "width": 2000,
+      "height": 888,
+      "captionTitle": "Hunter's Point Cooperative Housing, Section Perspective"
+    },
+    {
+      "key": "wood-street-pool-envelope-detail-section",
+      "src": "/assets/images/selected/drawings/wood-street-pool-envelope-detail-section-f000f6ef.webp",
+      "title": "Wood Street Pool",
+      "width": 1750,
+      "height": 2000,
+      "captionTitle": "Wood Street Pool, Envelope and Pool-Edge Detail Section"
+    },
+    {
+      "key": "wood-street-pool-long-elevation",
+      "src": "/assets/images/selected/drawings/wood-street-pool-long-elevation-682c7873.webp",
+      "title": "Wood Street Pool",
+      "width": 2000,
+      "height": 476,
+      "captionTitle": "Wood Street Pool, Long Elevation"
+    },
+    {
+      "key": "wood-street-pool-short-section",
+      "src": "/assets/images/selected/drawings/wood-street-pool-short-section-c2924424.webp",
+      "title": "Wood Street Pool",
+      "width": 2000,
+      "height": 923,
+      "captionTitle": "Wood Street Pool, Short Section"
+    }
+  ],
   "models": [
     {
       "key": "1",
@@ -350,7 +432,7 @@ window.SELECTED_COLLECTIONS = {
     },
     {
       "key": "img-9684",
-      "src": "/assets/images/selected/sketchbook/img-9684-75bc0365.webp",
+      "src": "/assets/images/selected/sketchbook/img-9684-79a0171d.webp",
       "title": "Sketchbook",
       "width": 2000,
       "height": 1470,

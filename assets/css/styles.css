@@ -6418,6 +6418,55 @@ body[data-page="landing-minimal"] {
   text-underline-offset: 4px;
 }
 
+.minimal-work-menu {
+  display: grid;
+  justify-items: start;
+  width: max-content;
+  max-width: 100%;
+}
+
+.minimal-work-submenu {
+  display: grid;
+  gap: 7px;
+  max-height: 0;
+  margin-top: 0;
+  padding-left: clamp(22px, 2.4vw, 38px);
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    max-height 220ms ease,
+    margin-top 180ms ease,
+    opacity 160ms ease,
+    transform 180ms ease,
+    visibility 0s linear 220ms;
+}
+
+.minimal-work-menu:hover .minimal-work-submenu,
+.minimal-work-menu:focus-within .minimal-work-submenu {
+  max-height: 9em;
+  margin-top: 11px;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.minimal-work-submenu a {
+  color: var(--muted);
+  font-size: clamp(11px, 0.78vw, 13px);
+  font-weight: 300;
+  line-height: 1.25;
+  text-decoration: none;
+  transition: color 140ms ease;
+}
+
+.minimal-work-submenu a:hover,
+.minimal-work-submenu a:focus-visible {
+  color: var(--ink);
+}
+
 .minimal-landing-visual {
   display: block;
   justify-self: center;
@@ -6429,31 +6478,6 @@ body[data-page="landing-minimal"] {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.home-destinations {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px clamp(20px, 2.5vw, 36px);
-  padding: clamp(34px, 5vw, 64px) var(--project-gutter)
-    max(clamp(42px, 6vw, 72px), env(safe-area-inset-bottom));
-  font-family: var(--font-copy);
-  font-size: clamp(10px, 0.74vw, 12px);
-  line-height: 1.45;
-  letter-spacing: 0.025em;
-}
-
-.home-destinations a {
-  color: inherit;
-  text-decoration: none;
-  opacity: 0.68;
-  transition: opacity 180ms ease;
-}
-
-.home-destinations a:hover,
-.home-destinations a:focus-visible {
-  opacity: 1;
 }
 
 @media (max-width: 900px) {
@@ -6486,13 +6510,6 @@ body[data-page="landing-minimal"] {
     justify-self: center;
     justify-items: start;
     gap: 16px;
-  }
-
-  .home-destinations {
-    justify-content: flex-start;
-    gap: 9px 22px;
-    padding: 30px var(--project-gutter)
-      max(46px, env(safe-area-inset-bottom));
   }
 
   .minimal-landing-copy,
@@ -7002,6 +7019,7 @@ body[data-page="selected"] {
 }
 
 .selected-camera-meta,
+.selected-drawing-meta,
 .selected-model-meta,
 .selected-rendering-meta {
   display: none;
@@ -7012,6 +7030,61 @@ body[data-page="selected"] {
     padding-right: clamp(56px, 6vw, 104px);
     padding-bottom: clamp(380px, 44vw, 780px);
     padding-left: clamp(56px, 6vw, 104px);
+  }
+
+  body[data-selected-collection="drawings"] .selected-scatter.has-items {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: auto;
+    row-gap: clamp(112px, 9vw, 168px);
+    width: min(1840px, calc(100% - (var(--project-gutter) * 2)));
+    padding-right: clamp(32px, 3vw, 56px);
+    padding-bottom: clamp(220px, 18vw, 340px);
+    padding-left: clamp(32px, 3vw, 56px);
+  }
+
+  body[data-selected-collection="drawings"] .selected-image-card {
+    grid-column: 1;
+    grid-row: auto;
+    width: 100%;
+    max-width: none;
+  }
+
+  body[data-selected-collection="drawings"]
+    .selected-image-card[data-selected-key="curanto-cookhouse-exploded-axon"] {
+    width: 62%;
+    justify-self: end;
+  }
+
+  body[data-selected-collection="drawings"]
+    .selected-image-card[data-selected-key="enfield-food-pantry-transverse-section"] {
+    width: 94%;
+    justify-self: start;
+  }
+
+  body[data-selected-collection="drawings"]
+    .selected-image-card[data-selected-key="wood-street-pool-envelope-detail-section"],
+  body[data-selected-collection="drawings"]
+    .selected-image-card[data-selected-key="enfield-food-pantry-envelope-detail-section"] {
+    width: 66%;
+  }
+
+  body[data-selected-collection="drawings"]
+    .selected-image-card[data-selected-key="wood-street-pool-envelope-detail-section"] {
+    justify-self: start;
+  }
+
+  body[data-selected-collection="drawings"]
+    .selected-image-card[data-selected-key="enfield-food-pantry-envelope-detail-section"],
+  body[data-selected-collection="drawings"]
+    .selected-image-card[data-selected-key="enfield-food-pantry-chapel-longitudinal-section"],
+  body[data-selected-collection="drawings"]
+    .selected-image-card[data-selected-key="enfield-food-pantry-main-building-longitudinal-section"] {
+    justify-self: end;
+  }
+
+  body[data-selected-collection="drawings"]
+    .selected-image-card[data-selected-key="enfield-food-pantry-chapel-longitudinal-section"] {
+    width: 96%;
   }
 
   body[data-selected-collection="renderings"]
@@ -7041,6 +7114,7 @@ body[data-page="selected"] {
   }
 
   body[data-selected-collection="photography"] .selected-camera-meta,
+  body[data-selected-collection="drawings"] .selected-drawing-meta,
   body[data-selected-collection="models"] .selected-model-meta,
   body[data-selected-collection="renderings"] .selected-rendering-meta {
     position: absolute;
@@ -7064,6 +7138,7 @@ body[data-page="selected"] {
   body[data-selected-collection="models"] .selected-model-meta strong,
   body[data-selected-collection="models"] .selected-model-meta span,
   body[data-selected-collection="photography"] .selected-camera-meta span,
+  body[data-selected-collection="drawings"] .selected-drawing-meta span,
   body[data-selected-collection="renderings"] .selected-rendering-meta span {
     display: block;
   }
@@ -7081,6 +7156,7 @@ body[data-page="selected"] {
   }
 
   body[data-selected-collection="models"] .selected-model-meta span,
+  body[data-selected-collection="drawings"] .selected-drawing-meta span,
   body[data-selected-collection="renderings"] .selected-rendering-meta span {
     margin-top: 2px;
     font-weight: 400;
@@ -7098,6 +7174,12 @@ body[data-page="selected"] {
   body[data-selected-collection="models"]
     .selected-image-card:focus-within
     .selected-model-meta,
+  body[data-selected-collection="drawings"]
+    .selected-image-card:hover
+    .selected-drawing-meta,
+  body[data-selected-collection="drawings"]
+    .selected-image-card:focus-within
+    .selected-drawing-meta,
   body[data-selected-collection="renderings"]
     .selected-image-card:hover
     .selected-rendering-meta,
@@ -7258,6 +7340,17 @@ body:has(.nav-folder--selected:focus-within) > footer {
   }
 
   body[data-selected-collection="sketchbook"] .selected-image-card {
+    width: 100%;
+    justify-self: center;
+  }
+
+  body[data-selected-collection="drawings"] .selected-scatter.has-items {
+    gap: clamp(72px, 20vw, 110px);
+  }
+
+  body[data-selected-collection="drawings"] .selected-image-card,
+  body[data-selected-collection="drawings"] .selected-image-card:nth-child(even),
+  body[data-selected-collection="drawings"] .selected-image-card:nth-child(3n) {
     width: 100%;
     justify-self: center;
   }

@@ -126,6 +126,7 @@ for (const path of [
   "/work/",
   "/about/",
   "/contact/",
+  "/selected/drawings/",
   "/selected/models/",
   "/selected/photography/",
   "/selected/sketchbook/",
@@ -345,6 +346,7 @@ if (!plainText(homepage?.html || "").includes(homepageDescription)) {
 }
 for (const href of [
   "/work/",
+  "/selected/drawings/",
   "/selected/photography/",
   "/selected/sketchbook/",
   "/about/",
@@ -389,6 +391,7 @@ if (aboutProfile?.mainEntity?.["@id"] !== `${canonicalOrigin}/#andrew-wheat`) {
 for (const [path, expectedTitle] of Object.entries({
   "/work/": "Work | Andrew Wheat",
   "/contact/": "Contact Andrew Wheat",
+  "/selected/drawings/": "Drawings | Andrew Wheat",
   "/selected/models/": "Models | Andrew Wheat",
   "/selected/photography/": "Photography | Andrew Wheat",
   "/selected/sketchbook/": "Sketchbook | Andrew Wheat",
@@ -420,6 +423,7 @@ for (const path of ["/work.html", "/about.html", "/contact.html"]) {
 for (const page of pages) {
   for (const href of [
     "/work/",
+    "/selected/drawings/",
     "/selected/photography/",
     "/selected/sketchbook/",
     "/about/",
