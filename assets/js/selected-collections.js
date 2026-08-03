@@ -304,20 +304,6 @@ window.SELECTED_COLLECTIONS = {
   ],
   "sketchbook": [
     {
-      "key": "img-7838",
-      "src": "/assets/images/selected/sketchbook/img-7838-10fb42fd.webp",
-      "title": "Sketchbook",
-      "width": 2000,
-      "height": 1525
-    },
-    {
-      "key": "img-7841",
-      "src": "/assets/images/selected/sketchbook/img-7841-93d28c64.webp",
-      "title": "Sketchbook",
-      "width": 2000,
-      "height": 1543
-    },
-    {
       "key": "img-9544",
       "src": "/assets/images/selected/sketchbook/img-9544-30b3059c.webp",
       "title": "Sketchbook",
@@ -337,6 +323,30 @@ window.SELECTED_COLLECTIONS = {
       "title": "Sketchbook",
       "width": 2000,
       "height": 1613
+    },
+    {
+      "key": "img-9680",
+      "src": "/assets/images/selected/sketchbook/img-9680-aba5c04b.webp",
+      "title": "Sketchbook",
+      "width": 2000,
+      "height": 1841,
+      "captionTitle": "Pike Place Market, Seattle"
+    },
+    {
+      "key": "img-9682",
+      "src": "/assets/images/selected/sketchbook/img-9682-452a630c.webp",
+      "title": "Sketchbook",
+      "width": 2000,
+      "height": 1251,
+      "captionTitle": "Old Town Rooftops"
+    },
+    {
+      "key": "img-9683",
+      "src": "/assets/images/selected/sketchbook/img-9683-60e6fb98.webp",
+      "title": "Sketchbook",
+      "width": 2000,
+      "height": 1615,
+      "captionTitle": "Civic Building and Plaza"
     }
   ],
   "renderings": [

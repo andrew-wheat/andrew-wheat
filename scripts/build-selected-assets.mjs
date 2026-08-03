@@ -15,6 +15,7 @@ const categories = ["models", "photography", "sketchbook", "renderings"];
 const supportedExtensions = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 const hiddenSelectedAssets = {
   photography: new Set(["img_1932.jpg"]),
+  sketchbook: new Set(["img_7838.jpg", "img_7841.png"]),
   renderings: new Set(["exterior 2 edited noisy copy.jpg"])
 };
 const selectedKeyOverrides = {
@@ -169,6 +170,17 @@ const renderingCaptionOverrides = {
   "zoomed out render final edited tall.png": {
     captionTitle: "Enfield Food Pantry, Field-Edge View",
     production: "Rhino · V-Ray · Photoshop"
+  }
+};
+const sketchbookCaptionOverrides = {
+  "img_9680.jpg": {
+    captionTitle: "Pike Place Market, Seattle"
+  },
+  "img_9682.jpg": {
+    captionTitle: "Old Town Rooftops"
+  },
+  "img_9683.jpeg": {
+    captionTitle: "Civic Building and Plaza"
   }
 };
 const projectTitles = {
@@ -370,6 +382,10 @@ for (const category of categories) {
       category === "renderings"
         ? renderingCaptionOverrides[file.name.toLowerCase()] || null
         : null;
+    const sketchbookCaption =
+      category === "sketchbook"
+        ? sketchbookCaptionOverrides[file.name.toLowerCase()] || null
+        : null;
     const image = sharp(sourcePath).rotate().resize({
       width: 2000,
       height: 2000,
@@ -387,7 +403,8 @@ for (const category of categories) {
       ...(camera ? { camera } : {}),
       ...(location ? { location } : {}),
       ...(modelCaption || {}),
-      ...(renderingCaption || {})
+      ...(renderingCaption || {}),
+      ...(sketchbookCaption || {})
     });
   }
 

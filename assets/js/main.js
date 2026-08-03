@@ -171,64 +171,64 @@
         {
           key: "andrew-wheat-ajw288-problem-03c-final-model-15",
           row: 1,
-          col: 1,
-          span: 8,
+          col: 2,
+          span: 15,
           offset: "0px",
           max: "1180px",
           align: "start"
         },
-        { key: "work-cover-photo", row: 2, col: 7, span: 6, offset: "-80px", max: "820px", align: "end" },
-        { key: "3x6a0205", row: 3, col: 1, span: 7, offset: "0px", max: "900px", align: "start" },
+        { key: "work-cover-photo", row: 19, col: 16, span: 9, offset: "0px", max: "720px", align: "end" },
+        { key: "3x6a0205", row: 37, col: 3, span: 12, offset: "0px", max: "900px", align: "start" },
         {
           key: "1",
-          row: 4,
-          col: 7,
-          span: 5,
+          row: 49,
+          col: 18,
+          span: 6,
           offset: "0px",
-          max: "680px",
+          max: "520px",
           align: "end"
         },
-        { key: "main-hero-shot", row: 5, col: 1, span: 6, offset: "0px", max: "780px", align: "start" },
-        { key: "model-01-cropped", row: 6, col: 5, span: 8, offset: "0px", max: "1080px", align: "end" },
+        { key: "main-hero-shot", row: 62, col: 1, span: 11, offset: "0px", max: "780px", align: "start" },
+        { key: "model-01-cropped", row: 78, col: 12, span: 13, offset: "0px", max: "1080px", align: "end" },
         {
           key: "model-front-view-shot-03-reduced",
-          row: 7,
-          col: 1,
-          span: 6,
+          row: 98,
+          col: 3,
+          span: 9,
           offset: "0px",
           max: "900px",
           align: "start"
         },
-        { key: "model-full-shot", row: 8, col: 7, span: 6, offset: "0px", max: "780px", align: "end" },
-        { key: "do4a0315", row: 9, col: 1, span: 7, offset: "0px", max: "960px", align: "start" },
+        { key: "model-full-shot", row: 113, col: 16, span: 8, offset: "0px", max: "780px", align: "end" },
+        { key: "do4a0315", row: 128, col: 1, span: 13, offset: "0px", max: "960px", align: "start" },
         {
           key: "3x6a0280-cropped-smaller",
-          row: 10,
-          col: 7,
-          span: 6,
+          row: 147,
+          col: 15,
+          span: 10,
           offset: "0px",
           max: "820px",
           align: "end"
         },
         {
           key: "andrew-wheat-ajw288-01b-study-model-1",
-          row: 11,
-          col: 1,
-          span: 5,
+          row: 164,
+          col: 4,
+          span: 8,
           offset: "0px",
           max: "720px",
           align: "start"
         },
         {
           key: "speculative-circulation-model",
-          row: 12,
-          col: 4,
-          span: 9,
+          row: 182,
+          col: 10,
+          span: 15,
           offset: "0px",
           max: "1180px",
           align: "end"
         },
-        { key: "hero-2", row: 13, col: 1, span: 7, offset: "0px", max: "900px", align: "start" }
+        { key: "hero-2", row: 207, col: 1, span: 12, offset: "0px", max: "900px", align: "start" }
       ],
       photography: [
         { key: "img-2793-2", row: 1, col: 2, span: 18, offset: "0px", max: "1240px", align: "start" },
@@ -244,60 +244,55 @@
         { key: "img-1590", row: 164, col: 1, span: 17, offset: "0px", max: "1180px", align: "start" }
       ],
       sketchbook: [
-        { key: "img-9544", row: 1, col: 1, span: 7, offset: "0px", max: "920px", align: "start" },
-        { key: "img-9546", row: 1, col: 9, span: 4, offset: "60px", max: "560px", align: "end" },
-        { key: "img-7841", row: 2, col: 1, span: 7, offset: "0px", max: "920px", align: "start" },
-        {
-          key: "img-7838",
-          row: 3,
-          col: 5,
-          span: 8,
-          offset: "0px",
-          max: "1040px",
-          align: "end"
-        },
+        { key: "img-9544", row: 1, col: 1, span: 16, offset: "0px", max: "1080px", align: "start" },
+        { key: "img-9546", row: 12, col: 17, span: 8, offset: "0px", max: "680px", align: "end" },
+        { key: "img-9680", row: 27, col: 2, span: 13, offset: "0px", max: "920px", align: "start" },
         {
           key: "img-9554",
-          row: 4,
-          col: 5,
-          span: 8,
+          row: 38,
+          col: 15,
+          span: 10,
           offset: "0px",
-          max: "1040px",
+          max: "780px",
           align: "end"
-        }
+        },
+        { key: "img-9682", row: 52, col: 1, span: 15, offset: "0px", max: "1020px", align: "start" },
+        { key: "img-9683", row: 65, col: 12, span: 13, offset: "0px", max: "920px", align: "end" }
       ],
       renderings: [
         {
           key: "andrew-wheat-ajw288-03c-exterior-render-02",
           row: 1,
-          col: 1,
-          span: 7,
+          col: 2,
+          span: 15,
           offset: "0px",
           max: "920px",
           align: "start"
         },
         {
           key: "updated-pantry-interior",
-          row: 2,
-          col: 3,
+          row: 19,
+          col: 17,
           span: 8,
+          offset: "0px",
+          max: "680px",
+          align: "end"
+        },
+        {
+          key: "andrew-wheat-ajw288-03c-interior-render",
+          row: 37,
+          col: 5,
+          span: 13,
           offset: "0px",
           max: "920px",
           align: "start"
         },
-        {
-          key: "andrew-wheat-ajw288-03c-interior-render",
-          row: 3,
-          col: 8,
-          span: 5,
-          offset: "10px",
-          max: "720px",
-          align: "end"
-        },
-        { key: "hero", row: 4, col: 1, span: 7, offset: "-80px", max: "1040px", align: "start" },
-        { key: "corridor-render", row: 5, col: 7, span: 6, offset: "-80px", max: "840px", align: "end" },
-        { key: "market-render", row: 6, col: 1, span: 5, offset: "-80px", max: "720px", align: "start" },
-        { key: "hero-2", row: 7, col: 6, span: 7, offset: "-80px", max: "920px", align: "end" }
+        { key: "hero", row: 57, col: 1, span: 11, offset: "0px", max: "1040px", align: "start" },
+        { key: "corridor-render", row: 71, col: 13, span: 12, offset: "0px", max: "840px", align: "end" },
+        { key: "market-render", row: 91, col: 4, span: 9, offset: "0px", max: "720px", align: "start" },
+        { key: "hero-2", row: 108, col: 15, span: 10, offset: "0px", max: "920px", align: "end" },
+        { key: "hero-2-pool", row: 124, col: 2, span: 14, offset: "0px", max: "980px", align: "start" },
+        { key: "zoomed-out-render-final-edited-tall", row: 145, col: 10, span: 15, offset: "0px", max: "1080px", align: "end" }
       ]
     };
 
@@ -322,10 +317,11 @@
         .filter(Boolean);
       const arrangedKeys = new Set(arrangedItems.map(({ item }) => item.key));
       const fallbackSlots = [
-        { col: 1, span: 6, offset: "0px", max: "820px", align: "start" },
-        { col: 7, span: 6, offset: "110px", max: "820px", align: "end" }
+        { col: 2, span: 11, offset: "0px", max: "820px", align: "start" },
+        { col: 15, span: 9, offset: "0px", max: "760px", align: "end" },
+        { col: 5, span: 14, offset: "0px", max: "980px", align: "start" }
       ];
-      const fallbackStartRow = Math.max(0, ...curated.map((layout) => layout.row)) + 1;
+      const fallbackStartRow = Math.max(0, ...curated.map((layout) => layout.row)) + 20;
       items
         .filter((item) => !arrangedKeys.has(item.key))
         .forEach((item, index) => {
@@ -334,7 +330,7 @@
             item,
             layout: {
               ...slot,
-              row: fallbackStartRow + index
+              row: fallbackStartRow + index * 20
             }
           });
         });
