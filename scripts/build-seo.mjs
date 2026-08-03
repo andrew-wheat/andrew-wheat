@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-08-02";
-const ASSET_VERSION = "20260802-seo-sitelinks-v106";
+const ASSET_VERSION = "20260802-home-index-v107";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -664,11 +664,11 @@ ${siteHeader()}
       </div>
     </main>
     <nav class="home-destinations" aria-label="Explore Andrew Wheat's portfolio">
-      <a href="/work/">Selected architecture projects</a>
-      <a href="/selected/photography/">Architectural and travel photography</a>
-      <a href="/selected/sketchbook/">Sketchbook and field observations</a>
-      <a href="/about/">About Andrew Wheat</a>
-      <a href="/contact/">Contact Andrew Wheat</a>
+      <a href="/work/">Work</a>
+      <a href="/selected/photography/">Photography</a>
+      <a href="/selected/sketchbook/">Sketchbook</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
     </nav>
 ${scriptTags()}
   </body>
@@ -1056,7 +1056,7 @@ async function updateAboutPage(file, { legacy = false } = {}) {
     /    <header class="site-header[\s\S]*?    <\/header>/i,
     siteHeader("about"),
   );
-  source = source.replace(/<h1>About(?: Andrew Wheat)?<\/h1>/i, "<h1>About Andrew Wheat</h1>");
+  source = source.replace(/<h1>About(?: Andrew Wheat)?<\/h1>/i, "<h1>About</h1>");
   source = source.replace(
     /        <div class="about-statement">[\s\S]*?        <\/div>\s*      <\/section>/i,
     `        <div class="about-statement">
@@ -1133,7 +1133,7 @@ async function updateContactPage(file, { legacy = false } = {}) {
     siteHeader("contact"),
   );
   source = source
-    .replace(/<h1>Contact(?: Andrew Wheat)?<\/h1>/i, "<h1>Contact Andrew Wheat</h1>")
+    .replace(/<h1>Contact(?: Andrew Wheat)?<\/h1>/i, "<h1>Contact</h1>")
     .replace(/\s*<section class="contact-copy[\s\S]*?<\/section>/i, "")
     .replace(
       /\n      <section class="contact-list/i,
