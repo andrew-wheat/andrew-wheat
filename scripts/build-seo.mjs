@@ -886,16 +886,6 @@ function peopleList(value) {
     .filter(Boolean);
 }
 
-function projectBreadcrumbs(project) {
-  return `      <nav class="project-breadcrumbs" aria-label="Breadcrumb">
-        <ol>
-          <li><a href="/">Home</a></li>
-          <li><a href="/work/">Work</a></li>
-          <li aria-current="page">${escapeHtml(project.title)}</li>
-        </ol>
-      </nav>`;
-}
-
 function staticProjectMain(project) {
   const image = projectOpeningImage(project);
   const description = cleanText(project.description || project.summary || "");
@@ -921,7 +911,6 @@ function staticProjectMain(project) {
           <img src="${escapeHtml(image)}" alt="${escapeHtml(projectOpeningAlt(project))}" fetchpriority="high" decoding="async">
         </figure>
         <div class="project-editorial-text">
-${projectBreadcrumbs(project)}
           <h1>${escapeHtml(project.title)}</h1>
           ${
             metadata.length

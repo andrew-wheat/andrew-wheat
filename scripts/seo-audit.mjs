@@ -239,9 +239,6 @@ for (const canonicalUrl of sitemapUrls) {
     errors.push(`${pathname} lacks static author text`);
   }
   if (/^\/project\//.test(pathname)) {
-    if (!/<nav[^>]+class=["'][^"']*project-breadcrumbs/i.test(html)) {
-      errors.push(`${pathname} has no semantic HTML breadcrumbs`);
-    }
     if (!schemaNodesFromHtml(html).some((node) => node?.["@type"] === "BreadcrumbList")) {
       errors.push(`${pathname} has no BreadcrumbList JSON-LD`);
     }

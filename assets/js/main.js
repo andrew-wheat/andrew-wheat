@@ -2191,7 +2191,6 @@
           }
         </div>
         <div class="project-hero-text">
-          ${projectBreadcrumbs(project)}
           <p class="section-kicker">${escapeHtml(project.type)}</p>
           <h1>${escapeHtml(project.title)}</h1>
           ${project.description ? `<p class="project-description">${escapeHtml(project.description)}</p>` : ""}
@@ -2241,7 +2240,6 @@
           ${openingImage ? projectImage(project, openingImage, project.overviewImageAlt || `${project.title} opening image`) : planSvg(project, project.shape)}
         </figure>
         <div class="project-editorial-text">
-          ${projectBreadcrumbs(project)}
           <h1>${escapeHtml(project.title)}</h1>
           ${projectMetadataLines(project)}
           <p>${escapeHtml(project.description || "")}</p>
@@ -2299,18 +2297,6 @@
     const project = projects.find((item) => item.id === id) || projects[0];
     if (!root || !project) return;
     root.insertAdjacentHTML("beforeend", projectNavigation(project));
-  }
-
-  function projectBreadcrumbs(project) {
-    return `
-      <nav class="project-breadcrumbs" aria-label="Breadcrumb">
-        <ol>
-          <li><a href="/">Home</a></li>
-          <li><a href="/work/">Work</a></li>
-          <li aria-current="page">${escapeHtml(project.title)}</li>
-        </ol>
-      </nav>
-    `;
   }
 
   function initProjectNavigationLabels() {
