@@ -257,7 +257,9 @@
           align: "end"
         },
         { key: "img-9682", row: 52, col: 1, span: 15, offset: "0px", max: "1020px", align: "start" },
-        { key: "img-9683", row: 65, col: 12, span: 13, offset: "0px", max: "920px", align: "end" }
+        { key: "img-9683", row: 65, col: 12, span: 13, offset: "0px", max: "920px", align: "end" },
+        { key: "img-9684", row: 82, col: 2, span: 14, offset: "0px", max: "980px", align: "start" },
+        { key: "img-9686", row: 95, col: 15, span: 10, offset: "0px", max: "760px", align: "end" }
       ],
       renderings: [
         {

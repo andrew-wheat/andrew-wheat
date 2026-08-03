@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-08-02";
-const ASSET_VERSION = "20260802-sketchbook-v112";
+const ASSET_VERSION = "20260802-sketchbook-v114";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
@@ -1148,6 +1148,7 @@ async function updateContactPage(file, { legacy = false } = {}) {
     /href="https:\/\/www\.linkedin\.com\/in\/andrewwheat"/g,
     `href="${LINKEDIN}"`,
   );
+  source = source.replace(/\s+data-contact-email="[^"]*"/gi, "");
   await writeClean(file, source);
 }
 

@@ -181,6 +181,12 @@ const sketchbookCaptionOverrides = {
   },
   "img_9683.jpeg": {
     captionTitle: "Civic Building and Plaza"
+  },
+  "img_9684.jpg": {
+    captionTitle: "Transit Platform Study"
+  },
+  "img_9686.jpg": {
+    captionTitle: "Seattle Market and Space Needle"
   }
 };
 const projectTitles = {

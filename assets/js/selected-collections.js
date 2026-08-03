@@ -347,6 +347,22 @@ window.SELECTED_COLLECTIONS = {
       "width": 2000,
       "height": 1615,
       "captionTitle": "Civic Building and Plaza"
+    },
+    {
+      "key": "img-9684",
+      "src": "/assets/images/selected/sketchbook/img-9684-75bc0365.webp",
+      "title": "Sketchbook",
+      "width": 2000,
+      "height": 1470,
+      "captionTitle": "Transit Platform Study"
+    },
+    {
+      "key": "img-9686",
+      "src": "/assets/images/selected/sketchbook/img-9686-3d99a175.webp",
+      "title": "Sketchbook",
+      "width": 1179,
+      "height": 1031,
+      "captionTitle": "Seattle Market and Space Needle"
     }
   ],
   "renderings": [
