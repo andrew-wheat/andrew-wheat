@@ -566,11 +566,6 @@
       description: "Architecture project by Andrew Wheat focused on cooking, ceremony, material assembly, landscape, and communal gathering.",
       keywords: ["cooking", "ceremony", "material assembly", "landscape", "communal gathering"]
     },
-    "york-prize": {
-      title: "York Prize | Andrew Wheat",
-      description: "Cornell architecture work by Andrew Wheat developed for the York Prize, including drawings, models, and architectural design research.",
-      keywords: ["York Prize", "Cornell architecture", "drawings", "models", "design research"]
-    },
     "woven-pavilion": {
       title: "Woven Pavilion | Andrew Wheat",
       description: "Pavilion project by Andrew Wheat exploring enclosure, light, assembly, texture, and temporary public space.",
@@ -658,34 +653,6 @@
     ].join("");
   }
 
-  function cadavrePlanMarkup(project) {
-    const planMap = {
-      "curanto-cookhouse": {
-        src: "assets/images/cadavre plans/processed/cadavre-curanto-cookhouse.png",
-        shape: "tall"
-      },
-      "hunters-point": {
-        src: "assets/images/cadavre plans/processed/cadavre-hunters-point.png",
-        shape: "wide"
-      },
-      "wood-street-pool": {
-        src: "assets/images/cadavre plans/processed/cadavre-wood-street-pool.png",
-        shape: "square"
-      }
-    };
-    const plan = planMap[project.id];
-    if (!plan) return "";
-    return [
-      '<img class="cadavre-plan-image cadavre-plan-image--',
-      escapeHtml(plan.shape),
-      '" src="',
-      escapeHtml(sitePath(plan.src)),
-      '" alt="',
-      escapeHtml(project.title),
-      ' plan">'
-    ].join("");
-  }
-
   function renderHero() {
     const carousels = Array.from(document.querySelectorAll("[data-hero-carousel]"));
     if (!carousels.length) return;
@@ -695,8 +662,7 @@
       ["borinquen-healing-center", "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png"],
       ["enfield-food-pantry", "Work Cover Photo.png"],
       ["wood-street-pool", "hero.png"],
-      ["wood-street-pool", "hero 2.png"],
-      ["york-prize", "Andrew Wheat_ajw288_01C_York Model (1).jpg"]
+      ["wood-street-pool", "hero 2.png"]
     ];
     const slidesToRender = orderedHeroEntries
       .map(([id, image], index) => {
@@ -1521,7 +1487,7 @@
           '" aria-label="Open ',
           escapeHtml(project.title),
           '">',
-          cadavrePlanMarkup(project) || planSvg(project, project.shape, { showTitle: false }),
+          planSvg(project, project.shape, { showTitle: false }),
           '<span class="rotate-handle rotate-handle--nw" aria-hidden="true"></span>',
           '<span class="rotate-handle rotate-handle--ne" aria-hidden="true"></span>',
           '<span class="rotate-handle rotate-handle--se" aria-hidden="true"></span>',

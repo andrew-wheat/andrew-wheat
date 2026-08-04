@@ -4,10 +4,10 @@ Static portfolio prototype for architecture work, built to be fast, easy to host
 
 ## Structure
 
-- `index.html` is the home page with the carousel, architecture marquee, and Cadavre Exquis contents board.
+- `index.html` is the home page with the portfolio introduction and primary navigation.
 - `work.html` is the scalable project catalogue.
 - `project.html?id=project-01` renders a project page from shared data.
-- `about.html` and `contact.html` are placeholders for future biography and contact details.
+- `about.html` and `contact.html` provide the biography and contact routes.
 - `assets/js/projects.js` is the main project list. Add or edit projects there.
 - `assets/css/styles.css` controls the visual system.
 

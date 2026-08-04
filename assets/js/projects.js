@@ -248,7 +248,7 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "wood-pool-floor-plans",
         "items": [
           {
-            "src": "ground-floor-plan-high-res.png",
+            "src": "Ground Floor Plan.jpg",
             "caption": "Ground floor plan.",
             "label": "Ground Floor"
           },
@@ -432,64 +432,6 @@ window.PORTFOLIO_PROJECTS = [
         "src": "Enfield-ONLINE-scaled.jpg",
         "caption": "Existing pantry storage interior.",
         "layout": "enfield-current-photo"
-      },
-      {
-        "layout": "enfield-atlas",
-        "heading": "Precedent Atlas",
-        "text": "The atlas organizes architectural, artistic, and social precedents through three paired lenses: ordinary/exceptional, singular/collective, and framed/expansive. Comparing how these works transform familiar objects, individual acts, and shared environments helped us translate the pantry brief and rural context into spatial strategies for dignity, collective use, orientation, and belonging.",
-        "groups": [
-          {
-            "heading": "ordinary / exceptional",
-            "items": [
-              {
-                "src": "Atlas/SHIGERU BAN PAPER LOG HOUSE.jpg",
-                "caption": "Shigeru Ban. Paper Log House."
-              },
-              {
-                "src": "Atlas/Screenshot 2025-03-02 124915.png",
-                "caption": "Sarah Wigglesworth. The Disorder of the Dining Table, 2001."
-              },
-              {
-                "src": "Atlas/MEXICO CITY FOOD STALLS.jpg",
-                "caption": "Jordi Ruiz Cirera. Mexico City Food Stalls, 2022."
-              }
-            ]
-          },
-          {
-            "heading": "singular / collective",
-            "items": [
-              {
-                "src": "Atlas/ARCHIZOOM NO STOP CITY.jpg",
-                "caption": "Archizoom Associati. No-Stop City, 1969-1972."
-              },
-              {
-                "src": "Atlas/YOKO ONO WISH TREE REF 02.jpg",
-                "caption": "Yoko Ono. Wish Tree."
-              },
-              {
-                "src": "Atlas/MONOBLOC CHAIR.png",
-                "caption": "Unknown. Monobloc Chair, 1972. Italy."
-              }
-            ]
-          },
-          {
-            "heading": "framed / expansive",
-            "items": [
-              {
-                "src": "Atlas/TSCHUMI MANHATTAN TRANSCRIPTS.jpg",
-                "caption": "Bernard Tschumi. Manhattan Transcripts, 1976-1981."
-              },
-              {
-                "src": "Atlas/YAYOI KUSAMA INFINITY MIRROR ROOMS.jpg",
-                "caption": "Yayoi Kusama. Infinity Mirror Rooms, 2013."
-              },
-              {
-                "src": "Atlas/CHRISTO AND JEANNE-CLAUDE THE GATES REF 02.jpg",
-                "caption": "Christo and Jeanne-Claude. The Gates, 2005."
-              }
-            ]
-          }
-        ]
       },
       {
         "layout": "story-text",
@@ -1336,61 +1278,6 @@ window.PORTFOLIO_PROJECTS = [
 ];
 
 window.ARCHIVED_PORTFOLIO_PROJECTS = [
-  {
-    "id": "york-prize",
-    "workCategory": "Academic",
-    "title": "York Prize",
-    "year": "2023",
-    "course": "Core I Studio, led by Felix Heisel",
-    "studio": "Fall 2023, Cornell University",
-    "type": "Competition / model study",
-    "professors": "Michael Jefferson",
-    "themes": [
-      "model",
-      "competition",
-      "form"
-    ],
-    "summary": "Exploring the tectonics of aggregation and extraction, how space, and the choreography of movement can be produced simply between the interplay of solid and void. The model is a diptyque - both an impression and relief of the mold.",
-    "description": "The model explores the tectonics of aggregation and extraction, how space, and the choreography of movement can be produced simply between the interplay of solid and void. The model is a diptyque - both an impression and relief of the mold.",
-    "parti": "A model study frames form as a compact architectural argument.",
-    "question": "",
-    "operation": "Use final and study model images to document the project's formal development.",
-    "imageBase": "assets/images/Projects/York Prize/",
-    "thumbnail": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
-    "heroImage": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
-    "overviewImage": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
-    "story": [
-      {
-        "src": "Andrew Wheat_ajw288_01C_York Study Model (1).jpg",
-        "caption": "Void and mass study model.",
-        "layout": "image"
-      },
-      {
-        "src": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
-        "caption": "Final cast model.",
-        "layout": "image"
-      }
-    ],
-    "images": [
-      {
-        "src": "Andrew Wheat_ajw288_01C_York Model (1).jpg",
-        "caption": "Final cast model"
-      },
-      {
-        "src": "Andrew Wheat_ajw288_01C_York Study Model (1).jpg",
-        "caption": "Void and mass study model"
-      }
-    ],
-    "position": {
-      "x": 84,
-      "y": 76,
-      "rotation": -5
-    },
-    "shape": "porous",
-    "workThumbnail": "assets/images/work-heroes/york-prize.webp",
-    "workThumbnailAlt": "assets/images/work-heroes-alt/york-prize.webp",
-    "workListThumbnail": "assets/images/work-covers/york-prize.webp"
-  },
   {
     "id": "ephemeral-diptypque",
     "siteHidden": true,

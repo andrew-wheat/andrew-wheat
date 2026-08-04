@@ -147,7 +147,6 @@ for (const path of [
 }
 for (const hiddenPath of [
   "/selected/",
-  "/project/york-prize/",
 ]) {
   if (sitemapUrls.includes(`${canonicalOrigin}${hiddenPath}`)) {
     errors.push(`sitemap.xml includes non-indexable route ${hiddenPath}`);
@@ -435,11 +434,11 @@ for (const page of pages) {
   }
 }
 
-if (!homepage?.html.includes("/favicon-48.png?v=2")) {
+if (!homepage?.html.includes("/favicon-48.png?v=3")) {
   errors.push("The homepage does not reference the current versioned favicon");
 }
 
-for (const path of ["/favicon.ico?v=2", "/favicon.svg?v=2", "/favicon-48.png?v=2"]) {
+for (const path of ["/favicon.ico?v=3", "/favicon.svg?v=3", "/favicon-48.png?v=3"]) {
   const response = await fetch(`${requestedBase}${path}`, {
     redirect: "follow",
     headers: { "user-agent": "Googlebot/2.1" },

@@ -4,12 +4,12 @@ import { runInNewContext } from "node:vm";
 
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
-const TODAY = "2026-08-02";
-const ASSET_VERSION = "20260802-drawings-knoll-v123";
+const TODAY = "2026-08-03";
+const ASSET_VERSION = "20260803-favicon-cleanup-v124";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
-const HEADSHOT = `${ORIGIN}/assets/images/andrew-wheat-headshot.jpg`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;
+const HEADSHOT = HEADSHOT_4X3;
 const CORNELL_AWARDS =
   "https://aap.cornell.edu/news/announcements/2025-26-student-academic-awards-and-prizes/";
 const LINKEDIN = "https://www.linkedin.com/in/andrewwheat";
@@ -145,11 +145,6 @@ const PROJECT_SEO = {
     title: "Woven Pavilion | Andrew Wheat",
     description:
       "Pavilion project by Andrew Wheat exploring enclosure, light, assembly, texture, and temporary public space.",
-  },
-  "york-prize": {
-    title: "York Prize | Andrew Wheat",
-    description:
-      "Cornell architecture work by Andrew Wheat developed for the York Prize, including drawings, models, and architectural design research.",
   },
 };
 
@@ -343,13 +338,13 @@ const commonDiscoveryLinks = `
     <link rel="author" href="/about/">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     <link rel="alternate" type="text/plain" title="AI-readable site summary" href="/llms.txt">
-    <link rel="icon" href="/favicon.ico?v=2" sizes="any">
-    <link rel="shortcut icon" href="/favicon.ico?v=2">
-    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
-    <link rel="icon" href="/favicon-48.png?v=2" sizes="48x48" type="image/png">
-    <link rel="icon" href="/favicon-192.png?v=2" sizes="192x192" type="image/png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
-    <link rel="manifest" href="/site.webmanifest?v=2">`;
+    <link rel="icon" href="/favicon.ico?v=3" sizes="any">
+    <link rel="shortcut icon" href="/favicon.ico?v=3">
+    <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+    <link rel="icon" href="/favicon-48.png?v=3" sizes="48x48" type="image/png">
+    <link rel="icon" href="/favicon-192.png?v=3" sizes="192x192" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+    <link rel="manifest" href="/site.webmanifest?v=3">`;
 
 function buildHead({
   title,

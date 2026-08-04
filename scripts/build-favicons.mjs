@@ -6,6 +6,7 @@ const sharp = require("sharp");
 
 const root = new URL("../", import.meta.url);
 const source = await readFile(new URL("favicon.svg", root));
+await writeFile(new URL("assets/favicon.svg", root), source);
 
 async function renderPng(size) {
   return sharp(source, { density: 384 })

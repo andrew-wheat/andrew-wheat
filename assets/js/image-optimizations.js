@@ -94,8 +94,6 @@ window.PORTFOLIO_OPTIMIZED_IMAGES = {
   "assets/images/Projects/Woven Pavilion/hero.jpg": "assets/images/optimized/hero-c9b366404a.webp",
   "assets/images/Projects/Woven Pavilion/iso_section_clean_scan.jpg": "assets/images/optimized/iso-section-clean-scan-476f67410a.webp",
   "assets/images/Projects/Woven Pavilion/pinched cube.JPG": "assets/images/optimized/pinched-cube-8eb57a3e62.webp",
-  "assets/images/Projects/York Prize/Andrew Wheat_ajw288_01C_York Model (1).jpg": "assets/images/optimized/andrew-wheat-ajw288-01c-york-model-1-b203fed0a9.webp",
-  "assets/images/Projects/York Prize/Andrew Wheat_ajw288_01C_York Study Model (1).jpg": "assets/images/optimized/andrew-wheat-ajw288-01c-york-study-model-1-29c0aac6e1.webp",
   "assets/images/Projects/Wood Street Pool/mech axon.png": "assets/images/optimized/mech-axon-11bdba27da.webp"
 };
 
@@ -517,10 +515,6 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     12000,
     12300
   ],
-  "assets/images/Projects/Wood Street Pool/ground-floor-plan-high-res.png": [
-    9000,
-    9225
-  ],
   "assets/images/Projects/Wood Street Pool/hero 2.png": [
     3840,
     2160
@@ -592,14 +586,6 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
   "assets/images/Projects/Woven Pavilion/pinched cube.JPG": [
     5472,
     3647
-  ],
-  "assets/images/Projects/York Prize/Andrew Wheat_ajw288_01C_York Model (1).jpg": [
-    5184,
-    3456
-  ],
-  "assets/images/Projects/York Prize/Andrew Wheat_ajw288_01C_York Study Model (1).jpg": [
-    5092,
-    3395
   ],
   "assets/images/Projects/[de]construct + [re]configure/ANDREW WHEAT BOARD 01.jpg": [
     1399,
@@ -742,14 +728,6 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     1645
   ],
   "assets/images/optimized/andrew-wheat-ajw288-01b-study-model-2-cd16449992.webp": [
-    2400,
-    1600
-  ],
-  "assets/images/optimized/andrew-wheat-ajw288-01c-york-model-1-b203fed0a9.webp": [
-    2400,
-    1600
-  ],
-  "assets/images/optimized/andrew-wheat-ajw288-01c-york-study-model-1-29c0aac6e1.webp": [
     2400,
     1600
   ],
@@ -1097,10 +1075,6 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     900,
     620
   ],
-  "assets/images/work-covers/york-prize.webp": [
-    900,
-    620
-  ],
   "assets/images/work-heroes-alt/a-chair-is-a-toy.webp": [
     400,
     400
@@ -1137,10 +1111,6 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     400,
     400
   ],
-  "assets/images/work-heroes-alt/york-prize.webp": [
-    400,
-    400
-  ],
   "assets/images/work-heroes/a-chair-is-a-toy.webp": [
     400,
     400
@@ -1174,10 +1144,6 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     400
   ],
   "assets/images/work-heroes/woven-pavilion.webp": [
-    400,
-    400
-  ],
-  "assets/images/work-heroes/york-prize.webp": [
     400,
     400
   ]
