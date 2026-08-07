@@ -1,5 +1,83 @@
 window.PORTFOLIO_PROJECTS = [
   {
+    "id": "ncsu-cates-west",
+    "workCategory": "Professional",
+    "title": "NC State Cates West Development",
+    "year": "2025",
+    "course": "Professional Work, Mithun",
+    "location": "Raleigh, North Carolina",
+    "affiliation": "Mithun",
+    "additionalMetadata": [
+      "Raleigh, North Carolina",
+      "Role: Physical model planning, preparation, fabrication, and photography",
+      "Model: 36 × 42 in, laser-cut basswood and acrylic",
+      "Lighting: Battery-operated",
+      "Supervised by Ezra Homison",
+      "In collaboration with Lord Aeck Sargent"
+    ],
+    "type": "Professional / physical model / photography",
+    "themes": [
+      "professional work",
+      "physical model",
+      "model making",
+      "laser cutting",
+      "basswood",
+      "acrylic",
+      "photography",
+      "student housing",
+      "campus planning"
+    ],
+    "summary": "Physical model planning, preparation, fabrication, and photography by Andrew Wheat for Mithun's NC State Cates West Development.",
+    "description": "At Mithun, I contributed to the visual communication of NC State University's Cates West Development by planning, preparing, building, and photographing the project's physical model under the supervision of Ezra Homison. The 36 × 42-inch model was built from laser-cut basswood and acrylic with battery-operated lighting. The photographs document its massing, landscape, and relationship to the surrounding campus.",
+    "tectonics": "Mithun and Lord Aeck Sargent are collaborating on the multi-phase Central Campus development, which is planned to provide approximately 3,000 student beds, a 1,500-seat dining facility, utility infrastructure, and related campus improvements. Each phase is targeting LEED Silver or above.",
+    "contribution": "My scope included planning the model and photography, preparing the files and materials, fabricating the 36 × 42-inch model from laser-cut basswood and acrylic, integrating its battery-operated lighting, and producing the final photographs.",
+    "externalLink": {
+      "label": "Read Mithun's project announcement",
+      "url": "https://mithun.com/2025/04/02/nc-state-selects-mithun-for-cates-west-development/"
+    },
+    "imageBase": "assets/images/Projects/NCSU Cates West Development/",
+    "thumbnail": "IMG_3021.png",
+    "heroImage": "IMG_3021.png",
+    "overviewImage": "IMG_3021.png",
+    "story": [
+      {
+        "src": "IMG_3021.png",
+        "caption": "Elevated oblique view of the illuminated Cates West physical model.",
+        "layout": "image"
+      },
+      {
+        "layout": "story-text",
+        "text": "The photography was planned around the 36 × 42-inch model's battery-operated internal illumination and layered landscape. An elevated oblique view records the overall composition, while a lower campus-edge view brings the laser-cut basswood and acrylic residential facades and tree line into a more atmospheric relationship. I planned, prepared, built, and photographed the model under the supervision of Ezra Homison."
+      },
+      {
+        "src": "IMG_2995.png",
+        "caption": "Low campus-edge view of the illuminated residential facades and landscape model.",
+        "layout": "image"
+      }
+    ],
+    "images": [
+      {
+        "src": "IMG_3021.png",
+        "caption": "Elevated oblique physical model view"
+      },
+      {
+        "src": "IMG_2995.png",
+        "caption": "Low campus-edge physical model view"
+      }
+    ],
+    "position": {
+      "x": 50,
+      "y": 50,
+      "rotation": 0
+    },
+    "shape": "strata",
+    "workThumbnail": "assets/images/optimized/ncsu-cates-west-model-overview.webp",
+    "workThumbnailAlt": "assets/images/optimized/ncsu-cates-west-campus-edge.webp",
+    "workListThumbnail": "assets/images/optimized/ncsu-cates-west-model-overview.webp",
+    "overviewImageAlt": "Illuminated physical model of the NC State Cates West Development viewed from above",
+    "workImageAlt": "Illuminated physical model of the NC State Cates West Development photographed by Andrew Wheat"
+  },
+  {
     "id": "hunters-point",
     "workCategory": "Academic",
     "title": "Hunter's Point Cooperative Housing",

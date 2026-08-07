@@ -526,6 +526,11 @@
   }
 
   const projectSeo = {
+    "ncsu-cates-west": {
+      title: "NC State Cates West Development | Andrew Wheat",
+      description: "Professional physical model planning, preparation, fabrication, and photography by Andrew Wheat for Mithun's NC State Cates West Development.",
+      keywords: ["Mithun", "NC State", "Cates West", "professional architecture work", "physical model", "laser-cut basswood", "acrylic model", "model making", "model photography"]
+    },
     "hunters-point": {
       title: "Hunter's Point Cooperative Housing | Andrew Wheat",
       description: "Cooperative housing project by Andrew Wheat focused on shared production, public exchange, circulation, workshops, housing, and civic life in Hunters Point.",

@@ -1,4 +1,6 @@
 window.PORTFOLIO_OPTIMIZED_IMAGES = {
+  "assets/images/Projects/NCSU Cates West Development/IMG_2995.png": "assets/images/optimized/ncsu-cates-west-campus-edge.webp",
+  "assets/images/Projects/NCSU Cates West Development/IMG_3021.png": "assets/images/optimized/ncsu-cates-west-model-overview.webp",
   "assets/images/Projects/[de]construct + [re]configure/ANDREW WHEAT BOARD 01.jpg": "assets/images/optimized/andrew-wheat-board-01-7a34e2fd8d.webp",
   "assets/images/Projects/[de]construct + [re]configure/DO4A0313.png": "assets/images/optimized/do4a0313-e345f1301c.webp",
   "assets/images/Projects/[de]construct + [re]configure/DO4A0315.png": "assets/images/optimized/do4a0315-98559820e8.webp",
@@ -99,6 +101,22 @@ window.PORTFOLIO_OPTIMIZED_IMAGES = {
 
 
 window.PORTFOLIO_IMAGE_DIMENSIONS = {
+  "assets/images/Projects/NCSU Cates West Development/IMG_2995.png": [
+    6000,
+    3368
+  ],
+  "assets/images/Projects/NCSU Cates West Development/IMG_3021.png": [
+    6000,
+    3368
+  ],
+  "assets/images/optimized/ncsu-cates-west-campus-edge.webp": [
+    2400,
+    1347
+  ],
+  "assets/images/optimized/ncsu-cates-west-model-overview.webp": [
+    2400,
+    1347
+  ],
   "assets/apple-touch-icon.png": [
     192,
     192
