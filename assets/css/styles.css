@@ -6393,55 +6393,6 @@ body[data-page="landing-minimal"] {
   text-underline-offset: 4px;
 }
 
-.minimal-work-menu {
-  display: grid;
-  justify-items: start;
-  width: max-content;
-  max-width: 100%;
-}
-
-.minimal-work-submenu {
-  display: grid;
-  gap: 7px;
-  max-height: 0;
-  margin-top: 0;
-  padding-left: clamp(22px, 2.4vw, 38px);
-  overflow: hidden;
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition:
-    max-height 220ms ease,
-    margin-top 180ms ease,
-    opacity 160ms ease,
-    transform 180ms ease,
-    visibility 0s linear 220ms;
-}
-
-.minimal-work-menu:hover .minimal-work-submenu,
-.minimal-work-menu:focus-within .minimal-work-submenu {
-  max-height: 9em;
-  margin-top: 11px;
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0s;
-}
-
-.minimal-work-submenu a {
-  color: var(--muted);
-  font-size: clamp(11px, 0.78vw, 13px);
-  font-weight: 300;
-  line-height: 1.25;
-  text-decoration: none;
-  transition: color 140ms ease;
-}
-
-.minimal-work-submenu a:hover,
-.minimal-work-submenu a:focus-visible {
-  color: var(--ink);
-}
-
 .minimal-landing-visual {
   display: block;
   justify-self: center;

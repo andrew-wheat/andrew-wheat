@@ -661,16 +661,7 @@ ${siteHeader()}
       </a>
       <div class="minimal-landing-content">
         <h1 class="minimal-landing-copy">${escapeHtml(LANDING_STATEMENT)}</h1>
-        <nav class="minimal-work-menu" aria-label="Work and selected collections">
-          <a class="minimal-landing-link" href="/work/">view work</a>
-          <div class="minimal-work-submenu" aria-label="Selected collections">
-            <a href="/selected/models/">models</a>
-            <a href="/selected/photography/">photography</a>
-            <a href="/selected/sketchbook/">sketchbook</a>
-            <a href="/selected/renderings/">renderings</a>
-            <a href="/selected/drawings/">drawings</a>
-          </div>
-        </nav>
+        <a class="minimal-landing-link" href="/work/">view work</a>
       </div>
     </main>
 ${scriptTags()}
