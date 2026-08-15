@@ -7035,6 +7035,11 @@ body[data-page="selected"] {
     transform: none;
   }
 
+  body[data-selected-collection="models"]
+    .selected-image-card[data-selected-key="hero-2"] {
+    grid-row-end: span 8;
+  }
+
   body[data-selected-collection="photography"] .selected-scatter.has-items {
     padding-bottom: clamp(700px, 50vw, 940px);
   }
@@ -7245,6 +7250,12 @@ body:has(.nav-folder--selected:focus-within) > footer {
     justify-self: start;
   }
 
+  body[data-selected-collection="models"] .selected-image-card,
+  body[data-selected-collection="renderings"] .selected-image-card {
+    width: 88%;
+    justify-self: center;
+  }
+
   body[data-selected-collection="photography"]
     .selected-image-card:is(
       [data-selected-key="ajw288-andrew-wheat-week-12-image-9"],
@@ -7284,17 +7295,6 @@ body:has(.nav-folder--selected:focus-within) > footer {
   body[data-selected-collection="drawings"] .selected-image-card:nth-child(3n) {
     width: 100%;
     justify-self: center;
-  }
-
-  body[data-selected-collection="models"]
-    .selected-image-card:is(
-      [data-selected-key="model-full-shot"],
-      [data-selected-key="speculative-circulation-model"],
-      [data-selected-key="model-01-cropped"],
-      [data-selected-key="do4a0315"],
-      [data-selected-key="main-hero-shot"]
-    ) {
-    width: 100%;
   }
 
 }
