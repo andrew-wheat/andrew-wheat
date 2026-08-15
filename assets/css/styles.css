@@ -7176,6 +7176,20 @@ body:has(.nav-folder--info:focus-within) > footer {
     transform: none;
   }
 
+  .site-nav .nav-folder--selected .nav-dropdown {
+    position: absolute;
+    top: auto;
+    bottom: 100%;
+    padding: 0 0 8px;
+  }
+
+  .site-nav .nav-folder--info .nav-dropdown {
+    position: absolute;
+    top: 100%;
+    bottom: auto;
+    padding: 8px 0 0;
+  }
+
   body .site-nav .nav-folder.is-open .nav-dropdown {
     display: grid;
     opacity: 1;
