@@ -453,6 +453,23 @@ const scriptTags = (includeImageOptimizations = true) => `    <script src="/asse
     }<script src="/assets/js/selected-collections.js?v=${ASSET_VERSION}"></script>
     <script src="/assets/js/main.js?v=${ASSET_VERSION}"></script>`;
 
+const sitePageNavigation = ({
+  previousHref,
+  previousTitle,
+  nextHref,
+  nextTitle,
+  ariaLabel = "Site page navigation",
+}) => `      <nav class="project-page-nav" aria-label="${escapeHtml(ariaLabel)}">
+        <a class="project-page-nav-link project-page-nav-link--previous" href="${escapeHtml(previousHref)}" aria-label="Previous page: ${escapeHtml(previousTitle)}" data-project-title="${escapeHtml(previousTitle)}"><span aria-hidden="true">&larr;</span></a>
+        <a class="project-page-nav-link project-page-nav-link--next" href="${escapeHtml(nextHref)}" aria-label="Next page: ${escapeHtml(nextTitle)}" data-project-title="${escapeHtml(nextTitle)}"><span aria-hidden="true">&rarr;</span></a>
+      </nav>`;
+
+function upsertSitePageNavigation(source, navigation) {
+  return source
+    .replace(/\n\s*<nav class="project-page-nav" aria-label="Site page navigation">[\s\S]*?<\/nav>(?=\s*<\/main>)/i, "")
+    .replace(/\n\s*<\/main>/i, `\n${sitePageNavigation(navigation)}\n    </main>`);
+}
+
 function staticProjectCards(projects) {
   return projects
     .map((project, index) => {
@@ -577,10 +594,13 @@ ${items
   })
   .join("\n")}
       </section>
-      <nav class="project-page-nav" aria-label="Selected collection navigation">
-        <a class="project-page-nav-link project-page-nav-link--previous" href="${escapeHtml(previousHref)}" aria-label="Previous collection: ${escapeHtml(previousTitle)}" data-project-title="${escapeHtml(previousTitle)}"><span aria-hidden="true">&larr;</span></a>
-        <a class="project-page-nav-link project-page-nav-link--next" href="${escapeHtml(nextHref)}" aria-label="Next collection: ${escapeHtml(nextTitle)}" data-project-title="${escapeHtml(nextTitle)}"><span aria-hidden="true">&rarr;</span></a>
-      </nav>
+${sitePageNavigation({
+  previousHref,
+  previousTitle,
+  nextHref: collection === "renderings" ? "/about/" : nextHref,
+  nextTitle: collection === "renderings" ? "About" : nextTitle,
+  ariaLabel: "Selected collection navigation",
+})}
     </main>
 ${siteFooter}
 ${scriptTags()}
@@ -1039,6 +1059,12 @@ ${staticProjectCards(publicProjects)}
     .replace(/<h1>Projects<\/h1>/i, "<h1>work</h1>")
     .replace(/aria-label="Filter projects by category"/i, 'aria-label="Filter work by category"')
     .replace(/\s*<noscript>[\s\S]*?<\/noscript>/i, "");
+  source = upsertSitePageNavigation(source, {
+    previousHref: "/contact/",
+    previousTitle: "Contact",
+    nextHref: "/selected/drawings/",
+    nextTitle: "Drawings",
+  });
   await writeClean(file, source);
 }
 
@@ -1115,6 +1141,12 @@ async function updateAboutPage(file, { legacy = false } = {}) {
     /<a href="https:\/\/www\.linkedin\.com\/in\/andrewwheat"/g,
     `<a rel="me" href="${LINKEDIN}"`,
   );
+  source = upsertSitePageNavigation(source, {
+    previousHref: "/selected/renderings/",
+    previousTitle: "Renderings",
+    nextHref: "/contact/",
+    nextTitle: "Contact",
+  });
   await writeClean(file, source);
 }
 
@@ -1156,6 +1188,12 @@ async function updateContactPage(file, { legacy = false } = {}) {
     `href="${LINKEDIN}"`,
   );
   source = source.replace(/\s+data-contact-email="[^"]*"/gi, "");
+  source = upsertSitePageNavigation(source, {
+    previousHref: "/about/",
+    previousTitle: "About",
+    nextHref: "/work/",
+    nextTitle: "Work",
+  });
   await writeClean(file, source);
 }
 
