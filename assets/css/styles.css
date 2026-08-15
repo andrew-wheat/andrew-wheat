@@ -2107,6 +2107,11 @@ img[data-image-skeleton].is-loaded {
   text-decoration: none;
 }
 
+.project-card.is-category-filtered {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .cv-title-link:hover,
 .cv-title-link:focus-visible {
   text-decoration: underline;

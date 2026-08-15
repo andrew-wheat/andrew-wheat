@@ -1899,7 +1899,6 @@
         category,
         visibleWorkProjects.filter((project) => categoryForProject(project) === category)
       ]);
-    const categoryLookup = new Map(categoryEntries);
     const populatedCategories = categoryEntries
       .filter(([, categoryProjects]) => categoryProjects.length > 0)
       .map(([category]) => category);
@@ -1917,15 +1916,21 @@
 
     function draw() {
       activeCategory = filter?.value || activeCategory || "all";
-      const visible =
-        activeCategory === "archive"
-          ? archiveWorkProjects
-          : activeCategory === "all"
-            ? visibleWorkProjects
-            : categoryLookup.get(activeCategory) || [];
+      const isArchive = activeCategory === "archive";
+      const visible = isArchive ? archiveWorkProjects : visibleWorkProjects;
 
       const fadeOrder = workFadeOrder(visible);
       catalogue.innerHTML = visible.map((project, index) => projectCard(project, index, fadeOrder)).join("");
+      if (!isArchive && activeCategory !== "all") {
+        catalogue.querySelectorAll(".project-card").forEach((card, index) => {
+          const isFiltered = categoryForProject(visible[index]) !== activeCategory;
+          card.classList.toggle("is-category-filtered", isFiltered);
+          if (isFiltered) {
+            card.setAttribute("aria-hidden", "true");
+            card.setAttribute("tabindex", "-1");
+          }
+        });
+      }
       initImageSkeletons();
       updateCategoryButtons();
     }
