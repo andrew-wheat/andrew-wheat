@@ -275,38 +275,38 @@
       ],
       renderings: [
         {
-          key: "andrew-wheat-ajw288-03c-exterior-render-02",
+          key: "updated-pantry-interior",
           row: 1,
           col: 2,
-          span: 15,
-          offset: "0px",
-          max: "920px",
-          align: "start"
-        },
-        {
-          key: "updated-pantry-interior",
-          row: 19,
-          col: 17,
-          span: 8,
-          offset: "0px",
-          max: "680px",
-          align: "end"
-        },
-        {
-          key: "andrew-wheat-ajw288-03c-interior-render",
-          row: 37,
-          col: 5,
           span: 13,
           offset: "0px",
           max: "920px",
           align: "start"
         },
-        { key: "hero", row: 57, col: 1, span: 11, offset: "0px", max: "1040px", align: "start" },
-        { key: "corridor-render", row: 71, col: 13, span: 12, offset: "0px", max: "840px", align: "end" },
-        { key: "market-render", row: 91, col: 4, span: 9, offset: "0px", max: "720px", align: "start" },
-        { key: "hero-2", row: 108, col: 15, span: 10, offset: "0px", max: "920px", align: "end" },
-        { key: "hero-2-pool", row: 124, col: 2, span: 14, offset: "0px", max: "980px", align: "start" },
-        { key: "zoomed-out-render-final-edited-tall", row: 145, col: 10, span: 15, offset: "0px", max: "1080px", align: "end" }
+        {
+          key: "andrew-wheat-ajw288-03c-exterior-render-02",
+          row: 19,
+          col: 12,
+          span: 13,
+          offset: "0px",
+          max: "920px",
+          align: "end"
+        },
+        {
+          key: "andrew-wheat-ajw288-03c-interior-render",
+          row: 37,
+          col: 3,
+          span: 13,
+          offset: "0px",
+          max: "920px",
+          align: "start"
+        },
+        { key: "hero", row: 57, col: 1, span: 13, offset: "0px", max: "920px", align: "start" },
+        { key: "corridor-render", row: 71, col: 12, span: 13, offset: "0px", max: "920px", align: "end" },
+        { key: "market-render", row: 91, col: 4, span: 13, offset: "0px", max: "920px", align: "start" },
+        { key: "hero-2", row: 108, col: 12, span: 13, offset: "0px", max: "920px", align: "end" },
+        { key: "hero-2-pool", row: 124, col: 2, span: 13, offset: "0px", max: "920px", align: "start" },
+        { key: "zoomed-out-render-final-edited-tall", row: 145, col: 12, span: 13, offset: "0px", max: "920px", align: "end" }
       ]
     };
 
