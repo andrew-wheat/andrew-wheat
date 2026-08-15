@@ -29,8 +29,6 @@ window.PORTFOLIO_PROJECTS = [
     ],
     "summary": "Physical model planning, preparation, fabrication, and photography by Andrew Wheat for Mithun's NC State Cates West Development.",
     "description": "At Mithun, I contributed to the visual communication of NC State University's Cates West Development by planning, preparing, building, and photographing the project's physical model under the supervision of Ezra Homison. The 36 × 42-inch model was built from laser-cut basswood and acrylic with battery-operated lighting. The photographs document its massing, landscape, and relationship to the surrounding campus.",
-    "tectonics": "Mithun and Lord Aeck Sargent are collaborating on the multi-phase Central Campus development, which is planned to provide approximately 3,000 student beds, a 1,500-seat dining facility, utility infrastructure, and related campus improvements. Each phase is targeting LEED Silver or above.",
-    "contribution": "My scope included planning the model and photography, preparing the files and materials, fabricating the 36 × 42-inch model from laser-cut basswood and acrylic, integrating its battery-operated lighting, and producing the final photographs.",
     "externalLink": {
       "label": "Read Mithun's project announcement",
       "url": "https://mithun.com/2025/04/02/nc-state-selects-mithun-for-cates-west-development/"
