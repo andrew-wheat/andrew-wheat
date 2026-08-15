@@ -7210,6 +7210,14 @@ body:has(.nav-folder--info:focus-within) > footer {
     pointer-events: none;
   }
 
+  body .site-nav .nav-folder.is-open > .nav-folder-trigger {
+    color: var(--ink) !important;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    opacity: 1 !important;
+  }
+
   body:has(.nav-folder--selected:hover) > main,
   body:has(.nav-folder--selected:hover) > footer,
   body:has(.nav-folder--selected:focus-within) > main,
