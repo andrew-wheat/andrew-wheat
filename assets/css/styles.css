@@ -7020,6 +7020,11 @@ body[data-page="selected"] {
     transform: none;
   }
 
+  body[data-selected-collection="renderings"]
+    .selected-image-card[data-selected-key="zoomed-out-render-final-edited-tall"] {
+    grid-row-end: span 8;
+  }
+
   body[data-selected-collection="models"] .selected-scatter.has-items {
     padding-inline: clamp(40px, 4.5vw, 76px);
   }
