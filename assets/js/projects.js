@@ -3,7 +3,7 @@ window.PORTFOLIO_PROJECTS = [
     "id": "ncsu-cates-west",
     "workCategory": "Professional",
     "title": "NC State Cates West Development",
-    "year": "2025",
+    "year": "2026",
     "course": "Professional Work, Mithun",
     "location": "Raleigh, North Carolina",
     "affiliation": "Mithun",
