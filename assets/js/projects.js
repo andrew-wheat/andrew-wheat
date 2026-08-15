@@ -1059,6 +1059,7 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": -2
     },
     "shape": "grid",
+    "workArchiveOnly": true,
     "workThumbnail": "assets/images/Projects/Design District Canteen/Model Front View Shot 03 reduced.png",
     "workThumbnailAlt": "assets/images/work-heroes/design-district-canteen.webp",
     "workListThumbnail": "assets/images/Projects/Design District Canteen/Model Front View Shot 03 reduced.png",
