@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-08-03";
-const ASSET_VERSION = "20260815-mobile-dropdown-active-v137";
+const ASSET_VERSION = "20260815-mobile-dropdown-exclusive-v138";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;

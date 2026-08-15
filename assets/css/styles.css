@@ -7210,6 +7210,13 @@ body:has(.nav-folder--info:focus-within) > footer {
     pointer-events: none;
   }
 
+  body .site-nav:has(.nav-folder.is-open)
+    .nav-folder:not(.is-open)
+    > .nav-folder-trigger[aria-current="page"] {
+    text-decoration: none;
+    opacity: 0.46 !important;
+  }
+
   body .site-nav .nav-folder.is-open > .nav-folder-trigger {
     color: var(--ink) !important;
     text-decoration: underline;
