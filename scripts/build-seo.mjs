@@ -541,6 +541,15 @@ function selectedCollectionPage(collection) {
   const items = selectedCollections[collection] || [];
   const canonical = selectedCollectionUrl(collection);
   const image = selectedCollectionImage(collection);
+  const collectionIndex = selectedCollectionOrder.indexOf(collection);
+  const previousCollection = selectedCollectionOrder[collectionIndex - 1];
+  const nextCollection = selectedCollectionOrder[collectionIndex + 1];
+  const previousHref = previousCollection ? `/selected/${previousCollection}/` : "/work/";
+  const nextHref = nextCollection ? `/selected/${nextCollection}/` : "/work/";
+  const previousTitle = previousCollection
+    ? SELECTED_COLLECTION_META[previousCollection].heading
+    : "Work";
+  const nextTitle = nextCollection ? SELECTED_COLLECTION_META[nextCollection].heading : "Work";
   return `<!doctype html>
 <html lang="en">
 ${buildHead({
@@ -568,6 +577,10 @@ ${items
   })
   .join("\n")}
       </section>
+      <nav class="project-page-nav" aria-label="Selected collection navigation">
+        <a class="project-page-nav-link project-page-nav-link--previous" href="${escapeHtml(previousHref)}" aria-label="Previous collection: ${escapeHtml(previousTitle)}" data-project-title="${escapeHtml(previousTitle)}"><span aria-hidden="true">&larr;</span></a>
+        <a class="project-page-nav-link project-page-nav-link--next" href="${escapeHtml(nextHref)}" aria-label="Next collection: ${escapeHtml(nextTitle)}" data-project-title="${escapeHtml(nextTitle)}"><span aria-hidden="true">&rarr;</span></a>
+      </nav>
     </main>
 ${siteFooter}
 ${scriptTags()}
