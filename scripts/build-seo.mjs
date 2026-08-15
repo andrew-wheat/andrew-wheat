@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-08-03";
-const ASSET_VERSION = "20260815-ncsu-year-v132";
+const ASSET_VERSION = "20260815-nav-work-filters-v133";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;
@@ -408,9 +408,9 @@ const siteHeader = (active = "", selectedCollection = "") => `    <header class=
       <a class="brand" href="/" aria-label="Andrew Wheat home">${brandMark}<span>Andrew Wheat</span></a>
       <nav class="site-nav">
         <div class="nav-folder nav-folder--selected">
-          <button class="nav-primary-link nav-folder-trigger" type="button" data-nav-section="selected"${
+          <a class="nav-primary-link nav-folder-trigger" data-nav-section="selected" href="/selected/drawings/"${
             active === "selected" ? ' aria-current="page"' : ""
-          } aria-expanded="false" aria-haspopup="true">selected</button>
+          } aria-expanded="false" aria-haspopup="true">selected</a>
           <div class="nav-dropdown" aria-label="Selected collections">
             ${selectedCollectionOrder
               .map(
@@ -422,13 +422,21 @@ const siteHeader = (active = "", selectedCollection = "") => `    <header class=
               .join("\n            ")}
           </div>
         </div>
-        <a class="nav-primary-link" data-nav-section="work"${
-          active === "work" ? ' aria-current="page"' : ""
-        } href="/work/">work</a>
+        <div class="nav-folder nav-folder--work">
+          <a class="nav-primary-link nav-folder-trigger" data-nav-section="work" href="/work/"${
+            active === "work" ? ' aria-current="page"' : ""
+          } aria-expanded="false" aria-haspopup="true">work</a>
+          <div class="nav-dropdown" aria-label="Work filters">
+            <a class="nav-dropdown-link" data-work-category="all" href="/work/">all</a>
+            <a class="nav-dropdown-link" data-work-category="academic" href="/work/?category=academic">academic</a>
+            <a class="nav-dropdown-link" data-work-category="professional" href="/work/?category=professional">professional</a>
+            <a class="nav-dropdown-link" data-work-category="archive" href="/work/?category=archive">archive</a>
+          </div>
+        </div>
         <div class="nav-folder nav-folder--info">
-          <button class="nav-primary-link nav-folder-trigger" type="button" data-nav-section="info"${
+          <a class="nav-primary-link nav-folder-trigger" data-nav-section="info" href="/about/"${
             active === "about" || active === "contact" ? ' aria-current="page"' : ""
-          } aria-expanded="false" aria-haspopup="true">info</button>
+          } aria-expanded="false" aria-haspopup="true">info</a>
           <div class="nav-dropdown" aria-label="Information">
             <a class="nav-dropdown-link" data-info-page="about"${
               active === "about" ? ' aria-current="page"' : ""
@@ -1094,7 +1102,7 @@ async function updateAboutPage(file, { legacy = false } = {}) {
     /        <div class="about-statement">[\s\S]*?        <\/div>\s*      <\/section>/i,
     `        <div class="about-statement">
           <p>
-            I'm a Bachelor of Architecture student at Cornell interested in how
+            I'm a Bachelor of Architecture student at Cornell University interested in how
             architecture can give greater presence to public and collective life.
             My work explores civic space, housing, material systems, and the
             relationship between buildings and landscape, with particular

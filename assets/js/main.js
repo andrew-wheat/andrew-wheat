@@ -54,7 +54,7 @@
     const selectedNavigation = availableSelectedCollections.length
       ? `
         <div class="nav-folder nav-folder--selected">
-          <button class="nav-primary-link nav-folder-trigger" type="button" data-nav-section="selected" aria-expanded="false" aria-haspopup="true">selected</button>
+          <a class="nav-primary-link nav-folder-trigger" data-nav-section="selected" href="/selected/drawings/" aria-expanded="false" aria-haspopup="true">selected</a>
           <div class="nav-dropdown" aria-label="Selected collections">
             ${availableSelectedCollections
               .map(
@@ -66,9 +66,20 @@
         </div>
       `
       : "";
+    const workNavigation = `
+      <div class="nav-folder nav-folder--work">
+        <a class="nav-primary-link nav-folder-trigger" data-nav-section="work" href="/work/" aria-expanded="false" aria-haspopup="true">work</a>
+        <div class="nav-dropdown" aria-label="Work filters">
+          <a class="nav-dropdown-link" data-work-category="all" href="/work/">all</a>
+          <a class="nav-dropdown-link" data-work-category="academic" href="/work/?category=academic">academic</a>
+          <a class="nav-dropdown-link" data-work-category="professional" href="/work/?category=professional">professional</a>
+          <a class="nav-dropdown-link" data-work-category="archive" href="/work/?category=archive">archive</a>
+        </div>
+      </div>
+    `;
     const infoNavigation = `
       <div class="nav-folder nav-folder--info">
-        <button class="nav-primary-link nav-folder-trigger" type="button" data-nav-section="info" aria-expanded="false" aria-haspopup="true">info</button>
+        <a class="nav-primary-link nav-folder-trigger" data-nav-section="info" href="/about/" aria-expanded="false" aria-haspopup="true">info</a>
         <div class="nav-dropdown" aria-label="Information">
           <a class="nav-dropdown-link" data-info-page="about" href="/about/">about</a>
           <a class="nav-dropdown-link" data-info-page="contact" href="/contact/">contact</a>
@@ -78,7 +89,7 @@
     document.querySelectorAll(".site-nav").forEach((nav) => {
       nav.innerHTML = `
         ${selectedNavigation}
-        <a class="nav-primary-link" data-nav-section="work" href="/work/">work</a>
+        ${workNavigation}
         ${infoNavigation}
       `;
       initNavigationFolders(nav);
@@ -100,10 +111,14 @@
     nav.querySelectorAll(".nav-folder").forEach((folder) => {
       const trigger = folder.querySelector(".nav-folder-trigger");
       if (!trigger) return;
-      trigger.addEventListener("click", () => {
+      trigger.addEventListener("click", (event) => {
+        if (!window.matchMedia("(max-width: 900px)").matches) return;
         const shouldOpen = !folder.classList.contains("is-open");
+        if (!shouldOpen) return;
+        event.preventDefault();
+        event.stopPropagation();
         closeNavigationFolders(nav);
-        if (shouldOpen) setNavigationFolderOpen(folder, true);
+        setNavigationFolderOpen(folder, true);
       });
     });
   }
@@ -143,6 +158,20 @@
 
     document.querySelectorAll(".site-nav [data-info-page]").forEach((link) => {
       if (page && link.dataset.infoPage === page) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+
+    const requestedWorkCategory = new URLSearchParams(window.location.search).get("category");
+    const activeWorkCategory = ["academic", "professional", "archive"].includes(
+      String(requestedWorkCategory || "").toLowerCase()
+    )
+      ? String(requestedWorkCategory).toLowerCase()
+      : "all";
+    document.querySelectorAll(".site-nav [data-work-category]").forEach((link) => {
+      if (page === "work" && link.dataset.workCategory === activeWorkCategory) {
         link.setAttribute("aria-current", "page");
       } else {
         link.removeAttribute("aria-current");
@@ -1903,7 +1932,14 @@
     const populatedCategories = categoryEntries
       .filter(([, categoryProjects]) => categoryProjects.length > 0)
       .map(([category]) => category);
-    let activeCategory = "all";
+    const requestedCategory = String(params.get("category") || "").toLowerCase();
+    const categoryBySlug = new Map(
+      populatedCategories.map((category) => [category.toLowerCase(), category])
+    );
+    let activeCategory =
+      requestedCategory === "archive"
+        ? "archive"
+        : categoryBySlug.get(requestedCategory) || "all";
     let activeView = "grid";
     const mobileDefaultView = "grid";
     if (filter) {

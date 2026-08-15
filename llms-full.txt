@@ -13,17 +13,11 @@ Through Cornell University Sustainable Design, Andrew contributes to interdiscip
 - Canonical URL: https://andrew-wheat.com/project/ncsu-cates-west/
 - Year: 2026
 - Category: Professional
-- Firm: Mithun
-- Location: Raleigh, North Carolina
-- Role: Physical model planning, preparation, fabrication, and photography
-- Model: 36 × 42 inches, laser-cut basswood and acrylic
-- Lighting: Battery-operated
-- Supervisor: Ezra Homison
-- Collaborator: Lord Aeck Sargent
+- Course: Professional Work, Mithun
 
-Professional physical model planning, preparation, fabrication, and photography by Andrew Wheat for Mithun's NC State Cates West Development.
+Physical model planning, preparation, fabrication, and photography by Andrew Wheat for Mithun's NC State Cates West Development.
 
-At Mithun, Andrew contributed to the visual communication of NC State University's Cates West Development by planning, preparing, building, and photographing the project's physical model under the supervision of Ezra Homison. The 36 × 42-inch model was built from laser-cut basswood and acrylic with battery-operated lighting.
+At Mithun, I contributed to the visual communication of NC State University's Cates West Development by planning, preparing, building, and photographing the project's physical model under the supervision of Ezra Homison. The 36 × 42-inch model was built from laser-cut basswood and acrylic with battery-operated lighting. The photographs document its massing, landscape, and relationship to the surrounding campus.
 
 ### Hunter's Point Cooperative Housing
 
@@ -111,7 +105,7 @@ The Spring Chair for Minerva, designed by Setsuo Kitaoka in 1986, embodies playf
 
 - Canonical URL: https://andrew-wheat.com/project/design-district-canteen/
 - Year: 2024
-- Category: Academic
+- Category: Archive
 - Course: Structural Systems II
 - Studio: Fall 2024, Cornell University
 - Critic: Mark Cruvellier

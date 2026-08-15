@@ -37,7 +37,7 @@
     <meta name="twitter:image" content="https://andrew-wheat.com/assets/images/selected/photography/ajw288-andrew-wheat-week-12-image-9-4ed45f69.webp">
     <meta name="twitter:image:alt" content="Photography by Andrew Wheat">
 
-    <link rel="stylesheet" href="/assets/css/styles.css?v=20260803-favicon-cleanup-v124">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=20260815-nav-work-filters-v133">
     <script id="site-schema" type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -197,7 +197,7 @@
       <a class="brand" href="/" aria-label="Andrew Wheat home"><svg class="brand-mark" viewBox="0 0 939 350" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="194" y="0" width="154" height="95"/><rect x="391" y="0" width="154" height="95"/><rect x="588" y="0" width="154" height="95"/><rect x="785" y="0" width="154" height="95"/><rect x="93" y="95" width="255" height="59"/><rect x="391" y="95" width="548" height="59"/><rect x="93" y="154" width="154" height="42"/><rect x="490" y="154" width="154" height="42"/><rect x="687" y="154" width="154" height="42"/><rect x="0" y="196" width="348" height="53"/><rect x="391" y="196" width="253" height="53"/><rect x="687" y="196" width="252" height="53"/><rect x="0" y="249" width="154" height="101"/><rect x="194" y="249" width="154" height="101"/><rect x="391" y="249" width="154" height="101"/><rect x="785" y="249" width="154" height="101"/></g></svg><span>Andrew Wheat</span></a>
       <nav class="site-nav">
         <div class="nav-folder nav-folder--selected">
-          <button class="nav-primary-link nav-folder-trigger" type="button" data-nav-section="selected" aria-current="page" aria-expanded="false" aria-haspopup="true">selected</button>
+          <a class="nav-primary-link nav-folder-trigger" data-nav-section="selected" href="/selected/drawings/" aria-current="page" aria-expanded="false" aria-haspopup="true">selected</a>
           <div class="nav-dropdown" aria-label="Selected collections">
             <a class="nav-dropdown-link" data-selected-category="drawings" href="/selected/drawings/">drawings</a>
             <a class="nav-dropdown-link" data-selected-category="models" href="/selected/models/">models</a>
@@ -206,9 +206,17 @@
             <a class="nav-dropdown-link" data-selected-category="renderings" href="/selected/renderings/">renderings</a>
           </div>
         </div>
-        <a class="nav-primary-link" data-nav-section="work" href="/work/">work</a>
+        <div class="nav-folder nav-folder--work">
+          <a class="nav-primary-link nav-folder-trigger" data-nav-section="work" href="/work/" aria-expanded="false" aria-haspopup="true">work</a>
+          <div class="nav-dropdown" aria-label="Work filters">
+            <a class="nav-dropdown-link" data-work-category="all" href="/work/">all</a>
+            <a class="nav-dropdown-link" data-work-category="academic" href="/work/?category=academic">academic</a>
+            <a class="nav-dropdown-link" data-work-category="professional" href="/work/?category=professional">professional</a>
+            <a class="nav-dropdown-link" data-work-category="archive" href="/work/?category=archive">archive</a>
+          </div>
+        </div>
         <div class="nav-folder nav-folder--info">
-          <button class="nav-primary-link nav-folder-trigger" type="button" data-nav-section="info" aria-expanded="false" aria-haspopup="true">info</button>
+          <a class="nav-primary-link nav-folder-trigger" data-nav-section="info" href="/about/" aria-expanded="false" aria-haspopup="true">info</a>
           <div class="nav-dropdown" aria-label="Information">
             <a class="nav-dropdown-link" data-info-page="about" href="/about/">about</a>
             <a class="nav-dropdown-link" data-info-page="contact" href="/contact/">contact</a>
@@ -266,16 +274,16 @@
         </figure>
       </section>
       <nav class="project-page-nav" aria-label="Selected collection navigation">
-        <a class="project-page-nav-link project-page-nav-link--previous" href="/selected/models/" aria-label="Previous collection: Models" data-project-title="Models"><span aria-hidden="true">&larr;</span></a>
-        <a class="project-page-nav-link project-page-nav-link--next" href="/selected/sketchbook/" aria-label="Next collection: Sketchbook" data-project-title="Sketchbook"><span aria-hidden="true">&rarr;</span></a>
+        <a class="project-page-nav-link project-page-nav-link--previous" href="/selected/models/" aria-label="Previous page: Models" data-project-title="Models"><span aria-hidden="true">&larr;</span></a>
+        <a class="project-page-nav-link project-page-nav-link--next" href="/selected/sketchbook/" aria-label="Next page: Sketchbook" data-project-title="Sketchbook"><span aria-hidden="true">&rarr;</span></a>
       </nav>
     </main>
     <footer class="site-copyright" aria-label="Copyright">
       &copy; Andrew Wheat 2026
     </footer>
-    <script src="/assets/js/projects.js?v=20260803-favicon-cleanup-v124"></script>
-    <script src="/assets/js/image-optimizations.js?v=20260803-favicon-cleanup-v124"></script>
-    <script src="/assets/js/selected-collections.js?v=20260803-favicon-cleanup-v124"></script>
-    <script src="/assets/js/main.js?v=20260803-favicon-cleanup-v124"></script>
+    <script src="/assets/js/projects.js?v=20260815-nav-work-filters-v133"></script>
+    <script src="/assets/js/image-optimizations.js?v=20260815-nav-work-filters-v133"></script>
+    <script src="/assets/js/selected-collections.js?v=20260815-nav-work-filters-v133"></script>
+    <script src="/assets/js/main.js?v=20260815-nav-work-filters-v133"></script>
   </body>
 </html>

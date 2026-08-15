@@ -7135,7 +7135,15 @@ body > footer {
 body:has(.nav-folder--selected:hover) > main,
 body:has(.nav-folder--selected:hover) > footer,
 body:has(.nav-folder--selected:focus-within) > main,
-body:has(.nav-folder--selected:focus-within) > footer {
+body:has(.nav-folder--selected:focus-within) > footer,
+body:has(.nav-folder--work:hover) > main,
+body:has(.nav-folder--work:hover) > footer,
+body:has(.nav-folder--work:focus-within) > main,
+body:has(.nav-folder--work:focus-within) > footer,
+body:has(.nav-folder--info:hover) > main,
+body:has(.nav-folder--info:hover) > footer,
+body:has(.nav-folder--info:focus-within) > main,
+body:has(.nav-folder--info:focus-within) > footer {
   opacity: 0.28;
 }
 
@@ -7185,12 +7193,23 @@ body:has(.nav-folder--selected:focus-within) > footer {
   body:has(.nav-folder--selected:hover) > main,
   body:has(.nav-folder--selected:hover) > footer,
   body:has(.nav-folder--selected:focus-within) > main,
-  body:has(.nav-folder--selected:focus-within) > footer {
+  body:has(.nav-folder--selected:focus-within) > footer,
+  body:has(.nav-folder--work:hover) > main,
+  body:has(.nav-folder--work:hover) > footer,
+  body:has(.nav-folder--work:focus-within) > main,
+  body:has(.nav-folder--work:focus-within) > footer,
+  body:has(.nav-folder--info:hover) > main,
+  body:has(.nav-folder--info:hover) > footer,
+  body:has(.nav-folder--info:focus-within) > main,
+  body:has(.nav-folder--info:focus-within) > footer {
     opacity: 1;
   }
 
   .site-nav .nav-dropdown-link {
-    font-size: var(--type-copy);
+    min-height: 44px;
+    padding: 9px 14px;
+    font-size: calc(var(--type-copy) + 1px);
+    line-height: 1.35;
     text-align: center;
   }
 
