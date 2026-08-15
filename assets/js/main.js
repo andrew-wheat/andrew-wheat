@@ -114,11 +114,10 @@
       trigger.addEventListener("click", (event) => {
         if (!window.matchMedia("(max-width: 900px)").matches) return;
         const shouldOpen = !folder.classList.contains("is-open");
-        if (!shouldOpen) return;
         event.preventDefault();
         event.stopPropagation();
         closeNavigationFolders(nav);
-        setNavigationFolderOpen(folder, true);
+        if (shouldOpen) setNavigationFolderOpen(folder, true);
       });
     });
   }
