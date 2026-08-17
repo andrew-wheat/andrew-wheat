@@ -4629,7 +4629,7 @@ body.project-lightbox-open .site-cursor {
   grid-template-columns: repeat(6, minmax(0, 1fr));
   align-items: end;
   column-gap: clamp(16px, 2vw, 28px);
-  row-gap: clamp(44px, 5vw, 72px);
+  row-gap: clamp(64px, 7vw, 104px);
   min-width: 0;
 }
 
@@ -4680,7 +4680,7 @@ body.project-lightbox-open .site-cursor {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     column-gap: 8px;
-    row-gap: 32px;
+    row-gap: 48px;
     overflow: visible;
     padding-bottom: 0;
   }
