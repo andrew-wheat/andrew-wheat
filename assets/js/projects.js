@@ -48,8 +48,16 @@ window.PORTFOLIO_PROJECTS = [
       {
         "layout": "ncsu-process-row",
         "heading": "Process",
-        "text": "I translated the site geometry into cut layers, routed and soldered the LED system within the base, then assembled the building and landscape components before photographing the illuminated model.",
+        "text": "I modeled the terrain from AutoCAD survey files and used Grasshopper scripts to pull Revit building information into Rhino, where I translated the digital model into laser-cut files. I then fabricated and assembled the site, buildings, landscape, and integrated lighting system.",
         "items": [
+          {
+            "src": "assets/images/optimized/ncsu-cates-west-model-process-1.webp",
+            "caption": "Revit building information transferred into Rhino through Grasshopper scripts."
+          },
+          {
+            "src": "assets/images/optimized/ncsu-cates-west-model-process-2.webp",
+            "caption": "AutoCAD survey terrain and Revit building geometry prepared in Rhino for laser cutting."
+          },
           {
             "src": "assets/images/optimized/ncsu-cates-west-process-1.webp",
             "caption": "Site layers laid out for cutting and assembly."

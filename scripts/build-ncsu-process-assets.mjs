@@ -29,3 +29,19 @@ for (const number of [1, 2, 3]) {
     .toFile(output);
   console.log(`${path.basename(output)}: ${info.width}x${info.height}, ${info.size} bytes`);
 }
+
+const modelProcessSources = [
+  ["model process 1.png", "ncsu-cates-west-model-process-1.webp"],
+  ["modeling process 2.png", "ncsu-cates-west-model-process-2.webp"],
+];
+
+for (const [sourceName, outputName] of modelProcessSources) {
+  const source = path.join(sourceDirectory, sourceName);
+  const output = path.join(outputDirectory, outputName);
+  const info = await sharp(source)
+    .rotate()
+    .resize({ width: 1400, withoutEnlargement: true })
+    .webp({ quality: 86, effort: 5 })
+    .toFile(output);
+  console.log(`${path.basename(output)}: ${info.width}x${info.height}, ${info.size} bytes`);
+}
