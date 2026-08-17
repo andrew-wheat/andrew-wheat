@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-08-03";
-const ASSET_VERSION = "20260817-ncsu-model-process-v147";
+const ASSET_VERSION = "20260817-direct-work-link-v148";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;
@@ -702,7 +702,7 @@ ${siteHeader()}
       </a>
       <div class="minimal-landing-content">
         <h1 class="minimal-landing-copy">${escapeHtml(LANDING_STATEMENT)}</h1>
-        <a class="minimal-landing-link" href="/work/">view work</a>
+        <a class="minimal-landing-work-link" href="/work/">view work</a>
       </div>
     </main>
 ${scriptTags()}

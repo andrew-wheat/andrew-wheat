@@ -6493,7 +6493,7 @@ body[data-page="landing-minimal"] {
   text-align: left;
 }
 
-.minimal-landing-link {
+.minimal-landing-work-link {
   color: var(--ink);
   font-size: var(--randy-interface-size, 15px);
   font-weight: 400;
@@ -6549,7 +6549,7 @@ body[data-page="landing-minimal"] {
   }
 
   .minimal-landing-copy,
-  .minimal-landing-link {
+  .minimal-landing-work-link {
     font-size: 15px;
   }
 
