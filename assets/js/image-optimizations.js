@@ -117,6 +117,18 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     2400,
     1347
   ],
+  "assets/images/optimized/ncsu-cates-west-process-1.webp": [
+    992,
+    768
+  ],
+  "assets/images/optimized/ncsu-cates-west-process-2.webp": [
+    1200,
+    1600
+  ],
+  "assets/images/optimized/ncsu-cates-west-process-3.webp": [
+    1200,
+    899
+  ],
   "assets/apple-touch-icon.png": [
     192,
     192

@@ -7,12 +7,14 @@ window.PORTFOLIO_PROJECTS = [
     "course": "Professional Work, Mithun",
     "location": "Raleigh, North Carolina",
     "affiliation": "Mithun",
+    "landscapeArchitect": "Andropogon",
     "additionalMetadata": [
       "Raleigh, North Carolina",
       "Role: Physical model planning, preparation, fabrication, and photography",
       "Model: 36 × 42 in, laser-cut basswood and acrylic",
       "Lighting: Battery-operated",
       "Supervised by Ezra Homison",
+      "Landscape Architects: Andropogon",
       "In collaboration with Lord Aeck Sargent"
     ],
     "type": "Professional / physical model / photography",
@@ -28,7 +30,7 @@ window.PORTFOLIO_PROJECTS = [
       "campus planning"
     ],
     "summary": "Physical model planning, preparation, fabrication, and photography by Andrew Wheat for Mithun's NC State Cates West Development.",
-    "description": "At Mithun, I contributed to the visual communication of NC State University's Cates West Development by planning, preparing, building, and photographing the project's physical model under the supervision of Ezra Homison. The 36 × 42-inch model was built from laser-cut basswood and acrylic with battery-operated lighting. The photographs document its massing, landscape, and relationship to the surrounding campus.",
+    "description": "Working with Mithun's project team, I translated the Cates West campus design into a presentation model that communicates the relationship between new student housing, shared campus spaces, and the surrounding landscape.",
     "externalLink": {
       "label": "Read Mithun's project announcement",
       "url": "https://mithun.com/2025/04/02/nc-state-selects-mithun-for-cates-west-development/"
@@ -44,8 +46,28 @@ window.PORTFOLIO_PROJECTS = [
         "layout": "image"
       },
       {
+        "layout": "ncsu-process-row",
+        "heading": "Process",
+        "text": "I translated the site geometry into cut layers, routed and soldered the LED system within the base, then assembled the building and landscape components before photographing the illuminated model.",
+        "items": [
+          {
+            "src": "assets/images/optimized/ncsu-cates-west-process-1.webp",
+            "caption": "Site layers laid out for cutting and assembly."
+          },
+          {
+            "src": "assets/images/optimized/ncsu-cates-west-process-2.webp",
+            "caption": "LED strips routed and soldered within the base."
+          },
+          {
+            "src": "assets/images/optimized/ncsu-cates-west-process-3.webp",
+            "caption": "Illuminated base during building and landscape assembly."
+          }
+        ]
+      },
+      {
         "layout": "story-text",
-        "text": "The photography was planned around the 36 × 42-inch model's battery-operated internal illumination and layered landscape. An elevated oblique view records the overall composition, while a lower campus-edge view brings the laser-cut basswood and acrylic residential facades and tree line into a more atmospheric relationship. I planned, prepared, built, and photographed the model under the supervision of Ezra Homison."
+        "heading": "Photography",
+        "text": "Final photographs were composed at two scales: an elevated oblique view records the overall campus organization, while a lower edge view emphasizes the residential facades, tree line, and illuminated shared spaces."
       },
       {
         "src": "IMG_2995.png",

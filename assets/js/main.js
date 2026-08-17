@@ -557,7 +557,7 @@
     "ncsu-cates-west": {
       title: "NC State Cates West Development | Andrew Wheat",
       description: "Professional physical model planning, preparation, fabrication, and photography by Andrew Wheat for Mithun's NC State Cates West Development.",
-      keywords: ["Mithun", "NC State", "Cates West", "professional architecture work", "physical model", "laser-cut basswood", "acrylic model", "model making", "model photography"]
+      keywords: ["Mithun", "Andropogon", "NC State", "Cates West", "professional architecture work", "landscape architecture", "physical model", "laser-cut basswood", "acrylic model", "model making", "model photography"]
     },
     "hunters-point": {
       title: "Hunter's Point Cooperative Housing | Andrew Wheat",
@@ -2139,6 +2139,12 @@
       "creator": {
         "@id": "https://andrew-wheat.com/#andrew-wheat"
       },
+      "contributor": project.landscapeArchitect
+        ? {
+            "@type": "Organization",
+            "name": project.landscapeArchitect
+          }
+        : undefined,
       "isPartOf": {
         "@type": "CreativeWork",
         "@id": "https://andrew-wheat.com/#portfolio",
@@ -2469,7 +2475,8 @@
     "deconstruct-mural",
     "chair-precedent",
     "chair-motion-grid",
-    "chair-white-grid"
+    "chair-white-grid",
+    "ncsu-process-row"
   ]);
 
   function projectStoryFrameClasses(layout) {
@@ -2560,6 +2567,8 @@
     const layout = image.layout || "image";
     const media = layout === "hunters-context-animation"
       ? huntersPointAnimation(project)
+      : layout === "ncsu-process-row"
+      ? ncsuProcessRow(project, image)
       : layout === "wood-pool-iso-large"
       ? woodPoolSiteIso(project, image)
       : layout === "wood-pool-mech-system"
@@ -2594,6 +2603,29 @@
         ${media}
         ${caption}
       </figure>
+    `;
+  }
+
+  function ncsuProcessRow(project, process) {
+    const items = Array.isArray(process.items) ? process.items : [];
+    return `
+      <div class="ncsu-process-area">
+        <div class="ncsu-process-copy">
+          ${process.heading ? `<h2>${escapeHtml(process.heading)}</h2>` : ""}
+          ${process.text ? `<p>${escapeHtml(process.text)}</p>` : ""}
+        </div>
+        <div class="ncsu-process-images">
+          ${items
+            .map(
+              (item) => `
+                <div class="ncsu-process-image">
+                  ${projectMedia(project, item.src, item.caption || process.heading || project.title)}
+                </div>
+              `
+            )
+            .join("")}
+        </div>
+      </div>
     `;
   }
 

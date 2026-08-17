@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-08-03";
-const ASSET_VERSION = "20260815-mobile-dropdown-exclusive-v138";
+const ASSET_VERSION = "20260817-ncsu-process-v139";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;
@@ -854,6 +854,12 @@ function projectSchema(project, image, description) {
       name: project.location,
     };
   }
+  if (project.landscapeArchitect) {
+    creativeWork.contributor = {
+      "@type": "Organization",
+      name: project.landscapeArchitect,
+    };
+  }
   return {
     graph: [
       {
@@ -1324,6 +1330,10 @@ ${publicProjects
 - Category: ${project.workArchiveOnly ? "Archive" : project.workCategory ?? "Academic"}
 ${project.course ? `- Course: ${project.course}\n` : ""}${
       project.studio ? `- Studio: ${project.studio}\n` : ""
+    }${
+      project.landscapeArchitect
+        ? `- Landscape Architects: ${project.landscapeArchitect}\n`
+        : ""
     }${
       projectCritics(project).length
         ? `- ${projectCritics(project).length === 1 ? "Critic" : "Critics"}: ${projectCritics(project).join(", ")}\n`
