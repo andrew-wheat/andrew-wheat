@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-08-03";
-const ASSET_VERSION = "20260817-ncsu-model-process-v145";
+const ASSET_VERSION = "20260817-ncsu-model-process-v146";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;
@@ -890,9 +890,15 @@ function projectSchema(project, image, description) {
 }
 
 function projectMetadata(project) {
+  if (Array.isArray(project.metadataGroups) && project.metadataGroups.length) {
+    return project.metadataGroups
+      .map((group) => (Array.isArray(group) ? group.filter(Boolean) : []))
+      .filter((group) => group.length);
+  }
+
   const criticNames = projectCritics(project);
   const collaboratorNames = peopleList(project.partners);
-  return [
+  return [[
     project.course,
     ...(Array.isArray(project.additionalMetadata)
       ? project.additionalMetadata
@@ -904,7 +910,7 @@ function projectMetadata(project) {
     collaboratorNames.length
       ? `${collaboratorNames.length === 1 ? "Collaborator" : "Collaborators"}: ${collaboratorNames.join(", ")}`
       : "",
-  ].filter(Boolean);
+  ].filter(Boolean)];
 }
 
 function projectCritics(project) {
@@ -933,7 +939,7 @@ function staticProjectMain(project) {
   const supporting = cleanText(
     [project.tectonics, project.contribution].filter(Boolean).join(" "),
   );
-  const metadata = projectMetadata(project);
+  const metadataGroups = projectMetadata(project);
   const award = project.award
     ? `<em>${escapeHtml(project.award)}</em>`
     : "";
@@ -954,14 +960,15 @@ function staticProjectMain(project) {
         <div class="project-editorial-text">
           <h1>${escapeHtml(project.title)}</h1>
           ${
-            metadata.length
+            metadataGroups.length
               || award
-              ? `<p class="project-editorial-meta">${[
-                  ...metadata.map(escapeHtml),
-                  award,
-                ]
-                  .filter(Boolean)
-                  .join("<br>")}</p>`
+              ? metadataGroups
+                  .map((group, groupIndex) => {
+                    const lines = group.map(escapeHtml);
+                    if (award && groupIndex === metadataGroups.length - 1) lines.push(award);
+                    return `<p class="project-editorial-meta">${lines.join("<br>")}</p>`;
+                  })
+                  .join("")
               : ""
           }
           <p>${escapeHtml(description)}</p>

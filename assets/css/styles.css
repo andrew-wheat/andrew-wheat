@@ -4628,7 +4628,8 @@ body.project-lightbox-open .site-cursor {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   align-items: end;
-  gap: clamp(16px, 2vw, 28px);
+  column-gap: clamp(16px, 2vw, 28px);
+  row-gap: clamp(44px, 5vw, 72px);
   min-width: 0;
 }
 
@@ -4646,6 +4647,9 @@ body.project-lightbox-open .site-cursor {
 
 .ncsu-process-image:nth-child(-n + 2) {
   grid-column: span 3;
+  aspect-ratio: auto;
+  max-height: none;
+  overflow: visible;
 }
 
 .ncsu-process-image:nth-child(n + 3) {
@@ -4661,6 +4665,12 @@ body.project-lightbox-open .site-cursor {
   object-position: center bottom;
 }
 
+.ncsu-process-image:nth-child(-n + 2) img {
+  position: static;
+  width: 100%;
+  height: auto;
+}
+
 @media (max-width: 700px) {
   .ncsu-process-area {
     width: 100%;
@@ -4669,7 +4679,8 @@ body.project-lightbox-open .site-cursor {
   .ncsu-process-images {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 8px;
+    column-gap: 8px;
+    row-gap: 32px;
     overflow: visible;
     padding-bottom: 0;
   }

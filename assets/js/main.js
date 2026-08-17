@@ -2352,22 +2352,31 @@
   }
 
   function projectMetadataLines(project) {
-    const lines = [
-      project.course,
-      ...(Array.isArray(project.additionalMetadata) ? project.additionalMetadata : []),
-      project.studio,
-      project.professors ? `${criticLabel(project)}: ${criticDisplay(project)}` : "",
-      project.partners
-        ? `${collaboratorLabel(project)}: ${peopleDisplay(project.partners)}`
-        : ""
-    ].filter(Boolean);
+    const groups = Array.isArray(project.metadataGroups) && project.metadataGroups.length
+      ? project.metadataGroups
+          .map((group) => (Array.isArray(group) ? group.filter(Boolean) : []))
+          .filter((group) => group.length)
+      : [[
+          project.course,
+          ...(Array.isArray(project.additionalMetadata) ? project.additionalMetadata : []),
+          project.studio,
+          project.professors ? `${criticLabel(project)}: ${criticDisplay(project)}` : "",
+          project.partners
+            ? `${collaboratorLabel(project)}: ${peopleDisplay(project.partners)}`
+            : ""
+        ].filter(Boolean)];
 
     const awardLine = project.award ? `<em>${escapeHtml(project.award)}</em>` : "";
-    const renderedLines = [...lines.map(escapeHtml), awardLine].filter(Boolean);
+    const renderedGroups = groups.map((group) => group.map(escapeHtml));
+    if (awardLine) {
+      if (!renderedGroups.length) renderedGroups.push([]);
+      renderedGroups[renderedGroups.length - 1].push(awardLine);
+    }
 
-    return renderedLines.length
-      ? `<p class="project-editorial-meta">${renderedLines.join("<br>")}</p>`
-      : "";
+    return renderedGroups
+      .filter((group) => group.length)
+      .map((group) => `<p class="project-editorial-meta">${group.join("<br>")}</p>`)
+      .join("");
   }
 
   function projectExternalLink(project) {

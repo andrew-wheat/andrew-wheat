@@ -8,14 +8,18 @@ window.PORTFOLIO_PROJECTS = [
     "location": "Raleigh, North Carolina",
     "affiliation": "Mithun",
     "landscapeArchitect": "Andropogon",
-    "additionalMetadata": [
-      "Raleigh, North Carolina",
-      "Role: Physical model planning, preparation, fabrication, and photography",
-      "Model: 36 × 42 in, laser-cut basswood and acrylic",
-      "Lighting: Battery-operated",
-      "Supervised by Ezra Homison",
-      "Landscape Architects: Andropogon",
-      "In collaboration with Lord Aeck Sargent"
+    "metadataGroups": [
+      [
+        "Professional Work, Mithun",
+        "Raleigh, North Carolina",
+        "Supervised by Ezra Homison",
+        "In collaboration with Lord Aeck Sargent",
+        "Landscape Architects: Andropogon"
+      ],
+      [
+        "Role: Physical model planning, preparation, fabrication, and photography",
+        "Model: 36 × 42 in, laser-cut basswood and acrylic with battery-operated lighting"
+      ]
     ],
     "type": "Professional / physical model / photography",
     "themes": [
@@ -47,8 +51,7 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "layout": "ncsu-process-row",
-        "heading": "Process",
-        "text": "I modeled the terrain from AutoCAD survey files and used Grasshopper scripts to pull Revit building information into Rhino, where I translated the digital model into laser-cut files. I then fabricated and assembled the site, buildings, landscape, and integrated lighting system.",
+        "text": "Terrain was modeled from AutoCAD survey files. Grasshopper scripts transferred Revit building information into Rhino, where the digital model was translated into laser-cut files. The site, buildings, landscape, and integrated lighting system were then fabricated and assembled.",
         "items": [
           {
             "src": "assets/images/optimized/ncsu-cates-west-model-process-1.webp",
