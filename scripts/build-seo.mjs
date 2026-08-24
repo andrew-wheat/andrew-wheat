@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 const TODAY = "2026-08-03";
-const ASSET_VERSION = "20260823-pool-hero-v149";
+const ASSET_VERSION = "20260823-pool-search-image-v150";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;
@@ -110,6 +110,9 @@ const PROJECT_SEO = {
     title: "Wood Street Pool | Andrew Wheat",
     description:
       "Public natatorium and civic landscape project by Andrew Wheat, integrating community recreation, water systems, planted roofs, geothermal strategies, and mass timber architecture.",
+    image: "assets/images/Projects/Wood Street Pool/hero.png",
+    imageAlt:
+      "Exterior rendering of Wood Street Pool beside planted terraces and a public path",
   },
   "enfield-food-pantry": {
     title: "Enfield Food Pantry | Andrew Wheat",
@@ -260,6 +263,12 @@ const representativeImage = (project) => {
     (project.thumbnail ? `${project.imageBase ?? ""}${project.thumbnail}` : "");
   return absoluteUrl(source);
 };
+
+const projectSearchImage = (project) =>
+  absoluteUrl(PROJECT_SEO[project.id]?.image || representativeImage(project));
+
+const projectSearchImageAlt = (project) =>
+  PROJECT_SEO[project.id]?.imageAlt || projectWorkAlt(project);
 
 const projectOpeningImage = (project) =>
   absoluteUrl(
@@ -826,7 +835,7 @@ function projectSchema(project, image, description) {
       "@type": "ImageObject",
       url: image,
       contentUrl: image,
-      caption: projectWorkAlt(project),
+      caption: projectSearchImageAlt(project),
       representativeOfPage: true,
     },
     dateCreated: project.year || undefined,
@@ -1010,7 +1019,7 @@ async function rewriteProjectPage(project, { indexable }) {
   const file = `${ROOT}/project/${slug}/index.html`;
   if (!existsSync(file)) return;
   const url = projectUrl(project);
-  const image = representativeImage(project);
+  const image = projectSearchImage(project);
   const description = projectDescription(project);
   const schemas = projectSchema(project, image, description);
   const head = buildHead({
@@ -1018,7 +1027,7 @@ async function rewriteProjectPage(project, { indexable }) {
     description,
     canonical: url,
     image,
-    imageAlt: projectWorkAlt(project),
+    imageAlt: projectSearchImageAlt(project),
     type: "article",
     robots: indexable ? ROBOTS_INDEX : "noindex, follow",
     schema: schemas.graph,
@@ -1247,8 +1256,8 @@ function sitemapXml() {
     })),
     ...publicProjects.map((project) => ({
       url: projectUrl(project),
-      image: representativeImage(project),
-      imageTitle: projectWorkAlt(project),
+      image: projectSearchImage(project),
+      imageTitle: projectSearchImageAlt(project),
     })),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>

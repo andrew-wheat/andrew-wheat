@@ -567,6 +567,8 @@
     "wood-street-pool": {
       title: "Wood Street Pool | Andrew Wheat",
       description: "Public natatorium and civic landscape project by Andrew Wheat, integrating community recreation, water systems, planted roofs, geothermal strategies, and mass timber architecture.",
+      image: "assets/images/Projects/Wood Street Pool/hero.png",
+      imageAlt: "Exterior rendering of Wood Street Pool beside planted terraces and a public path",
       keywords: ["public natatorium", "water systems", "planted roofs", "geothermal strategies", "mass timber", "civic landscape"]
     },
     "enfield-food-pantry": {
@@ -2091,11 +2093,11 @@
     const title = seo.title || `${project.title} | Andrew Wheat`;
     const description = seo.description || project.summary || project.description || "Architecture project by Andrew Wheat.";
     const keywords = projectKeywords(project, seo).join(", ");
-    const image = project.workListThumbnail || project.workThumbnail || project.heroImage || project.thumbnail || "assets/images/work-covers/wood-street-pool.webp";
+    const image = seo.image || project.workListThumbnail || project.workThumbnail || project.heroImage || project.thumbnail || "assets/images/work-covers/wood-street-pool.webp";
     const imageUrl = encodeURI(image.startsWith("http")
       ? image
       : `https://andrew-wheat.com/${image.includes("/") ? image : `${project.imageBase || ""}${image}`}`);
-    const imageAlt = project.workImageAlt || `${project.title} architecture project by Andrew Wheat`;
+    const imageAlt = seo.imageAlt || project.workImageAlt || `${project.title} architecture project by Andrew Wheat`;
 
     document.title = title;
     setHeadAttribute('link[rel="canonical"]', "href", pageUrl);
