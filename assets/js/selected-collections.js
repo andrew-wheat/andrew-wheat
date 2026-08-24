@@ -486,7 +486,7 @@ window.SELECTED_COLLECTIONS = {
     },
     {
       "key": "hero-2-pool",
-      "src": "/assets/images/selected/renderings/hero-2-b77ffeda.webp",
+      "src": "/assets/images/selected/renderings/hero-2-ad26499d.webp",
       "title": "Wood Street Pool",
       "width": 2000,
       "height": 1125,
