@@ -83,6 +83,7 @@ async function fetchText(url, options = {}) {
         options.userAgent ||
         "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
     },
+    signal: AbortSignal.timeout(30000),
   });
   return {
     response,
@@ -202,6 +203,14 @@ for (const canonicalUrl of sitemapUrls) {
     errors.push(`${pathname} canonical is ${canonical || "(missing)"}, expected ${canonicalUrl}`);
   }
   if (/noindex/i.test(robotsMeta)) errors.push(`${pathname} is noindex but appears in sitemap`);
+  for (const bot of ["googlebot", "bingbot"]) {
+    if (/noindex|none/i.test(getAttributeContent(html, "name", bot))) {
+      errors.push(`${pathname} blocks indexing for ${bot}`);
+    }
+  }
+  if (/noindex|none/i.test(response.headers.get("x-robots-tag") || "")) {
+    errors.push(`${pathname} has an indexing-blocking HTTP header`);
+  }
   if (!/max-image-preview:large/i.test(robotsMeta)) {
     warnings.push(`${pathname} does not request large image previews`);
   }
@@ -288,8 +297,8 @@ for (const page of pages) {
   for (const match of page.html.matchAll(/<a[^>]+href=["']([^"'#]+)["']/gi)) {
     const href = decodeEntities(match[1]);
     if (/^(mailto:|tel:|javascript:)/i.test(href)) continue;
-    const resolved = new URL(href, canonicalOrigin);
-    if (resolved.origin === canonicalOrigin) internalLinks.add(resolved.pathname);
+    const resolved = new URL(href, page.canonical);
+    if (resolved.origin === canonicalOrigin) internalLinks.add(resolved.pathname + resolved.search);
   }
 }
 
@@ -410,13 +419,28 @@ if (!/href=["']https:\/\/www\.linkedin\.com\/in\/andrewwheat["']/i.test(contactP
 
 for (const path of ["/work.html", "/about.html", "/contact.html"]) {
   const { text: html } = await fetchText(`${requestedBase}${path}`);
-  if (!/noindex/i.test(getAttributeContent(html, "name", "robots"))) {
-    errors.push(`${path} should be noindex as a legacy duplicate`);
+  if (/noindex/i.test(getAttributeContent(html, "name", "robots"))) {
+    errors.push(`${path} must allow Google to process its redirect`);
   }
   const expectedCanonical = `${canonicalOrigin}${path.replace(/\.html$/, "/")}`;
   if (canonicalFromHtml(html) !== expectedCanonical) {
     errors.push(`${path} canonical does not point to ${expectedCanonical}`);
   }
+  const target = new URL(expectedCanonical).pathname;
+  if (!html.includes(`<meta http-equiv="refresh" content="0; url=${target}">`)) {
+    errors.push(`${path} is missing its immediate redirect to ${target}`);
+  }
+}
+
+const { text: legacyProject } = await fetchText(`${requestedBase}/project.html?id=wood-street-pool`);
+if (/noindex/i.test(getAttributeContent(legacyProject, "name", "robots"))) {
+  errors.push("Legacy project URLs block rendering of their redirect with noindex");
+}
+if (canonicalFromHtml(legacyProject)) {
+  errors.push("Legacy project URLs must not declare a static canonical unrelated to their project ID");
+}
+if (!/<script data-legacy-redirect>/.test(legacyProject)) {
+  errors.push("Legacy project URLs lack an early redirect");
 }
 
 for (const page of pages) {

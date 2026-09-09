@@ -2088,6 +2088,10 @@
   }
 
   function setProjectMeta(project) {
+    // The generated HTML is the source of truth for canonical project metadata.
+    // Keep its richer structured data and social images intact after rendering.
+    if (document.getElementById("project-schema") &&
+        /^\/project\/[^/]+\/(?:index\.html)?$/.test(window.location.pathname)) return;
     const seo = projectSeo[project.id] || {};
     const pageUrl = `https://andrew-wheat.com/project/${encodeURIComponent(project.id)}/`;
     const title = seo.title || `${project.title} | Andrew Wheat`;
@@ -2198,7 +2202,6 @@
       return;
     }
 
-    document.title = `${project.title} | Andrew Wheat`;
     setProjectMeta(project);
     root.dataset.projectId = project.id;
     if (Array.isArray(project.story) && project.story.length) {

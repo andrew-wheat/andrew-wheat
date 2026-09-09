@@ -4,7 +4,9 @@ import { runInNewContext } from "node:vm";
 
 const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
-const TODAY = "2026-08-03";
+// Modification dates are intentionally omitted until tracked per page.
+const METADATA_ONLY = process.argv.includes("--metadata-only");
+const MAIN_VERSION = "20260909-seo";
 const ASSET_VERSION = "20260823-pool-search-image-v150";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
@@ -101,6 +103,11 @@ const SELECTED_COLLECTION_META = {
 const ROBOTS_INDEX =
   "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 const PROJECT_SEO = {
+  "ncsu-cates-west": {
+    title: "NC State Cates West Development | Andrew Wheat",
+    description:
+      "Professional physical model planning, preparation, fabrication, and photography by Andrew Wheat for Mithun's NC State Cates West Development.",
+  },
   "hunters-point": {
     title: "Hunter's Point Cooperative Housing | Andrew Wheat",
     description:
@@ -189,11 +196,35 @@ const normalizeInterfaceLanguage = (content) =>
       "",
     );
 
-const writeClean = (file, content) =>
-  writeFile(
-    file,
-    normalizeInterfaceLanguage(content).replace(/[ \t]+(?=\r?\n|$)/g, ""),
-  );
+const writeClean = async (file, content) => {
+  let result = normalizeInterfaceLanguage(content).replace(/[ \t]+(?=\r?\n|$)/g, "");
+  if (file.endsWith(".html")) {
+    if (METADATA_ONLY && existsSync(file)) {
+      const original = await readFile(file, "utf8");
+      const head = result.match(/<head>[\s\S]*?<\/head>/i)?.[0];
+      if (!head) throw new Error(`Missing head: ${file}`);
+      result = original.replace(/<head>[\s\S]*?<\/head>/i, () => head);
+    }
+    result = result.replace(/(\/assets\/js\/main\.js\?v=)[^"'&]+/g, `$1${MAIN_VERSION}`);
+    const relative = file.slice(ROOT.length).replaceAll("\\", "/");
+    const target = { "/work.html": "/work/", "/about.html": "/about/", "/contact.html": "/contact/", "/project/index.html": "/work/" }[relative];
+    if (target || relative === "/project.html") {
+      // A noindex in the initial response can prevent Google rendering a JS redirect.
+      result = result.replace(/(<meta name="(?:robots|googlebot|bingbot)" content=")[^"]*/g, `$1${ROBOTS_INDEX}`);
+      result = result.replace(/\s*<script data-legacy-redirect>[\s\S]*?<\/script>/g, "");
+      result = result.replace(/\s*<meta http-equiv="refresh"[^>]*>/g, "");
+      if (relative === "/project.html") {
+        // The query determines the destination, so a Work canonical would be misleading.
+        result = result.replace(/\s*<link rel="canonical"[^>]*>/g, "");
+        const ids = JSON.stringify([...new Set([...publicProjects, ...archivedProjects].map(p => p.id))]);
+        result = result.replace('<meta charset="utf-8">', `<meta charset="utf-8">\n    <script data-legacy-redirect>(function () { var u = new URL(location.href); var id = u.searchParams.get("id"); if (id === "hunters-point-housing") id = "hunters-point"; var path = ${ids}.includes(id) ? "/project/" + encodeURIComponent(id) + "/" : "/work/"; u.searchParams.delete("id"); location.replace(path + u.search + u.hash); })();</script>`);
+      } else {
+        result = result.replace('<meta charset="utf-8">', `<meta charset="utf-8">\n    <script data-legacy-redirect>location.replace(${JSON.stringify(target)} + location.search + location.hash);</script>\n    <meta http-equiv="refresh" content="0; url=${target}">`);
+      }
+    }
+  }
+  await writeFile(file, result);
+};
 
 const escapeHtml = (value = "") =>
   String(value)
@@ -679,7 +710,6 @@ function homePage() {
       about: { "@id": PERSON_ID },
       mainEntity: { "@id": PERSON_ID },
       primaryImageOfPage: { "@id": `${ORIGIN}/#portrait` },
-      dateModified: TODAY,
     },
   ];
   return `<!doctype html>
@@ -742,7 +772,6 @@ function workSchema() {
         })),
       },
       breadcrumb: { "@id": `${ORIGIN}/work/#breadcrumb` },
-      dateModified: TODAY,
     },
     {
       ...breadcrumbNode([
@@ -772,7 +801,6 @@ function aboutSchema() {
       primaryImageOfPage: { "@id": `${ORIGIN}/#portrait` },
       breadcrumb: { "@id": `${ORIGIN}/about/#breadcrumb` },
       dateCreated: "2026-07-05",
-      dateModified: TODAY,
     },
     {
       ...breadcrumbNode([
@@ -797,7 +825,6 @@ function contactSchema() {
       isPartOf: { "@id": WEBSITE_ID },
       about: { "@id": PERSON_ID },
       breadcrumb: { "@id": `${ORIGIN}/contact/#breadcrumb` },
-      dateModified: TODAY,
     },
     {
       ...breadcrumbNode([
@@ -883,7 +910,6 @@ function projectSchema(project, image, description) {
         mainEntity: { "@id": workId },
         primaryImageOfPage: image,
         breadcrumb: { "@id": breadcrumbId },
-        dateModified: TODAY,
       },
       {
         ...breadcrumbNode([
@@ -1266,7 +1292,6 @@ ${entries
   .map(
     (entry) => `  <url>
     <loc>${xmlEscape(entry.url)}</loc>
-    <lastmod>${TODAY}</lastmod>
     <image:image>
       <image:loc>${xmlEscape(entry.image)}</image:loc>
       <image:title>${xmlEscape(entry.imageTitle)}</image:title>
