@@ -65,8 +65,8 @@ window.PORTFOLIO_OPTIMIZED_IMAGES = {
   "assets/images/Projects/Hunter's Point Cooperative Housing/Assembly.png": "assets/images/optimized/assembly-853105a3a8.webp",
   "assets/images/Projects/Hunter's Point Cooperative Housing/Corridor Render.png": "assets/images/optimized/corridor-render-8b9283b6db.webp",
   "assets/images/Projects/Hunter's Point Cooperative Housing/Corridor.png": "assets/images/optimized/corridor-25b4b29ce9.webp",
-  "assets/images/Projects/Hunter's Point Cooperative Housing/Front Facade Render More Saturated.png": "assets/images/optimized/front-facade-render-more-saturated-14a3898a91.webp",
-  "assets/images/Projects/Hunter's Point Cooperative Housing/hero.png": "assets/images/optimized/hero-71062e50a9.webp",
+  "assets/images/Projects/Hunter's Point Cooperative Housing/Front Facade Render More Saturated.png": "assets/images/optimized/front-facade-render-more-saturated-6b4df4e7c8.webp",
+  "assets/images/Projects/Hunter's Point Cooperative Housing/hero.png": "assets/images/optimized/hero-ade3826512.webp",
   "assets/images/Projects/Hunter's Point Cooperative Housing/Laundry.png": "assets/images/optimized/laundry-da573c4993.webp",
   "assets/images/Projects/Hunter's Point Cooperative Housing/Market Render.png": "assets/images/optimized/market-render-0a6e70a022.webp",
   "assets/images/Projects/Hunter's Point Cooperative Housing/Model full shot.png": "assets/images/optimized/model-full-shot-f3703fe1ba.webp",
@@ -446,12 +446,16 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     4200
   ],
   "assets/images/Projects/Hunter's Point Cooperative Housing/Front Facade Render More Saturated.png": [
-    4590,
+    3672,
     3672
   ],
   "assets/images/Projects/Hunter's Point Cooperative Housing/Full Diagram Reference High Res.png": [
     7200,
     4200
+  ],
+  "assets/images/Projects/Hunter's Point Cooperative Housing/full-diagram-reference-inter-bf7afc03d1.svg": [
+    2592,
+    1512
   ],
   "assets/images/Projects/Hunter's Point Cooperative Housing/Ground Floor Plan render.png": [
     4200,
@@ -510,10 +514,14 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     1800
   ],
   "assets/images/Projects/Hunter's Point Cooperative Housing/hero.png": [
-    5333,
+    4200,
     3000
   ],
   "assets/images/Projects/Hunter's Point Cooperative Housing/housing parti.jpg": [
+    10800,
+    6600
+  ],
+  "assets/images/Projects/Hunter's Point Cooperative Housing/housing-parti-inter-b0345e7ca9.png": [
     10800,
     6600
   ],
@@ -873,9 +881,9 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     2600,
     1300
   ],
-  "assets/images/optimized/front-facade-render-more-saturated-14a3898a91.webp": [
+  "assets/images/optimized/front-facade-render-more-saturated-6b4df4e7c8.webp": [
     2400,
-    1920
+    2400
   ],
   "assets/images/optimized/fp3-9d1f59fba7.webp": [
     2400,
@@ -897,9 +905,9 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     2400,
     1350
   ],
-  "assets/images/optimized/hero-71062e50a9.webp": [
+  "assets/images/optimized/hero-ade3826512.webp": [
     2400,
-    1350
+    1714
   ],
   "assets/images/optimized/hero-c9b366404a.webp": [
     2400,

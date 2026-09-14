@@ -477,10 +477,10 @@ window.SELECTED_COLLECTIONS = {
     },
     {
       "key": "hero-2",
-      "src": "/assets/images/selected/renderings/hero-2-57e3723f.webp",
+      "src": "/assets/images/selected/renderings/hero-2-2330a23a.webp",
       "title": "Renderings",
       "width": 2000,
-      "height": 1125,
+      "height": 1333,
       "captionTitle": "Hunter's Point Cooperative Housing, Housing Landscape",
       "production": "Rhino · V-Ray · Photoshop"
     },

@@ -108,9 +108,15 @@
   }
 
   function initNavigationFolders(nav) {
-    nav.querySelectorAll(".nav-folder").forEach((folder) => {
+    nav.querySelectorAll(".nav-folder").forEach((folder, index) => {
       const trigger = folder.querySelector(".nav-folder-trigger");
       if (!trigger) return;
+      const dropdown = folder.querySelector(".nav-dropdown");
+      if (dropdown) {
+        dropdown.id = `navigation-${trigger.dataset.navSection || index}`;
+        trigger.setAttribute("aria-controls", dropdown.id);
+        trigger.removeAttribute("aria-haspopup");
+      }
       trigger.addEventListener("click", (event) => {
         if (!window.matchMedia("(max-width: 900px)").matches) return;
         const shouldOpen = !folder.classList.contains("is-open");
@@ -118,6 +124,11 @@
         event.stopPropagation();
         closeNavigationFolders(nav);
         if (shouldOpen) setNavigationFolderOpen(folder, true);
+      });
+      trigger.addEventListener("keydown", (event) => {
+        if (event.key !== " " || !window.matchMedia("(max-width: 900px)").matches) return;
+        event.preventDefault();
+        trigger.click();
       });
     });
   }
@@ -877,31 +888,52 @@
       button.innerHTML = '<span></span><span></span>';
       header.insertBefore(button, nav);
 
-      button.addEventListener("click", () => {
-        const isOpen = header.classList.toggle("is-menu-open");
+      const mobile = window.matchMedia("(max-width: 900px)");
+      const background = [...document.querySelectorAll("body > main, body > footer"), header.querySelector(".brand")].filter(Boolean);
+      function setMenuOpen(isOpen, { restoreFocus = false } = {}) {
+        isOpen = isOpen && mobile.matches;
+        header.classList.toggle("is-menu-open", isOpen);
         document.body.classList.toggle("is-mobile-menu-open", isOpen);
         if (!isOpen) closeNavigationFolders(header);
         button.setAttribute("aria-expanded", String(isOpen));
         button.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+        nav.inert = mobile.matches && !isOpen;
+        background.forEach((element) => { element.inert = isOpen; });
+        if (!isOpen) nav.scrollTop = 0;
+        if (restoreFocus) button.focus();
+      }
+      setMenuOpen(false);
+      mobile.addEventListener("change", () => setMenuOpen(false));
+
+      button.addEventListener("click", () => {
+        setMenuOpen(!header.classList.contains("is-menu-open"));
       });
 
       nav.addEventListener("click", (event) => {
         if (!(event.target instanceof Element) || !event.target.closest("a")) return;
-        header.classList.remove("is-menu-open");
-        document.body.classList.remove("is-mobile-menu-open");
-        closeNavigationFolders(header);
-        button.setAttribute("aria-expanded", "false");
-        button.setAttribute("aria-label", "Open menu");
+        setMenuOpen(false);
       });
 
       document.addEventListener("keydown", (event) => {
-        if (event.key !== "Escape" || !header.classList.contains("is-menu-open")) return;
-        header.classList.remove("is-menu-open");
-        document.body.classList.remove("is-mobile-menu-open");
-        closeNavigationFolders(header);
-        button.setAttribute("aria-expanded", "false");
-        button.setAttribute("aria-label", "Open menu");
-        button.focus();
+        if (!header.classList.contains("is-menu-open")) return;
+        if (event.key === "Escape") {
+          event.preventDefault();
+          setMenuOpen(false, { restoreFocus: true });
+        }
+        if (event.key === "Tab") {
+          const controls = [button, ...nav.querySelectorAll("a[href]")].filter(
+            (element) => element.getClientRects().length && getComputedStyle(element).visibility !== "hidden"
+          );
+          const first = controls[0];
+          const last = controls[controls.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
       });
     });
   }
@@ -2070,10 +2102,24 @@
         <div class="project-card-text">
           <span class="project-number">${String(projectNumber).padStart(2, "0")}</span>
           <h2>${escapeHtml(project.title)}</h2>
-          <p class="project-card-meta">${escapeHtml(project.year)}</p>
+          <p class="project-card-meta">${projectCardMetadata(project)}</p>
         </div>
       </a>
     `;
+  }
+
+  function projectCardMetadata(project) {
+    const category = project.workCategory || "Academic";
+    const focus = String(project.type || "")
+      .split("/")
+      .map((item) => item.trim())
+      .filter((item) => item && item.toLowerCase() !== category.toLowerCase())
+      .slice(0, 2)
+      .join(" / ");
+    return [category, focus, project.year]
+      .filter(Boolean)
+      .map((item) => `<span>${escapeHtml(item)}</span>`)
+      .join("");
   }
 
   function canonicalProjectId(id) {
@@ -2357,31 +2403,70 @@
   }
 
   function projectMetadataLines(project) {
-    const groups = Array.isArray(project.metadataGroups) && project.metadataGroups.length
+    const customGroups = Array.isArray(project.metadataGroups) && project.metadataGroups.length
       ? project.metadataGroups
           .map((group) => (Array.isArray(group) ? group.filter(Boolean) : []))
           .filter((group) => group.length)
+      : [];
+    const category = project.workCategory || "Academic";
+    const focus = String(project.type || "")
+      .split("/")
+      .map((item) => item.trim())
+      .filter((item) => item && item.toLowerCase() !== category.toLowerCase())
+      .join(" / ");
+    const overview = [
+      ["Type", category],
+      ["Focus", focus],
+      ["Year", project.year],
+      ["Location", project.location]
+    ].filter((item) => item[1]);
+
+    const detailGroups = customGroups.length
+      ? customGroups.map((group) =>
+          group
+            .map((line, index) => projectMetadataItem(project, line, index))
+            .filter(Boolean)
+        )
       : [[
-          project.course,
-          ...(Array.isArray(project.additionalMetadata) ? project.additionalMetadata : []),
-          project.studio,
-          project.professors ? `${criticLabel(project)}: ${criticDisplay(project)}` : "",
-          project.partners
-            ? `${collaboratorLabel(project)}: ${peopleDisplay(project.partners)}`
-            : ""
-        ].filter(Boolean)];
+          ["Studio", project.course],
+          ...(Array.isArray(project.additionalMetadata)
+            ? project.additionalMetadata.map((item) => ["Context", item])
+            : []),
+          ["Term", project.studio],
+          [criticLabel(project), criticDisplay(project)],
+          [collaboratorLabel(project), peopleDisplay(project.partners)]
+        ].filter((item) => item[1])];
 
-    const awardLine = project.award ? `<em>${escapeHtml(project.award)}</em>` : "";
-    const renderedGroups = groups.map((group) => group.map(escapeHtml));
-    if (awardLine) {
-      if (!renderedGroups.length) renderedGroups.push([]);
-      renderedGroups[renderedGroups.length - 1].push(awardLine);
+    if (project.award) detailGroups.push([["Recognition", project.award, true]]);
+    const groups = [overview, ...detailGroups].filter((group) => group.length);
+
+    return `<div class="project-data" aria-label="Project information">${groups
+      .map(
+        (group) => `<dl class="project-data-group">${group
+          .map(
+            ([label, value, emphasized]) =>
+              `<div class="project-data-row"><dt>${escapeHtml(label)}</dt><dd>${
+                emphasized ? `<em>${escapeHtml(value)}</em>` : escapeHtml(value)
+              }</dd></div>`
+          )
+          .join("")}</dl>`
+      )
+      .join("")}</div>`;
+  }
+
+  function projectMetadataItem(project, line, index) {
+    const value = String(line || "").trim();
+    if (!value || value === project.location) return null;
+    const prefixedLabels = [
+      [/^Supervised by\s+/i, "Project lead"],
+      [/^In collaboration with\s+/i, "Collaborator"]
+    ];
+    for (const [pattern, label] of prefixedLabels) {
+      if (pattern.test(value)) return [label, value.replace(pattern, "")];
     }
-
-    return renderedGroups
-      .filter((group) => group.length)
-      .map((group) => `<p class="project-editorial-meta">${group.join("<br>")}</p>`)
-      .join("");
+    const labeled = value.match(/^([^:]+):\s*(.+)$/);
+    if (labeled) return [labeled[1].replace(/s$/i, ""), labeled[2]];
+    return [index === 0 ? "Context" : "Detail", value];
   }
 
   function projectExternalLink(project) {

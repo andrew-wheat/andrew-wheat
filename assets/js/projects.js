@@ -137,7 +137,7 @@ window.PORTFOLIO_PROJECTS = [
     "overviewImage": "hero.png",
     "story": [
       {
-        "src": "housing parti.jpg",
+        "src": "housing-parti-inter-b0345e7ca9.png",
         "caption": "Housing parti strategy.",
         "layout": "hunters-drawing-oversize"
       },
@@ -147,7 +147,7 @@ window.PORTFOLIO_PROJECTS = [
         "text": "Census data shows Hunter's Point is a transitory environment. It is largely high-income and young, but more importantly, living and working are spatially separated. Most people that live there commute to work in Manhattan, while many of the people working in Hunters Point live in Astoria. Because of this, the area remains active throughout the day, but there is little sustained overlap between these groups. This prompts the need for design that allows living, working, production, and play to share space."
       },
       {
-        "src": "Full Diagram Reference High Res.png",
+        "src": "full-diagram-reference-inter-bf7afc03d1.svg",
         "caption": "Site and demographic strategy.",
         "layout": "hunters-drawing-oversize"
       },
@@ -239,22 +239,22 @@ window.PORTFOLIO_PROJECTS = [
         "text": "The corridor becomes the primary architectural element. Split levels, widened landings, stairs, porches, and apertures turn circulation into a visible social interior rather than residual access space."
       },
       {
-        "src": "Section Perspective render.png",
+        "src": "section-perspective-render-cropped-1577c00c23.webp",
         "caption": "Shared circulation section perspective.",
         "layout": "hunters-drawing-large"
       },
       {
-        "src": "Long Site Section render.png",
+        "src": "long-site-section-render-cropped-62c323d672.webp",
         "caption": "Long site section.",
         "layout": "hunters-drawing-large"
       },
       {
-        "src": "Long Section render.png",
+        "src": "long-section-render-cropped-36b06089a1.webp",
         "caption": "Housing long section.",
         "layout": "hunters-drawing-large"
       },
       {
-        "src": "Long Elevation render.png",
+        "src": "long-elevation-render-cropped-3b1015333e.webp",
         "caption": "Housing long elevation.",
         "layout": "hunters-drawing-large"
       },
@@ -569,11 +569,6 @@ window.PORTFOLIO_PROJECTS = [
         ]
       },
       {
-        "src": "03-25_Long View_Comprehensive tall.png",
-        "caption": "Field-edge landscape alignment study.",
-        "layout": "enfield-rendering"
-      },
-      {
         "src": "ZOOMED OUT RENDER FINAL edited tall.png",
         "caption": "Long field-edge view.",
         "layout": "enfield-rendering"
@@ -658,10 +653,6 @@ window.PORTFOLIO_PROJECTS = [
       {
         "src": "3X6A0133 smaller.png",
         "caption": "Field context model"
-      },
-      {
-        "src": "03-25_Long View_Comprehensive tall.png",
-        "caption": "Long view and landscape alignment"
       },
       {
         "src": "updated pantry interior.webp",
