@@ -374,6 +374,16 @@ a.brand {
   shape-rendering: crispEdges;
 }
 
+/* Match the brand name and primary navigation to the CV section-heading type. */
+body[data-page] .site-header .brand,
+body[data-page] .site-header .site-nav .nav-folder > .nav-primary-link {
+  font-family: var(--font-compact);
+  font-weight: var(--weight-annotation) !important;
+  letter-spacing: -0.006em !important;
+  font-kerning: normal;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
 .site-nav {
   display: flex;
   gap: clamp(20px, 2.2vw, 32px);
