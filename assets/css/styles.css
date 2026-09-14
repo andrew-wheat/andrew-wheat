@@ -14,7 +14,7 @@
   --font-main: "Inter Portfolio", "Inter", Arial, sans-serif;
   --font-display: "Inter Portfolio", "Inter", Arial, sans-serif;
   --font-compact: "Inter Portfolio", "Inter", Arial, sans-serif;
-  --font-annotation: "Cascadia Mono Portfolio", "Cascadia Mono", monospace;
+  --font-annotation: "Inter Portfolio", "Inter", Arial, sans-serif;
   --font-copy: "Inter Portfolio", "Inter", Arial, sans-serif;
   --font-button: "Inter Portfolio", "Inter", Arial, sans-serif;
   --type-title: clamp(46px, 4.4vw, 70px);
@@ -81,14 +81,6 @@
   font-family: "Inter Portfolio";
   src: url("../fonts/inter/Inter-Bold.woff2") format("woff2");
   font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Cascadia Mono Portfolio";
-  src: url("../fonts/cascadia/CascadiaMono.woff2") format("woff2");
-  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -1203,7 +1195,7 @@ figcaption {
   appearance: none;
   background: transparent;
   border: 0;
-  color: rgba(246, 246, 238, 0.94);
+  color: #ffffff;
   cursor: grab;
   padding: 0;
   transform: translate(-50%, -50%) rotate(calc(var(--rotation) * 1deg));
@@ -1337,7 +1329,7 @@ figcaption {
   top: clamp(34px, 5vw, 72px);
   z-index: -1;
   max-width: calc(100% - var(--gutter) * 2);
-  color: rgba(0, 0, 0, 0.04);
+  color: #000000;
   font-size: clamp(120px, 21vw, 330px);
   font-weight: var(--weight-title);
   line-height: 0.82;
@@ -1885,7 +1877,7 @@ body[data-page="work"] .filter-label select {
 .project-number {
   display: block;
   margin-bottom: 8px;
-  color: rgba(255, 255, 255, 0.68);
+  color: #ffffff;
   font-family: var(--font-annotation);
   font-size: var(--type-caption);
   font-weight: var(--weight-annotation);
@@ -1976,7 +1968,7 @@ body[data-page="work"] .filter-label select {
   align-items: baseline;
   gap: 0;
   margin: 7px 0 0;
-  color: rgba(255, 255, 255, 0.82);
+  color: #ffffff;
   font-family: var(--font-annotation);
   font-size: var(--type-caption);
   font-weight: var(--weight-control);
@@ -1988,7 +1980,7 @@ body[data-page="work"] .filter-label select {
 .project-card-meta span:not(:last-child)::after {
   content: "\2014";
   margin: 0 0.58em;
-  opacity: 0.62;
+  opacity: 1;
 }
 
 .project-card h2 {
@@ -2058,7 +2050,7 @@ body[data-page="work"] .work-catalogue[data-view="list"] .project-card-summary {
 }
 
 body[data-page="work"] .work-catalogue[data-view="list"] .project-number {
-  color: rgba(0, 0, 0, 0.48);
+  color: #000000;
 }
 
 img[data-image-skeleton] {
@@ -2605,7 +2597,7 @@ img[data-image-skeleton].is-loaded {
 }
 
 .email-compose-panel button[type="submit"]:disabled {
-  opacity: 0.48;
+  opacity: 1;
   cursor: wait;
 }
 
@@ -2753,7 +2745,7 @@ img[data-image-skeleton].is-loaded {
 }
 
 .project-data dt {
-  color: rgba(0, 0, 0, 0.54);
+  color: #000000;
   font-weight: var(--weight-control);
   letter-spacing: 0.065em;
   text-transform: uppercase;
@@ -2906,7 +2898,7 @@ img[data-image-skeleton].is-loaded {
 
   .project-page-nav-link:hover::after,
   .project-page-nav-link:focus-visible::after {
-    opacity: 0.62;
+    opacity: 1;
     transform: translate(0, -50%);
   }
 }
@@ -3882,7 +3874,7 @@ body.project-lightbox-open .site-cursor {
   .enfield-atlas-card:hover figcaption,
   .enfield-atlas-card:focus-visible figcaption,
   .enfield-atlas-card:focus-within figcaption {
-    opacity: 0.62;
+    opacity: 1;
     transform: none;
   }
 
@@ -4947,7 +4939,7 @@ body.project-lightbox-open .site-cursor {
 
 .site-copyright {
   padding: clamp(56px, 7vw, 96px) var(--gutter) clamp(22px, 3vw, 36px);
-  color: rgba(11, 11, 11, 0.48);
+  color: #000000;
   font-family: var(--font-copy);
   font-size: var(--type-caption);
   font-weight: 300;
@@ -6559,7 +6551,7 @@ body[data-page="error"] .site-copyright {
   }
 
   body[data-page="work"] .work-equation-marquee button.marquee-filter:not(.active) {
-    color: rgba(11, 11, 11, 0.46);
+    color: #000000;
   }
 
   body[data-page="work"] .work-equation-marquee button.marquee-filter.active {
@@ -6785,7 +6777,7 @@ body[data-page="work"] .work-catalogue[data-view="grid"] .project-card h2 {
 
 body[data-page="work"] .work-catalogue[data-view="grid"] .project-card-meta {
   margin-top: 0.18em;
-  color: rgba(11, 11, 11, 0.52);
+  color: #000000;
   font-size: var(--randy-interface-size, 15px);
   font-weight: 400;
   line-height: 1.2;
@@ -6967,7 +6959,7 @@ body[data-page="project"] .project-story-item img {
     font-weight: 400;
     line-height: 1.2;
     letter-spacing: 0.03em;
-    opacity: 0.46;
+    opacity: 1;
   }
 
   body[data-page] .site-nav .nav-primary-link[aria-current="page"] {
@@ -6995,7 +6987,7 @@ body[data-page="project"] .project-story-item img {
   body[data-page="work"] .work-equation-marquee button.marquee-filter:not(.active) {
     color: var(--ink);
     font-weight: 400;
-    opacity: 0.46;
+    opacity: 1;
   }
 
 }
@@ -7047,7 +7039,7 @@ body[data-page="project"] .project-story-item img {
   letter-spacing: 0.02em;
   text-align: right;
   white-space: nowrap;
-  opacity: 0.46;
+  opacity: 1;
 }
 
 .site-nav .nav-dropdown-link:hover,
@@ -7127,7 +7119,7 @@ body[data-page="selected"] {
 
 .selected-crawl-caption {
   margin-top: 7px;
-  color: rgba(11, 11, 11, 0.62);
+  color: #000000;
   font-size: var(--type-caption);
   line-height: 1.35;
 }
@@ -7419,7 +7411,7 @@ body[data-page="selected"] {
   body[data-selected-collection="renderings"]
     .selected-image-card:focus-within
     .selected-rendering-meta {
-    opacity: 0.62;
+    opacity: 1;
     transform: none;
   }
 }
@@ -7441,7 +7433,7 @@ body:has(.nav-folder--info:hover) > main,
 body:has(.nav-folder--info:hover) > footer,
 body:has(.nav-folder--info:focus-within) > main,
 body:has(.nav-folder--info:focus-within) > footer {
-  opacity: 0.28;
+  opacity: 1;
 }
 
 @media (max-width: 900px) {
@@ -7558,7 +7550,7 @@ body:has(.nav-folder--info:focus-within) > footer {
     .nav-folder:not(.is-open)
     > .nav-folder-trigger[aria-current="page"] {
     text-decoration: none;
-    opacity: 0.46 !important;
+    opacity: 1 !important;
   }
 
   body .site-nav .nav-folder.is-open > .nav-folder-trigger {
@@ -7900,7 +7892,7 @@ body[data-page] .site-nav .nav-primary-link {
   line-height: var(--control-line-height);
   letter-spacing: 0;
   text-transform: lowercase;
-  opacity: 0.46;
+  opacity: 1;
 }
 
 body[data-page] .site-nav .nav-primary-link[aria-current="page"] {
@@ -7908,7 +7900,7 @@ body[data-page] .site-nav .nav-primary-link[aria-current="page"] {
 }
 
 body[data-page] .site-nav .nav-dropdown-link {
-  opacity: 0.46;
+  opacity: 1;
 }
 
 body[data-page] .site-nav .nav-dropdown-link[aria-current="page"] {
