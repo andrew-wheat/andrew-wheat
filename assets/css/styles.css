@@ -378,7 +378,7 @@ a.brand {
 body[data-page] .site-header .brand,
 body[data-page] .site-header .site-nav .nav-folder > .nav-primary-link {
   font-family: var(--font-compact);
-  font-weight: var(--weight-annotation) !important;
+  font-weight: var(--weight-copy) !important;
   letter-spacing: -0.006em !important;
   font-kerning: normal;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
