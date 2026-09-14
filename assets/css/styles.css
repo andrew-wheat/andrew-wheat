@@ -14,7 +14,7 @@
   --font-main: "Inter Portfolio", "Inter", Arial, sans-serif;
   --font-display: "Inter Portfolio", "Inter", Arial, sans-serif;
   --font-compact: "Inter Portfolio", "Inter", Arial, sans-serif;
-  --font-annotation: "Inter Portfolio", "Inter", Arial, sans-serif;
+  --font-annotation: "Cascadia Mono Portfolio", "Cascadia Mono", monospace;
   --font-copy: "Inter Portfolio", "Inter", Arial, sans-serif;
   --font-button: "Inter Portfolio", "Inter", Arial, sans-serif;
   --type-title: clamp(46px, 4.4vw, 70px);
@@ -81,6 +81,14 @@
   font-family: "Inter Portfolio";
   src: url("../fonts/inter/Inter-Bold.woff2") format("woff2");
   font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cascadia Mono Portfolio";
+  src: url("../fonts/cascadia/CascadiaMono.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
