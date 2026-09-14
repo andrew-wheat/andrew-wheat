@@ -374,14 +374,48 @@ a.brand {
   shape-rendering: crispEdges;
 }
 
-/* Match the brand name and primary navigation to the CV section-heading type. */
+/* Give the brand name and primary navigation a light editorial link treatment. */
 body[data-page] .site-header .brand,
 body[data-page] .site-header .site-nav .nav-folder > .nav-primary-link {
   font-family: var(--font-compact);
-  font-weight: var(--weight-copy) !important;
+  font-weight: var(--weight-control) !important;
   letter-spacing: -0.006em !important;
   font-kerning: normal;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+body[data-page] .site-header .brand > span {
+  position: relative;
+  display: inline-block;
+}
+
+body[data-page] .site-header .brand > span::after,
+body[data-page] .site-header .site-nav .nav-folder > .nav-primary-link::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -0.16em;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 190ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body[data-page] .site-header .brand:hover > span::after,
+body[data-page] .site-header .brand:focus-visible > span::after,
+body[data-page] .site-header .site-nav .nav-folder:hover > .nav-primary-link::after,
+body[data-page] .site-header .site-nav .nav-folder:focus-within > .nav-primary-link::after,
+body[data-page] .site-header .site-nav .nav-folder.is-open > .nav-primary-link::after,
+body[data-page] .site-header .site-nav .nav-folder > .nav-primary-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+body[data-page] .site-header .site-nav .nav-folder > .nav-primary-link,
+body[data-page] .site-header .site-nav .nav-folder.is-open > .nav-primary-link,
+body[data-page] .site-header .site-nav .nav-folder > .nav-primary-link[aria-current="page"] {
+  text-decoration: none !important;
 }
 
 .site-nav {
