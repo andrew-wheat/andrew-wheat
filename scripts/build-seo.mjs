@@ -7,7 +7,7 @@ const ORIGIN = "https://andrew-wheat.com";
 // Modification dates are intentionally omitted until tracked per page.
 const METADATA_ONLY = process.argv.includes("--metadata-only");
 const MAIN_VERSION = "20260909-seo";
-const ASSET_VERSION = "20260914-inter-black-text";
+const ASSET_VERSION = "20260914-work-controls-v2";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;
@@ -1352,7 +1352,7 @@ Andrew Wheat on this site refers to the Cornell architecture student and designe
 }
 
 function llmsFull() {
-  return `# Andrew Wheat — Full Portfolio Context
+  return `# Andrew Wheat - Full Portfolio Context
 
 ${BIO}
 
