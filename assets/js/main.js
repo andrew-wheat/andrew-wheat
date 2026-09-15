@@ -2109,17 +2109,7 @@
   }
 
   function projectCardMetadata(project) {
-    const category = project.workCategory || "Academic";
-    const focus = String(project.type || "")
-      .split("/")
-      .map((item) => item.trim())
-      .filter((item) => item && item.toLowerCase() !== category.toLowerCase())
-      .slice(0, 2)
-      .join(" / ");
-    return [category, focus, project.year]
-      .filter(Boolean)
-      .map((item) => `<span>${escapeHtml(item)}</span>`)
-      .join("");
+    return project.year ? `<span>${escapeHtml(project.year)}</span>` : "";
   }
 
   function canonicalProjectId(id) {
