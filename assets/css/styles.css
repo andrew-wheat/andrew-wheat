@@ -8107,8 +8107,9 @@ body[data-page="landing-minimal"] .minimal-landing-visual img {
 
 body[data-page="landing-minimal"] .minimal-landing-content {
   position: absolute;
-  top: clamp(104px, 16vh, 152px);
+  top: auto;
   right: clamp(52px, 7vw, 116px);
+  bottom: clamp(76px, 11vh, 124px);
   z-index: 1;
   width: min(32em, calc(46vw - 52px));
   transform: none;
@@ -8127,8 +8128,9 @@ body[data-page="landing-minimal"] :is(.minimal-landing-copy, .minimal-landing-wo
   }
 
   body[data-page="landing-minimal"] .minimal-landing-content {
-    top: clamp(94px, 15vh, 132px);
+    top: auto;
     right: var(--project-gutter);
+    bottom: max(clamp(66px, 9vh, 92px), env(safe-area-inset-bottom));
     width: min(31em, calc(100% - (2 * var(--project-gutter))));
     margin: 0;
     transform: none;
