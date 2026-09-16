@@ -51,11 +51,20 @@
             Array.isArray(selectedCollections[collection]) && selectedCollections[collection].length > 0
         )
       : [];
-    const selectedNavigation = availableSelectedCollections.length
-      ? `
+    document.querySelectorAll(".site-nav").forEach((nav) => {
+      nav.innerHTML = `
+        <div class="nav-folder nav-folder--work">
+          <a class="nav-primary-link nav-folder-trigger" data-nav-page="projects" data-nav-section="work" href="/work/" aria-expanded="false">projects</a>
+          <div class="nav-dropdown" aria-label="Project filters">
+            <a class="nav-dropdown-link" data-work-category="all" href="/work/">all</a>
+            <a class="nav-dropdown-link" data-work-category="academic" href="/work/?category=academic">academic</a>
+            <a class="nav-dropdown-link" data-work-category="professional" href="/work/?category=professional">professional</a>
+            <a class="nav-dropdown-link" data-work-category="archive" href="/work/?category=archive">archive</a>
+          </div>
+        </div>
         <div class="nav-folder nav-folder--selected">
-          <a class="nav-primary-link nav-folder-trigger" data-nav-section="selected" href="/selected/drawings/" aria-expanded="false" aria-haspopup="true">selected</a>
-          <div class="nav-dropdown" aria-label="Selected collections">
+          <a class="nav-primary-link nav-folder-trigger" data-nav-page="index" data-nav-section="selected" href="/selected/drawings/" aria-expanded="false">index</a>
+          <div class="nav-dropdown" aria-label="Index collections">
             ${availableSelectedCollections
               .map(
                 (collection) =>
@@ -64,33 +73,8 @@
               .join("")}
           </div>
         </div>
-      `
-      : "";
-    const workNavigation = `
-      <div class="nav-folder nav-folder--work">
-        <a class="nav-primary-link nav-folder-trigger" data-nav-section="work" href="/work/" aria-expanded="false" aria-haspopup="true">work</a>
-        <div class="nav-dropdown" aria-label="Work filters">
-          <a class="nav-dropdown-link" data-work-category="all" href="/work/">all</a>
-          <a class="nav-dropdown-link" data-work-category="academic" href="/work/?category=academic">academic</a>
-          <a class="nav-dropdown-link" data-work-category="professional" href="/work/?category=professional">professional</a>
-          <a class="nav-dropdown-link" data-work-category="archive" href="/work/?category=archive">archive</a>
-        </div>
-      </div>
-    `;
-    const infoNavigation = `
-      <div class="nav-folder nav-folder--info">
-        <a class="nav-primary-link nav-folder-trigger" data-nav-section="info" href="/about/" aria-expanded="false" aria-haspopup="true">info</a>
-        <div class="nav-dropdown" aria-label="Information">
-          <a class="nav-dropdown-link" data-info-page="about" href="/about/">about</a>
-          <a class="nav-dropdown-link" data-info-page="contact" href="/contact/">contact</a>
-        </div>
-      </div>
-    `;
-    document.querySelectorAll(".site-nav").forEach((nav) => {
-      nav.innerHTML = `
-        ${selectedNavigation}
-        ${workNavigation}
-        ${infoNavigation}
+        <a class="nav-primary-link" data-nav-page="about" href="/about/">about</a>
+        <a class="nav-primary-link" data-nav-page="contact" href="/contact/">contact</a>
       `;
       initNavigationFolders(nav);
     });
@@ -140,17 +124,16 @@
 
   function syncPrimaryNavigationState() {
     const page = document.body?.dataset.page || "";
-    const activeSection =
-      page === "selected"
-        ? "selected"
-        : page === "work" || page === "project"
-        ? "work"
+    const activePage = page === "selected"
+      ? "index"
+      : page === "work" || page === "project"
+        ? "projects"
         : page === "about" || page === "contact"
-          ? "info"
-            : "";
+          ? page
+          : "";
 
-    document.querySelectorAll(".site-nav [data-nav-section]").forEach((link) => {
-      if (activeSection && link.dataset.navSection === activeSection) {
+    document.querySelectorAll(".site-nav [data-nav-page]").forEach((link) => {
+      if (activePage && link.dataset.navPage === activePage) {
         link.setAttribute("aria-current", "page");
       } else {
         link.removeAttribute("aria-current");
@@ -159,19 +142,7 @@
 
     const selectedCategory = page === "selected" ? selectedCollectionFromLocation() : "";
     document.querySelectorAll(".site-nav [data-selected-category]").forEach((link) => {
-      if (selectedCategory && link.dataset.selectedCategory === selectedCategory) {
-        link.setAttribute("aria-current", "page");
-      } else {
-        link.removeAttribute("aria-current");
-      }
-    });
-
-    document.querySelectorAll(".site-nav [data-info-page]").forEach((link) => {
-      if (page && link.dataset.infoPage === page) {
-        link.setAttribute("aria-current", "page");
-      } else {
-        link.removeAttribute("aria-current");
-      }
+      link.toggleAttribute("aria-current", Boolean(selectedCategory && link.dataset.selectedCategory === selectedCategory));
     });
 
     const requestedWorkCategory = new URLSearchParams(window.location.search).get("category");
@@ -181,11 +152,7 @@
       ? String(requestedWorkCategory).toLowerCase()
       : "all";
     document.querySelectorAll(".site-nav [data-work-category]").forEach((link) => {
-      if (page === "work" && link.dataset.workCategory === activeWorkCategory) {
-        link.setAttribute("aria-current", "page");
-      } else {
-        link.removeAttribute("aria-current");
-      }
+      link.toggleAttribute("aria-current", page === "work" && link.dataset.workCategory === activeWorkCategory);
     });
   }
 

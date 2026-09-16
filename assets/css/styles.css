@@ -8009,6 +8009,14 @@ body[data-page="work"] .work-equation-marquee button.marquee-filter.active {
   opacity: 1;
 }
 
+body[data-page] .site-header .brand,
+body[data-page] .site-header .site-nav > .nav-primary-link,
+body[data-page] .site-header .site-nav > .nav-folder > .nav-primary-link {
+  font-family: var(--font-compact);
+  font-size: inherit;
+  font-weight: var(--weight-control) !important;
+}
+
 .contact-socials a:nth-child(2),
 .contact-socials a:nth-child(3) {
   background: var(--bg);
