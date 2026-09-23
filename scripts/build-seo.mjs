@@ -6,8 +6,8 @@ const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 // Modification dates are intentionally omitted until tracked per page.
 const METADATA_ONLY = process.argv.includes("--metadata-only");
-const MAIN_VERSION = "20260922-home-carousel-v2";
-const ASSET_VERSION = "20260922-home-carousel-v2";
+const MAIN_VERSION = "20260922-home-carousel-v3";
+const ASSET_VERSION = "20260922-home-carousel-v3";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;
@@ -745,8 +745,8 @@ ${siteHeader()}
           </span>
         </a>
         <div class="minimal-landing-controls" aria-label="Image carousel controls">
-          <button type="button" data-landing-previous aria-label="Previous image">←</button>
-          <button type="button" data-landing-next aria-label="Next image">→</button>
+          <button type="button" data-landing-previous aria-label="Previous image"><span class="minimal-landing-chevron" aria-hidden="true"></span></button>
+          <button type="button" data-landing-next aria-label="Next image"><span class="minimal-landing-chevron" aria-hidden="true"></span></button>
         </div>
       </div>
       <div class="minimal-landing-content">

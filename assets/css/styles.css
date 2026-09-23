@@ -8732,26 +8732,38 @@ body[data-page="landing-minimal"] .minimal-landing-visual .minimal-landing-slide
 
 body[data-page="landing-minimal"] .minimal-landing-controls {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  margin-top: 10px;
+  width: 100%;
+  margin-top: 8px;
 }
 
 body[data-page="landing-minimal"] .minimal-landing-controls button {
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
   padding: 0;
   border: 0;
   background: transparent;
   color: var(--ink);
-  font: inherit;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 1;
   cursor: pointer;
+}
+
+body[data-page="landing-minimal"] .minimal-landing-chevron {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+
+body[data-page="landing-minimal"] [data-landing-previous] .minimal-landing-chevron {
+  transform: rotate(225deg);
+}
+
+body[data-page="landing-minimal"] [data-landing-next] .minimal-landing-chevron {
+  transform: rotate(45deg);
 }
 
 body[data-page="landing-minimal"] .minimal-landing-controls button:is(:hover, :focus-visible) {
