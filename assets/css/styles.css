@@ -8704,6 +8704,7 @@ body[data-page="landing-minimal"] .minimal-landing-visual[data-landing-carousel]
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  clip-path: inset(0 2px);
 }
 
 body[data-page="landing-minimal"] .minimal-landing-track {
