@@ -5,7 +5,7 @@ window.PORTFOLIO_OPTIMIZED_IMAGES = {
   "assets/images/Projects/[de]construct + [re]configure/DO4A0313.png": "assets/images/optimized/do4a0313-e345f1301c.webp",
   "assets/images/Projects/[de]construct + [re]configure/DO4A0315.png": "assets/images/optimized/do4a0315-98559820e8.webp",
   "assets/images/Projects/[de]construct + [re]configure/enfield food pantry mural.jpg": "assets/images/optimized/enfield-food-pantry-mural-834fec0a74.webp",
-  "assets/images/Projects/[de]construct + [re]configure/MODEL 01 cropped.png": "assets/images/optimized/model-01-cropped-36eaff50fb.webp",
+  "assets/images/Projects/[de]construct + [re]configure/MODEL 01 cropped.png": "assets/images/optimized/model-01-cropped-white-background.webp",
   "assets/images/Projects/A Chair is a Toy!/Analytic Collage.png": "assets/images/optimized/analytic-collage-a62fc1a51e.webp",
   "assets/images/Projects/A Chair is a Toy!/main hero shot.png": "assets/images/optimized/main-hero-shot-4ee70a012c.webp",
   "assets/images/Projects/A Chair is a Toy!/Mini icon collage for poem.png": "assets/images/optimized/mini-icon-collage-for-poem-0cea392ceb.webp",
@@ -974,7 +974,7 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     1653,
     1653
   ],
-  "assets/images/optimized/model-01-cropped-36eaff50fb.webp": [
+  "assets/images/optimized/model-01-cropped-white-background.webp": [
     2400,
     1350
   ],

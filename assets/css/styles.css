@@ -8773,6 +8773,7 @@ body[data-page="landing-minimal"] .minimal-landing-controls button:is(:hover, :f
 @media (min-width: 901px) {
   body[data-page="landing-minimal"] .minimal-landing-media {
     top: 34px;
+    width: 90%;
   }
 }
 

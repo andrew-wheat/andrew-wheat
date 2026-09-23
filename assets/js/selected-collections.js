@@ -156,7 +156,7 @@ window.SELECTED_COLLECTIONS = {
     },
     {
       "key": "model-01-cropped",
-      "src": "/assets/images/selected/models/model-01-cropped-80e8a93f.webp",
+      "src": "/assets/images/selected/models/model-01-cropped-white-background.webp",
       "title": "[de]construct + [re]configure",
       "width": 2000,
       "height": 1125,
