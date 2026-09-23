@@ -37,7 +37,7 @@
     <meta name="twitter:image" content="https://andrew-wheat.com/assets/images/seo/andrew-wheat-portrait-4x3.jpg">
     <meta name="twitter:image:alt" content="Portrait of Andrew Wheat">
 
-    <link rel="stylesheet" href="/assets/css/styles.css?v=20260914-work-years-only">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=20260922-legacy-square-v7">
     <script id="site-schema" type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -86,20 +86,11 @@
     <a class="skip-link" href="#contact-content">Skip to contact</a>
 
     <header class="site-header static-header" aria-label="Primary navigation">
-      <a class="brand" href="/" aria-label="Andrew Wheat home"><svg class="brand-mark" viewBox="0 0 939 350" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="194" y="0" width="154" height="95"/><rect x="391" y="0" width="154" height="95"/><rect x="588" y="0" width="154" height="95"/><rect x="785" y="0" width="154" height="95"/><rect x="93" y="95" width="255" height="59"/><rect x="391" y="95" width="548" height="59"/><rect x="93" y="154" width="154" height="42"/><rect x="490" y="154" width="154" height="42"/><rect x="687" y="154" width="154" height="42"/><rect x="0" y="196" width="348" height="53"/><rect x="391" y="196" width="253" height="53"/><rect x="687" y="196" width="252" height="53"/><rect x="0" y="249" width="154" height="101"/><rect x="194" y="249" width="154" height="101"/><rect x="391" y="249" width="154" height="101"/><rect x="785" y="249" width="154" height="101"/></g></svg><span>andrew wheat</span></a>
+      <a class="brand" href="/" aria-label="Andrew Wheat home"><svg class="brand-mark" viewBox="0 0 939 350" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="194" y="0" width="154" height="95"/><rect x="391" y="0" width="154" height="95"/><rect x="588" y="0" width="154" height="95"/><rect x="785" y="0" width="154" height="95"/><rect x="93" y="95" width="255" height="59"/><rect x="391" y="95" width="548" height="59"/><rect x="93" y="154" width="154" height="42"/><rect x="490" y="154" width="154" height="42"/><rect x="687" y="154" width="154" height="42"/><rect x="0" y="196" width="348" height="53"/><rect x="391" y="196" width="253" height="53"/><rect x="687" y="196" width="252" height="53"/><rect x="0" y="249" width="154" height="101"/><rect x="194" y="249" width="154" height="101"/><rect x="391" y="249" width="154" height="101"/><rect x="785" y="249" width="154" height="101"/></g></svg><span>Andrew Wheat</span></a>
       <nav class="site-nav">
-        <div class="nav-folder nav-folder--work">
-          <a class="nav-primary-link nav-folder-trigger" data-nav-page="projects" data-nav-section="work" href="/work/" aria-expanded="false">projects</a>
-          <div class="nav-dropdown" aria-label="Project filters">
-            <a class="nav-dropdown-link" data-work-category="all" href="/work/">all</a>
-            <a class="nav-dropdown-link" data-work-category="academic" href="/work/?category=academic">academic</a>
-            <a class="nav-dropdown-link" data-work-category="professional" href="/work/?category=professional">professional</a>
-            <a class="nav-dropdown-link" data-work-category="archive" href="/work/?category=archive">archive</a>
-          </div>
-        </div>
         <div class="nav-folder nav-folder--selected">
-          <a class="nav-primary-link nav-folder-trigger" data-nav-page="index" data-nav-section="selected" href="/selected/drawings/" aria-expanded="false">index</a>
-          <div class="nav-dropdown" aria-label="Index collections">
+          <a class="nav-primary-link nav-folder-trigger" data-nav-section="selected" href="/selected/drawings/" aria-expanded="false" aria-haspopup="true">selected</a>
+          <div class="nav-dropdown" aria-label="Selected collections">
             <a class="nav-dropdown-link" data-selected-category="drawings" href="/selected/drawings/">drawings</a>
             <a class="nav-dropdown-link" data-selected-category="models" href="/selected/models/">models</a>
             <a class="nav-dropdown-link" data-selected-category="photography" href="/selected/photography/">photography</a>
@@ -107,8 +98,22 @@
             <a class="nav-dropdown-link" data-selected-category="renderings" href="/selected/renderings/">renderings</a>
           </div>
         </div>
-        <a class="nav-primary-link" data-nav-page="about" href="/about/">about</a>
-        <a class="nav-primary-link" data-nav-page="contact" href="/contact/">contact</a>
+        <div class="nav-folder nav-folder--work">
+          <a class="nav-primary-link nav-folder-trigger" data-nav-section="work" href="/work/" aria-expanded="false" aria-haspopup="true">work</a>
+          <div class="nav-dropdown" aria-label="Work filters">
+            <a class="nav-dropdown-link" data-work-category="all" href="/work/">all</a>
+            <a class="nav-dropdown-link" data-work-category="academic" href="/work/?category=academic">academic</a>
+            <a class="nav-dropdown-link" data-work-category="professional" href="/work/?category=professional">professional</a>
+            <a class="nav-dropdown-link" data-work-category="archive" href="/work/?category=archive">archive</a>
+          </div>
+        </div>
+        <div class="nav-folder nav-folder--info">
+          <a class="nav-primary-link nav-folder-trigger" data-nav-section="info" href="/about/" aria-current="page" aria-expanded="false" aria-haspopup="true">info</a>
+          <div class="nav-dropdown" aria-label="Information">
+            <a class="nav-dropdown-link" data-info-page="about" href="/about/">about</a>
+            <a class="nav-dropdown-link" data-info-page="contact" aria-current="page" href="/contact/">contact</a>
+          </div>
+        </div>
       </nav>
     </header>
 
@@ -123,12 +128,9 @@
 
       <section class="contact-list contact-socials reveal" aria-label="Contact links">
         <a href="https://www.linkedin.com/in/andrewwheat" rel="me noreferrer" target="_blank" aria-label="LinkedIn: andrewwheat" title="andrewwheat" data-contact-label="andrewwheat">
-          <svg class="contact-social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <rect x="2.5" y="2.5" width="19" height="19" rx="2"></rect>
-            <path d="M8 11v6M8 7.25v.02M12 17v-6m0 2.25c.65-1.6 5-2.15 5 1.65V17"></path>
-          </svg>
+          <img data-image-skeleton class="contact-social-icon" src="/assets/images/branding/linkedin-filled-square.svg" alt="" width="32" height="32" decoding="async">
         </a>
-        <a href="mailto:ajw288@cornell.edu" aria-label="Email: ajw288@cornell.edu" title="ajw288@cornell.edu" data-contact-email="ajw288@cornell.edu" data-contact-label="ajw288@cornell.edu">
+        <a href="mailto:ajw288@cornell.edu" aria-label="Email: ajw288@cornell.edu" title="ajw288@cornell.edu" data-contact-label="ajw288@cornell.edu">
           <svg class="contact-social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <rect x="2.5" y="4.75" width="19" height="14.5" rx="1.75"></rect>
             <path d="m3.25 6 8.75 7 8.75-7"></path>
@@ -151,9 +153,9 @@
       &copy; Andrew Wheat 2026
     </footer>
 
-    <script src="/assets/js/projects.js?v=20260823-pool-search-image-v150"></script>
-    <script src="/assets/js/selected-collections.js?v=20260823-pool-search-image-v150"></script>
-    <script src="/assets/js/main.js?v=20260914-work-years-only"></script>
+    <script src="/assets/js/projects.js?v=20260922-legacy-square-v7"></script>
+    <script src="/assets/js/selected-collections.js?v=20260922-legacy-square-v7"></script>
+    <script src="/assets/js/main.js?v=20260922-legacy-square-v7"></script>
   </body>
 </html>
 

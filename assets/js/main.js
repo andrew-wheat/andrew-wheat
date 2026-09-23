@@ -675,7 +675,7 @@
       ["borinquen-healing-center", "Andrew Wheat_ajw288_Problem 03C_Final Model (15).png"],
       ["enfield-food-pantry", "Work Cover Photo.png"],
       ["wood-street-pool", "hero.png"],
-      ["wood-street-pool", "hero 2.png"]
+      ["wood-street-pool", "hero 2 newer.png"]
     ];
     const slidesToRender = orderedHeroEntries
       .map(([id, image], index) => {
@@ -877,7 +877,12 @@
       });
 
       nav.addEventListener("click", (event) => {
-        if (!(event.target instanceof Element) || !event.target.closest("a")) return;
+        if (!(event.target instanceof Element)) return;
+        const link = event.target.closest("a");
+        if (!link) return;
+        // Folder triggers only reveal their options on phones. Keeping them out
+        // of the generic link-close path lets the selected parent stay fixed.
+        if (mobile.matches && link.classList.contains("nav-folder-trigger")) return;
         setMenuOpen(false);
       });
 
@@ -2472,6 +2477,7 @@
     "woven-iso-large",
     "hunters-drawing-large",
     "hunters-drawing-oversize",
+    "hunters-native-parti",
     "wood-pool-site-plan",
     "wood-pool-section-large",
     "wood-pool-section-wide",
@@ -2623,6 +2629,10 @@
     const layout = image.layout || "image";
     const media = layout === "hunters-context-animation"
       ? huntersPointAnimation(project)
+      : layout === "hunters-native-parti"
+      ? huntersNativeParti(project, image)
+      : layout === "hunters-complete-diagram"
+      ? huntersCompleteDiagram(project, image)
       : layout === "ncsu-process-row"
       ? ncsuProcessRow(project, image)
       : layout === "wood-pool-iso-large"
@@ -2660,6 +2670,49 @@
         ${caption}
       </figure>
     `;
+  }
+
+  function huntersNativeParti(project, image) {
+    const labels = [
+      ["walls-title", "<strong>ARTICULATED WALLS</strong>"],
+      ["walls-copy", "Articulated interior walls create a porch condition,<br>reducing percieved linearity of the corridor"],
+      ["corridor", "Corridor"], ["porch", "Porch"],
+      ["landings-title", "<strong>LAYERED LANDINGS AND WORKSHOPS</strong>"],
+      ["landings-copy", "Workshops and landings are dispersed and<br>layered throughout the undulating circulation path,<br>generating varying levels of visibility, interaction,<br>and formality of use."],
+      ["landing", "Landing"], ["workshop", "Workshop"],
+      ["garden-title", "<strong>FIGURE GROUND GARDEN</strong>"],
+      ["garden-copy", "On the ground floor, a meandering circulation pattern occurs, where<br>vendor stalls, workshops and community services such as a cafe, library<br>and gym are scattered between greenspaces."],
+      ["garden-copy-two", "A central plaza intruduces a cruciform axis to the site, inviting overlap of<br>movement between the neighborhood, and the green corridor."],
+      ["vendors", "Vendors / Services"], ["greenspace", "Greenspace"]
+    ];
+    return `<div class="hunters-native-parti-scroll"><div class="project-story-board hunters-native-parti-board">
+      ${projectMedia(project, image.src, image.caption || project.title)}
+      ${labels.map(([key, html]) => `<div class="hunters-native-parti-label hunters-native-parti-label--${key}">${html}</div>`).join("")}
+    </div></div>`;
+  }
+
+  function huntersCompleteDiagram(project, image) {
+    const labels = [
+      ["industrial", "<strong>1. INDUSTRIAL PRODUCTION</strong><br>c. 1900s-1970s<br><br>Linear infrastructure<br>and heavy industry<br>organized by rail"],
+      ["rail", "Historic Rail Lines"], ["site", "Current Site"],
+      ["scattered", "<strong>2. SCATTERED CONSUMPTION</strong><br>c. 2000s-PRESENT<br><br>Rail removed, industry fragmented.<br>Consumption becomes dispersed and<br>people move across the neighborhood"],
+      ["retail", "Retail / Coffee / Services"], ["pedestrian", "Pedestrian Movement"],
+      ["interwoven", "<strong>3. INTERWOVEN PRODUCTION + LIVING</strong><br>FUTURE<br><br>Production, consumption,<br>and residence co-located within<br>a continuous spatial framework.<br>Movement no longer disperses<br>activity, but thickens it."],
+      ["nodes", "Nodes of Overlap"], ["connections", "Continuity + Connections"],
+    ];
+    const places = ["Typical Low-Rise Residential", "St. Mary Roman Catholic", "Hunters Point Com. Park", "Andrews Grove Playground", "Private Rooftop Parks", "Queens Public Library"];
+    return `<div class="hunters-complete-scroll"><div class="hunters-complete-board">
+      ${projectMedia(project, image.src, image.caption || project.title)}
+      ${labels.map(([key, html]) => `<div class="hunters-complete-label hunters-complete-label--${key}">${html}</div>`).join("")}
+      <div class="hunters-complete-right">
+        <div class="hunters-complete-places">${places.map((place, index) => `<div class="hunters-complete-place"><span>${escapeHtml(place)}</span><span class="hunters-complete-dot">${index + 1}</span></div>`).join("")}</div>
+        <div class="hunters-complete-metrics">
+          <div class="hunters-complete-metric"><strong>Surface Deviation From Mean Temp</strong><div class="hunters-complete-scale hunters-complete-scale--heat"></div><div class="hunters-complete-range"><span>&lt; - 8° C</span><span>&gt; 8° C</span></div></div>
+          <div class="hunters-complete-metric"><strong>Annualized Foot Traffic</strong><div class="hunters-complete-traffic-row"><span>Low</span><span class="hunters-complete-traffic-wedge" aria-hidden="true"></span><span>High</span></div></div>
+        </div>
+        <p class="hunters-complete-conclusion">High heat exposure coincides with sustained foot traffic, revealing a gap between environmental performance and urban activity. The project leverages this condition to introduce a shaded, productive corridor that improves comfort while supporting co-located use.</p>
+      </div>
+    </div></div>`;
   }
 
   function ncsuProcessRow(project, process) {
@@ -3406,6 +3459,7 @@
     const animatedLayouts = [
       "project-story-frame--enfield-site-plan-sequence",
       "project-story-frame--hunters-workshop-sequence",
+      "project-story-frame--hunters-native-parti",
       "project-story-frame--deconstruct-crossfade"
     ];
     let previousFocus = null;

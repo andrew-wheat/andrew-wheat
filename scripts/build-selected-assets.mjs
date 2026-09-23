@@ -16,12 +16,12 @@ const supportedExtensions = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 const hiddenSelectedAssets = {
   photography: new Set(["img_1932.jpg"]),
   sketchbook: new Set(["img_7838.jpg", "img_7841.png"]),
-  renderings: new Set(["exterior 2 edited noisy copy.jpg"])
+  renderings: new Set(["exterior 2 edited noisy copy.jpg", "hero 2.png"])
 };
 const selectedKeyOverrides = {
   renderings: {
     "hero (2).png": "hero-2",
-    "hero 2.png": "hero-2-pool"
+    "hero 2 newer.png": "hero-2-pool"
   }
 };
 const drawingCropOverrides = {
@@ -177,7 +177,7 @@ const renderingCaptionOverrides = {
     captionTitle: "Hunter's Point Cooperative Housing, Housing Landscape",
     production: "Rhino · V-Ray · Photoshop"
   },
-  "hero 2.png": {
+  "hero 2 newer.png": {
     captionTitle: "Wood Street Pool, Pool Hall Study",
     production: "Rhino · Enscape · Photoshop · Adobe Firefly assets"
   },
@@ -272,7 +272,7 @@ const projectTitles = {
     "andrew wheat_ajw288_03c_exterior render 02.jpg": "Borinquen Healing Center",
     "andrew wheat_ajw288_03c_interior render.jpg": "Borinquen Healing Center",
     "corridor render.png": "Hunter's Point Cooperative Housing",
-    "hero 2.png": "Wood Street Pool",
+    "hero 2 newer.png": "Wood Street Pool",
     "hero.png": "Wood Street Pool",
     "market render.png": "Hunter's Point Cooperative Housing",
     "updated pantry interior.webp": "Enfield Food Pantry"

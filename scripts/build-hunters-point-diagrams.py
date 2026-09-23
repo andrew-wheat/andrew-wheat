@@ -42,10 +42,12 @@ def draw_top_aligned(
     draw.text((x, top - bounds[1]), text, font=font, fill=(0, 0, 0))
 
 
-def build_housing_parti() -> str:
+def build_housing_parti() -> tuple[str, str]:
     source = PROJECT_ASSETS / "housing parti.jpg"
     image = Image.open(source).convert("RGB")
     draw = ImageDraw.Draw(image)
+    background = image.copy()
+    background_draw = ImageDraw.Draw(background)
     regular = ImageFont.truetype(FONT_ROOT / "Inter_18pt-Regular.ttf", 96)
     bold = ImageFont.truetype(FONT_ROOT / "Inter_18pt-Bold.ttf", 96)
 
@@ -103,15 +105,23 @@ def build_housing_parti() -> str:
     ]
 
     for x, top, bottom, text, font, right in text_lines:
-        draw.rectangle((x - 18, top - 14, right, bottom + 14), fill=(255, 255, 255))
+        box = (x - 18, top - 14, right, bottom + 14)
+        draw.rectangle(box, fill=(255, 255, 255))
+        background_draw.rectangle(box, fill=(255, 255, 255))
         draw_top_aligned(draw, (x, top), text, font)
+
+    background_output = io.BytesIO()
+    background.save(background_output, format="WEBP", quality=95, method=6)
+    background_payload = background_output.getvalue()
+    background_name = f"housing-parti-background-{short_digest(background_payload)}.webp"
+    (PROJECT_ASSETS / background_name).write_bytes(background_payload)
 
     output = io.BytesIO()
     image.save(output, format="PNG", optimize=True)
     payload = output.getvalue()
     output_name = f"housing-parti-inter-{short_digest(payload)}.png"
     (PROJECT_ASSETS / output_name).write_bytes(payload)
-    return output_name
+    return output_name, background_name
 
 
 def build_full_diagram() -> str:
@@ -151,5 +161,7 @@ def build_full_diagram() -> str:
     return output_name
 
 
-print(f"housing_parti={build_housing_parti()}")
+housing_parti, housing_parti_background = build_housing_parti()
+print(f"housing_parti={housing_parti}")
+print(f"housing_parti_background={housing_parti_background}")
 print(f"full_diagram={build_full_diagram()}")

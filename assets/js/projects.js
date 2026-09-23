@@ -1,5 +1,61 @@
 window.PORTFOLIO_PROJECTS = [
   {
+    "id": "legacy-square-stage",
+    "workCategory": "Professional",
+    "title": "Legacy Square Stage",
+    "year": "2026",
+    "course": "Professional Work, Mithun",
+    "location": "Renton, Washington",
+    "affiliation": "Mithun",
+    "metadataGroups": [
+      [
+        "Professional Work, Mithun",
+        "Renton, Washington",
+        "Supervised by Richard Franko",
+        "Worked with Chris Lim, Marna Abrams, and Samantha Sweeney",
+        "Client: City of Renton",
+        "Project team: Mithun, KPFF, LSTN Consultants, P2S, HLB Lighting Design, and Andersen Construction"
+      ],
+      [
+        "Role: Diagram planning and creation; marketing materials",
+        "Project: 900 sq ft civic performance stage, completed 2026"
+      ]
+    ],
+    "type": "Professional / civic architecture / diagrams",
+    "themes": ["professional work", "civic architecture", "diagrams", "public space", "mass timber"],
+    "summary": "Planning and creation of diagrams and marketing materials by Andrew Wheat for Mithun's Legacy Square Stage.",
+    "description": "Legacy Square Stage is a civic performance shell in downtown Renton, designed for public events and everyday use. Working with Mithun's project team, I planned and created the diagrams and marketing materials shown here to communicate its urban setting, public-space relationships, stage plan, park section, and operating modes.",
+    "externalLink": {
+      "label": "View the project at Mithun",
+      "url": "https://mithun.com/project/legacy-square-stage/"
+    },
+    "imageBase": "assets/images/Projects/Legacy Square/",
+    "thumbnail": "legacy-square-card.webp",
+    "heroImage": "legacy-square-card.webp",
+    "overviewImage": "legacy-square-card.webp",
+    "story": [
+      { "src": "01-site-plans-locator-key-v3.webp", "caption": "Downtown context and connected public zone plans.", "layout": "image" },
+      { "src": "03-views-and-sound.webp", "caption": "Views into the stage and outward sound projection.", "layout": "image" },
+      { "src": "06-stage-operating-modes.webp", "caption": "Layered screen, service zone, roll-down door, and folding stage doors.", "layout": "image" },
+      { "src": "04-stage-plan.webp", "caption": "Stage plan and performance spaces.", "layout": "image" },
+      { "src": "05-park-section.webp", "caption": "Section linking the stage, event lawn, futsal court, and accessible seating.", "layout": "image" }
+    ],
+    "images": [
+      { "src": "01-site-plans-locator-key-v3.webp", "caption": "Downtown context and public zone plans" },
+      { "src": "03-views-and-sound.webp", "caption": "Views and sound perspective" },
+      { "src": "06-stage-operating-modes.webp", "caption": "Stage operating modes" },
+      { "src": "04-stage-plan.webp", "caption": "Stage plan" },
+      { "src": "05-park-section.webp", "caption": "Park section" }
+    ],
+    "position": { "x": 50, "y": 50, "rotation": 0 },
+    "shape": "strata",
+    "workThumbnail": "assets/images/Projects/Legacy Square/legacy-square-card.webp",
+    "workThumbnailAlt": "assets/images/Projects/Legacy Square/legacy-square-hover.webp",
+    "workListThumbnail": "assets/images/Projects/Legacy Square/legacy-square-card.webp",
+    "overviewImageAlt": "Perspective diagram of Legacy Square Stage, event lawn, futsal court, and public space",
+    "workImageAlt": "Perspective diagram of Legacy Square Stage and its surrounding public space"
+  },
+  {
     "id": "ncsu-cates-west",
     "workCategory": "Professional",
     "title": "NC State Cates West Development",
@@ -137,9 +193,9 @@ window.PORTFOLIO_PROJECTS = [
     "overviewImage": "hero.png",
     "story": [
       {
-        "src": "housing-parti-inter-b0345e7ca9.png",
+        "src": "housing-parti-background-2a4479757d.webp",
         "caption": "Housing parti strategy.",
-        "layout": "hunters-drawing-oversize"
+        "layout": "hunters-native-parti"
       },
       {
         "layout": "story-text",
@@ -147,9 +203,9 @@ window.PORTFOLIO_PROJECTS = [
         "text": "Census data shows Hunter's Point is a transitory environment. It is largely high-income and young, but more importantly, living and working are spatially separated. Most people that live there commute to work in Manhattan, while many of the people working in Hunters Point live in Astoria. Because of this, the area remains active throughout the day, but there is little sustained overlap between these groups. This prompts the need for design that allows living, working, production, and play to share space."
       },
       {
-        "src": "full-diagram-reference-inter-bf7afc03d1.svg",
+        "src": "Full Diagram Reference High Res.png",
         "caption": "Site and demographic strategy.",
-        "layout": "hunters-drawing-oversize"
+        "layout": "hunters-complete-diagram"
       },
       {
         "src": "Figure Ground Plan render.png",
@@ -239,22 +295,17 @@ window.PORTFOLIO_PROJECTS = [
         "text": "The corridor becomes the primary architectural element. Split levels, widened landings, stairs, porches, and apertures turn circulation into a visible social interior rather than residual access space."
       },
       {
-        "src": "section-perspective-render-cropped-1577c00c23.webp",
+        "src": "section-perspective-render-borderless-1577c00c23.webp",
         "caption": "Shared circulation section perspective.",
         "layout": "hunters-drawing-large"
       },
       {
-        "src": "long-site-section-render-cropped-62c323d672.webp",
+        "src": "long-site-section-render-borderless-62c323d672.webp",
         "caption": "Long site section.",
         "layout": "hunters-drawing-large"
       },
       {
-        "src": "long-section-render-cropped-36b06089a1.webp",
-        "caption": "Housing long section.",
-        "layout": "hunters-drawing-large"
-      },
-      {
-        "src": "long-elevation-render-cropped-3b1015333e.webp",
+        "src": "long-elevation-render-borderless-3b1015333e.webp",
         "caption": "Housing long elevation.",
         "layout": "hunters-drawing-large"
       },
@@ -369,7 +420,7 @@ window.PORTFOLIO_PROJECTS = [
         ]
       },
       {
-        "src": "hero 2.png",
+        "src": "hero 2 newer.png",
         "caption": "Natatorium interior view.",
         "layout": "wood-pool-interior"
       },
@@ -466,7 +517,7 @@ window.PORTFOLIO_PROJECTS = [
         "caption": "Exterior pool view"
       },
       {
-        "src": "hero 2.png",
+        "src": "hero 2 newer.png",
         "caption": "Natatorium interior view"
       },
       {
@@ -488,9 +539,9 @@ window.PORTFOLIO_PROJECTS = [
       "rotation": 5
     },
     "shape": "cells",
-    "workThumbnail": "assets/images/Projects/Wood Street Pool/hero 2.png",
+    "workThumbnail": "assets/images/Projects/Wood Street Pool/hero 2 newer.png",
     "workThumbnailAlt": "assets/images/work-heroes/wood-street-pool.webp",
-    "workListThumbnail": "assets/images/Projects/Wood Street Pool/hero 2.png",
+    "workListThumbnail": "assets/images/Projects/Wood Street Pool/hero 2 newer.png",
     "overviewImageAlt": "Exterior rendering of Wood Street Pool beside planted terraces and a public path",
     "workImageAlt": "Interior rendering of swimmers in the mass-timber Wood Street Pool natatorium"
   },

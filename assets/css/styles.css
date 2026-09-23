@@ -4759,6 +4759,138 @@ body.project-lightbox-open .site-cursor {
   margin-top: 0;
 }
 
+.project-story-frame--hunters-complete-diagram {
+  display: block;
+  min-height: 0;
+  padding: clamp(24px, 3vw, 54px) 0;
+}
+
+.hunters-complete-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.hunters-complete-board {
+  position: relative;
+  container-type: inline-size;
+  width: min(96vw, 1800px);
+  margin: auto;
+  aspect-ratio: 12 / 7;
+  font-family: var(--font-annotation);
+  color: #1b1b1b;
+}
+
+.hunters-complete-board > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+}
+
+.hunters-complete-label {
+  position: absolute;
+  z-index: 1;
+  background: #fff;
+  font-size: .88cqw;
+  line-height: 1.18;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.hunters-complete-label strong { font-weight: 700; }
+.hunters-complete-label small { font-size: .72em; }
+.hunters-complete-label--industrial { left: 5.25%; top: 5%; width: 16%; padding: .2%; }
+.hunters-complete-label--rail { left: 10.8%; top: 19.9%; width: 12%; padding: .2%; }
+.hunters-complete-label--site { left: 10.8%; top: 25.3%; width: 12%; padding: .2%; }
+.hunters-complete-label--scattered { left: 4.8%; top: 34.6%; width: 19%; padding: .2%; }
+.hunters-complete-label--retail { left: 9.8%; top: 49.3%; width: 16%; padding: .2%; }
+.hunters-complete-label--pedestrian { left: 9.8%; top: 54.6%; width: 16%; padding: .2%; }
+.hunters-complete-label--interwoven { left: 4.5%; top: 61.9%; width: 23%; padding: .2%; line-height: 1.05; }
+.hunters-complete-label--nodes { left: 9.5%; top: 78.8%; width: 15%; padding: .2%; }
+.hunters-complete-label--connections { left: 9.5%; top: 84.2%; width: 17%; padding: .2%; }
+
+.hunters-complete-board::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 20%;
+  right: 1%;
+  width: 24%;
+  height: 61%;
+  background: #fff;
+  pointer-events: none;
+}
+
+.hunters-complete-right {
+  position: absolute;
+  z-index: 2;
+  top: 22.3%;
+  right: 3.4%;
+  width: 20.8%;
+  font-family: var(--font-annotation);
+  font-size: .88cqw;
+  line-height: 1.18;
+  color: #1b1b1b;
+}
+
+.hunters-complete-places { display: grid; }
+.hunters-complete-place {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1.45cqw;
+  align-items: center;
+  gap: 1.1cqw;
+  min-height: 1.57cqw;
+  text-align: right;
+}
+.hunters-complete-dot {
+  display: grid;
+  place-items: center;
+  width: 1.38cqw;
+  height: 1.38cqw;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  font-size: .8cqw;
+  font-weight: 700;
+  line-height: 1;
+}
+.hunters-complete-metrics { margin-top: 3.3cqw; }
+.hunters-complete-metric { text-align: center; }
+.hunters-complete-metric + .hunters-complete-metric { margin-top: 1.25cqw; }
+.hunters-complete-metric strong { display: block; font-weight: 700; }
+.hunters-complete-scale {
+  height: .42cqw;
+  margin: .48cqw 1.8cqw .12cqw;
+}
+.hunters-complete-scale--heat { background: linear-gradient(to right, #f7f7f7, #d6d6d6, #777, #000); }
+.hunters-complete-range { display: flex; justify-content: space-between; padding: 0 .5cqw; font-size: .7cqw; }
+.hunters-complete-traffic-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .7cqw;
+  margin-top: .42cqw;
+  font-size: .7cqw;
+}
+.hunters-complete-traffic-wedge {
+  height: 1.05cqw;
+  background: #d5d5d5;
+  clip-path: polygon(0 45%, 100% 0, 100% 100%, 0 55%);
+}
+.hunters-complete-conclusion {
+  width: 86%;
+  margin: 2.5cqw auto 0;
+  text-align: center;
+  line-height: 1.25;
+}
+
+@media (max-width: 800px) {
+  .hunters-complete-board { width: max(1100px, 96vw); margin: 0; }
+  .hunters-complete-label { font-size: .88cqw; }
+}
+
 .project-story-frame--ncsu-process-row {
   min-height: auto;
   padding: clamp(76px, 9vw, 132px) var(--project-gutter);
@@ -7449,7 +7581,7 @@ body:has(.nav-folder--info:focus-within) > footer {
     overflow-y: auto;
     overscroll-behavior: contain;
     color: var(--ink);
-    background: var(--bg);
+    background: #ffffff;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -7501,14 +7633,22 @@ body:has(.nav-folder--info:focus-within) > footer {
 
   .site-nav .nav-dropdown {
     position: static;
-    display: none;
+    display: grid;
     justify-items: center;
     gap: 0;
-    padding-top: 8px;
+    max-height: 0;
+    padding-top: 0;
+    overflow: hidden;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transform: none;
+    transform: translateY(-8px);
+    transition:
+      max-height 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      padding-top 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 160ms ease,
+      transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s linear 240ms;
   }
 
   .site-nav .nav-folder--selected .nav-dropdown {
@@ -7517,8 +7657,7 @@ body:has(.nav-folder--info:focus-within) > footer {
     right: auto;
     bottom: auto;
     left: auto;
-    padding: 8px 0 0;
-    transform: none;
+    padding: 0;
   }
 
   .site-nav .nav-folder--info .nav-dropdown {
@@ -7527,22 +7666,28 @@ body:has(.nav-folder--info:focus-within) > footer {
     right: auto;
     bottom: auto;
     left: auto;
-    padding: 8px 0 0;
-    transform: none;
+    padding: 0;
   }
 
   body .site-nav .nav-folder.is-open .nav-dropdown {
     display: grid;
+    max-height: 320px;
+    padding-top: 8px;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    transform: translateY(0);
+    transition-delay: 0s;
   }
 
   body .site-nav .nav-folder:not(.is-open) .nav-dropdown {
-    display: none;
+    display: grid;
+    max-height: 0;
+    padding-top: 0;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    transform: translateY(-8px);
   }
 
   body .site-nav:has(.nav-folder.is-open)
@@ -7578,8 +7723,6 @@ body:has(.nav-folder--info:focus-within) > footer {
   .site-nav .nav-dropdown-link {
     min-height: 44px;
     padding: 9px 14px;
-    font-size: calc(var(--type-copy) + 3px);
-    line-height: 1.35;
     text-align: center;
   }
 
@@ -8080,7 +8223,7 @@ body[data-page="landing-minimal"] .minimal-landing-visual {
   width: 100%;
   height: 100%;
   transform: none;
-  background: url("../images/Projects/Wood%20Street%20Pool/hero%202.png?v=20260823-pool-search-image-v150") center center / cover no-repeat;
+  background: url("../images/Projects/Wood%20Street%20Pool/hero%202%20newer.png") center center / cover no-repeat;
 }
 
 body[data-page="landing-minimal"] .minimal-landing-visual::after {
@@ -8180,4 +8323,371 @@ body[data-selected-collection="models"] .selected-model-meta strong {
 
 .error-content h1 {
   font-weight: var(--weight-title);
+}
+
+/* Mobile navigation is one white, ordered field. Primary and secondary
+   controls intentionally share identical type metrics. */
+@media (max-width: 900px) {
+  body[data-page] .site-header .site-nav {
+    background: #ffffff;
+  }
+
+  body[data-page] .site-header .site-nav > .nav-primary-link,
+  body[data-page] .site-header .site-nav > .nav-folder > .nav-primary-link,
+  body[data-page] .site-header .site-nav > .nav-folder > .nav-dropdown > .nav-dropdown-link {
+    font-family: var(--font-compact);
+    font-size: var(--type-control) !important;
+    font-weight: var(--weight-control) !important;
+    font-style: normal;
+    line-height: var(--control-line-height) !important;
+    letter-spacing: 0 !important;
+    text-transform: lowercase;
+  }
+
+  body.is-mobile-menu-open .menu-toggle {
+    color: var(--ink) !important;
+  }
+}
+
+/* Homepage clarity pass: the image and text occupy separate full-width fields.
+   Nothing is boxed or typeset over the project image. */
+body[data-page="landing-minimal"] {
+  background: #ffffff;
+}
+
+body[data-page="landing-minimal"] .minimal-landing {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 60svh minmax(40svh, auto);
+  min-height: 100svh;
+  padding: 0;
+  background: #ffffff;
+}
+
+body[data-page="landing-minimal"] .minimal-landing-visual::after {
+  display: none;
+}
+
+body[data-page="landing-minimal"] .minimal-landing-visual {
+  position: relative;
+  inset: auto;
+  grid-row: 1;
+  width: 100%;
+  height: 60svh;
+  background-position: center center;
+}
+
+body[data-page="landing-minimal"] .minimal-landing-content {
+  position: relative;
+  inset: auto;
+  grid-row: 2;
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: clamp(20px, 2.2vw, 30px);
+  width: 100%;
+  min-height: 40svh;
+  padding:
+    clamp(38px, 6vh, 60px)
+    clamp(52px, 7vw, 116px)
+    max(clamp(38px, 6vh, 60px), env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  color: var(--ink);
+  background: #ffffff;
+  transform: none;
+}
+
+body[data-page="landing-minimal"] .minimal-landing-copy {
+  justify-self: end;
+  width: min(430px, 100%);
+  max-width: 29ch;
+  color: var(--ink);
+  font-family: var(--font-main);
+  font-size: clamp(17px, 1.35vw, 20px);
+  font-weight: var(--weight-copy);
+  line-height: 1.46;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+body[data-page="landing-minimal"] .minimal-landing-work-link {
+  justify-self: end;
+  width: min(430px, 100%);
+  color: var(--ink);
+  font-family: var(--font-button);
+  font-size: var(--type-control);
+  font-weight: var(--weight-control);
+  line-height: var(--control-line-height);
+  letter-spacing: 0;
+}
+
+@media (max-width: 900px) {
+  body[data-page="landing-minimal"] .minimal-landing {
+    display: grid;
+    grid-template-rows: 58svh minmax(42svh, auto);
+    min-height: 100svh;
+    padding: 0;
+    background: #ffffff;
+  }
+
+  body[data-page="landing-minimal"] .minimal-landing-visual {
+    position: relative;
+    inset: auto;
+    grid-row: 1;
+    width: 100%;
+    height: 58svh;
+    background-position: center center;
+  }
+
+  body[data-page="landing-minimal"] .minimal-landing-content {
+    position: relative;
+    inset: auto;
+    grid-row: 2;
+    width: 100%;
+    min-height: 42svh;
+    align-content: center;
+    margin: 0;
+    padding:
+      clamp(30px, 8vw, 48px)
+      var(--project-gutter)
+      max(clamp(30px, 8vw, 48px), env(safe-area-inset-bottom));
+    transform: none;
+  }
+
+  body[data-page="landing-minimal"] .minimal-landing-copy {
+    justify-self: start;
+    width: 100%;
+    max-width: 28ch;
+    font-size: clamp(17px, 4.8vw, 20px);
+    line-height: 1.44;
+  }
+
+  body[data-page="landing-minimal"] .minimal-landing-work-link {
+    justify-self: start;
+    width: max-content;
+  }
+}
+
+/* Final homepage composition: a curatorial white canvas with the project image
+   contained as an object and the introduction set only in surrounding space. */
+body[data-page="landing-minimal"] .site-header {
+  color: var(--ink);
+  mix-blend-mode: normal;
+}
+
+body[data-page="landing-minimal"] .minimal-landing {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.72fr);
+  grid-template-rows: 1fr;
+  align-items: center;
+  gap: clamp(72px, 8vw, 144px);
+  min-height: 100svh;
+  padding:
+    clamp(112px, 14vh, 152px)
+    clamp(52px, 7vw, 116px)
+    clamp(64px, 9vh, 96px);
+  background: #ffffff;
+}
+
+body[data-page="landing-minimal"] .minimal-landing-visual {
+  position: relative;
+  inset: auto;
+  grid-row: auto;
+  justify-self: center;
+  width: min(100%, 820px);
+  height: auto;
+  background: none;
+  transform: none;
+}
+
+body[data-page="landing-minimal"] .minimal-landing-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  object-fit: contain;
+}
+
+body[data-page="landing-minimal"] .minimal-landing-content {
+  position: relative;
+  inset: auto;
+  grid-row: auto;
+  align-content: start;
+  justify-self: start;
+  gap: clamp(18px, 2vw, 26px);
+  width: min(100%, 32em);
+  min-height: 0;
+  padding: 0;
+  color: var(--ink);
+  background: transparent;
+  transform: none;
+}
+
+body[data-page="landing-minimal"] .minimal-landing-copy {
+  justify-self: start;
+  width: 100%;
+  max-width: 29ch;
+  font-size: clamp(17px, 1.25vw, 19px);
+  line-height: 1.48;
+}
+
+body[data-page="landing-minimal"] .minimal-landing-work-link {
+  justify-self: start;
+  width: max-content;
+}
+
+@media (max-width: 900px) {
+  body[data-page="landing-minimal"] .minimal-landing {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    align-content: center;
+    gap: clamp(42px, 10vw, 64px);
+    min-height: 100svh;
+    padding:
+      calc(var(--header-height) + clamp(22px, 5vh, 40px))
+      var(--project-gutter)
+      max(clamp(52px, 9vh, 84px), env(safe-area-inset-bottom));
+  }
+
+  body[data-page="landing-minimal"] .minimal-landing-visual {
+    grid-row: 1;
+    width: min(100%, 680px);
+    height: auto;
+  }
+
+  body[data-page="landing-minimal"] .minimal-landing-content {
+    grid-row: 2;
+    align-content: start;
+    justify-self: start;
+    width: min(100%, 31em);
+    min-height: 0;
+  }
+
+  body[data-page="landing-minimal"] .minimal-landing-copy {
+    max-width: 28ch;
+    font-size: clamp(17px, 4.5vw, 19px);
+    line-height: 1.46;
+  }
+}
+
+@media (min-width: 901px) {
+  body[data-page="landing-minimal"] .minimal-landing {
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.58fr);
+    gap: clamp(48px, 5vw, 84px);
+    padding:
+      clamp(96px, 11vh, 124px)
+      clamp(36px, 4vw, 72px)
+      clamp(36px, 5vh, 56px);
+  }
+
+  body[data-page="landing-minimal"] .minimal-landing-visual {
+    width: min(100%, 1100px);
+  }
+}
+
+/* Keep the homepage composition on one shared vertical axis whenever there is
+   enough width for two genuinely readable columns. */
+@media (min-width: 641px) {
+  body[data-page="landing-minimal"] .minimal-landing {
+    grid-template-columns: minmax(0, 900px) minmax(220px, 300px);
+    grid-template-rows: 1fr;
+    align-content: stretch;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(32px, 5vw, 84px);
+    padding:
+      clamp(72px, 10vh, 96px)
+      clamp(24px, 4vw, 64px);
+  }
+
+  body[data-page="landing-minimal"] .minimal-landing-visual,
+  body[data-page="landing-minimal"] .minimal-landing-content {
+    grid-row: auto;
+    align-self: center;
+  }
+
+  body[data-page="landing-minimal"] .minimal-landing-visual {
+    width: min(100%, 1100px);
+  }
+}
+
+@media (min-width: 901px) {
+  body[data-page="landing-minimal"] .minimal-landing-visual,
+  body[data-page="landing-minimal"] .minimal-landing-content {
+    top: 34px;
+  }
+
+  body[data-page="landing-minimal"] .minimal-landing-copy {
+    font-size: var(--type-control);
+  }
+}
+
+/* The Hunters Point parti keeps its colored key marks in the artwork while
+   all explanatory type is live page text. */
+.project-story-frame--hunters-native-parti {
+  display: block;
+  min-height: 0;
+  padding: clamp(34px, 4vw, 70px) 0;
+}
+
+.hunters-native-parti-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.project-story-frame--hunters-native-parti .hunters-native-parti-board {
+  position: relative;
+  container-type: inline-size;
+  width: min(94vw, 1680px);
+  min-height: 0;
+  margin: auto;
+  aspect-ratio: 18 / 11;
+}
+
+.hunters-native-parti-board > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+}
+
+.hunters-native-parti-label {
+  position: absolute;
+  font-family: var(--font-annotation);
+  font-size: .889cqw;
+  font-weight: 400;
+  line-height: 1.16;
+  white-space: nowrap;
+  color: #1b1b1b;
+}
+
+.hunters-native-parti-label strong { font-weight: 700; }
+.hunters-native-parti-label--walls-title { left: 4.54%; top: 12.14%; }
+.hunters-native-parti-label--walls-copy { left: 4.54%; top: 15.56%; }
+.hunters-native-parti-label--corridor { left: 10.25%; top: 21.21%; }
+.hunters-native-parti-label--porch { left: 10.28%; top: 24.17%; }
+.hunters-native-parti-label--landings-title { left: 4.59%; top: 39.76%; }
+.hunters-native-parti-label--landings-copy { left: 4.55%; top: 43.18%; }
+.hunters-native-parti-label--landing { left: 10.28%; top: 53.41%; }
+.hunters-native-parti-label--workshop { left: 10.23%; top: 56.35%; }
+.hunters-native-parti-label--garden-title { left: 4.53%; top: 70.71%; }
+.hunters-native-parti-label--garden-copy { left: 4.51%; top: 74.12%; }
+.hunters-native-parti-label--garden-copy-two { left: 4.47%; top: 80.94%; }
+.hunters-native-parti-label--vendors { left: 10.16%; top: 87.45%; }
+.hunters-native-parti-label--greenspace { left: 10.19%; top: 90.39%; }
+
+.project-lightbox-figure.project-story-frame--hunters-native-parti .project-lightbox-board {
+  width: min(94vw, 144vh, 1680px);
+  min-height: 0;
+  aspect-ratio: 18 / 11;
+}
+
+@media (max-width: 800px) {
+  .project-story-frame--hunters-native-parti .hunters-native-parti-board {
+    width: max(1100px, 94vw);
+    margin: 0;
+  }
 }

@@ -83,6 +83,7 @@ window.PORTFOLIO_OPTIMIZED_IMAGES = {
   "assets/images/Projects/Wood Street Pool/ENVIRONMENTAL SECTION.png": "assets/images/optimized/environmental-section-7ce30aac29.webp",
   "assets/images/Projects/Wood Street Pool/Ground Floor Plan.jpg": "assets/images/optimized/ground-floor-plan-385c196ede.webp",
   "assets/images/Projects/Wood Street Pool/hero 2.png": "assets/images/optimized/hero-2-ad26499d36.webp",
+  "assets/images/Projects/Wood Street Pool/hero 2 newer.png": "assets/images/optimized/hero-2-newer-465e602ddb.webp",
   "assets/images/Projects/Wood Street Pool/hero.png": "assets/images/optimized/hero-5c9e3444de.webp",
   "assets/images/Projects/Woven Pavilion/20231127_Andrew Wheat_A04_Folley_01.02.jpg": "assets/images/optimized/20231127-andrew-wheat-a04-folley-01-02-a76f52bd5c.webp",
   "assets/images/Projects/Woven Pavilion/20231127_Andrew Wheat_A04_Folley_01.03.jpg": "assets/images/optimized/20231127-andrew-wheat-a04-folley-01-03-71c6853ac7.webp",
@@ -521,6 +522,10 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     10800,
     6600
   ],
+  "assets/images/Projects/Hunter's Point Cooperative Housing/housing-parti-background-2a4479757d.webp": [
+    10800,
+    6600
+  ],
   "assets/images/Projects/Hunter's Point Cooperative Housing/housing-parti-inter-b0345e7ca9.png": [
     10800,
     6600
@@ -554,6 +559,10 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     12300
   ],
   "assets/images/Projects/Wood Street Pool/hero 2.png": [
+    3840,
+    2160
+  ],
+  "assets/images/Projects/Wood Street Pool/hero 2 newer.png": [
     3840,
     2160
   ],
@@ -902,6 +911,10 @@ window.PORTFOLIO_IMAGE_DIMENSIONS = {
     1600
   ],
   "assets/images/optimized/hero-2-ad26499d36.webp": [
+    2400,
+    1350
+  ],
+  "assets/images/optimized/hero-2-newer-465e602ddb.webp": [
     2400,
     1350
   ],

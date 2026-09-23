@@ -10,8 +10,8 @@
   <url>
     <loc>https://andrew-wheat.com/work/</loc>
     <image:image>
-      <image:loc>https://andrew-wheat.com/assets/images/optimized/ncsu-cates-west-model-overview.webp</image:loc>
-      <image:title>Illuminated physical model of the NC State Cates West Development photographed by Andrew Wheat</image:title>
+      <image:loc>https://andrew-wheat.com/assets/images/Projects/Legacy%20Square/legacy-square-card.webp</image:loc>
+      <image:title>Perspective diagram of Legacy Square Stage and its surrounding public space</image:title>
     </image:image>
   </url>
   <url>
@@ -61,6 +61,13 @@
     <image:image>
       <image:loc>https://andrew-wheat.com/assets/images/selected/renderings/andrew-wheat-ajw288-03c-exterior-render-02-ac86292f.webp</image:loc>
       <image:title>Renderings by Andrew Wheat</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://andrew-wheat.com/project/legacy-square-stage/</loc>
+    <image:image>
+      <image:loc>https://andrew-wheat.com/assets/images/Projects/Legacy%20Square/legacy-square-card.webp</image:loc>
+      <image:title>Perspective diagram of Legacy Square Stage and its surrounding public space</image:title>
     </image:image>
   </url>
   <url>

@@ -6,8 +6,8 @@ const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 // Modification dates are intentionally omitted until tracked per page.
 const METADATA_ONLY = process.argv.includes("--metadata-only");
-const MAIN_VERSION = "20260914-work-years-only";
-const ASSET_VERSION = "20260914-work-years-only";
+const MAIN_VERSION = "20260922-legacy-square-v7";
+const ASSET_VERSION = "20260922-legacy-square-v7";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;
@@ -103,6 +103,11 @@ const SELECTED_COLLECTION_META = {
 const ROBOTS_INDEX =
   "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 const PROJECT_SEO = {
+  "legacy-square-stage": {
+    title: "Legacy Square Stage | Andrew Wheat",
+    description:
+      "Diagrams and marketing materials planned and created by Andrew Wheat for Mithun's Legacy Square Stage in Renton, Washington.",
+  },
   "ncsu-cates-west": {
     title: "NC State Cates West Development | Andrew Wheat",
     description:
@@ -731,7 +736,7 @@ ${siteHeader()}
     <main class="minimal-landing" id="main">
       <a class="minimal-landing-visual" href="/project/wood-street-pool/" aria-label="View the Wood Street Pool project">
         <img
-          src="/assets/images/Projects/Wood%20Street%20Pool/hero%202.png?v=20260726-beam-detail"
+          src="/assets/images/Projects/Wood%20Street%20Pool/hero%202%20newer.png"
           alt="Wood Street Pool natatorium interior"
           width="3840"
           height="2160"
@@ -1043,7 +1048,11 @@ function staticProjectMain(project) {
 async function rewriteProjectPage(project, { indexable }) {
   const slug = pageIdForProject(project);
   const file = `${ROOT}/project/${slug}/index.html`;
-  if (!existsSync(file)) return;
+  if (!existsSync(file)) {
+    await mkdir(`${ROOT}/project/${slug}`, { recursive: true });
+    const template = await readFile(`${ROOT}/project/ncsu-cates-west/index.html`, "utf8");
+    await writeClean(file, template);
+  }
   const url = projectUrl(project);
   const image = projectSearchImage(project);
   const description = projectDescription(project);
