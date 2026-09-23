@@ -2080,6 +2080,96 @@
     `;
   }
 
+  function initMinimalLandingCarousel() {
+    const carousel = document.querySelector("[data-landing-carousel]");
+    if (!carousel) return;
+
+    const media = carousel.closest(".minimal-landing-media");
+    const track = carousel.querySelector(".minimal-landing-track");
+    const slides = Array.from(carousel.querySelectorAll(".minimal-landing-slide"));
+    if (!media || !track || slides.length < 2) return;
+
+    const clone = (slide) => {
+      const copy = slide.cloneNode(true);
+      copy.removeAttribute("data-project-href");
+      copy.removeAttribute("data-project-label");
+      copy.setAttribute("alt", "");
+      copy.setAttribute("aria-hidden", "true");
+      copy.removeAttribute("loading");
+      return copy;
+    };
+    track.prepend(clone(slides[slides.length - 1]));
+    track.append(clone(slides[0]));
+    track.style.transform = "translate3d(-100%, 0, 0)";
+    track.getBoundingClientRect();
+    track.classList.add("is-ready");
+
+    let active = 0;
+    let position = 1;
+    let animating = false;
+    let paused = false;
+    let timer = null;
+    let finishTimer = null;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const finishMove = () => {
+      if (!animating) return;
+      window.clearTimeout(finishTimer);
+      if (position === 0 || position === slides.length + 1) {
+        track.classList.remove("is-ready");
+        position = active + 1;
+        track.style.transform = `translate3d(-${position * 100}%, 0, 0)`;
+        track.getBoundingClientRect();
+        track.classList.add("is-ready");
+      }
+      animating = false;
+    };
+
+    const move = (direction) => {
+      if (animating) return;
+      slides[active].setAttribute("aria-hidden", "true");
+      active = (active + direction + slides.length) % slides.length;
+      const slide = slides[active];
+      slide.setAttribute("aria-hidden", "false");
+      carousel.href = slide.dataset.projectHref;
+      carousel.setAttribute("aria-label", `View the ${slide.dataset.projectLabel} project`);
+      position += direction;
+      if (reduceMotion) {
+        track.style.transform = `translate3d(-${(active + 1) * 100}%, 0, 0)`;
+        position = active + 1;
+        return;
+      }
+      animating = true;
+      track.style.transform = `translate3d(-${position * 100}%, 0, 0)`;
+      finishTimer = window.setTimeout(finishMove, 1600);
+    };
+
+    track.addEventListener("transitionend", (event) => {
+      if (event.target === track && event.propertyName === "transform") finishMove();
+    });
+    media.querySelector("[data-landing-previous]").addEventListener("click", () => {
+      move(-1);
+      restartTimer();
+    });
+    media.querySelector("[data-landing-next]").addEventListener("click", () => {
+      move(1);
+      restartTimer();
+    });
+    media.addEventListener("mouseenter", () => { paused = true; });
+    media.addEventListener("mouseleave", () => { paused = false; });
+    media.addEventListener("focusin", () => { paused = true; });
+    media.addEventListener("focusout", () => { paused = false; });
+
+    function restartTimer() {
+      window.clearInterval(timer);
+      if (reduceMotion) return;
+      timer = window.setInterval(() => {
+        if (!paused && !document.hidden) move(1);
+      }, 7000);
+    }
+    restartTimer();
+  }
+
   function projectCardMetadata(project) {
     return project.year ? `<span>${escapeHtml(project.year)}</span>` : "";
   }
@@ -3716,6 +3806,7 @@
   initContactSocialLinks();
   initSelectedPage();
   renderHero();
+  initMinimalLandingCarousel();
   initHomeLogoIntro();
   renderWordMarquee();
   renderHalftoneTitle();

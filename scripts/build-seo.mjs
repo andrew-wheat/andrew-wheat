@@ -6,8 +6,8 @@ const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 // Modification dates are intentionally omitted until tracked per page.
 const METADATA_ONLY = process.argv.includes("--metadata-only");
-const MAIN_VERSION = "20260922-legacy-square-v7";
-const ASSET_VERSION = "20260922-legacy-square-v7";
+const MAIN_VERSION = "20260922-home-carousel-v2";
+const ASSET_VERSION = "20260922-home-carousel-v2";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;
@@ -734,16 +734,21 @@ ${buildHead({
 ${siteHeader()}
 
     <main class="minimal-landing" id="main">
-      <a class="minimal-landing-visual" href="/project/wood-street-pool/" aria-label="View the Wood Street Pool project">
-        <img
-          src="/assets/images/Projects/Wood%20Street%20Pool/hero%202%20newer.png"
-          alt="Wood Street Pool natatorium interior"
-          width="3840"
-          height="2160"
-          fetchpriority="high"
-          decoding="async"
-        >
-      </a>
+      <div class="minimal-landing-media">
+        <a class="minimal-landing-visual" data-landing-carousel href="/project/wood-street-pool/" aria-label="View the Wood Street Pool project">
+          <span class="minimal-landing-track">
+            <img class="minimal-landing-slide" src="/assets/images/optimized/hero-2-newer-465e602ddb.webp" alt="Wood Street Pool natatorium interior" data-project-href="/project/wood-street-pool/" data-project-label="Wood Street Pool" aria-hidden="false" fetchpriority="high" decoding="async">
+            <img class="minimal-landing-slide" src="/assets/images/optimized/hero-5c9e3444de.webp" alt="Wood Street Pool exterior rendering" data-project-href="/project/wood-street-pool/" data-project-label="Wood Street Pool" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="minimal-landing-slide" src="/assets/images/optimized/3x6a0280-cropped-smaller-40d75c123f.webp" alt="Enfield Food Pantry model photograph" data-project-href="/project/enfield-food-pantry/" data-project-label="Enfield Food Pantry" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="minimal-landing-slide" src="/assets/images/optimized/work-cover-photo-88e01b4705.webp" alt="Enfield Food Pantry work cover photograph" data-project-href="/project/enfield-food-pantry/" data-project-label="Enfield Food Pantry" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="minimal-landing-slide" src="/assets/images/optimized/model-full-shot-f3703fe1ba.webp" alt="Full model photograph of Hunters Point Cooperative Housing" data-project-href="/project/hunters-point/" data-project-label="Hunters Point Cooperative Housing" aria-hidden="true" loading="lazy" decoding="async">
+          </span>
+        </a>
+        <div class="minimal-landing-controls" aria-label="Image carousel controls">
+          <button type="button" data-landing-previous aria-label="Previous image">←</button>
+          <button type="button" data-landing-next aria-label="Next image">→</button>
+        </div>
+      </div>
       <div class="minimal-landing-content">
         <h1 class="minimal-landing-copy">${escapeHtml(LANDING_STATEMENT)}</h1>
         <a class="minimal-landing-work-link" href="/work/">view work</a>
