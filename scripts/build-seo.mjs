@@ -6,8 +6,8 @@ const ROOT = process.cwd();
 const ORIGIN = "https://andrew-wheat.com";
 // Modification dates are intentionally omitted until tracked per page.
 const METADATA_ONLY = process.argv.includes("--metadata-only");
-const MAIN_VERSION = "20260922-home-carousel-v3";
-const ASSET_VERSION = "20260922-home-carousel-v3";
+const MAIN_VERSION = "20260922-home-carousel-v4";
+const ASSET_VERSION = "20260922-home-carousel-v4";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;
@@ -742,6 +742,7 @@ ${siteHeader()}
             <img class="minimal-landing-slide" src="/assets/images/optimized/3x6a0280-cropped-smaller-40d75c123f.webp" alt="Enfield Food Pantry model photograph" data-project-href="/project/enfield-food-pantry/" data-project-label="Enfield Food Pantry" aria-hidden="true" loading="lazy" decoding="async">
             <img class="minimal-landing-slide" src="/assets/images/optimized/work-cover-photo-88e01b4705.webp" alt="Enfield Food Pantry work cover photograph" data-project-href="/project/enfield-food-pantry/" data-project-label="Enfield Food Pantry" aria-hidden="true" loading="lazy" decoding="async">
             <img class="minimal-landing-slide" src="/assets/images/optimized/model-full-shot-f3703fe1ba.webp" alt="Full model photograph of Hunters Point Cooperative Housing" data-project-href="/project/hunters-point/" data-project-label="Hunters Point Cooperative Housing" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="minimal-landing-slide" src="/assets/images/optimized/model-01-cropped-36eaff50fb.webp" alt="Adjustable model from deconstruct and reconfigure" data-project-href="/project/deconstruct-reconfigure/" data-project-label="[de]construct + [re]configure" aria-hidden="true" loading="lazy" decoding="async">
           </span>
         </a>
         <div class="minimal-landing-controls" aria-label="Image carousel controls">
