@@ -8364,6 +8364,16 @@ body[data-page="landing-minimal"] .minimal-landing {
   background: #ffffff;
 }
 
+/* Keep the mobile folder underline centered when the shared active-state rule scales it in. */
+@media (max-width: 900px) {
+  body[data-page] .site-header .site-nav .nav-folder > .nav-primary-link:is(:hover, :focus-visible, [aria-current="page"])::after,
+  body[data-page] .site-header .site-nav .nav-folder:hover > .nav-primary-link::after,
+  body[data-page] .site-header .site-nav .nav-folder:focus-within > .nav-primary-link::after,
+  body[data-page] .site-header .site-nav .nav-folder.is-open > .nav-primary-link::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
 body[data-page="landing-minimal"] .minimal-landing-visual::after {
   display: none;
 }
@@ -8788,5 +8798,171 @@ body[data-page="landing-minimal"] .minimal-landing-controls button:is(:hover, :f
 @media (prefers-reduced-motion: reduce) {
   body[data-page="landing-minimal"] .minimal-landing-track.is-ready {
     transition: none;
+  }
+}
+
+/* Hunters Point diagrams use a cropped drawing and stacked, live keys on phones. */
+.hunters-mobile-composition {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .project-story-frame--hunters-native-parti,
+  .project-story-frame--hunters-complete-diagram {
+    padding: 30px 0 46px;
+  }
+
+  .hunters-native-parti-scroll,
+  .hunters-complete-scroll {
+    display: none;
+  }
+
+  .hunters-mobile-composition {
+    display: grid;
+    gap: 26px;
+    width: min(100%, 560px);
+    min-width: 0;
+    margin: 0 auto;
+    padding: 0 22px;
+    box-sizing: border-box;
+    font-family: var(--font-annotation);
+    color: #1b1b1b;
+  }
+
+  .hunters-mobile-art {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 0.91;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .hunters-mobile-art img {
+    position: absolute;
+    top: 0;
+    display: block;
+    width: var(--hunters-mobile-art-scale, 180%) !important;
+    min-width: var(--hunters-mobile-art-scale, 180%) !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+  }
+
+  .hunters-mobile-art--parti img {
+    left: -62%;
+  }
+
+  .hunters-mobile-art--complete img {
+    left: -45%;
+    --hunters-mobile-art-scale: 188%;
+  }
+
+  .hunters-mobile-keys,
+  .hunters-mobile-key,
+  .hunters-mobile-marks,
+  .hunters-mobile-places {
+    display: grid;
+  }
+
+  .hunters-mobile-keys {
+    gap: 24px;
+  }
+
+  .hunters-mobile-key {
+    min-width: 0;
+    gap: 10px;
+    padding-top: 18px;
+    border-top: 1px solid #d7d7d7;
+    font-size: clamp(14px, 3.7vw, 16px);
+    line-height: 1.4;
+  }
+
+  .hunters-mobile-key h3,
+  .hunters-mobile-key p {
+    margin: 0;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: 400;
+  }
+
+  .hunters-mobile-key h3,
+  .hunters-mobile-key strong {
+    font-weight: 700;
+  }
+
+  .hunters-mobile-marks {
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .hunters-mobile-mark {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hunters-mobile-swatch {
+    display: block;
+    width: 28px;
+    height: 11px;
+  }
+
+  .hunters-mobile-swatch--corridor { background: #c6c8c9; }
+  .hunters-mobile-swatch--porch { background: repeating-linear-gradient(135deg, #d8dadb 0 1px, transparent 1px 4px); }
+  .hunters-mobile-swatch--landing { background: #bcebdc; }
+  .hunters-mobile-swatch--workshop { background: #ffaeb8; }
+  .hunters-mobile-swatch--vendors { background: #add5ff; }
+  .hunters-mobile-swatch--greenspace { background: repeating-linear-gradient(135deg, #bcebdc 0 1px, transparent 1px 4px); }
+  .hunters-mobile-swatch--rail { height: 8px; background: repeating-linear-gradient(to bottom, #ed999c 0 1px, transparent 1px 3px); }
+  .hunters-mobile-swatch--site { background: #f3d0d1; }
+  .hunters-mobile-swatch--retail { width: 14px; height: 14px; margin-left: 7px; border-radius: 50%; background: #f69b43; }
+  .hunters-mobile-swatch--pedestrian { height: 1px; background: #f69b43; }
+  .hunters-mobile-swatch--nodes { width: 14px; height: 14px; margin-left: 7px; border-radius: 50%; background: #cab7d5; }
+  .hunters-mobile-swatch--connections { height: 1px; background: #b58fc9; }
+
+  .hunters-mobile-places {
+    gap: 8px;
+  }
+
+  .hunters-mobile-place {
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+  }
+
+  .hunters-mobile-place-number {
+    display: grid;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #111;
+    color: #fff;
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  .hunters-mobile-key--metrics h3:not(:first-child) {
+    margin-top: 12px;
+  }
+
+  .hunters-mobile-heat-scale {
+    height: 6px;
+    background: linear-gradient(to right, #f7f7f7, #d6d6d6, #777, #000);
+  }
+
+  .hunters-mobile-scale-range,
+  .hunters-mobile-traffic {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .hunters-mobile-traffic .hunters-complete-traffic-wedge {
+    flex: 1;
+    max-width: 230px;
   }
 }

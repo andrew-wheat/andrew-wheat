@@ -2775,10 +2775,21 @@
       ["garden-copy-two", "A central plaza intruduces a cruciform axis to the site, inviting overlap of<br>movement between the neighborhood, and the green corridor."],
       ["vendors", "Vendors / Services"], ["greenspace", "Greenspace"]
     ];
+    const label = Object.fromEntries(labels);
+    const mobileCopy = (key) => label[key].replace(/<br>/g, " ");
+    const mobileMark = (kind, key) => `<div class="hunters-mobile-mark"><span class="hunters-mobile-swatch hunters-mobile-swatch--${kind}" aria-hidden="true"></span><span>${label[key]}</span></div>`;
     return `<div class="hunters-native-parti-scroll"><div class="project-story-board hunters-native-parti-board">
       ${projectMedia(project, image.src, image.caption || project.title)}
       ${labels.map(([key, html]) => `<div class="hunters-native-parti-label hunters-native-parti-label--${key}">${html}</div>`).join("")}
-    </div></div>`;
+    </div></div>
+    <div class="hunters-mobile-composition hunters-mobile-composition--parti">
+      <div class="hunters-mobile-art hunters-mobile-art--parti">${projectMedia(project, image.src, image.caption || project.title)}</div>
+      <div class="hunters-mobile-keys">
+        <section class="hunters-mobile-key"><h3>${label["walls-title"]}</h3><p>${mobileCopy("walls-copy")}</p><div class="hunters-mobile-marks">${mobileMark("corridor", "corridor")}${mobileMark("porch", "porch")}</div></section>
+        <section class="hunters-mobile-key"><h3>${label["landings-title"]}</h3><p>${mobileCopy("landings-copy")}</p><div class="hunters-mobile-marks">${mobileMark("landing", "landing")}${mobileMark("workshop", "workshop")}</div></section>
+        <section class="hunters-mobile-key"><h3>${label["garden-title"]}</h3><p>${mobileCopy("garden-copy")}</p><p>${mobileCopy("garden-copy-two")}</p><div class="hunters-mobile-marks">${mobileMark("vendors", "vendors")}${mobileMark("greenspace", "greenspace")}</div></section>
+      </div>
+    </div>`;
   }
 
   function huntersCompleteDiagram(project, image) {
@@ -2791,6 +2802,8 @@
       ["nodes", "Nodes of Overlap"], ["connections", "Continuity + Connections"],
     ];
     const places = ["Typical Low-Rise Residential", "St. Mary Roman Catholic", "Hunters Point Com. Park", "Andrews Grove Playground", "Private Rooftop Parks", "Queens Public Library"];
+    const label = Object.fromEntries(labels);
+    const mobileMark = (kind, key) => `<div class="hunters-mobile-mark"><span class="hunters-mobile-swatch hunters-mobile-swatch--${kind}" aria-hidden="true"></span><span>${label[key]}</span></div>`;
     return `<div class="hunters-complete-scroll"><div class="hunters-complete-board">
       ${projectMedia(project, image.src, image.caption || project.title)}
       ${labels.map(([key, html]) => `<div class="hunters-complete-label hunters-complete-label--${key}">${html}</div>`).join("")}
@@ -2802,7 +2815,17 @@
         </div>
         <p class="hunters-complete-conclusion">High heat exposure coincides with sustained foot traffic, revealing a gap between environmental performance and urban activity. The project leverages this condition to introduce a shaded, productive corridor that improves comfort while supporting co-located use.</p>
       </div>
-    </div></div>`;
+    </div></div>
+    <div class="hunters-mobile-composition hunters-mobile-composition--complete">
+      <div class="hunters-mobile-art hunters-mobile-art--complete">${projectMedia(project, image.src, image.caption || project.title)}</div>
+      <div class="hunters-mobile-keys">
+        <section class="hunters-mobile-key"><p>${label.industrial}</p><div class="hunters-mobile-marks">${mobileMark("rail", "rail")}${mobileMark("site", "site")}</div></section>
+        <section class="hunters-mobile-key"><p>${label.scattered}</p><div class="hunters-mobile-marks">${mobileMark("retail", "retail")}${mobileMark("pedestrian", "pedestrian")}</div></section>
+        <section class="hunters-mobile-key"><p>${label.interwoven}</p><div class="hunters-mobile-marks">${mobileMark("nodes", "nodes")}${mobileMark("connections", "connections")}</div></section>
+        <section class="hunters-mobile-key"><h3>Site locations</h3><div class="hunters-mobile-places">${places.map((place, index) => `<div class="hunters-mobile-place"><span class="hunters-mobile-place-number">${index + 1}</span><span>${escapeHtml(place)}</span></div>`).join("")}</div></section>
+        <section class="hunters-mobile-key hunters-mobile-key--metrics"><h3>Surface Deviation From Mean Temp</h3><div class="hunters-mobile-heat-scale" aria-hidden="true"></div><div class="hunters-mobile-scale-range"><span>&lt; - 8° C</span><span>&gt; 8° C</span></div><h3>Annualized Foot Traffic</h3><div class="hunters-mobile-traffic"><span>Low</span><span class="hunters-complete-traffic-wedge" aria-hidden="true"></span><span>High</span></div><p>High heat exposure coincides with sustained foot traffic, revealing a gap between environmental performance and urban activity. The project leverages this condition to introduce a shaded, productive corridor that improves comfort while supporting co-located use.</p></section>
+      </div>
+    </div>`;
   }
 
   function ncsuProcessRow(project, process) {
