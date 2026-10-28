@@ -5,8 +5,8 @@
   --muted: #000000;
   --line: transparent;
   --panel: #ffffff;
-  --hover-cyan: #00ffff;
-  --hover-cyan-difference-source: #ff0000;
+  --hover-accent: #b0bf1a;
+  --hover-accent-difference-source: #4f40e5;
   --max: 1180px;
   --gutter: clamp(22px, 3vw, 40px);
   --project-gutter: clamp(44px, 3.6vw, 56px);
@@ -7999,23 +7999,23 @@ button:active,
 }
 
 /* Site-wide text interaction color. Header text uses the complementary source
-   color so the existing difference blend resolves to cyan over white pages. */
+   color so the existing difference blend resolves to the accent over white pages. */
 :where(a[href], button, [role="button"], select):hover,
 :where(a[href], button, [role="button"], select):focus-visible {
-  color: var(--hover-cyan) !important;
+  color: var(--hover-accent) !important;
   opacity: 1 !important;
 }
 
 .site-header :where(a[href], button, [role="button"]):hover,
 .site-header :where(a[href], button, [role="button"]):focus-visible {
-  color: var(--hover-cyan-difference-source) !important;
+  color: var(--hover-accent-difference-source) !important;
   opacity: 1 !important;
 }
 
 @media (max-width: 900px) {
   body.is-mobile-menu-open .site-header :where(a[href], button, [role="button"]):hover,
   body.is-mobile-menu-open .site-header :where(a[href], button, [role="button"]):focus-visible {
-    color: var(--hover-cyan) !important;
+    color: var(--hover-accent) !important;
   }
 }
 
@@ -8023,7 +8023,7 @@ body[data-page="work"] .work-equation-marquee button.marquee-filter:hover,
 body[data-page="work"] .work-equation-marquee button.marquee-filter:focus-visible,
 body[data-page="work"] .icon-button:hover,
 body[data-page="work"] .icon-button:focus-visible {
-  color: var(--hover-cyan) !important;
+  color: var(--hover-accent) !important;
   opacity: 1 !important;
 }
 
