@@ -2505,6 +2505,8 @@ img[data-image-skeleton].is-loaded {
 .contact-social-icon--linkedin {
   width: 76%;
   height: 76%;
+  fill: currentColor;
+  stroke: none;
 }
 
 .contact-social-icon-dot {
@@ -8000,15 +8002,15 @@ button:active,
 
 /* Site-wide text interaction color. Header text uses the complementary source
    color so the existing difference blend resolves to the accent over white pages. */
-:where(a[href], button, [role="button"], select):hover,
-:where(a[href], button, [role="button"], select):focus-visible {
+:where(a[href], button, [role="button"], select, summary, input[type="button"], input[type="submit"], input[type="reset"]):hover,
+:where(a[href], button, [role="button"], select, summary, input[type="button"], input[type="submit"], input[type="reset"]):focus-visible {
   color: var(--hover-accent) !important;
   opacity: 1 !important;
 }
 
 .site-header :where(a[href], button, [role="button"]):hover,
 .site-header :where(a[href], button, [role="button"]):focus-visible {
-  color: var(--hover-accent-difference-source) !important;
+  color: var(--header-hover-accent, var(--hover-accent-difference-source)) !important;
   opacity: 1 !important;
 }
 
@@ -8025,6 +8027,27 @@ body[data-page="work"] .icon-button:hover,
 body[data-page="work"] .icon-button:focus-visible {
   color: var(--hover-accent) !important;
   opacity: 1 !important;
+}
+
+
+/* Keep nested labels and icon artwork in step with the hovered control. */
+:where(a[href], button, [role="button"], select, summary, input[type="button"], input[type="submit"], input[type="reset"]):is(:hover, :focus-visible)
+  :where(div, span, svg, h2, h3, p, strong, em, small, figcaption) {
+  color: inherit !important;
+}
+
+/* The preview close button blends at rest; use the exact accent on interaction. */
+.project-lightbox-close:is(:hover, :focus-visible) {
+  mix-blend-mode: normal;
+}
+
+/* The active pointer uses the same accent without inverting the hovered icon. */
+.site-cursor.is-active:not(.is-rotate):not(.is-resize) {
+  mix-blend-mode: normal;
+}
+
+.site-cursor.is-active:not(.is-rotate):not(.is-resize)::before {
+  background: var(--hover-accent);
 }
 
 /* Primary navigation shares the exact metrics used by the Work filters. */
@@ -8204,6 +8227,7 @@ body[data-page="landing-minimal"] {
 }
 
 body[data-page="landing-minimal"] .site-header {
+  --header-hover-accent: var(--hover-accent);
   position: fixed;
   color: #ffffff;
   mix-blend-mode: normal;
