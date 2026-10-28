@@ -2502,6 +2502,11 @@ img[data-image-skeleton].is-loaded {
   vector-effect: non-scaling-stroke;
 }
 
+.contact-social-icon--linkedin {
+  width: 76%;
+  height: 76%;
+}
+
 .contact-social-icon-dot {
   fill: currentColor;
   stroke: none;
