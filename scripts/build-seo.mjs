@@ -7,7 +7,7 @@ const ORIGIN = "https://andrew-wheat.com";
 // Modification dates are intentionally omitted until tracked per page.
 const METADATA_ONLY = process.argv.includes("--metadata-only");
 const MAIN_VERSION = "20260922-home-carousel-v6";
-const ASSET_VERSION = "20260922-home-carousel-v6";
+const ASSET_VERSION = "20261028-editorial-type";
 const PERSON_ID = `${ORIGIN}/#andrew-wheat`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
 const HEADSHOT_4X3 = `${ORIGIN}/assets/images/seo/andrew-wheat-portrait-4x3.jpg`;

@@ -5,8 +5,6 @@
   --muted: #000000;
   --line: transparent;
   --panel: #ffffff;
-  --hover-accent: #b0bf1a;
-  --hover-accent-difference-source: #4f40e5;
   --max: 1180px;
   --gutter: clamp(22px, 3vw, 40px);
   --project-gutter: clamp(44px, 3.6vw, 56px);
@@ -37,15 +35,17 @@
   --type-annotation: clamp(13px, 0.95vw, 15px);
   --type-caption: clamp(10.5px, 0.74vw, 12px);
   --weight-title: 700;
-  --weight-header: 700;
-  --weight-copy: 400;
-  --weight-annotation: 700;
-  --weight-interface: 400;
-  --weight-question: var(--weight-interface);
-  --weight-control: 300;
+  --weight-header: var(--weight-title);
+  --weight-copy: 500;
+  --weight-brand: 600;
+  --weight-nav: 500;
+  --weight-annotation: var(--weight-copy);
+  --weight-interface: var(--weight-copy);
+  --weight-question: var(--weight-copy);
+  --weight-control: var(--weight-nav);
   --question-line-height: 1.28;
   --control-line-height: 1.2;
-  --weight-selected: 400;
+  --weight-selected: var(--weight-copy);
   --brand-lockup-gap: clamp(16px, 0.72em, 24px);
   --header-button-scale: 1;
   --icon-button-size: 30px;
@@ -55,33 +55,41 @@
 
 @font-face {
   font-family: "Inter Portfolio";
-  src: url("../fonts/inter/Inter-Regular.woff2") format("woff2");
-  font-weight: 400;
+  src: url("../fonts/inter/Inter-600.woff2") format("woff2");
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Inter Portfolio";
-  src: url("../fonts/inter/Inter-Light.woff2") format("woff2");
-  font-weight: 300;
+  src: url("../fonts/inter/Inter-500.woff2") format("woff2");
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Inter Portfolio";
-  src: url("../fonts/inter/Inter-Italic.woff2") format("woff2");
-  font-weight: 400;
+  src: url("../fonts/inter/Inter-500Italic.woff2") format("woff2");
+  font-weight: 500;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Inter Portfolio";
-  src: url("../fonts/inter/Inter-Bold.woff2") format("woff2");
+  src: url("../fonts/inter/Inter-700.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Portfolio";
+  src: url("../fonts/inter/Inter-700Italic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -1137,7 +1145,7 @@ figcaption {
   text-align: left;
   font-family: var(--font-compact);
   font-size: clamp(34px, 4.2vw, 66px);
-  font-weight: 700;
+  font-weight: var(--weight-title);
   line-height: 1.06;
   color: var(--ink);
   text-shadow:
@@ -1958,7 +1966,7 @@ body[data-page="work"] .filter-label select {
   color: #ffffff;
   font-family: var(--font-main);
   font-size: var(--type-work-card-copy);
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   line-height: 1.35;
 }
 
@@ -2881,7 +2889,7 @@ img[data-image-skeleton].is-loaded {
     color: var(--ink);
     font-family: var(--font-copy);
     font-size: clamp(10px, 0.68vw, 12px);
-    font-weight: 300;
+    font-weight: var(--weight-copy);
     line-height: 1.2;
     letter-spacing: 0.01em;
     white-space: nowrap;
@@ -3786,7 +3794,7 @@ body.project-lightbox-open .site-cursor {
 .enfield-atlas-intro h2 {
   margin: 0 0 0.55em;
   font-size: var(--type-project-copy);
-  font-weight: 700;
+  font-weight: var(--weight-title);
   line-height: 1.48;
 }
 
@@ -3812,7 +3820,7 @@ body.project-lightbox-open .site-cursor {
 .enfield-atlas-group h3 {
   margin: 0 0 clamp(28px, 2.6vw, 44px);
   font-size: var(--type-project-copy);
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   line-height: 1.15;
   text-align: center;
   text-transform: lowercase;
@@ -3866,7 +3874,7 @@ body.project-lightbox-open .site-cursor {
   background: transparent;
   font-family: var(--font-copy);
   font-size: clamp(10px, 0.68vw, 12px);
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   line-height: 1.35;
   letter-spacing: 0.01em;
   text-align: left;
@@ -4470,7 +4478,7 @@ body.project-lightbox-open .site-cursor {
   color: #ffffff;
   font-family: var(--font-annotation);
   font-size: clamp(10px, 0.82vw, 15px);
-  font-weight: 700;
+  font-weight: var(--weight-title);
   line-height: 1;
   transform: translate(-50%, -50%);
 }
@@ -4480,7 +4488,7 @@ body.project-lightbox-open .site-cursor {
   color: #243f91;
   font-family: var(--font-annotation);
   font-size: clamp(10px, 0.82vw, 15px);
-  font-weight: 700;
+  font-weight: var(--weight-title);
   line-height: 1;
   text-transform: none;
   white-space: nowrap;
@@ -4515,7 +4523,7 @@ body.project-lightbox-open .site-cursor {
   color: #243f91;
   font-family: var(--font-annotation);
   font-size: clamp(18px, 1.22vw, 24px);
-  font-weight: 700;
+  font-weight: var(--weight-title);
   line-height: 1;
   text-transform: none;
 }
@@ -4536,7 +4544,7 @@ body.project-lightbox-open .site-cursor {
   gap: clamp(12px, 1vw, 17px);
   font-family: var(--font-main);
   font-size: clamp(13px, 0.86vw, 16px);
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   line-height: 1.15;
 }
 
@@ -4550,7 +4558,7 @@ body.project-lightbox-open .site-cursor {
   color: #243f91;
   font-family: var(--font-annotation);
   font-size: clamp(13px, 0.86vw, 16px);
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   line-height: 1;
 }
 
@@ -4573,13 +4581,13 @@ body.project-lightbox-open .site-cursor {
   color: #243f91;
   font-family: var(--font-annotation);
   font-size: clamp(28px, 1.9vw, 38px);
-  font-weight: 700;
+  font-weight: var(--weight-title);
   line-height: 0.95;
 }
 
 .wood-site-scores span {
   font-size: clamp(15px, 1.02vw, 20px);
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   line-height: 1;
 }
 
@@ -4802,11 +4810,11 @@ body.project-lightbox-open .site-cursor {
   background: #fff;
   font-size: .88cqw;
   line-height: 1.18;
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   white-space: nowrap;
 }
 
-.hunters-complete-label strong { font-weight: 700; }
+.hunters-complete-label strong { font-weight: var(--weight-title); }
 .hunters-complete-label small { font-size: .72em; }
 .hunters-complete-label--industrial { left: 5.25%; top: 5%; width: 16%; padding: .2%; }
 .hunters-complete-label--rail { left: 10.8%; top: 19.9%; width: 12%; padding: .2%; }
@@ -4860,13 +4868,13 @@ body.project-lightbox-open .site-cursor {
   background: #000;
   color: #fff;
   font-size: .8cqw;
-  font-weight: 700;
+  font-weight: var(--weight-title);
   line-height: 1;
 }
 .hunters-complete-metrics { margin-top: 3.3cqw; }
 .hunters-complete-metric { text-align: center; }
 .hunters-complete-metric + .hunters-complete-metric { margin-top: 1.25cqw; }
-.hunters-complete-metric strong { display: block; font-weight: 700; }
+.hunters-complete-metric strong { display: block; font-weight: var(--weight-title); }
 .hunters-complete-scale {
   height: .42cqw;
   margin: .48cqw 1.8cqw .12cqw;
@@ -5080,7 +5088,7 @@ body.project-lightbox-open .site-cursor {
   color: #000000;
   font-family: var(--font-copy);
   font-size: var(--type-caption);
-  font-weight: 300;
+  font-weight: var(--weight-copy);
   line-height: 1.35;
   letter-spacing: 0.01em;
 }
@@ -5132,7 +5140,7 @@ body.project-lightbox-open .site-cursor {
   margin-top: 8px;
   color: var(--muted);
   font-size: var(--type-caption);
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   line-height: 1.42;
   letter-spacing: 0.02em;
 }
@@ -6231,7 +6239,7 @@ body[data-page="error"] .error-shell {
 }
 
 .error-content h1 {
-  font-weight: 600;
+  font-weight: var(--weight-copy);
 }
 
 .error-content p {
@@ -6249,7 +6257,7 @@ body[data-page="error"] .error-shell {
   color: var(--ink);
   font-family: var(--font-copy);
   font-size: var(--type-copy);
-  font-weight: 300;
+  font-weight: var(--weight-copy);
   text-decoration: none;
 }
 
@@ -6282,7 +6290,7 @@ body[data-page="error"] .site-copyright {
 
   .enfield-atlas-intro h2 {
     font-size: var(--type-project-copy);
-    font-weight: 700;
+    font-weight: var(--weight-title);
   }
 
   .enfield-atlas-groups {
@@ -6293,7 +6301,7 @@ body[data-page="error"] .site-copyright {
   .enfield-atlas-group h3 {
     margin-bottom: 24px;
     font-size: var(--type-project-copy);
-    font-weight: 400;
+    font-weight: var(--weight-copy);
     text-align: center;
   }
 
@@ -6608,7 +6616,7 @@ body[data-page="error"] .site-copyright {
     min-height: 72px;
     padding: 24px var(--work-edge);
     font-size: var(--randy-title-size);
-    font-weight: 400;
+    font-weight: var(--weight-copy);
     letter-spacing: 0.05em;
   }
 
@@ -6626,7 +6634,7 @@ body[data-page="error"] .site-copyright {
 
   body[data-page="work"] .site-nav a {
     font-size: var(--randy-interface-size);
-    font-weight: 400;
+    font-weight: var(--weight-copy);
     line-height: 1.2;
     letter-spacing: 0.03em;
   }
@@ -6679,7 +6687,7 @@ body[data-page="error"] .site-copyright {
   body[data-page="work"] .work-equation-marquee button.marquee-token,
   body[data-page="work"] .work-equation-marquee button.marquee-fixed {
     font-size: var(--randy-interface-size);
-    font-weight: 400;
+    font-weight: var(--weight-copy);
     line-height: 1.2;
     letter-spacing: 0.02em;
   }
@@ -6804,7 +6812,7 @@ body[data-page="landing-minimal"] {
   margin: 0;
   color: var(--ink);
   font-size: var(--randy-interface-size, 15px);
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   line-height: 1.5;
   letter-spacing: 0.01em;
   text-align: left;
@@ -6813,7 +6821,7 @@ body[data-page="landing-minimal"] {
 .minimal-landing-work-link {
   color: var(--ink);
   font-size: var(--randy-interface-size, 15px);
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   line-height: 1.2;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -6908,7 +6916,7 @@ body[data-page="work"] .work-catalogue[data-view="grid"] .project-number {
 body[data-page="work"] .work-catalogue[data-view="grid"] .project-card h2 {
   color: var(--ink);
   font-size: var(--randy-interface-size, 15px);
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   line-height: 1.2;
   letter-spacing: 0.02em;
 }
@@ -6917,7 +6925,7 @@ body[data-page="work"] .work-catalogue[data-view="grid"] .project-card-meta {
   margin-top: 0.18em;
   color: #000000;
   font-size: var(--randy-interface-size, 15px);
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   line-height: 1.2;
   letter-spacing: 0.02em;
 }
@@ -7021,7 +7029,7 @@ button,
     min-height: 72px;
     padding: 24px var(--project-gutter);
     font-size: 17px;
-    font-weight: 400;
+    font-weight: var(--weight-copy);
     letter-spacing: 0.005em;
   }
 
@@ -7032,7 +7040,7 @@ button,
 
   .nav-primary-link {
     font-size: 17px;
-    font-weight: 400;
+    font-weight: var(--weight-copy);
     line-height: 1.2;
   }
 
@@ -7087,21 +7095,21 @@ body[data-page="project"] .project-story-item img {
 @media (min-width: 901px) {
   .site-header .brand {
     font-size: calc(12px + 0.48vw);
-    font-weight: 400;
+    font-weight: var(--weight-copy);
     line-height: 1.2;
     letter-spacing: 0.05em;
   }
 
   body[data-page] .site-nav .nav-primary-link {
     font-size: calc(12px + 0.24vw);
-    font-weight: 400;
+    font-weight: var(--weight-copy);
     line-height: 1.2;
     letter-spacing: 0.03em;
     opacity: 1;
   }
 
   body[data-page] .site-nav .nav-primary-link[aria-current="page"] {
-    font-weight: 400;
+    font-weight: var(--weight-copy);
     opacity: 1;
   }
 
@@ -7111,20 +7119,20 @@ body[data-page="project"] .project-story-item img {
   body[data-page="work"] .work-equation-marquee button.marquee-token,
   body[data-page="work"] .work-equation-marquee button.marquee-fixed {
     font-size: calc(12px + 0.24vw);
-    font-weight: 400;
+    font-weight: var(--weight-copy);
     line-height: 1.2;
     letter-spacing: 0.02em;
   }
 
   body[data-page="work"] .work-equation-marquee button.marquee-filter.active {
     color: var(--ink);
-    font-weight: 400;
+    font-weight: var(--weight-copy);
     opacity: 1;
   }
 
   body[data-page="work"] .work-equation-marquee button.marquee-filter:not(.active) {
     color: var(--ink);
-    font-weight: 400;
+    font-weight: var(--weight-copy);
     opacity: 1;
   }
 
@@ -7183,7 +7191,7 @@ body[data-page="project"] .project-story-item img {
 .site-nav .nav-dropdown-link:hover,
 .site-nav .nav-dropdown-link:focus-visible,
 .site-nav .nav-dropdown-link[aria-current="page"] {
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   opacity: 1;
 }
 
@@ -7488,7 +7496,7 @@ body[data-page="selected"] {
     color: var(--ink);
     font-family: var(--font-copy);
     font-size: clamp(10px, 0.68vw, 12px);
-    font-weight: 400;
+    font-weight: var(--weight-copy);
     line-height: 1.35;
     letter-spacing: 0.01em;
     text-align: left;
@@ -7507,22 +7515,22 @@ body[data-page="selected"] {
   }
 
   body[data-selected-collection="photography"] .selected-photo-location {
-    font-weight: 500;
+    font-weight: var(--weight-copy);
   }
 
   body[data-selected-collection="models"] .selected-model-meta strong {
-    font-weight: 600;
+    font-weight: var(--weight-copy);
   }
 
   body[data-selected-collection="renderings"] .selected-exhibit-title {
-    font-weight: 400;
+    font-weight: var(--weight-copy);
   }
 
   body[data-selected-collection="models"] .selected-model-meta span,
   body[data-selected-collection="drawings"] .selected-drawing-meta span,
   body[data-selected-collection="renderings"] .selected-rendering-meta span {
     margin-top: 2px;
-    font-weight: 400;
+    font-weight: var(--weight-copy);
   }
 
   body[data-selected-collection="photography"]
@@ -7892,7 +7900,7 @@ body:has(.nav-folder--info:focus-within) > footer {
   }
 }
 
-/* Text controls mirror the work filters: muted when inactive, full black and underlined when current. */
+/* Text controls share the copy weight; current items use an underline. */
 body[data-page="home"] .site-header,
 body[data-page="landing-minimal"] .site-header,
 body[data-page="work"] .site-header,
@@ -7908,7 +7916,7 @@ body[data-page="error"] .site-header {
 .site-nav a,
 .site-nav button,
 .site-nav .nav-dropdown-link {
-  font-weight: 300;
+  font-weight: var(--weight-copy);
   font-synthesis: none;
   text-decoration: none;
   opacity: 1;
@@ -7924,21 +7932,21 @@ body[data-page] .site-nav .nav-primary-link {
 .site-nav .nav-dropdown-link,
 .site-nav [aria-current="page"],
 .site-nav .nav-dropdown-link[aria-current="page"] {
-  font-weight: 300 !important;
+  font-weight: var(--weight-copy) !important;
   font-synthesis: none;
 }
 
 .contact-list a,
 .contact-list button,
 .email-compose-panel button[type="submit"] {
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   opacity: 1;
 }
 
 .site-nav [aria-current="page"],
 .site-nav .nav-dropdown-link[aria-current="page"],
 .work-equation-marquee button.marquee-filter.active {
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
@@ -7955,7 +7963,7 @@ body[data-page="work"] .work-equation-marquee button.marquee-filter:not(.active)
 body[data-page="work"] .work-equation-marquee button.marquee-filter:hover,
 body[data-page="work"] .work-equation-marquee button.marquee-filter:focus-visible {
   color: var(--ink);
-  font-weight: 300;
+  font-weight: var(--weight-copy);
   text-decoration: none;
   opacity: 1;
 }
@@ -7964,7 +7972,7 @@ body[data-page="work"] .work-equation-marquee button.marquee-filter.active,
 body[data-page="work"] .work-equation-marquee button.marquee-filter.active:hover,
 body[data-page="work"] .work-equation-marquee button.marquee-filter.active:focus-visible {
   color: var(--ink);
-  font-weight: 300;
+  font-weight: var(--weight-copy);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
@@ -7973,7 +7981,7 @@ body[data-page="work"] .work-equation-marquee button.marquee-filter.active:focus
 
 .site-nav .nav-dropdown-link:hover:not([aria-current="page"]),
 .site-nav .nav-dropdown-link:focus-visible:not([aria-current="page"]) {
-  font-weight: 300;
+  font-weight: var(--weight-copy);
   text-decoration: none;
   opacity: 1;
 }
@@ -8000,54 +8008,15 @@ button:active,
   text-underline-offset: 4px;
 }
 
-/* Site-wide text interaction color. Header text uses the complementary source
-   color so the existing difference blend resolves to the accent over white pages. */
-:where(a[href], button, [role="button"], select, summary, input[type="button"], input[type="submit"], input[type="reset"]):hover,
-:where(a[href], button, [role="button"], select, summary, input[type="button"], input[type="submit"], input[type="reset"]):focus-visible {
-  color: var(--hover-accent) !important;
+/* Interaction keeps the normal monochrome text and icon colors. */
+:where(a[href], button, [role="button"], select, summary, input[type="button"], input[type="submit"], input[type="reset"]):is(:hover, :focus-visible) {
   opacity: 1 !important;
 }
-
-.site-header :where(a[href], button, [role="button"]):hover,
-.site-header :where(a[href], button, [role="button"]):focus-visible {
-  color: var(--header-hover-accent, var(--hover-accent-difference-source)) !important;
-  opacity: 1 !important;
-}
-
-@media (max-width: 900px) {
-  body.is-mobile-menu-open .site-header :where(a[href], button, [role="button"]):hover,
-  body.is-mobile-menu-open .site-header :where(a[href], button, [role="button"]):focus-visible {
-    color: var(--hover-accent) !important;
-  }
-}
-
-body[data-page="work"] .work-equation-marquee button.marquee-filter:hover,
-body[data-page="work"] .work-equation-marquee button.marquee-filter:focus-visible,
-body[data-page="work"] .icon-button:hover,
-body[data-page="work"] .icon-button:focus-visible {
-  color: var(--hover-accent) !important;
-  opacity: 1 !important;
-}
-
 
 /* Keep nested labels and icon artwork in step with the hovered control. */
 :where(a[href], button, [role="button"], select, summary, input[type="button"], input[type="submit"], input[type="reset"]):is(:hover, :focus-visible)
   :where(div, span, svg, h2, h3, p, strong, em, small, figcaption) {
   color: inherit !important;
-}
-
-/* The preview close button blends at rest; use the exact accent on interaction. */
-.project-lightbox-close:is(:hover, :focus-visible) {
-  mix-blend-mode: normal;
-}
-
-/* The active pointer uses the same accent without inverting the hovered icon. */
-.site-cursor.is-active:not(.is-rotate):not(.is-resize) {
-  mix-blend-mode: normal;
-}
-
-.site-cursor.is-active:not(.is-rotate):not(.is-resize)::before {
-  background: var(--hover-accent);
 }
 
 /* Primary navigation shares the exact metrics used by the Work filters. */
@@ -8227,7 +8196,6 @@ body[data-page="landing-minimal"] {
 }
 
 body[data-page="landing-minimal"] .site-header {
-  --header-hover-accent: var(--hover-accent);
   position: fixed;
   color: #ffffff;
   mix-blend-mode: normal;
@@ -8697,13 +8665,13 @@ body[data-page="landing-minimal"] .minimal-landing-work-link {
   position: absolute;
   font-family: var(--font-annotation);
   font-size: .889cqw;
-  font-weight: 400;
+  font-weight: var(--weight-copy);
   line-height: 1.16;
   white-space: nowrap;
   color: #1b1b1b;
 }
 
-.hunters-native-parti-label strong { font-weight: 700; }
+.hunters-native-parti-label strong { font-weight: var(--weight-title); }
 .hunters-native-parti-label--walls-title { left: 4.54%; top: 12.14%; }
 .hunters-native-parti-label--walls-copy { left: 4.54%; top: 15.56%; }
 .hunters-native-parti-label--corridor { left: 10.25%; top: 21.21%; }
@@ -8911,12 +8879,12 @@ body[data-page="landing-minimal"] .minimal-landing-controls button:is(:hover, :f
     margin: 0;
     font-size: inherit;
     line-height: inherit;
-    font-weight: 400;
+    font-weight: var(--weight-copy);
   }
 
   .hunters-mobile-key h3,
   .hunters-mobile-key strong {
-    font-weight: 700;
+    font-weight: var(--weight-title);
   }
 
   .hunters-mobile-marks {
@@ -8994,4 +8962,65 @@ body[data-page="landing-minimal"] .minimal-landing-controls button:is(:hover, :f
     flex: 1;
     max-width: 230px;
   }
+}
+
+
+/* Editorial content uses titles 700 and copy/controls 500; the header name uses 600.
+   Explicit roles also prevent the browser from synthesizing a third weight. */
+h1, h2, h3, h4, h5, h6, strong, b {
+  font-weight: var(--weight-title) !important;
+}
+
+:is(h1, h2, h3, h4, h5, h6) :is(a, span, em, strong, b) {
+  font-weight: inherit !important;
+}
+
+/* The home introduction is a sentence, even though it is the page's h1. */
+.minimal-landing-copy {
+  font-weight: var(--weight-copy) !important;
+}
+
+
+/* The home introduction and its call to action share one text size. */
+body[data-page="landing-minimal"] :is(.minimal-landing-copy, .minimal-landing-work-link) {
+  font-size: var(--type-control);
+}
+
+
+/* The mark stays fixed; only the 600-weight name slides into view. */
+body[data-page] .site-header .brand > span {
+  display: block;
+  max-inline-size: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: var(--weight-brand) !important;
+  opacity: 0;
+  transform: translateX(-0.75em);
+  transition:
+    max-inline-size 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 180ms ease;
+}
+
+body[data-page] .site-header .brand:is(:hover, :focus-visible, :focus-within) > span {
+  max-inline-size: 14ch;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+body[data-page] .site-header .brand > span::after {
+  content: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page] .site-header .brand > span {
+    transition: none !important;
+  }
+}
+
+
+/* Every page shares the approved navigation weight, including menu states. */
+body[data-page] .site-header .site-nav :is(a, button),
+body[data-page] .site-header .menu-toggle {
+  font-weight: var(--weight-nav) !important;
 }

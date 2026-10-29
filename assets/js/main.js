@@ -611,7 +611,7 @@
       lines[variant] || lines.grid,
       "</g>",
       showTitle
-        ? '<text x="16" y="116" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="8" fill="currentColor">'
+        ? '<text x="16" y="116" font-family="Inter Portfolio, Inter, Arial, sans-serif" font-weight="700" font-size="8" fill="currentColor">'
         : "",
       showTitle ? title : "",
       showTitle ? "</text>" : "",
@@ -1267,7 +1267,7 @@
     function measureRenderedText(element, value) {
       const computed = window.getComputedStyle(element);
       const fontSize = Number.parseFloat(computed.fontSize) || 96;
-      const fontWeight = computed.fontWeight || "900";
+      const fontWeight = computed.fontWeight || "700";
       const fontFamily = computed.fontFamily || "Arial, Helvetica, sans-serif";
       const fontStyle = computed.fontStyle || "normal";
       const canvas = measureRenderedText.canvas || (measureRenderedText.canvas = document.createElement("canvas"));
@@ -1323,7 +1323,7 @@
 
       const computed = window.getComputedStyle(title);
       const fontSize = Number.parseFloat(computed.fontSize) || 96;
-      const fontWeight = computed.fontWeight || "900";
+      const fontWeight = computed.fontWeight || "700";
       const fontFamily = computed.fontFamily || "Arial, Helvetica, sans-serif";
       const fontStyle = computed.fontStyle || "normal";
       const canvas = document.createElement("canvas");
