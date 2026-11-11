@@ -2261,7 +2261,8 @@ img[data-image-skeleton].is-loaded {
   text-underline-offset: 3px;
 }
 
-.cv-item div p {
+.cv-item div p,
+.cv-programs p {
   margin-top: 0.42em;
   color: var(--muted);
   font-size: var(--type-cv-copy);
@@ -2284,6 +2285,43 @@ img[data-image-skeleton].is-loaded {
   display: grid;
   gap: 0.5em;
   max-width: none;
+}
+
+.cv-item--education {
+  row-gap: 18px;
+}
+
+.cv-programs {
+  display: grid;
+  grid-column: 2;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 18px;
+  row-gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cv-programs li {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: baseline;
+}
+
+.cv-programs h5 {
+  margin: 0;
+  font-family: var(--font-copy);
+  font-size: var(--type-cv-subheader);
+  line-height: 1.18;
+}
+
+.cv-programs p {
+  margin: 0;
+}
+
+body[data-page="about"] .text-separator {
+  font-style: normal;
 }
 
 .cv-skills p {
@@ -5423,7 +5461,8 @@ body.project-lightbox-open .site-cursor {
   }
 
   .cv-item > div,
-  .cv-item > p {
+  .cv-item > p,
+  .cv-programs {
     grid-column: 1;
   }
 
@@ -7900,7 +7939,8 @@ body:has(.nav-folder--info:focus-within) > footer {
   }
 }
 
-/* Text controls share the copy weight; current items use an underline. */
+/* Use the same normal text rendering as the homepage on every header.
+   Difference blending makes the same font weight appear heavier. */
 body[data-page="home"] .site-header,
 body[data-page="landing-minimal"] .site-header,
 body[data-page="work"] .site-header,
@@ -7909,10 +7949,11 @@ body[data-page="about"] .site-header,
 body[data-page="contact"] .site-header,
 body[data-page="selected"] .site-header,
 body[data-page="error"] .site-header {
-  color: #ffffff;
-  mix-blend-mode: difference;
+  color: var(--ink);
+  mix-blend-mode: normal;
 }
 
+/* Text controls share the copy weight; current items use an underline. */
 .site-nav a,
 .site-nav button,
 .site-nav .nav-dropdown-link {
